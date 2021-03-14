@@ -8,8 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "10.0.6",
+    "akar-icons": "^1.0.9",
+    "contentful": "^8.1.7",
+    "framer-motion": "^3.6.1",
+    "next": "^10.0.8",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-player": "^2.9.0",
+    "styled-components": "^5.2.1",
+    "styled-system": "^5.1.5"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.12.0"
   }
 }

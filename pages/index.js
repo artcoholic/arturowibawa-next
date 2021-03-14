@@ -1,65 +1,108 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styled from 'styled-components';
+import { createClient } from 'contentful';
+import Layout from '../components/Layout';
+import Text from '../components/Text';
+import EntryList from '../components/EntryList';
+import Box from '../components/Box';
+import { motion } from 'framer-motion';
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+const NameWrapper = styled(Box)`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  height: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+`
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+const Name = styled(Text)(
+  {
+    textTransform: 'uppercase',
+    fontSize: 12,
+    lineHeight: '1em',
+    textAlign: 'center',
+  },
+)
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+const TopName = {
+  initial: {
+    y: "-1em",
+    opacity: 0,
+  },
+  enter: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 300,
+      damping: 50,
+      delay: 1,
+    }
+  },
+  exit: {
+    opacity: 0,
+  }
 }
+
+const BottomName = {
+  initial: {
+    y: '1em',
+    opacity: 0,
+    rotate: 180,
+  },
+  enter: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 300,
+      damping: 50,
+      delay: 1.2,
+    }
+  },
+  exit: {
+    opacity: 0,
+  }
+}
+
+const HomePage = ({ data }) => {
+  return (
+    <>
+      <Layout>
+        <NameWrapper
+          top="layout.1"
+          as={motion.div}
+        >
+          <Name as={motion.span} variants={TopName}>Arturo</Name>
+          <Name as={motion.span} variants={BottomName} variant="bottom">Wibawa</Name>
+        </NameWrapper>
+        <EntryList data={data} />
+      </Layout>
+    </>
+  )
+};
+
+export async function getStaticProps() {
+
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+    removeUnresolved: true,
+  })
+
+  const data = await client
+    .getEntries({
+      content_type: 'projectList',
+      include: 10,
+    })
+    .then((response) => response.items)
+
+  return {
+    props: {
+      data,
+    },
+  }
+}
+
+export default HomePage;
