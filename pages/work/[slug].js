@@ -11,6 +11,7 @@ import { wipe, variants } from '../../components/AnimationVariants';
 import { motion, useViewportScroll } from 'framer-motion';
 import { Cross } from 'akar-icons';
 import ReactPlayer from 'react-player/lazy';
+import Markdown from 'react-markdown';
 
 const Line = styled(Box)`
   height: 1px;
@@ -70,6 +71,30 @@ const ScrollToTop = styled(Text)`
       transform: scaleX(0);
       position: absolute;
       left: 0;
+    }
+  }
+`
+
+const MarkdownWrapper = styled(Text)`
+  a {
+    position: relative;
+    transition: transform 1000ms ${({ theme }) => theme.ease.Smooth};
+    text-decoration: none;
+    white-space: nowrap;
+    padding-bottom: 0.25em;
+    font-family: var(--eina-regular);
+    color: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
+    &:hover {
+      &:after {
+        content: '';
+        background: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
+        animation: ${wipe} 500ms ${({ theme }) => theme.ease.Smooth};
+        height: 100%;
+        left: 0;
+        width: 100%;
+        transform: scaleX(0);
+        position: absolute;
+      }
     }
   }
 `
@@ -204,24 +229,41 @@ export default function Slug({ entry }) {
               case 'text': // TEXT BLOCK
                 return (
                   item.fields.alignText === "Left" ?
-                    <Box as="section" my={["layout.1", null, "layout.2"]} columns={["1/-1", null, "5/span 4", "2/span 5"]} key={item.sys.id}>
-                      <Text color="lightTheme.contentInverseTertiary" font={["ParagraphMedium", null, "ParagraphLarge"]} as="h3" textAlign={['center', null, 'left']}>
-                        {item.fields.paragraph}
-                      </Text>
-                    </Box>
+                    <MarkdownWrapper
+                      as="section"
+                      my={["layout.1", null, "layout.2"]}
+                      columns={["1/-1", null, "5/span 4", "2/span 5"]}
+                      key={item.sys.id}
+                      color="lightTheme.contentInverseTertiary"
+                      font={["ParagraphMedium", null, "ParagraphLarge"]}
+                      textAlign={['center', null, 'left']}
+                    >
+                      <Markdown source={item.fields.paragraph} escapeHtml={true} linkTarget="_blank" />
+                    </MarkdownWrapper>
                     :
                     item.fields.alignText === "Center" ?
-                      <Box as="section" my={["layout.1", null, "layout.2"]} columns={["1/-1", null, "5/span 4", "4/span 6"]} key={item.sys.id}>
-                        <Text color="lightTheme.contentInverseTertiary" font={["ParagraphMedium", null, "ParagraphLarge"]} as="h3" textAlign="center">
-                          {item.fields.paragraph}
-                        </Text>
-                      </Box>
+                      <MarkdownWrapper
+                        as="section"
+                        my={["layout.1", null, "layout.2"]}
+                        columns={["1/-1", null, "5/span 4", "4/span 6"]}
+                        key={item.sys.id}
+                        color="lightTheme.contentInverseTertiary"
+                        font={["ParagraphMedium", null, "ParagraphLarge"]}
+                        textAlign="center"
+                      >
+                        <Markdown source={item.fields.paragraph} escapeHtml={true} linkTarget="_blank" />
+                      </MarkdownWrapper>
                       :
-                      <Box as="section" my={["layout.1", null, "layout.2"]} columns={["1/-1", null, "5/span 4", "7/span 5"]} key={item.sys.id}>
-                        <Text color="lightTheme.contentInverseTertiary" font={["ParagraphMedium", null, "ParagraphLarge"]} as="h3" textAlign={['center', null, 'left']}>
-                          {item.fields.paragraph}
-                        </Text>
-                      </Box>
+                      <MarkdownWrapper
+                        as="section" my={["layout.1", null, "layout.2"]}
+                        columns={["1/-1", null, "5/span 4", "7/span 5"]}
+                        key={item.sys.id}
+                        color="lightTheme.contentInverseTertiary"
+                        font={["ParagraphMedium", null, "ParagraphLarge"]} t
+                        extAlign={['center', null, 'left']}
+                      >
+                        <Markdown source={item.fields.paragraph} escapeHtml={true} linkTarget="_blank" />
+                      </MarkdownWrapper>
                 );
                 break;
               default:
@@ -246,6 +288,13 @@ export default function Slug({ entry }) {
             </ScrollToTop>
           </Text>
         </Grid>
+        <style jsx>
+          {`
+            section: global(a) {
+              color: red;
+            }
+          `}
+        </style>
       </Layout >
     </>
   )

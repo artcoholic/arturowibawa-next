@@ -15,12 +15,6 @@ const EntryItem = ({ entry, index }) => {
       pr="layout.1"
       as={motion.article}
       variants={variants.entryItem}
-      transition={{
-        type: 'spring',
-        stiffness: 600,
-        damping: 150,
-        mass: 10,
-      }}
     >
       <Box
         width={["50vw"]}

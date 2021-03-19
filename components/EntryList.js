@@ -57,7 +57,7 @@ const EntryList = ({ data }) => {
         ref={objectRef}
         as={motion.div}
         onPan={onPan}
-        variants={variants.horizontalList}
+        variants={variants.entryList}
         key="entryList"
       >
         {entries.map((entry, index) => <EntryItem key={index} entry={entry} index={index} />)}

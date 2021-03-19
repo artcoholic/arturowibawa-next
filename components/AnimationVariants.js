@@ -72,13 +72,25 @@ export const variants = {
     enter: {
       x: 0,
       opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 600,
+        damping: 120,
+        mass: 4,
+      }
     },
     exit: {
       x: -400,
       opacity: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 800,
+        damping: 120,
+        mass: 4,
+      }
     }
   },
-  horizontalList: {
+  entryList: {
     enter: {
       transition: {
         staggerChildren: 0.2,
@@ -170,7 +182,13 @@ export const variants = {
     },
     exit: {
       opacity: 0,
-      y: 50
+      y: 100,
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 100,
+        mass: 10,
+      }
     }
   }
 };
