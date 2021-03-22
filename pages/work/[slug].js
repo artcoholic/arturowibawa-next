@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { createClient } from 'contentful';
 import styled from 'styled-components';
-import Link from "next/link";
 import Image from 'next/image';
 import Layout from '../../components/Layout';
 import Grid from '../../components/Grid';
 import Box from '../../components/Box';
 import Text from '../../components/Text';
+import VisitButton from '../../components/VisitButton';
+import CloseButton from '../../components/CloseButton';
 import { wipe, variants } from '../../components/AnimationVariants';
 import { motion, useViewportScroll } from 'framer-motion';
-import { Cross } from 'akar-icons';
 import ReactPlayer from 'react-player/lazy';
 import Markdown from 'react-markdown';
 
@@ -22,30 +22,6 @@ const Line = styled(Box)`
 const ProjectTitle = styled(Text)`
   text-align: center;
   text-transform: uppercase;
-`
-
-const CloseButton = styled(Box)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: fixed;
-  left: 50%;
-  z-index: 999;
-  transition: all 300ms ${({ theme }) => theme.ease.Smooth};
-  border-radius: 50%;
-  background: ${({ scrollY }) => scrollY > 24 ? 'white' : 'none'};
-  border: ${({ scrollY }) => scrollY > 24 ? '1px solid #AE922E' : 'none'};
-  box-shadow: ${({ scrollY }) => scrollY > 24 ? '0 4px 8px 0px rgba(0,0,0,0.25)' : 'none'};
-  &:hover {
-    box-shadow: ${({ scrollY }) => scrollY > 24 ? '0 2px 4px 0px rgba(0,0,0,0.15)' : 'none'};
-  }
-  &:active {
-    box-shadow: none;
-  }
-  svg {
-    transition: all 300ms ${({ theme }) => theme.ease.Smooth};
-  }
 `
 
 const VideoWrapper = React.forwardRef((props, ref) => (
@@ -61,6 +37,7 @@ const ScrollToTop = styled(Text)`
   background: none;
   outline: none;
   border: none;
+  padding: 0;
   &:hover {
     &:after {
       content: '';
@@ -100,12 +77,15 @@ const MarkdownWrapper = styled(Text)`
 `
 
 export default function Slug({ entry }) {
-  const year = entry.fields.year;
-  const tags = entry.fields.tags;
+  const metadata = entry.fields.info.fields;
   const matrix = entry.fields.matrix;
-  const ref = React.createRef();
-  const { scrollY } = useViewportScroll();
+
   const [hookedYPosition, setHookedYPosition] = useState(0);
+
+  const { scrollY, scrollYProgress } = useViewportScroll();
+
+  const ref = React.createRef();
+
   useEffect(() => {
     scrollY.onChange(y => setHookedYPosition(y));
     return () => {
@@ -116,21 +96,8 @@ export default function Slug({ entry }) {
   return (
     <>
       <Layout title={entry.fields.title + ' — Arturo Wibawa'}>
-        <Link href="/" passHref scroll={false}>
-          <CloseButton
-            as={motion.a}
-            top="layout.1"
-            size={hookedYPosition > 24 ? 48 : 32}
-            color="lightTheme.contentPrimary"
-            scrollY={hookedYPosition}
-            initial={{ scale: 0, x: '-50%' }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <Cross />
-          </CloseButton>
-        </Link>
+        <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} />
+        {metadata.url && <VisitButton url={metadata.url} hookedYPosition={hookedYPosition} entry={entry} />}
         <Box
           as={motion.article}
           width="100%"
@@ -166,8 +133,8 @@ export default function Slug({ entry }) {
             justifyContent="space-between"
             style={{ clipPath: 'inset(0%)' }}
           >
-            {year && <Text as={motion.h2} variants={variants.slugStats} fontSize={[3, 4]}>{year}</Text>}
-            {tags && <Text as={motion.h2} variants={variants.slugStats} fontSize={[3, 4]}>{tags.join(", ")}</Text>}
+            {metadata.year && <Text as={motion.h2} mr={12} variants={variants.slugStats} fontSize={[3, 4]}>{metadata.year}</Text>}
+            {metadata.tags && <Text as={motion.h2} variants={variants.slugStats} fontSize={[3, 4]}>{metadata.tags.join(", ")}</Text>}
           </Box>
         </Box>
         <Grid
@@ -232,7 +199,7 @@ export default function Slug({ entry }) {
                     <MarkdownWrapper
                       as="section"
                       my={["layout.1", null, "layout.2"]}
-                      columns={["1/-1", null, "5/span 4", "2/span 5"]}
+                      columns={["1/-1", null, "1/span 4", "2/span 5"]}
                       key={item.sys.id}
                       color="lightTheme.contentInverseTertiary"
                       font={["ParagraphMedium", null, "ParagraphLarge"]}
@@ -245,7 +212,7 @@ export default function Slug({ entry }) {
                       <MarkdownWrapper
                         as="section"
                         my={["layout.1", null, "layout.2"]}
-                        columns={["1/-1", null, "5/span 4", "4/span 6"]}
+                        columns={["1/-1", null, "3/span 4", "4/span 6"]}
                         key={item.sys.id}
                         color="lightTheme.contentInverseTertiary"
                         font={["ParagraphMedium", null, "ParagraphLarge"]}
@@ -259,8 +226,8 @@ export default function Slug({ entry }) {
                         columns={["1/-1", null, "5/span 4", "7/span 5"]}
                         key={item.sys.id}
                         color="lightTheme.contentInverseTertiary"
-                        font={["ParagraphMedium", null, "ParagraphLarge"]} t
-                        extAlign={['center', null, 'left']}
+                        font={["ParagraphMedium", null, "ParagraphLarge"]}
+                        textAlign={['center', null, 'left']}
                       >
                         <Markdown source={item.fields.paragraph} escapeHtml={true} linkTarget="_blank" />
                       </MarkdownWrapper>
@@ -278,7 +245,7 @@ export default function Slug({ entry }) {
             justifyContent="center"
           >
             <ScrollToTop
-              as="button"
+              as={motion.button}
               onClick={() => window.scrollTo(0, 0)}
               fontSize="12vw"
               color="lightTheme.contentInverseTertiary"
@@ -288,13 +255,6 @@ export default function Slug({ entry }) {
             </ScrollToTop>
           </Text>
         </Grid>
-        <style jsx>
-          {`
-            section: global(a) {
-              color: red;
-            }
-          `}
-        </style>
       </Layout >
     </>
   )

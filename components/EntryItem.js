@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const EntryItem = ({ entry, index }) => {
   const item = entry.fields;
-  const thumbnail = item.thumbnail.fields;
+  const metadata = item.info.fields;
 
   return (
     <Box
@@ -24,8 +24,8 @@ const EntryItem = ({ entry, index }) => {
         <Link href={`/work/${item.slug}`}>
           <a style={{ display: 'block', borderRadius: 4, overflow: 'hidden' }}>
             <Image
-              src={`http:${thumbnail.image.fields.file.url}`}
-              alt={thumbnail.image.fields.description}
+              src={`http:${metadata.image.fields.file.url}`}
+              alt={metadata.image.fields.description}
               width={4}
               height={5}
               layout="responsive"
@@ -38,11 +38,11 @@ const EntryItem = ({ entry, index }) => {
           font="ParagraphLarge"
           mt=".5em"
         >
-          {thumbnail.title}
+          {metadata.title}
         </Text>
       </Box>
       <Text style={{ writingMode: "vertical-rl" }} ml="spacing.2" fontSize={[3, null, null, null, 4]}>
-        0{index + 1} — {thumbnail.category}
+        0{index + 1} — {metadata.category}
       </Text>
     </Box >
   )

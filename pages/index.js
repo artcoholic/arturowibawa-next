@@ -14,20 +14,19 @@ const NameWrapper = styled(Box)`
   height: 32px;
   left: 50%;
   transform: translateX(-50%);
+  perspective: 180px;
 `
 
-const Name = styled(Text)(
-  {
-    textTransform: 'uppercase',
-    fontSize: 12,
-    lineHeight: '1em',
-    textAlign: 'center',
-  },
-)
+const Name = styled(Text)`
+  text-transform: uppercase;
+  line-height: 1em;
+  text-align: center;
+  letter-spacing: 1px;
+`
 
 const TopName = {
   initial: {
-    y: "-1em",
+    y: "1em",
     opacity: 0,
   },
   enter: {
@@ -35,30 +34,10 @@ const TopName = {
     opacity: 1,
     transition: {
       type: 'spring',
-      stiffness: 300,
-      damping: 50,
+      stiffness: 400,
+      damping: 100,
+      mass: 10,
       delay: 1,
-    }
-  },
-  exit: {
-    opacity: 0,
-  }
-}
-
-const BottomName = {
-  initial: {
-    y: '1em',
-    opacity: 0,
-    rotate: 180,
-  },
-  enter: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: 'spring',
-      stiffness: 300,
-      damping: 50,
-      delay: 1.2,
     }
   },
   exit: {
@@ -74,8 +53,7 @@ const HomePage = ({ data }) => {
           top="layout.1"
           as={motion.div}
         >
-          <Name as={motion.span} variants={TopName}>Arturo</Name>
-          <Name as={motion.span} variants={BottomName} variant="bottom">Wibawa</Name>
+          <Name fontSize={3} pt={2} as={motion.span} variants={TopName}>Arturo • Wibawa</Name>
         </NameWrapper>
         <EntryList data={data} />
       </Layout>
