@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import Text from './Text';
-import { wipe, blink, variants } from './AnimationVariants';
+import { blink, variants } from './AnimationVariants';
 import { motion } from 'framer-motion';
 
 const StyledNavButton = styled(Text)`
@@ -21,19 +21,24 @@ const StyledNavButton = styled(Text)`
       width: 100%;
       position: absolute;
       box-shadow: inset -1px 0 0 ${({ theme }) => theme.colors.lightTheme.backgroundPrimary};
-      animation: ${blink} 500ms ${({ theme }) => theme.ease.It} infinite alternate;
+      animation: ${blink} 750ms ${({ theme }) => theme.ease.It} infinite alternate;
     }
   }
   &:hover {
     &:after {
-      content: '';
-      background: ${({ theme }) => theme.colors.lightTheme.backgroundPrimary};
-      animation: ${wipe} 500ms ${({ theme }) => theme.ease.Smooth};
-      height: 100%;
-      width: 100%;
-      transform: scaleX(0);
-      position: absolute;
+      transform: scaleX(1);
+      transform-origin: 0%;
     }
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    background: ${({ theme }) => theme.colors.lightTheme.backgroundPrimary};
+    transition: transform 250ms ${({ theme }) => theme.ease.smooth};
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: 100%;
   }
 `
 

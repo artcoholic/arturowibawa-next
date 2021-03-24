@@ -1,13 +1,11 @@
-import { useState } from 'react';
 import Head from 'next/head';
 import Header from './Header';
-import { motion } from 'framer-motion';
 
-const Layout = ({ children, title = 'Arturo Wibawa — Portfolio' }) => {
+const MyLayout = ({ children }) => {
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>Arturo Wibawa — Portfolio</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Arturo Wibawa's personal space in the world wide web" />
         <link rel="icon" href="/favicon.ico" />
@@ -25,16 +23,9 @@ const Layout = ({ children, title = 'Arturo Wibawa — Portfolio' }) => {
         />
       </Head>
       <Header />
-      <motion.main
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        key="main"
-      >
-        {children}
-      </motion.main>
+      {children}
     </>
   )
 }
 
-export default Layout;
+export default MyLayout;
