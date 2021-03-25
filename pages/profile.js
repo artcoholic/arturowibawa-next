@@ -52,7 +52,6 @@ const SocialLinks = styled(Box)`
 
 const Ellipse = styled.ellipse`
   animation: ${sphere} 20s linear infinite;
-  transition: all 300ms;
 `
 
 const EllipseWrapper = styled(Box)`
