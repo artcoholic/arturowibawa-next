@@ -5,7 +5,7 @@ import Box from './Box';
 import Grid from './Grid';
 import { variants } from './AnimationVariants'
 import { motion, AnimatePresence } from 'framer-motion';
-import { LinkedInFill, CodepenFill, TwitterFill, GithubFill } from 'akar-icons';
+import { LinkedInFill, CodepenFill, TwitterFill, GithubFill, Envelope } from 'akar-icons';
 
 const Container = styled(Box)`
   pointer-events: auto;
@@ -74,7 +74,7 @@ const MenuContainer = ({ open, setOpen }) => {
           <Grid
             gridRowGap={8}
             gridColumnGap={12}
-            gridTemplateColumns={["repeat(4, 1fr)", null, "1fr"]}
+            gridTemplateColumns={["repeat(5, 1fr)", null, "1fr"]}
             position={["absolute", null, 'relative']}
             bottom={["layout.2", null, 0]}
             placeSelf={["center", null, "flex-end"]}
@@ -83,6 +83,7 @@ const MenuContainer = ({ open, setOpen }) => {
             <SocialLinks as="a" href="https://twitter.com/agwibawa" target="_blank" rel="noopener"><TwitterFill size={16} /></SocialLinks>
             <SocialLinks as="a" href="https://github.com/artcoholic/" target="_blank" rel="noopener"><GithubFill size={16} /></SocialLinks>
             <SocialLinks as="a" href="https://codepen.io/artcoholic" target="_blank" rel="noopener"><CodepenFill size={16} /></SocialLinks>
+            <SocialLinks as="a" href="mailto:agwibawa@gmail.com" target="_blank" rel="noopener"><Envelope size={16} /></SocialLinks>
           </Grid>
         </Container >
       )}
