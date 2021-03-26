@@ -30,6 +30,7 @@ const Dot = styled(Box)`
   position: relative;
   background: none;
   z-index:99;
+  outline: none;
   &:before {
     content: '';
     position: absolute;

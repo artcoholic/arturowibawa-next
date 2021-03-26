@@ -22,7 +22,7 @@ const EntryItem = ({ entry, index }) => {
         maxWidth={[320, null, null, null, 400, 600]}
       >
         <Link href={`/work/${item.slug}`}>
-          <a style={{ display: 'block', borderRadius: 4, overflow: 'hidden' }}>
+          <a style={{ display: 'block', borderRadius: 4, overflow: 'hidden', backgroundColor: 'white' }}>
             <Image
               src={`http:${metadata.image.fields.file.url}`}
               alt={metadata.image.fields.description}

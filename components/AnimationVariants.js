@@ -81,7 +81,7 @@ export const variants = {
   },
   entryItem: {
     initial: {
-      x: 400,
+      x: 200,
       opacity: 0,
     },
     enter: {
@@ -89,7 +89,7 @@ export const variants = {
       opacity: 1,
       transition: {
         type: 'spring',
-        stiffness: 600,
+        stiffness: 800,
         damping: 120,
         mass: 4,
       }
