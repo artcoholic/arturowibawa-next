@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { createClient } from 'contentful';
 import Head from 'next/head';
 import VisitButton from '../../components/VisitButton';
 import CloseButton from '../../components/CloseButton';
 import SlugHeader from '../../components/SlugHeader';
-import SlugContent from '../../components/SlugContent';
 import { motion, useViewportScroll } from 'framer-motion';
+import dynamic from 'next/dynamic'
+
+const DynamicContent = dynamic(() => import('../../components/SlugContent'));
 
 export default function Slug({ entry }) {
   const metadata = entry.fields.info.fields;
@@ -28,7 +30,7 @@ export default function Slug({ entry }) {
       <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} />
       {metadata.url && <VisitButton url={metadata.url} hookedYPosition={hookedYPosition} entry={entry} />}
       <SlugHeader entry={entry} />
-      <SlugContent entry={entry} />
+      <DynamicContent entry={entry} />
     </motion.main>
   )
 }
