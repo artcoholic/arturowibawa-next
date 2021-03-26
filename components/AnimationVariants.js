@@ -40,6 +40,15 @@ export const sphere = keyframes`
 `
 
 export const variants = {
+  main: {
+    exit: {
+      opacity: 0,
+      transition: {
+        ease: [.23, 1, .32, 1],
+        duration: 0.5
+      }
+    }
+  },
   menuItem: {
     open: {
       y: 0,

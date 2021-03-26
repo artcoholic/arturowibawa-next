@@ -75,7 +75,7 @@ const MenuContainer = ({ open, setOpen }) => {
             gridRowGap={8}
             gridColumnGap={12}
             gridTemplateColumns={["repeat(5, 1fr)", null, "1fr"]}
-            position={["absolute", null, 'relative']}
+            position={["fixed", null, 'relative']}
             bottom={["layout.2", null, 0]}
             placeSelf={["center", null, "flex-end"]}
           >

@@ -106,7 +106,7 @@ const SlugContent = ({ entry }) => {
                         <Image src={`http:${asset.fields.file.url}`} alt={asset.fields.title} layout="responsive" width={asset.fields.file.details.image.width} height={asset.fields.file.details.image.height} />
                       }
                       {asset.fields.file.contentType.includes('video') &&
-                        <ReactPlayer url={asset.fields.file.url} playing muted loop width="100%" height="100%" />
+                        <ReactPlayer url={asset.fields.file.url} playing muted loop width="100%" height="100%" style={{ background: 'white' }} />
                       }
                     </Box>
                   )
@@ -122,7 +122,7 @@ const SlugContent = ({ entry }) => {
                           </Box>
                         }
                         {asset.fields.file.contentType.includes('video') &&
-                          <ReactPlayer ref={ref} url={asset.fields.file.url} playing muted loop wrapper={VideoWrapper} width="100%" height="100%" />
+                          <ReactPlayer ref={ref} url={asset.fields.file.url} playing muted loop wrapper={VideoWrapper} width="100%" height="100%" style={{ background: 'white' }} />
                         }
                       </React.Fragment>
                     )

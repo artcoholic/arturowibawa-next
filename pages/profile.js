@@ -1,10 +1,9 @@
-import { useRef } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import Box from '../components/Box';
 import Grid from '../components/Grid';
 import Text from '../components/Text';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { blink, sphere, variants } from '../components/AnimationVariants';
 import { LinkedInFill, CodepenFill, TwitterFill, GithubFill, Envelope } from 'akar-icons';
 
@@ -62,7 +61,7 @@ const EllipseWrapper = styled(Box)`
 
 const ProfilePage = () => {
   return (
-    <motion.main initial="initial" animate="enter" exit={{ opacity: 0 }}>
+    <motion.main initial="initial" animate="enter" exit="exit" variants={variants.main}>
       <Head>
         <title>Profile — Arturo Wibawa</title>
       </Head>

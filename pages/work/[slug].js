@@ -5,6 +5,7 @@ import VisitButton from '../../components/VisitButton';
 import CloseButton from '../../components/CloseButton';
 import SlugHeader from '../../components/SlugHeader';
 import { motion, useViewportScroll } from 'framer-motion';
+import { variants } from '../../components/AnimationVariants';
 import dynamic from 'next/dynamic'
 
 const DynamicContent = dynamic(() => import('../../components/SlugContent'));
@@ -23,7 +24,7 @@ export default function Slug({ entry }) {
   }, [scrollY]);
 
   return (
-    <motion.main initial="initial" animate="enter" exit={{ opacity: 0 }}>
+    <motion.main initial="initial" animate="enter" exit="exit" variants={variants.main}>
       <Head>
         <title>{entry.fields.title} — Arturo Wibawa</title>
       </Head>

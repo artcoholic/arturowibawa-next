@@ -138,6 +138,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   html {
     scroll-behavior: smooth;
+    height: 100%;
   }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -146,6 +147,7 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: ${({ theme }) => theme.colors.lightTheme.backgroundPrimary};
+    height: 100%;
   }
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
