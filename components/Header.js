@@ -12,10 +12,6 @@ const Container = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
   pointer-events:none;
 `
 
@@ -68,6 +64,12 @@ const Header = () => {
       as="header"
       p="layout.1"
       key="header"
+      style={{
+        width: '100%',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+      }}
     >
       <MenuContainer open={open} setOpen={setOpen} />
       <Link href="/" passHref>

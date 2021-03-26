@@ -12,6 +12,7 @@ const HorizontalContainer = styled(Box)`
   display: flex;
   flex-flow: row nowrap;
   height: 100vh;
+  min-height: -webkit-fill-available;
   align-items: center;
   position: relative;
   cursor: grab;
