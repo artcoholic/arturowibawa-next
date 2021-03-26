@@ -95,7 +95,6 @@ export const variants = {
       }
     },
     exit: {
-      x: -400,
       opacity: 0,
       transition: {
         type: 'spring',
@@ -111,11 +110,6 @@ export const variants = {
         staggerChildren: 0.2,
       }
     },
-    exit: {
-      transition: {
-        staggerChildren: 0.1,
-      }
-    }
   },
   progress: {
     initial: {
@@ -195,16 +189,6 @@ export const variants = {
       opacity: 1,
       y: 0
     },
-    exit: {
-      opacity: 0,
-      y: 100,
-      transition: {
-        type: 'spring',
-        stiffness: 300,
-        damping: 100,
-        mass: 10,
-      }
-    }
   },
   MyName: {
     initial: {

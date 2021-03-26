@@ -1,9 +1,10 @@
-import styled, { keyframes } from 'styled-components';
+import { useRef } from 'react';
+import styled from 'styled-components';
 import Head from 'next/head';
 import Box from '../components/Box';
 import Grid from '../components/Grid';
 import Text from '../components/Text';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { blink, sphere, variants } from '../components/AnimationVariants';
 import { LinkedInFill, CodepenFill, TwitterFill, GithubFill, Envelope } from 'akar-icons';
 
@@ -61,7 +62,7 @@ const EllipseWrapper = styled(Box)`
 
 const ProfilePage = () => {
   return (
-    <motion.main initial="initial" animate="enter" exit="exit">
+    <motion.main initial="initial" animate="enter" exit={{ opacity: 0 }}>
       <Head>
         <title>Profile — Arturo Wibawa</title>
       </Head>
@@ -94,7 +95,6 @@ const ProfilePage = () => {
             gridColumnGap={12}
             gridTemplateColumns="repeat(5, 1fr)"
             as={motion.section}
-            exit={{ opacity: 0 }}
           >
             <SocialLinks as="a" href="https://www.linkedin.com/in/arturowibawa/" target="_blank" rel="noopener">
               <motion.span variants={variants.ProfileSocialButtons} transition={{ delay: 0.5 }}><LinkedInFill size={16} /></motion.span>
@@ -118,8 +118,6 @@ const ProfilePage = () => {
           p={[0, null, null, "layout.2"]}
           placeSelf="center"
           display={['none', null, null, 'block']}
-          as={motion.div}
-          exit={{ opacity: 0 }}
         >
           <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" stroke="#AE922E" xmlns="http://www.w3.org/2000/svg" style={{ strokeWidth: 1, overflow: 'visible', display: 'block', opacity: 0.5 }}>
             <g>
@@ -137,7 +135,7 @@ const ProfilePage = () => {
             </g>
           </svg>
         </EllipseWrapper>
-        <Text as={motion.p} exit={{ opacity: 0 }} fontSize={3} position="absolute" bottom="layout.1" placeSelf="center">© 2021. All Rights Reserved.</Text>
+        <Text as="p" fontSize={3} position="absolute" bottom="layout.1" placeSelf="center">© 2021. All Rights Reserved.</Text>
       </Grid>
     </motion.main >
   )

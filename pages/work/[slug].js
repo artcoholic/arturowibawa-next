@@ -104,20 +104,18 @@ export default function Slug({ entry }) {
   }, [scrollY]);
 
   return (
-    <motion.main initial="initial" animate="enter" exit="exit">
+    <motion.main initial="initial" animate="enter" exit={{ opacity: 0 }}>
       <Head>
         <title>{entry.fields.title} — Arturo Wibawa</title>
       </Head>
       <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} />
       {metadata.url && <VisitButton url={metadata.url} hookedYPosition={hookedYPosition} entry={entry} />}
       <Box
-        as={motion.article}
+        as="article"
         width="100%"
         mb={["layout.1", null, "layout.1/2"]}
         px="layout.1"
         mt={["layout.4", "layout.3"]}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.25 }}
       >
         <Box style={{ clipPath: 'inset(0%)' }}>
           <ProjectTitle
