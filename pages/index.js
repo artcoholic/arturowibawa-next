@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const HomePage = ({ data }) => {
   return (
-    <motion.main initial="initial" animate="enter" exit="exit">
+    <motion.main initial="initial" animate="enter" exit={{ opacity: 0 }}>
       <EntryList data={data} />
     </motion.main>
   )

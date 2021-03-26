@@ -94,15 +94,6 @@ export const variants = {
         mass: 4,
       }
     },
-    exit: {
-      opacity: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 1200,
-        damping: 120,
-        mass: 4,
-      }
-    }
   },
   entryList: {
     enter: {
@@ -123,9 +114,6 @@ export const variants = {
         stiffness: 600,
       }
     },
-    exit: {
-      opacity: 0,
-    }
   },
   footer: {
     initial: {
