@@ -1,7 +1,7 @@
 import React from 'react'
 import App from 'next/app'
 import { ThemeProvider } from 'styled-components';
-import { theme, GlobalStyles } from '../themeConfig';
+import { theme, GlobalStyles } from '../theme.config';
 import { AnimatePresence } from "framer-motion";
 import Layout from '../components/Layout';
 
