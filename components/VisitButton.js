@@ -6,17 +6,14 @@ import Box from './Box';
 import { ArrowForwardThickFill } from 'akar-icons';
 
 const Wrapper = styled(Text)`
-  /* position: fixed; */
-  /* z-index: 98; */
   text-decoration: none;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   padding: 0.5em 1.25em;
   border: 1px solid #AE922E;
   box-shadow: 0 4px 8px 0px rgba(0,0,0,0.25);
-  transition: all 300ms ${({ theme }) => theme.ease.Smooth};
-  border-radius: 8px;
+  transition: all 500ms ${({ theme }) => theme.ease.Smooth};
+  border-radius: 4px;
   background-color: rgba(255,255,255,0.55);
   backdrop-filter: blur(12px);
   &:hover {

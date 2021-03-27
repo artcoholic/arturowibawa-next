@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import Image from 'next/image';
 import Box from './Box';
 import Text from './Text';
@@ -5,17 +6,22 @@ import Link from "next/link";
 import { variants } from './AnimationVariants';
 import { motion } from 'framer-motion';
 
+const Wrapper = styled(Box)`
+  &:last-child {
+    padding-right: var(--gutter);
+  }
+`
+
 const EntryItem = ({ entry, index }) => {
   const item = entry.fields;
   const metadata = item.info.fields;
 
   return (
-    <Box
+    <Wrapper
       display="flex"
       as={motion.article}
       variants={variants.entryItem}
       placeSelf="center"
-      pr="layout.1"
     >
       <Box
         width={["50vw"]}
@@ -45,7 +51,7 @@ const EntryItem = ({ entry, index }) => {
       <Text style={{ writingMode: "vertical-rl" }} ml="spacing.2" fontSize={[3, null, null, null, 4]}>
         0{index + 1} — {metadata.category}
       </Text>
-    </Box >
+    </Wrapper>
   )
 }
 

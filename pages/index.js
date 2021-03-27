@@ -61,7 +61,7 @@ const HomePage = ({ data }) => {
         onPan={onPan}
         variants={variants.entryList}
         gridTemplateColumns={`repeat(${entries.length}, 1fr)`}
-        gridColumnGap={0}
+        gridColumnGap="layout.1"
       >
         {entries.map((entry, index) => <EntryItem key={index} entry={entry} index={index} />)}
       </HorizontalContainer>
