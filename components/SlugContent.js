@@ -78,6 +78,7 @@ const SlugContent = ({ entry }) => {
     <Grid
       as={motion.article}
       mx="layout.1"
+      mb={["layout.4", 'layout.3', null, 'layout.1/2']}
       variants={variants.slugContent}
       transition={{
         type: 'spring',
@@ -176,7 +177,7 @@ const SlugContent = ({ entry }) => {
             console.log(`We don't have the ${id} component.`);
         }
       })}
-      <Text
+      {/* <Text
         as="section"
         columns="1/-1"
         my="layout.4"
@@ -192,7 +193,7 @@ const SlugContent = ({ entry }) => {
         >
           BACK TO TOP
             </ScrollToTop>
-      </Text>
+      </Text> */}
     </Grid>
   )
 }

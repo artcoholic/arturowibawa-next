@@ -6,11 +6,11 @@ import Box from './Box';
 import { ArrowForwardThickFill } from 'akar-icons';
 
 const Wrapper = styled(Text)`
-  position: fixed;
-  z-index: 98;
+  /* position: fixed; */
+  /* z-index: 98; */
   text-decoration: none;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   padding: 0.5em 1.25em;
   border: 1px solid #AE922E;
@@ -27,23 +27,32 @@ const Wrapper = styled(Text)`
 
 const VisitButton = ({ hookedYPosition, url, entry }) => {
   return (
-    <Wrapper
-      as={motion.a}
-      href={url}
-      bottom="layout.1/2"
-      right="layout.1/2"
-      target="_blank"
-      rel="noopener"
-      style={{ y: hookedYPosition > 24 ? 0 : 92 }}
-      exit={{ y: 92 }}
-      transition={{ duration: 0.3 }}
+    <Box
+      position="fixed"
+      zIndex={98}
+      width="100%"
+      bottom={["layout.1", null, null, 'layout.1/2']}
+      px={["layout.1", null, null, 'layout.1/2']}
+      display={['block', null, null, 'flex']}
+      justifyContent="flex-end"
     >
-      <ArrowForwardThickFill size={20} color="#1B1C32" />
-      <Box display="flex" flexDirection="column" ml="spacing.3" pt={4}>
-        <Text letterSpacing={1.2} fontSize={2} fontWeight="bold" textTransform="uppercase" style={{ textTransform: 'uppercase' }}>Visit</Text>
-        <Text>{entry.fields.title}</Text>
-      </Box>
-    </Wrapper>
+      <Wrapper
+        as={motion.a}
+        href={url}
+        width={['100%', null, null, 'auto']}
+        target="_blank"
+        rel="noopener"
+        style={{ y: hookedYPosition > 24 ? 0 : 92 }}
+        exit={{ y: 92 }}
+        transition={{ duration: 0.3 }}
+      >
+        <ArrowForwardThickFill size={20} color="#1B1C32" />
+        <Box display="flex" flexDirection="column" ml="spacing.3" pt={4}>
+          <Text letterSpacing={1.2} fontSize={2} fontWeight="bold" textTransform="uppercase" style={{ textTransform: 'uppercase' }}>Visit</Text>
+          <Text>{entry.fields.title}</Text>
+        </Box>
+      </Wrapper>
+    </Box>
   )
 }
 
