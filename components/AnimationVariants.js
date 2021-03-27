@@ -90,7 +90,7 @@ export const variants = {
   },
   entryItem: {
     initial: {
-      x: 200,
+      x: '100%',
       opacity: 0,
     },
     enter: {

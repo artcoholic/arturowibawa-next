@@ -69,6 +69,7 @@ const HomePage = ({ data }) => {
         as="section"
         style={{ clipPath: 'inset(0%)' }}
         px="layout.1"
+        overflow="hidden"
       >
         <Box
           as={motion.div}

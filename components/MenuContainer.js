@@ -11,6 +11,7 @@ const Container = styled(Box)`
   pointer-events: auto;
   width: 100vw;
   height: 100vh;
+  max-height: -webkit-fill-available;
   position: fixed;
   display: flex;
   top: 0;
