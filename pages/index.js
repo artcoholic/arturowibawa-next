@@ -11,10 +11,10 @@ import { ArrowRight } from 'akar-icons';
 const HorizontalContainer = styled(Box)`
   display: flex;
   flex-flow: row nowrap;
-  height: 100vh;
-  min-height: -webkit-fill-available;
   align-items: center;
   position: relative;
+  height: 100vh;
+  max-height: -webkit-fill-available;
   cursor: grab;
   overflow: auto;
   scrollbar-width: none;
@@ -99,7 +99,7 @@ const HomePage = ({ data }) => {
           style={{ scaleX: scrollXProgress }}
         />
       </Box>
-    </motion.main>
+    </motion.main >
   )
 };
 
