@@ -90,16 +90,16 @@ export const variants = {
   },
   entryItem: {
     initial: {
-      x: '100%',
+      y: 100,
       opacity: 0,
     },
     enter: {
-      x: 0,
+      y: 0,
       opacity: 1,
       transition: {
         type: 'spring',
-        stiffness: 800,
-        damping: 120,
+        stiffness: 400,
+        damping: 100,
         mass: 4,
       }
     },

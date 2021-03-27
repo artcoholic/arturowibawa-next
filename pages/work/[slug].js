@@ -24,15 +24,17 @@ export default function Slug({ entry }) {
   }, [scrollY]);
 
   return (
-    <motion.main initial="initial" animate="enter" exit="exit" variants={variants.main}>
-      <Head>
-        <title>{entry.fields.title} — Arturo Wibawa</title>
-      </Head>
+    <>
       <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} />
-      {metadata.url && <VisitButton url={metadata.url} hookedYPosition={hookedYPosition} entry={entry} />}
-      <SlugHeader entry={entry} />
-      <DynamicContent entry={entry} />
-    </motion.main>
+      <motion.main initial="initial" animate="enter" exit="exit" variants={variants.main}>
+        <Head>
+          <title>{entry.fields.title} — Arturo Wibawa</title>
+        </Head>
+        {metadata.url && <VisitButton url={metadata.url} hookedYPosition={hookedYPosition} entry={entry} />}
+        <SlugHeader entry={entry} />
+        <DynamicContent entry={entry} />
+      </motion.main>
+    </>
   )
 }
 
