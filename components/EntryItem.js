@@ -12,10 +12,10 @@ const EntryItem = ({ entry, index }) => {
   return (
     <Box
       display="flex"
-      pr="layout.1"
       as={motion.article}
       variants={variants.entryItem}
-      style={{ willChange: 'transform' }}
+      placeSelf="center"
+      pr="layout.1"
     >
       <Box
         width={["50vw"]}

@@ -3,16 +3,17 @@ import { createClient } from 'contentful';
 import styled from 'styled-components';
 import EntryItem from '../components/EntryItem';
 import Box from '../components/Box';
+import Grid from '../components/Grid';
 import Text from '../components/Text';
 import { variants } from '../components/AnimationVariants';
 import { motion, useElementScroll } from 'framer-motion';
 import { ArrowRight } from 'akar-icons';
 
-const HorizontalContainer = styled(Box)`
-  display: flex;
+const HorizontalContainer = styled(Grid)`
+  /* display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  position: relative;
+  position: relative; */
   height: 100vh;
   max-height: -webkit-fill-available;
   cursor: grab;
@@ -59,6 +60,8 @@ const HomePage = ({ data }) => {
         as={motion.section}
         onPan={onPan}
         variants={variants.entryList}
+        gridTemplateColumns={`repeat(${entries.length}, 1fr)`}
+        gridColumnGap={0}
       >
         {entries.map((entry, index) => <EntryItem key={index} entry={entry} index={index} />)}
       </HorizontalContainer>

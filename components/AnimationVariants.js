@@ -90,11 +90,11 @@ export const variants = {
   },
   entryItem: {
     initial: {
-      y: 100,
+      x: 100,
       opacity: 0,
     },
     enter: {
-      y: 0,
+      x: 0,
       opacity: 1,
       transition: {
         type: 'spring',
