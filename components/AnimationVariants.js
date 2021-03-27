@@ -165,7 +165,7 @@ export const variants = {
   },
   slugStats: {
     initial: {
-      y: '-2em',
+      y: '-3em',
     },
     enter: {
       y: 0,

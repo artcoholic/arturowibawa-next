@@ -101,12 +101,13 @@ const SlugContent = ({ entry }) => {
                       as="section"
                       borderRadius={[8, null, 16]}
                       overflow="hidden"
+                      bg="#F0C93E"
                     >
                       {asset.fields.file.contentType.includes('image') &&
                         <Image src={`http:${asset.fields.file.url}`} alt={asset.fields.title} layout="responsive" width={asset.fields.file.details.image.width} height={asset.fields.file.details.image.height} />
                       }
                       {asset.fields.file.contentType.includes('video') &&
-                        <ReactPlayer url={asset.fields.file.url} playing muted loop width="100%" height="100%" style={{ background: 'white' }} />
+                        <ReactPlayer url={asset.fields.file.url} playing muted loop width="100%" height="100%" playsinline style={{ background: '#F0C93E' }} />
                       }
                     </Box>
                   )
@@ -117,12 +118,12 @@ const SlugContent = ({ entry }) => {
                     return (
                       <React.Fragment key={asset.sys.id}>
                         {asset.fields.file.contentType.includes('image') &&
-                          <Box span="span 1" width="100%" borderRadius={[8, null, 16]} overflow="hidden">
+                          <Box span="span 1" width="100%" borderRadius={[8, null, 16]} overflow="hidden" bg="#F0C93E">
                             <Image src={`http:${asset.fields.file.url}`} alt={asset.fields.title} layout="responsive" width={asset.fields.file.details.image.width} height={asset.fields.file.details.image.height} />
                           </Box>
                         }
                         {asset.fields.file.contentType.includes('video') &&
-                          <ReactPlayer ref={ref} url={asset.fields.file.url} playing muted loop wrapper={VideoWrapper} width="100%" height="100%" style={{ background: 'white' }} />
+                          <ReactPlayer ref={ref} url={asset.fields.file.url} playing muted loop wrapper={VideoWrapper} width="100%" height="100%" playsinline style={{ background: '#F0C93E' }} />
                         }
                       </React.Fragment>
                     )

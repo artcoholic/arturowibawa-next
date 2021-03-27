@@ -98,6 +98,7 @@ const HomePage = ({ data }) => {
           bg="lightTheme.contentPrimary"
           as={motion.div}
           style={{ scaleX: scrollXProgress }}
+          overflow="hidden"
         />
       </Box>
     </motion.main >

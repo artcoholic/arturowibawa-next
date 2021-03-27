@@ -61,15 +61,18 @@ const EllipseWrapper = styled(Box)`
 
 const ProfilePage = () => {
   return (
-    <motion.main initial="initial" animate="enter" exit="exit" variants={variants.main}>
+    <>
       <Head>
         <title>Profile — Arturo Wibawa</title>
       </Head>
       <Grid
         height="100vh"
+        maxHeight="-webkit-fill-available"
         mx="layout.1"
         overflow="hidden"
         py="layout.1"
+        as={motion.main}
+        initial="initial" animate="enter" exit="exit" variants={variants.main}
       >
         <Box
           display="flex"
@@ -80,6 +83,7 @@ const ProfilePage = () => {
           border={['1px solid rgba(174,146,46,0.3)', null, null, 'none']}
           p={['layout.1', null, null, 0]}
           borderRadius={8}
+          as="section"
         >
           <HeaderWrapper as={motion.h1} variants={variants.ProfileHeader} font={["HeadingLarge"]} mb={["layout.1/2", null, 'layout.1/4']}>
             // Profile
@@ -117,6 +121,7 @@ const ProfilePage = () => {
           p={[0, null, null, "layout.2"]}
           placeSelf="center"
           display={['none', null, null, 'block']}
+          as="section"
         >
           <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" stroke="#AE922E" xmlns="http://www.w3.org/2000/svg" style={{ strokeWidth: 1, overflow: 'visible', display: 'block', opacity: 0.5 }}>
             <g>
@@ -134,9 +139,11 @@ const ProfilePage = () => {
             </g>
           </svg>
         </EllipseWrapper>
-        <Text as="p" fontSize={3} position="absolute" bottom="layout.1" placeSelf="center">© 2021. All Rights Reserved.</Text>
+        <Text as="section" fontSize={3} position="fixed" width="100%" textAlign="center" bottom="layout.1" left={0} placeSelf="center" px="layout.1">
+          © 2021. All Rights Reserved.
+        </Text>
       </Grid>
-    </motion.main >
+    </>
   )
 }
 

@@ -15,6 +15,7 @@ const EntryItem = ({ entry, index }) => {
       pr="layout.1"
       as={motion.article}
       variants={variants.entryItem}
+      style={{ willChange: 'transform' }}
     >
       <Box
         width={["50vw"]}
@@ -22,7 +23,7 @@ const EntryItem = ({ entry, index }) => {
         maxWidth={[320, null, null, null, 400, 600]}
       >
         <Link href={`/work/${item.slug}`}>
-          <a style={{ display: 'block', borderRadius: 4, overflow: 'hidden', backgroundColor: 'white' }}>
+          <a style={{ display: 'block', borderRadius: 4, overflow: 'hidden', backgroundColor: '#F0C93E' }}>
             <Image
               src={`http:${metadata.image.fields.file.url}`}
               alt={metadata.image.fields.description}
