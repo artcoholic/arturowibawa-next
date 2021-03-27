@@ -87,22 +87,24 @@ const HomePage = ({ data }) => {
             Scroll or Drag Sideways <ArrowRight size={16} style={{ marginTop: 2, marginLeft: '.5em' }} />
           </Text>
         </Box>
-        <Box
-          width="100%"
-          height={2}
-          bg="lightTheme.contentInverseSecondary"
-          opacity={0.3}
-          variants={variants.progress}
-          as={motion.div}
-        />
-        <ProgressBar
-          width="100%"
-          height={2}
-          bg="lightTheme.contentPrimary"
-          as={motion.div}
-          style={{ scaleX: scrollXProgress }}
-          overflow="hidden"
-        />
+        <Box overflow="hidden">
+          <Box
+            width="100%"
+            height={2}
+            bg="lightTheme.contentInverseSecondary"
+            opacity={0.3}
+            variants={variants.progress}
+            as={motion.div}
+          />
+          <ProgressBar
+            width="100%"
+            height={2}
+            bg="lightTheme.contentPrimary"
+            as={motion.div}
+            style={{ scaleX: scrollXProgress }}
+            overflow="hidden"
+          />
+        </Box>
       </Box>
     </motion.main >
   )

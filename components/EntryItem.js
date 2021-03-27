@@ -12,6 +12,18 @@ const Wrapper = styled(Box)`
   }
 `
 
+const AnchorWrapper = styled(Box)`
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #F0C93E;
+  transition: all 500ms ${({ theme }) => theme.ease.Smooth};
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+  }
+`
+
 const EntryItem = ({ entry, index }) => {
   const item = entry.fields;
   const metadata = item.info.fields;
@@ -29,7 +41,7 @@ const EntryItem = ({ entry, index }) => {
         maxWidth={[320, null, null, null, 400, 600]}
       >
         <Link href={`/work/${item.slug}`}>
-          <a style={{ display: 'block', borderRadius: 4, overflow: 'hidden', backgroundColor: '#F0C93E' }}>
+          <AnchorWrapper as={motion.a} aria-label={`${metadata.title} detail`} whileTap={{ scale: 0.95 }} whileHover={{ scale: 1.02 }}>
             <Image
               src={`http:${metadata.image.fields.file.url}`}
               alt={metadata.image.fields.description}
@@ -38,7 +50,7 @@ const EntryItem = ({ entry, index }) => {
               layout="responsive"
               objectFit="cover"
             />
-          </a>
+          </AnchorWrapper>
         </Link>
         <Text
           as="h1"
