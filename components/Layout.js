@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Header from './Header';
 
-const MyLayout = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <>
       <Head>
@@ -28,4 +28,4 @@ const MyLayout = ({ children }) => {
   )
 }
 
-export default MyLayout;
+export default Layout;
