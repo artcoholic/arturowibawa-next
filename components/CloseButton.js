@@ -9,7 +9,7 @@ const Wrapper = styled(Box)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: fixed;
+  position: sticky;
   left: 50%;
   z-index: 98;
   transition: all 300ms ${({ theme }) => theme.ease.Smooth};
