@@ -39,7 +39,7 @@ const ProgressWrapper = styled(Box)`
 
 const CloseButton = ({ hookedYPosition, scrollYProgress }) => {
   const yRange = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const pathLength = useSpring(yRange, { stiffness: 400, damping: 80 });
+  const pathLength = useSpring(yRange, { stiffness: 400, damping: 40 });
   return (
     <Link href="/" passHref scroll={false}>
       <Wrapper
@@ -54,18 +54,16 @@ const CloseButton = ({ hookedYPosition, scrollYProgress }) => {
         transition={{ delay: 0.5 }}
       >
         <Cross />
-        <Box as="svg" position="absolute" size={60} top={-7} display="block" className="progress-icon" viewBox="0 0 48 48">
+        <Box as="svg" position="absolute" size={48} display="block" className="progress-icon" viewBox="-23 -23 46 46" overflow="visible">
           <motion.path
             fill="none"
             strokeWidth="2"
             stroke="#AE922E"
             strokeDasharray="0 1"
-            d="M 0, 20 a 20, 20 0 1,0 40,0 a 20, 20 0 1,0 -40,0"
+            d="M -24 0 a 24 24 0 1 0 48 0 a 24 24 0 1 0 -48 0"
             style={{
               pathLength,
               rotate: 90,
-              translateX: 4,
-              translateY: 4,
               scaleX: -1 // Reverse direction of line animation
             }}
           />

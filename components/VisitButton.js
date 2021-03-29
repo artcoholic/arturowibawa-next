@@ -8,12 +8,13 @@ import { ArrowForwardThickFill } from 'akar-icons';
 const Wrapper = styled(Text)`
   text-decoration: none;
   display: flex;
+  height: 56px;
   align-items: center;
-  padding: 0.5em 1.25em;
+  padding: 0 1.5em;
   border: 1px solid #AE922E;
   box-shadow: 0 4px 8px 0px rgba(0,0,0,0.25);
   transition: all 500ms ${({ theme }) => theme.ease.Smooth};
-  border-radius: 4px;
+  border-radius: 28px;
   background-color: rgba(255,255,255,0.55);
   backdrop-filter: blur(12px);
   &:hover {
