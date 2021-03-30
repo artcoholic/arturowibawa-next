@@ -59,8 +59,6 @@ const HomePage = ({ data }) => {
         as={motion.section}
         onPan={onPan}
         variants={variants.entryList}
-      // gridTemplateColumns={`repeat(${entries.length}, 1fr)`}
-      // gridColumnGap="layout.1"
       >
         {entries.map((entry, index) => <EntryItem key={index} entry={entry} index={index} />)}
       </HorizontalContainer>

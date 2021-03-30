@@ -91,7 +91,7 @@ export const variants = {
   entryItem: {
     initial: {
       opacity: 0,
-      scale: 0.75,
+      scale: 0.8,
     },
     enter: {
       opacity: 1,
@@ -107,7 +107,8 @@ export const variants = {
   entryList: {
     enter: {
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
       }
     },
   },
