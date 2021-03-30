@@ -21,6 +21,9 @@ const Wrapper = styled(Text)`
   &:hover {
     background-color: rgba(255,255,255,1);
   }
+  &:active {
+    box-shadow: none;
+  }
 `
 
 const VisitButton = ({ hookedYPosition, url, entry }) => {

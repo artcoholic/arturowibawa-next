@@ -45,7 +45,7 @@ export const variants = {
       opacity: 0,
       transition: {
         ease: [.23, 1, .32, 1],
-        duration: 0.5
+        duration: 0.15
       }
     }
   },
@@ -90,17 +90,17 @@ export const variants = {
   },
   entryItem: {
     initial: {
-      x: 100,
       opacity: 0,
+      scale: 0.75,
     },
     enter: {
-      x: 0,
       opacity: 1,
+      scale: 1,
       transition: {
         type: 'spring',
-        stiffness: 400,
-        damping: 100,
-        mass: 4,
+        stiffness: 600,
+        damping: 60,
+        mass: 2,
       }
     },
   },
