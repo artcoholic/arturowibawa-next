@@ -106,7 +106,7 @@ export const variants = {
   entryList: {
     enter: {
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       }
     },
   },
