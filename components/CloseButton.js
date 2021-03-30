@@ -43,7 +43,6 @@ const CloseButton = ({ hookedYPosition, scrollYProgress }) => {
         initial={{ scale: 0, x: '-50%' }}
         animate={{ scale: 1 }}
         exit={{ scale: 0 }}
-        transition={{ delay: 0.5 }}
       >
         <Cross />
         <Box as="svg" position="absolute" size={48} display="block" className="progress-icon" viewBox="-23 -23 46 46" overflow="visible">

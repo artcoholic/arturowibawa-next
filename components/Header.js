@@ -79,11 +79,6 @@ const Header = () => {
         <Name
           fontSize={3}
           pt={2}
-          as={motion.div}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ delay: 1 }}
         >
           Arturo • Wibawa
         </Name>
