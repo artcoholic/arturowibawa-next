@@ -91,26 +91,22 @@ export const variants = {
   entryItem: {
     initial: {
       opacity: 0,
-      // scale: 0.8,
-      x: 100,
+      scale: 0.8,
     },
     enter: {
       opacity: 1,
-      // scale: 1,
-      x: 0,
+      scale: 1,
       transition: {
         type: 'spring',
         stiffness: 600,
         damping: 60,
-        mass: 2,
       }
     },
   },
   entryList: {
     enter: {
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
+        staggerChildren: 0.2,
       }
     },
   },
