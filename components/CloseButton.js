@@ -16,24 +16,16 @@ const Wrapper = styled(Box)`
   border-radius: 50%;
   background-color: ${({ scrollY }) => scrollY > 24 ? 'rgba(255,255,255,0.55)' : 'none'};
   border: ${({ scrollY }) => scrollY > 24 ? '1px solid #AE922E' : 'none'};
-  box-shadow: ${({ scrollY }) => scrollY > 24 ? '0 4px 8px 0px rgba(0,0,0,0.25)' : 'none'};
+  box-shadow: ${({ scrollY }) => scrollY > 24 ? '0 4px 8px 0px rgba(0,0,0,0.15)' : 'none'};
   backdrop-filter: blur(12px);
   &:hover {
     background-color: ${({ scrollY }) => scrollY > 24 ? 'rgba(255,255,255,1)' : 'none'};
-    box-shadow: ${({ scrollY }) => scrollY > 24 ? '0 2px 4px 0px rgba(0,0,0,0.15)' : 'none'};
   }
   &:active {
     box-shadow: none;
   }
   svg {
     transition: all 300ms ${({ theme }) => theme.ease.Smooth};
-  }
-`
-
-const ProgressWrapper = styled(Box)`
-  pointer-events: none;
-  svg {
-    display: block;
   }
 `
 

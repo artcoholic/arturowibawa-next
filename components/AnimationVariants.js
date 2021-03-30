@@ -207,9 +207,16 @@ export const variants = {
       opacity: 0,
     }
   },
-  ProfileHeader: {
+  ProfileSection: {
+    enter: {
+      transition: {
+        staggerChildren: 0.2,
+      }
+    }
+  },
+  ProfileContent: {
     initial: {
-      y: "0.5em",
+      y: "1em",
       opacity: 0,
     },
     enter: {
@@ -221,37 +228,6 @@ export const variants = {
         damping: 80,
         mass: 4,
       }
-    },
-    exit: {
-      opacity: 0,
-    }
-  },
-  ProfileParagraph: {
-    initial: {
-      y: "1em",
-      opacity: 0,
-    },
-    enter: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 400,
-        damping: 60,
-        mass: 4,
-        delay: 0.3
-      }
-    },
-    exit: {
-      opacity: 0,
-    }
-  },
-  ProfileSocialButtons: {
-    initial: {
-      y: '2em',
-    },
-    enter: {
-      y: 0,
     },
   },
 };

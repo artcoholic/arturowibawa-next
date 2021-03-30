@@ -10,16 +10,16 @@ const Wrapper = styled(Text)`
   display: flex;
   height: 56px;
   align-items: center;
+  justify-content: space-between;
   padding: 0 1.5em;
   border: 1px solid #AE922E;
-  box-shadow: 0 4px 8px 0px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 8px 0px rgba(0,0,0,0.15);
   transition: all 500ms ${({ theme }) => theme.ease.Smooth};
   border-radius: 28px;
   background-color: rgba(255,255,255,0.55);
   backdrop-filter: blur(12px);
   &:hover {
     background-color: rgba(255,255,255,1);
-    box-shadow: 0 2px 4px 0px rgba(0,0,0,0.15);
   }
 `
 
@@ -44,11 +44,11 @@ const VisitButton = ({ hookedYPosition, url, entry }) => {
         exit={{ y: 92 }}
         transition={{ duration: 0.3 }}
       >
-        <ArrowForwardThickFill size={20} color="#1B1C32" />
-        <Box display="flex" flexDirection="column" ml="spacing.3" pt={4}>
+        <Box display="flex" flexDirection="column" mr="spacing.4" pt={4}>
           <Text letterSpacing={1.2} fontSize={2} fontWeight="bold" textTransform="uppercase" style={{ textTransform: 'uppercase' }}>Visit</Text>
           <Text>{entry.fields.title}</Text>
         </Box>
+        <ArrowForwardThickFill color="#1B1C32" />
       </Wrapper>
     </Box>
   )

@@ -5,7 +5,6 @@ import Grid from '../components/Grid';
 import Text from '../components/Text';
 import { motion } from 'framer-motion';
 import { blink, sphere, variants } from '../components/AnimationVariants';
-import { LinkedInFill, CodepenFill, TwitterFill, GithubFill, Envelope } from 'akar-icons';
 
 const HeaderWrapper = styled(Text)`
   position: reltative;
@@ -19,18 +18,15 @@ const HeaderWrapper = styled(Text)`
   }
 `
 
-const SocialLinks = styled(Box)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
-  color: ${({ theme }) => theme.colors.lightTheme.contentInverseSecondary};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.lightTheme.contentInverseSecondary};
-  transition: all 250ms ${({ theme }) => theme.ease.smooth};
-  text-decoration: none;
-  clip-path: inset(0%);
+const EmailLink = styled(Text)`
+  position: relative;
+  /* transition: transform 1000ms ${({ theme }) => theme.ease.Smooth}; */
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  white-space: nowrap;
+  font-family: var(--eina-regular);
+  color: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
   &:hover {
-    color: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
     &:after {
       transform: scaleX(1);
       transform-origin: 0%;
@@ -38,15 +34,15 @@ const SocialLinks = styled(Box)`
   }
   &:after {
     content: '';
-    width: 100%;
-    height: 1px;
+    background: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
     transition: transform 250ms ${({ theme }) => theme.ease.smooth};
-    background-color: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
-    position: absolute;
-    bottom: -1px;
+    height: 100%;
     left: 0;
+    bottom: 0;
+    width: 100%;
     transform: scaleX(0);
     transform-origin: 100%;
+    position: absolute;
   }
 `
 
@@ -83,38 +79,28 @@ const ProfilePage = () => {
           border={['1px solid rgba(174,146,46,0.3)', null, null, 'none']}
           p={['layout.1', null, null, 0]}
           borderRadius={8}
-          as="section"
+          as={motion.section}
+          variants={variants.ProfileSection}
         >
-          <HeaderWrapper as={motion.h1} variants={variants.ProfileHeader} font={["HeadingLarge"]} mb={["layout.1/2", null, 'layout.1/4']}>
+          <HeaderWrapper as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb={["layout.1/2", null, 'layout.1/4']}>
             // Profile
           </HeaderWrapper>
-          <Text as={motion.p} variants={variants.ProfileParagraph} font={["ParagraphSmall", null, "ParagraphMedium", null, "ParagraphLarge"]} color="lightTheme.contentInverseTertiary" mb="layout.1/4">
+          <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium", null, "ParagraphLarge"]} color="lightTheme.contentInverseTertiary" mb="layout.1/4">
             Arturo Wibawa is a product designer based in Los Angeles, California with a strong focus on product strategy, user experience, and interaction design.
           </Text>
-          <Text as={motion.p} variants={variants.ProfileParagraph} font={["ParagraphSmall", null, "ParagraphMedium", null, "ParagraphLarge"]} color="lightTheme.contentInverseTertiary" mb="layout.1">
+          <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium", null, "ParagraphLarge"]} color="lightTheme.contentInverseTertiary" mb="layout.1/2">
             He's keen to experiment with new technology and believes that the best solutions are the simplest ones.
           </Text>
-          <Grid
-            gridColumnGap={12}
-            gridTemplateColumns="repeat(5, 1fr)"
-            as={motion.section}
+          <EmailLink
+            as={motion.a}
+            variants={variants.ProfileContent}
+            href="mailto:agwibawa@gmail.com"
+            font={["ParagraphSmall", null, "ParagraphMedium", null, "ParagraphLarge"]}
+            aria-label="Send Email"
+            title="Send Email"
           >
-            <SocialLinks as="a" href="https://www.linkedin.com/in/arturowibawa/" target="_blank" rel="noopener">
-              <motion.span variants={variants.ProfileSocialButtons} transition={{ delay: 0.5 }}><LinkedInFill size={16} /></motion.span>
-            </SocialLinks>
-            <SocialLinks as="a" href="https://twitter.com/agwibawa" target="_blank" rel="noopener">
-              <motion.span variants={variants.ProfileSocialButtons} transition={{ delay: 0.6 }}><TwitterFill size={16} /></motion.span>
-            </SocialLinks>
-            <SocialLinks as="a" href="https://github.com/artcoholic/" target="_blank" rel="noopener">
-              <motion.span variants={variants.ProfileSocialButtons} transition={{ delay: 0.7 }}><GithubFill size={16} /></motion.span>
-            </SocialLinks>
-            <SocialLinks as="a" href="https://codepen.io/artcoholic" target="_blank" rel="noopener">
-              <motion.span variants={variants.ProfileSocialButtons} transition={{ delay: 0.8 }}><CodepenFill size={16} /></motion.span>
-            </SocialLinks>
-            <SocialLinks as="a" href="mailto:agwibawa@gmail.com" target="_blank" rel="noopener">
-              <motion.span variants={variants.ProfileSocialButtons} transition={{ delay: 0.9 }}><Envelope size={16} /></motion.span>
-            </SocialLinks>
-          </Grid>
+            Discuss project
+          </EmailLink>
         </Box>
         <EllipseWrapper
           span={[2, null, 5]}

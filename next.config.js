@@ -1,4 +1,13 @@
 module.exports = {
+  async redirects() {
+    return [
+      {
+        source: '/work',
+        destination: '/',
+        permanent: true,
+      }
+    ]
+  },
   images: {
     domains: ['images.ctfassets.net'],
   },
@@ -7,4 +16,7 @@ module.exports = {
     locales: ['en-US'],
     defaultLocale: 'en-US'
   },
+  future: {
+    webpack5: true,
+  }
 }

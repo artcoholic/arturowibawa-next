@@ -9,11 +9,10 @@ import { variants } from '../components/AnimationVariants';
 import { motion, useElementScroll } from 'framer-motion';
 import { ArrowRight } from 'akar-icons';
 
-const HorizontalContainer = styled(Grid)`
-  /* display: flex;
+const HorizontalContainer = styled(Box)`
+  display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  position: relative; */
   height: 100vh;
   max-height: -webkit-fill-available;
   cursor: grab;
@@ -60,8 +59,8 @@ const HomePage = ({ data }) => {
         as={motion.section}
         onPan={onPan}
         variants={variants.entryList}
-        gridTemplateColumns={`repeat(${entries.length}, 1fr)`}
-        gridColumnGap="layout.1"
+      // gridTemplateColumns={`repeat(${entries.length}, 1fr)`}
+      // gridColumnGap="layout.1"
       >
         {entries.map((entry, index) => <EntryItem key={index} entry={entry} index={index} />)}
       </HorizontalContainer>

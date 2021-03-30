@@ -9,38 +9,12 @@ import { motion } from 'framer-motion';
 import ReactPlayer from 'react-player/lazy';
 import Markdown from 'react-markdown';
 
-const ScrollToTop = styled(Text)`
-  cursor: pointer;
-  display: inline-block;
-  line-height: 1em;
-  background: none;
-  outline: none;
-  border: none;
-  padding: 0;
-  &:hover {
-    &:after {
-      transform: scaleX(1);
-      transform-origin: 0%;
-    }
-  }
-  &:after {
-    content: '';
-    position: absolute;
-    background: ${({ theme }) => theme.colors.lightTheme.contentInverseTertiary};
-    transition: transform 500ms ${({ theme }) => theme.ease.Smooth};
-    height: 100%;
-    width: 100%;
-    left: 0;
-    transform: scaleX(0);
-    transform-origin: 100%;
-  }
-`
-
 const MarkdownWrapper = styled(Text)`
   a {
     position: relative;
     transition: transform 1000ms ${({ theme }) => theme.ease.Smooth};
-    text-decoration: none;
+    text-decoration: underline dotted;
+    text-decoration-thickness: 1px;
     white-space: nowrap;
     font-family: var(--eina-regular);
     color: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
@@ -177,23 +151,6 @@ const SlugContent = ({ entry }) => {
             console.log(`We don't have the ${id} component.`);
         }
       })}
-      {/* <Text
-        as="section"
-        columns="1/-1"
-        my="layout.4"
-        display="flex"
-        justifyContent="center"
-      >
-        <ScrollToTop
-          as={motion.button}
-          onClick={() => window.scrollTo(0, 0)}
-          fontSize="12vw"
-          color="lightTheme.contentInverseTertiary"
-          fontFamily="Eina Light"
-        >
-          BACK TO TOP
-            </ScrollToTop>
-      </Text> */}
     </Grid>
   )
 }

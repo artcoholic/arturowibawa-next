@@ -40,20 +40,26 @@ const StyledNavButton = styled(Text)`
     transform: scaleX(0);
     transform-origin: 100%;
   }
+  sup {
+    font-size: xxx-large;
+  }
 `
 
-const MenuItem = ({ text, path, setOpen }) => {
+const MenuItem = ({ children, path, setOpen, style, title, color }) => {
   return (
     <span style={{ clipPath: 'inset(0%)', display: 'flex' }}>
       <Link href={path} passHref>
         <StyledNavButton
-          color="lightTheme.contentInversePrimary"
+          color={color || "lightTheme.contentInversePrimary"}
           font={["Display", null, null, null, null, "HeadingLarge"]}
           as={motion.a}
           variants={variants.menuItem}
           onClick={() => setOpen(false)}
+          style={style}
+          aria-label={title}
+          title={title}
         >
-          {text}
+          {children}
         </StyledNavButton>
       </Link>
     </span>

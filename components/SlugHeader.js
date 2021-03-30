@@ -28,7 +28,7 @@ const SlugHeader = ({ entry }) => {
       <Box style={{ clipPath: 'inset(0%)' }}>
         <ProjectTitle
           as={motion.h1}
-          font={["HeadingMedium", "Display"]}
+          font={["HeadingMedium", "HeadingLarge"]}
           variants={variants.slugTitle}
           pb="layout.1/8"
         >
