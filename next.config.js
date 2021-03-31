@@ -1,4 +1,6 @@
-module.exports = {
+const withPWA = require('next-pwa');
+
+module.exports = withPWA({
   async redirects() {
     return [
       {
@@ -18,5 +20,8 @@ module.exports = {
   },
   future: {
     webpack5: true,
+  },
+  pwa: {
+    dest: 'public'
   }
-}
+})

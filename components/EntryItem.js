@@ -37,8 +37,8 @@ const EntryItem = ({ entry, index }) => {
             as={motion.a}
             aria-label={metadata.title}
             title={metadata.title}
-            whileTap={{ scale: 1, boxShadow: 'none' }}
-            whileHover={{ scale: 1.02, backgroundColor: 'white', boxShadow: '0 16px 32px 0 rgba(0,0,0,0.15)' }}
+            whileTap={{ scale: 1, boxShadow: '0 16px 32px 0 rgba(0,0,0,0)' }}
+            whileHover={{ scale: 1.02, backgroundColor: 'rgb(255,255,255)', boxShadow: '0 16px 32px 0 rgba(0,0,0,0.15)' }}
           >
             <Image
               src={`http:${metadata.image.fields.file.url}`}
