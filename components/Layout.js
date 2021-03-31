@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
         <meta name='msapplication-TileColor' content='#FFD542' />
         <meta name='msapplication-tap-highlight' content='no' />
         <meta name='theme-color' content='#1B1C32' />
-        <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover' />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel='apple-touch-icon' sizes='180x180' href='/images/apple-touch-icon.png' />
         <link rel='manifest' href='/manifest.json' />
@@ -37,12 +37,15 @@ const Layout = ({ children }) => {
           crossOrigin=""
         />
 
+        {/* TWITTER META */}
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:url' content='https://arturowibawa.com' />
         <meta name='twitter:title' content="Arturo Wibawa's Portfolio" />
         <meta name='twitter:description' content="Arturo Wibawa's personal space in the world wide web" />
         <meta name='twitter:image' content='https://yourdomain.com/images/opengraph.png' />
         <meta name='twitter:creator' content='@agwibawa' />
+
+        {/* FACEBOOK META */}
         <meta property='og:type' content='website' />
         <meta property='og:title' content="Arturo Wibawa's Portfolio" />
         <meta property='og:description' content="Arturo Wibawa's personal space in the world wide web" />
