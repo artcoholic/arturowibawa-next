@@ -98,8 +98,8 @@ export const variants = {
       scale: 1,
       transition: {
         type: 'spring',
-        stiffness: 600,
-        damping: 60,
+        stiffness: 100,
+        damping: 10,
       }
     },
   },
