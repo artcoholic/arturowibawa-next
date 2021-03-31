@@ -91,14 +91,16 @@ export const variants = {
   entryItem: {
     initial: {
       opacity: 0,
-      scale: 0.8,
+      // scale: 0.8,
+      x: 400,
     },
     enter: {
       opacity: 1,
-      scale: 1,
+      // scale: 1,
+      x: 0,
       transition: {
         type: 'spring',
-        stiffness: 100,
+        stiffness: 50,
         damping: 10,
       }
     },
