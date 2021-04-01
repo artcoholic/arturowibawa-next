@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
         <meta name='apple-mobile-web-app-capable' content='yes' />
         <meta name='apple-mobile-web-app-status-bar-style' content='default' />
         <meta name='apple-mobile-web-app-title' content="Arturo Wibawa's Portfolio" />
-        <meta name='description' content="Arturo Wibawa's personal space in the world wide web" />
+        <meta name='description' content="Arturo Wibawa's personal space in the whole world wide web." />
         <meta name='format-detection' content='telephone=no' />
         <meta name='mobile-web-app-capable' content='yes' />
         <meta name='msapplication-config' content='none' />
@@ -41,17 +41,17 @@ const Layout = ({ children }) => {
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:url' content='https://arturowibawa.com' />
         <meta name='twitter:title' content="Arturo Wibawa's Portfolio" />
-        <meta name='twitter:description' content="Arturo Wibawa's personal space in the world wide web" />
-        <meta name='twitter:image' content='https://yourdomain.com/images/opengraph.png' />
+        <meta name='twitter:description' content="Arturo Wibawa's personal space in the whole world wide web." />
+        <meta name='twitter:image' content='https://arturowibawa.com/images/opengraph.png' />
         <meta name='twitter:creator' content='@agwibawa' />
 
         {/* FACEBOOK META */}
         <meta property='og:type' content='website' />
         <meta property='og:title' content="Arturo Wibawa's Portfolio" />
-        <meta property='og:description' content="Arturo Wibawa's personal space in the world wide web" />
+        <meta property='og:description' content="Arturo Wibawa's personal space in the whole world wide web." />
         <meta property='og:site_name' content='Arturo Wibawa' />
         <meta property='og:url' content='https://arturowibawa.com' />
-        <meta property='og:image' content='https://yourdomain.com/images/opengraph.png' />
+        <meta property='og:image' content='https://arturowibawa.com/images/opengraph.png' />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:alt" content="Arturo Wibawa" />
         <meta property="og:image:width" content="1200" />
