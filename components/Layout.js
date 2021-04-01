@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Header from './Header';
+import { GA_TRACKING_ID } from '../utils/gtag';
 
 const Layout = ({ children }) => {
   return (
@@ -56,6 +57,24 @@ const Layout = ({ children }) => {
         <meta property="og:image:alt" content="Arturo Wibawa" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+          }}
+        />
       </Head>
       <Header />
       {children}
