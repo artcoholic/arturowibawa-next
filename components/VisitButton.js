@@ -12,9 +12,9 @@ const Wrapper = styled(Text)`
   align-items: center;
   justify-content: space-between;
   padding: 0 1.5em;
-  border: 1px solid #AE922E;
+  border: 1px solid ${props => props.theme.colors.content.secondary};
   box-shadow: 0 4px 8px 0px rgba(0,0,0,0.15);
-  transition: all 500ms ${({ theme }) => theme.ease.Smooth};
+  transition: all 500ms ${props => props.theme.ease.Smooth};
   border-radius: 28px;
   background-color: rgba(255,255,255,0.55);
   backdrop-filter: blur(12px);
@@ -48,8 +48,8 @@ const VisitButton = ({ hookedYPosition, url, entry }) => {
         transition={{ duration: 0.3 }}
       >
         <Box display="flex" flexDirection="column" mr="spacing.4" pt={4}>
-          <Text letterSpacing={1.2} fontSize={2} fontWeight="bold" textTransform="uppercase" style={{ textTransform: 'uppercase' }}>Visit</Text>
-          <Text>{entry.fields.title}</Text>
+          <Text letterSpacing={1.2} fontSize={2} fontWeight="bold" color="#1B1C32" style={{ textTransform: 'uppercase' }}>Visit</Text>
+          <Text color="#1B1C32">{entry.fields.title}</Text>
         </Box>
         <ArrowForwardThickFill color="#1B1C32" />
       </Wrapper>

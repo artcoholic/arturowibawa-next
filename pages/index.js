@@ -3,7 +3,6 @@ import { createClient } from 'contentful';
 import styled from 'styled-components';
 import EntryItem from '../components/EntryItem';
 import Box from '../components/Box';
-import Grid from '../components/Grid';
 import Text from '../components/Text';
 import { variants } from '../components/AnimationVariants';
 import { motion, useElementScroll } from 'framer-motion';
@@ -88,7 +87,7 @@ const HomePage = ({ data }) => {
           <Box
             width="100%"
             height={2}
-            bg="lightTheme.contentInverseSecondary"
+            bg="content.inverseSecondary"
             opacity={0.3}
             variants={variants.progress}
             as={motion.div}
@@ -96,7 +95,7 @@ const HomePage = ({ data }) => {
           <ProgressBar
             width="100%"
             height={2}
-            bg="lightTheme.contentPrimary"
+            bg="content.primary"
             as={motion.div}
             style={{ scaleX: scrollXProgress }}
             overflow="hidden"

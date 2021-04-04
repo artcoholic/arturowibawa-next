@@ -6,7 +6,7 @@ import { variants } from './AnimationVariants';
 
 const Line = styled(Box)`
   height: 1px;
-  background: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
+  background: ${props => props.theme.colors.content.primary};
   width: 100%;
 `
 

@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 const StyledNavButton = styled(Text)`
   display: flex;
   align-items: baseline;
-  transition: transform 1000ms ${({ theme }) => theme.ease.Smooth};
+  transition: transform 1000ms ${props => props.theme.ease.Smooth};
   cursor: pointer;
   background: none;
   border: none;
@@ -20,8 +20,8 @@ const StyledNavButton = styled(Text)`
       height:100%;
       width: 100%;
       position: absolute;
-      box-shadow: inset -1px 0 0 ${({ theme }) => theme.colors.lightTheme.backgroundPrimary};
-      animation: ${blink} 750ms ${({ theme }) => theme.ease.It} infinite alternate;
+      box-shadow: inset -1px 0 0 ${props => props.theme.colors.bg.primary};
+      animation: ${blink} 750ms ${props => props.theme.ease.It} infinite alternate;
     }
   }
   &:hover {
@@ -33,8 +33,8 @@ const StyledNavButton = styled(Text)`
   &:after {
     content: '';
     position: absolute;
-    background: ${({ theme }) => theme.colors.lightTheme.backgroundPrimary};
-    transition: transform 250ms ${({ theme }) => theme.ease.smooth};
+    background: ${props => props.theme.colors.bg.primary};
+    transition: transform 250ms ${props => props.theme.ease.smooth};
     height: 100%;
     width: 100%;
     transform: scaleX(0);
@@ -50,7 +50,7 @@ const MenuItem = ({ children, path, setOpen, style, title, color }) => {
     <span style={{ clipPath: 'inset(0%)', display: 'flex' }}>
       <Link href={path} passHref>
         <StyledNavButton
-          color={color || "lightTheme.contentInversePrimary"}
+          color={color || "content.inversePrimary"}
           font={["Display", null, null, null, null, "HeadingLarge"]}
           as={motion.a}
           variants={variants.menuItem}

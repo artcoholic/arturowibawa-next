@@ -13,19 +13,18 @@ const HeaderWrapper = styled(Text)`
     height:90%;
     width: 1px;
     position: absolute;
-    background-color: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
-    animation: ${blink} 750ms ${({ theme }) => theme.ease.It} infinite alternate;
+    background-color: ${props => props.theme.colors.content.primary};
+    animation: ${blink} 750ms ${props => props.theme.ease.It} infinite alternate;
   }
 `
 
 const EmailLink = styled(Text)`
   position: relative;
-  /* transition: transform 1000ms ${({ theme }) => theme.ease.Smooth}; */
   text-decoration: underline dotted;
   text-decoration-thickness: 1px;
   white-space: nowrap;
   font-family: var(--eina-regular);
-  color: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
+  color: ${props => props.theme.colors.content.primary};
   &:hover {
     &:after {
       transform: scaleX(1);
@@ -34,8 +33,8 @@ const EmailLink = styled(Text)`
   }
   &:after {
     content: '';
-    background: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
-    transition: transform 250ms ${({ theme }) => theme.ease.smooth};
+    background: ${props => props.theme.colors.content.primary};
+    transition: transform 250ms ${props => props.theme.ease.smooth};
     height: 100%;
     left: 0;
     bottom: 0;
@@ -53,6 +52,9 @@ const Ellipse = styled.ellipse`
 const EllipseWrapper = styled(Box)`
   transform: rotate(-30deg);
   width: 100%;
+  svg {
+    stroke: ${props => props.theme.colors.content.inverseSecondary};
+  }
 `
 
 const ProfilePage = () => {
@@ -85,10 +87,10 @@ const ProfilePage = () => {
           <HeaderWrapper as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb={["layout.1/2", null, 'layout.1/4']}>
             // Profile
           </HeaderWrapper>
-          <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium", null, "ParagraphLarge"]} color="lightTheme.contentInverseTertiary" mb="layout.1/4">
+          <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium", null, "ParagraphLarge"]} color="content.inverseTertiary" mb="layout.1/4">
             Arturo Wibawa is a product designer based in Los Angeles, California with a strong focus on product strategy, user experience, and interaction design.
           </Text>
-          <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium", null, "ParagraphLarge"]} color="lightTheme.contentInverseTertiary" mb="layout.1/2">
+          <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium", null, "ParagraphLarge"]} color="content.inverseTertiary" mb="layout.1/2">
             He's keen to experiment with new technology and believes that the best solutions are the simplest ones.
           </Text>
           <EmailLink
@@ -109,7 +111,7 @@ const ProfilePage = () => {
           display={['none', null, null, 'block']}
           as="section"
         >
-          <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" stroke="#AE922E" xmlns="http://www.w3.org/2000/svg" style={{ strokeWidth: 1, overflow: 'visible', display: 'block', opacity: 0.5 }}>
+          <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ strokeWidth: 1, overflow: 'visible', display: 'block', opacity: 0.5 }}>
             <g>
               {
                 Array.from({ length: 20 }).map((_, i) => (

@@ -10,9 +10,17 @@ const AnchorWrapper = styled(Box)`
   display: block;
   border-radius: 4px;
   overflow: hidden;
-  background-color: #F0C93E;
-  transition: all 500ms ${({ theme }) => theme.ease.Smooth};
-  cursor: pointer;
+  background-color: ${props => props.theme.colors.bg.placeholder};
+  transition: all 300ms ${props => props.theme.ease.Smooth};
+  &:hover {
+    transform: scale(1.02);
+    background-color: ${props => props.theme.colors.bg.entryCard};
+    box-shadow:0 16px 32px 0 ${props => props.theme.colors.bg.boxShadow};
+  }
+  &:active {
+    transform: scale(1);
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,0);
+  }
 `
 
 const EntryItem = ({ entry, index }) => {
@@ -34,11 +42,9 @@ const EntryItem = ({ entry, index }) => {
       >
         <Link href={`/work/${item.slug}`} passHref>
           <AnchorWrapper
-            as={motion.a}
+            as="a"
             aria-label={metadata.title}
             title={metadata.title}
-            whileTap={{ scale: 1, boxShadow: '0 16px 32px 0 rgba(0,0,0,0)' }}
-            whileHover={{ scale: 1.02, backgroundColor: 'rgb(255,255,255)', boxShadow: '0 16px 32px 0 rgba(0,0,0,0.15)' }}
           >
             <Image
               src={`http:${metadata.image.fields.file.url}`}

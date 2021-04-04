@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router'
-import { ThemeProvider } from 'styled-components';
-import { theme, GlobalStyles } from '../theme.config';
+import { GlobalStyles } from '../theme.config';
+import Providers from '../components/Providers';
 import { AnimatePresence } from "framer-motion";
 import Layout from '../components/Layout';
 import * as gtag from '../utils/gtag';
@@ -18,14 +18,14 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, [router.events])
   return (
-    <ThemeProvider theme={theme}>
+    <Providers>
       <GlobalStyles />
       <Layout>
         <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={router.route} />
         </AnimatePresence>
       </Layout>
-    </ThemeProvider>
+    </Providers>
   );
 }
 

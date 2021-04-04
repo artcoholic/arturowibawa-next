@@ -12,12 +12,12 @@ import Markdown from 'react-markdown';
 const MarkdownWrapper = styled(Text)`
   a {
     position: relative;
-    transition: transform 1000ms ${({ theme }) => theme.ease.Smooth};
+    transition: transform 1000ms ${props => props.theme.ease.Smooth};
     text-decoration: underline dotted;
     text-decoration-thickness: 1px;
     white-space: nowrap;
     font-family: var(--eina-regular);
-    color: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
+    color: ${props => props.theme.colors.content.primary};
     &:hover {
       &:after {
         transform: scaleX(1);
@@ -26,8 +26,8 @@ const MarkdownWrapper = styled(Text)`
     }
     &:after {
       content: '';
-      background: ${({ theme }) => theme.colors.lightTheme.contentPrimary};
-      transition: transform 250ms ${({ theme }) => theme.ease.smooth};
+      background: ${props => props.theme.colors.content.primary};
+      transition: transform 250ms ${props => props.theme.ease.smooth};
       height: 100%;
       left: 0;
       bottom: 0;
@@ -76,13 +76,13 @@ const SlugContent = ({ entry }) => {
                       as="section"
                       borderRadius={[8, null, 16]}
                       overflow="hidden"
-                      bg="#F0C93E"
+                      bg="bg.placeholder"
                     >
                       {asset.fields.file.contentType.includes('image') &&
                         <Image src={`http:${asset.fields.file.url}`} alt={asset.fields.title} layout="responsive" width={asset.fields.file.details.image.width} height={asset.fields.file.details.image.height} />
                       }
                       {asset.fields.file.contentType.includes('video') &&
-                        <ReactPlayer url={asset.fields.file.url} playing muted loop width="100%" height="100%" playsinline style={{ background: '#F0C93E' }} />
+                        <ReactPlayer url={asset.fields.file.url} playing muted loop width="100%" height="100%" playsinline />
                       }
                     </Box>
                   )
@@ -91,16 +91,21 @@ const SlugContent = ({ entry }) => {
                 <Grid columns="1/-1" my={["layout.1/4", null, "layout.1/2"]} as="section" key={item.sys.id} gridTemplateColumns={["1fr", null, "repeat(2, 1fr)"]} gridRowGap={["layout.1/2", null, "layout.1"]}>
                   {item.fields.assets.map((asset) => {
                     return (
-                      <React.Fragment key={asset.sys.id}>
+                      <Box
+                        span="span 1"
+                        width="100%"
+                        borderRadius={[8, null, 16]}
+                        overflow="hidden"
+                        bg="bg.placeholder"
+                        key={asset.sys.id}
+                      >
                         {asset.fields.file.contentType.includes('image') &&
-                          <Box span="span 1" width="100%" borderRadius={[8, null, 16]} overflow="hidden" bg="#F0C93E">
-                            <Image src={`http:${asset.fields.file.url}`} alt={asset.fields.title} layout="responsive" width={asset.fields.file.details.image.width} height={asset.fields.file.details.image.height} />
-                          </Box>
+                          <Image src={`http:${asset.fields.file.url}`} alt={asset.fields.title} layout="responsive" width={asset.fields.file.details.image.width} height={asset.fields.file.details.image.height} />
                         }
                         {asset.fields.file.contentType.includes('video') &&
-                          <ReactPlayer ref={ref} url={asset.fields.file.url} playing muted loop wrapper={VideoWrapper} width="100%" height="100%" playsinline style={{ background: '#F0C93E' }} />
+                          <ReactPlayer ref={ref} url={asset.fields.file.url} playing muted loop width="100%" height="100%" playsinline />
                         }
-                      </React.Fragment>
+                      </Box>
                     )
                   }
                   )}
@@ -109,42 +114,21 @@ const SlugContent = ({ entry }) => {
             break;
           case 'text': // TEXT BLOCK
             return (
-              item.fields.alignText === "Left" ?
-                <MarkdownWrapper
-                  as="section"
-                  my={["layout.1", null, "layout.2"]}
-                  columns={["1/-1", null, "1/span 4", "2/span 5"]}
-                  key={item.sys.id}
-                  color="lightTheme.contentInverseTertiary"
-                  font={["ParagraphMedium", null, "ParagraphLarge"]}
-                  textAlign={['center', null, 'left']}
-                >
-                  <Markdown source={item.fields.paragraph} escapeHtml={true} linkTarget="_blank" />
-                </MarkdownWrapper>
-                :
-                item.fields.alignText === "Center" ?
-                  <MarkdownWrapper
-                    as="section"
-                    my={["layout.1", null, "layout.2"]}
-                    columns={["1/-1", null, "3/span 4", "4/span 6"]}
-                    key={item.sys.id}
-                    color="lightTheme.contentInverseTertiary"
-                    font={["ParagraphMedium", null, "ParagraphLarge"]}
-                    textAlign="center"
-                  >
-                    <Markdown source={item.fields.paragraph} escapeHtml={true} linkTarget="_blank" />
-                  </MarkdownWrapper>
-                  :
-                  <MarkdownWrapper
-                    as="section" my={["layout.1", null, "layout.2"]}
-                    columns={["1/-1", null, "5/span 4", "7/span 5"]}
-                    key={item.sys.id}
-                    color="lightTheme.contentInverseTertiary"
-                    font={["ParagraphMedium", null, "ParagraphLarge"]}
-                    textAlign={['center', null, 'left']}
-                  >
-                    <Markdown source={item.fields.paragraph} escapeHtml={true} linkTarget="_blank" />
-                  </MarkdownWrapper>
+              <MarkdownWrapper
+                as="section"
+                my={["layout.1", null, "layout.2"]}
+                columns={
+                  item.fields.alignText === "Left" ? ["1/-1", null, "1/span 4", "2/span 5"] : item.fields.alignText === "Center" ? ["1/-1", null, "3/span 4", "4/span 6"] : ["1/-1", null, "5/span 4", "7/span 5"]
+                }
+                key={item.sys.id}
+                color="content.inverseTertiary"
+                font={["ParagraphMedium", null, "ParagraphLarge"]}
+                textAlign={
+                  item.fields.alignText === "Center" ? 'center' : ['center', null, 'left']
+                }
+              >
+                <Markdown source={item.fields.paragraph} escapeHtml={true} linkTarget="_blank" />
+              </MarkdownWrapper>
             );
             break;
           default:

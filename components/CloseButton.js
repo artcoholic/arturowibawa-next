@@ -5,6 +5,7 @@ import { Cross } from 'akar-icons';
 import Box from './Box';
 
 const Wrapper = styled(Box)`
+  --contentSecondary: ${props => props.theme.colors.content.secondary};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,10 +13,10 @@ const Wrapper = styled(Box)`
   position: sticky;
   left: 50%;
   z-index: 98;
-  transition: all 300ms ${({ theme }) => theme.ease.Smooth};
+  transition: all 300ms ${props => props.theme.ease.Smooth};
   border-radius: 50%;
-  background-color: ${({ scrollY }) => scrollY > 24 ? 'rgba(255,255,255,0.55)' : 'none'};
-  border: ${({ scrollY }) => scrollY > 24 ? '1px solid #AE922E' : 'none'};
+  background-color: ${({ scrollY }) => scrollY > 24 ? 'rgba(255,255,255,0.25)' : 'none'};
+  border: ${({ scrollY }) => scrollY > 24 ? '1px solid var(--contentSecondary)' : 'none'};
   box-shadow: ${({ scrollY }) => scrollY > 24 ? '0 4px 8px 0px rgba(0,0,0,0.15)' : 'none'};
   backdrop-filter: blur(12px);
   &:hover {
@@ -25,7 +26,10 @@ const Wrapper = styled(Box)`
     box-shadow: none;
   }
   svg {
-    transition: all 300ms ${({ theme }) => theme.ease.Smooth};
+    transition: all 300ms ${props => props.theme.ease.Smooth};
+  }
+  .path {
+    stroke: ${props => props.theme.colors.content.secondary};
   }
 `
 
@@ -38,7 +42,7 @@ const CloseButton = ({ hookedYPosition, scrollYProgress }) => {
         as={motion.a}
         top="layout.1"
         size={hookedYPosition > 24 ? 48 : 32}
-        color="lightTheme.contentPrimary"
+        color="content.primary"
         scrollY={hookedYPosition}
         initial={{ scale: 0, x: '-50%' }}
         animate={{ scale: 1 }}
@@ -48,8 +52,8 @@ const CloseButton = ({ hookedYPosition, scrollYProgress }) => {
         <Box as="svg" position="absolute" size={48} display="block" className="progress-icon" viewBox="-23 -23 46 46" overflow="visible">
           <motion.path
             fill="none"
+            className="path"
             strokeWidth="2"
-            stroke="#AE922E"
             strokeDasharray="0 1"
             d="M -24 0 a 24 24 0 1 0 48 0 a 24 24 0 1 0 -48 0"
             style={{

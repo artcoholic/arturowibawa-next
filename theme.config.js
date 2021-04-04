@@ -1,6 +1,54 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const theme = {
+const morning = {
+  colors: {
+    bg: {
+      primary: '#FFD542',
+      secondary: '#FFEBA4',
+      tertiary: '#FFE178',
+      inversePrimary: '#1B1C32',
+      inverseSecondary: '#303157',
+      inverseTertiary: '#22233E',
+      placeholder: '#F0C93E',
+      boxShadow: 'rgba(0,0,0,0.15)',
+      entryCard: 'antiquewhite'
+    },
+    content: {
+      primary: '#1B1C32',
+      secondary: '#505177',
+      tertiary: '#9B9BB1',
+      inversePrimary: '#FFD542',
+      inverseSecondary: '#AE922E',
+      inverseTertiary: '#67571C',
+    }
+  }
+}
+
+const night = {
+  colors: {
+    bg: {
+      primary: '#1B1C32',
+      secondary: '#303157',
+      tertiary: '#22233E',
+      inversePrimary: '#FFD542',
+      inverseSecondary: '#FFEBA4',
+      inverseTertiary: '#FFE178',
+      placeholder: '#22233E',
+      boxShadow: 'rgba(0,0,0,0.5)',
+      entryCard: 'navajowhite'
+    },
+    content: {
+      primary: '#FFD542',
+      secondary: '#AE922E',
+      tertiary: '#67571C',
+      inversePrimary: '#1B1C32',
+      inverseSecondary: '#505177',
+      inverseTertiary: '#9B9BB1',
+    }
+  }
+}
+
+const defaultTheme = {
   breakpoints:
     [
       "640px",
@@ -9,41 +57,6 @@ export const theme = {
       "1920px",
       "2560px"
     ],
-  colors:
-  {
-    lightTheme: {
-      backgroundPrimary: "#FFD542",
-      backgroundSecondary: "#FFEBA4",
-      backgroundTertiary: "#FFE178",
-      backgroundInversePrimary: "#1B1C32",
-      backgroundInverseSecondary: "#303157",
-      backgroundInverseTertiary: "#22233E",
-      contentPrimary: "#1B1C32",
-      contentSecondary: "#505177",
-      contentTertiary: "#9B9BB1",
-      contentInversePrimary: "#FFD542",
-      contentInverseSecondary: "#AE922E",
-      contentInverseTertiary: "#67571C",
-      contentInverseLight: "#EFDF91",
-      backgroundPrimaryOverlay: "rgba(255,213,66,0.95)",
-    },
-    darkTheme: {
-      backgroundPrimary: "#1B1C32",
-      backgroundSecondary: "#303157",
-      backgroundTertiary: "#22233E",
-      backgroundInversePrimary: "#FFD542",
-      backgroundInverseSecondary: "#FFEBA4",
-      backgroundInverseTertiary: "#FFE178",
-      contentPrimary: "#FFD542",
-      contentSecondary: "#AE922E",
-      contentTertiary: "#67571C",
-      contentInversePrimary: "#1B1C32",
-      contentInverseSecondary: "#505177",
-      contentInverseTertiary: "#9B9BB1",
-      contentInverseLight: "#22233E",
-      backgroundPrimaryOverlay: "rgba(27,28,50,0.95)",
-    }
-  },
   fontSizes: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96, 100],
   typeScale:
   {
@@ -110,25 +123,25 @@ export const GlobalStyles = createGlobalStyle`
     --eina-regular: 'Eina Regular';
     --eina-light: 'Eina Light';
 
-    @media (min-width: ${({ theme }) => theme.breakpoints[0]}) { // 640
+    @media (min-width: ${props => props.theme.breakpoints[0]}) { // 640
       --columns: 4;
       --gutter: 32px;
       --scale: 1.250;
     }
-    @media (min-width: ${({ theme }) => theme.breakpoints[1]}) { // 960
+    @media (min-width: ${props => props.theme.breakpoints[1]}) { // 960
       --columns: 8;
       --scale: 1.333;
     }
-    @media (min-width: ${({ theme }) => theme.breakpoints[2]}) { // 1280
+    @media (min-width: ${props => props.theme.breakpoints[2]}) { // 1280
       --columns: 12;
       --gutter: 48px;
       --scale: 1.414;
     }
-    @media (min-width: ${({ theme }) => theme.breakpoints[3]}) { // 1920
+    @media (min-width: ${props => props.theme.breakpoints[3]}) { // 1920
       --gutter: 64px;
       --scale: 1.500;
     }
-    @media (min-width: ${({ theme }) => theme.breakpoints[4]}) { // 2560
+    @media (min-width: ${props => props.theme.breakpoints[4]}) { // 2560
       --gutter: 72px;
       --scale: 1.618;
     }
@@ -138,7 +151,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   html {
     scroll-behavior: smooth;
-    background-color: ${({ theme }) => theme.colors.lightTheme.backgroundPrimary};
+    background-color: ${props => props.theme.colors.bg.primary};
   }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -175,3 +188,6 @@ export const GlobalStyles = createGlobalStyle`
     url('/fonts/eina-01-light.ttf') format('truetype');
   }
 `
+
+export const morningTheme = { ...defaultTheme, ...morning };
+export const nightTheme = { ...defaultTheme, ...night };
