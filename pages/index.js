@@ -51,7 +51,7 @@ const HomePage = ({ data }) => {
     }, { passive: false });
   }, []);
   return (
-    <motion.main variants={variants.main} initial="initial" animate="enter" exit="exit">
+    <motion.div variants={variants.main} initial="initial" animate="enter" exit="exit">
       <HorizontalContainer
         px="layout.1"
         ref={objectRef}
@@ -102,7 +102,7 @@ const HomePage = ({ data }) => {
           />
         </Box>
       </Box>
-    </motion.main >
+    </motion.div>
   )
 };
 

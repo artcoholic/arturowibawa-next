@@ -19,7 +19,7 @@ const SlugHeader = ({ entry }) => {
   const metadata = entry.fields.info.fields;
   return (
     <Box
-      as="article"
+      as="section"
       width="100%"
       mb={["layout.1", null, "layout.1/2"]}
       px="layout.1"

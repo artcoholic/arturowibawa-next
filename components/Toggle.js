@@ -41,7 +41,7 @@ const Thumb = styled(Box)`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform .3s ${props => props.theme.ease.It};
+  transition: transform .15s ${props => props.theme.ease.It};
 `
 
 const Toggle = ({ checked, onChange }) => (

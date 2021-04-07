@@ -1,6 +1,34 @@
 import Head from 'next/head';
 import Header from './Header';
+import styled, { keyframes } from 'styled-components';
 import { GA_TRACKING_ID } from '../utils/gtag';
+
+const grain = keyframes`
+  0%, 100% { transform:translate(0, 0); }
+  10% { transform:translate(-5%, -10%); }
+  20% { transform:translate(-15%, 5%); }
+  30% { transform:translate(7%, -25%); }
+  40% { transform:translate(-5%, 25%); }
+  50% { transform:translate(-15%, 10%); }
+  60% { transform:translate(15%, 0%); }
+  70% { transform:translate(0%, 15%); }
+  80% { transform:translate(3%, 35%); }
+  90% { transform:translate(-10%, 10%); }
+`
+
+const Main = styled.main`
+  &:before {
+    content: '';
+    animation: ${grain} 8s steps(10) infinite;
+    background-image: url('../images/noise.png');
+    height: 300%;
+    width: 300%;
+    left: -50%;
+    opacity: 0.2;
+    position: fixed;
+    top: -100%;
+  }
+`
 
 const Layout = ({ children }) => {
   return (
@@ -77,7 +105,9 @@ const Layout = ({ children }) => {
         />
       </Head>
       <Header />
-      {children}
+      <Main>
+        {children}
+      </Main>
     </>
   )
 }

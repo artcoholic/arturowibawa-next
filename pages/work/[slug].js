@@ -6,7 +6,7 @@ import CloseButton from '../../components/CloseButton';
 import SlugHeader from '../../components/SlugHeader';
 import { motion, useViewportScroll } from 'framer-motion';
 import { variants } from '../../components/AnimationVariants';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 
 const DynamicContent = dynamic(() => import('../../components/SlugContent'));
 
@@ -24,17 +24,15 @@ export default function Slug({ entry }) {
   }, [scrollY]);
 
   return (
-    <>
+    <motion.article initial="initial" animate="enter" exit="exit" variants={variants.main}>
       <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} />
-      <motion.main initial="initial" animate="enter" exit="exit" variants={variants.main}>
-        <Head>
-          <title>{entry.fields.title} — Arturo Wibawa</title>
-        </Head>
-        {metadata.url && <VisitButton url={metadata.url} hookedYPosition={hookedYPosition} entry={entry} />}
-        <SlugHeader entry={entry} />
-        <DynamicContent entry={entry} />
-      </motion.main>
-    </>
+      <Head>
+        <title>{entry.fields.title} — Arturo Wibawa</title>
+      </Head>
+      {metadata.url && <VisitButton url={metadata.url} hookedYPosition={hookedYPosition} entry={entry} />}
+      <SlugHeader entry={entry} />
+      <DynamicContent entry={entry} />
+    </motion.article>
   )
 }
 

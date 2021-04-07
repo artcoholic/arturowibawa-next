@@ -69,7 +69,7 @@ const ProfilePage = () => {
         mx="layout.1"
         overflow="hidden"
         py="layout.1"
-        as={motion.main}
+        as={motion.article}
         initial="initial" animate="enter" exit="exit" variants={variants.main}
       >
         <Box

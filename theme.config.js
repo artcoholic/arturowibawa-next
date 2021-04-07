@@ -187,6 +187,7 @@ export const GlobalStyles = createGlobalStyle`
     url('/fonts/eina-01-light.woff2') format('woff2'), 
     url('/fonts/eina-01-light.ttf') format('truetype');
   }
+  .glare-wrapper { pointer-events: none; }
 `
 
 export const morningTheme = { ...defaultTheme, ...morning };

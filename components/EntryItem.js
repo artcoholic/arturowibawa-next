@@ -5,6 +5,7 @@ import Text from './Text';
 import Link from "next/link";
 import { variants } from './AnimationVariants';
 import { motion } from 'framer-motion';
+import Tilt from 'react-parallax-tilt';
 
 const AnchorWrapper = styled(Box)`
   display: block;
@@ -13,13 +14,8 @@ const AnchorWrapper = styled(Box)`
   background-color: ${props => props.theme.colors.bg.placeholder};
   transition: all 300ms ${props => props.theme.ease.Smooth};
   &:hover {
-    transform: scale(1.02);
     background-color: ${props => props.theme.colors.bg.entryCard};
     box-shadow:0 16px 32px 0 ${props => props.theme.colors.bg.boxShadow};
-  }
-  &:active {
-    transform: scale(1);
-    box-shadow: 0 16px 32px 0 rgba(0,0,0,0);
   }
 `
 
@@ -40,22 +36,24 @@ const EntryItem = ({ entry, index }) => {
         minWidth={240}
         maxWidth={[320, null, null, null, 400, 600]}
       >
-        <Link href={`/work/${item.slug}`} passHref>
-          <AnchorWrapper
-            as="a"
-            aria-label={metadata.title}
-            title={metadata.title}
-          >
-            <Image
-              src={`http:${metadata.image.fields.file.url}`}
-              alt={metadata.image.fields.description}
-              width={4}
-              height={5}
-              layout="responsive"
-              objectFit="cover"
-            />
-          </AnchorWrapper>
-        </Link>
+        <Tilt tiltReverse={true} scale={1.05} glareEnable={true}>
+          <Link href={`/work/${item.slug}`} passHref>
+            <AnchorWrapper
+              as="a"
+              aria-label={metadata.title}
+              title={metadata.title}
+            >
+              <Image
+                src={`http:${metadata.image.fields.file.url}`}
+                alt={metadata.image.fields.description}
+                width={4}
+                height={5}
+                layout="responsive"
+                objectFit="cover"
+              />
+            </AnchorWrapper>
+          </Link>
+        </Tilt>
         <Text
           as="h1"
           font="ParagraphLarge"

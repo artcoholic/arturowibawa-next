@@ -50,7 +50,7 @@ const SlugContent = ({ entry }) => {
   const ref = React.createRef();
   return (
     <Grid
-      as={motion.article}
+      as={motion.section}
       mx="layout.1"
       mb={["layout.4", 'layout.3', null, 'layout.1/2']}
       variants={variants.slugContent}
