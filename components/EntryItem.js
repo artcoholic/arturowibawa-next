@@ -13,6 +13,7 @@ const AnchorWrapper = styled(Box)`
   overflow: hidden;
   background-color: ${props => props.theme.colors.bg.placeholder};
   transition: all 300ms ${props => props.theme.ease.Smooth};
+  z-index: 2;
   &:hover {
     background-color: ${props => props.theme.colors.bg.entryCard};
     box-shadow:0 16px 32px 0 ${props => props.theme.colors.bg.boxShadow};
@@ -36,7 +37,7 @@ const EntryItem = ({ entry, index }) => {
         minWidth={240}
         maxWidth={[320, null, null, null, 400, 600]}
       >
-        <Tilt tiltReverse={true} scale={1.05} glareEnable={true}>
+        <Tilt tiltReverse={true} scale={1.05} glareEnable={true} tiltMaxAngleX={4} tiltMaxAngleY={4} transitionEasing="cubic-bezier(.23,1,.32,1)" transitionSpeed={300}>
           <Link href={`/work/${item.slug}`} passHref>
             <AnchorWrapper
               as="a"
@@ -58,11 +59,12 @@ const EntryItem = ({ entry, index }) => {
           as="h1"
           font="ParagraphLarge"
           mt=".5em"
+          style={{ zIndex: -1 }}
         >
           {metadata.title}
         </Text>
       </Box>
-      <Text style={{ writingMode: "vertical-rl" }} ml="spacing.2" fontSize={[3, null, null, null, 4]}>
+      <Text style={{ writingMode: "vertical-rl", zIndex: -1 }} ml="spacing.2" fontSize={[3, null, null, null, 4]}>
         0{index + 1} — {metadata.category}
       </Text>
     </Box>
