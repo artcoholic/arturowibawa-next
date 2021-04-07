@@ -78,7 +78,8 @@ const ProfilePage = () => {
           alignItems="flex-start"
           columns={['1/span 2', '2/span 2', '2/span 6']}
           placeSelf="center"
-          border={['1px solid rgba(174,146,46,0.3)', null, null, 'none']}
+          border={['1px solid', null, null, 'none']}
+          borderColor="bg.placeholder"
           p={['layout.1', null, null, 0]}
           borderRadius={8}
           as={motion.section}
