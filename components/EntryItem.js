@@ -6,6 +6,7 @@ import Link from "next/link";
 import { variants } from './AnimationVariants';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
+import { EyeOpen } from 'akar-icons';
 
 const AnchorWrapper = styled(Box)`
   display: block;
@@ -16,6 +17,28 @@ const AnchorWrapper = styled(Box)`
   &:hover {
     background-color: ${props => props.theme.colors.bg.entryCard};
     box-shadow:0 16px 32px 0 ${props => props.theme.colors.bg.boxShadow};
+    ~.icon-wrapper span {
+      transform: scale(1);
+    }
+  }
+`
+
+const IconWrapper = styled(Box)`
+  position: absolute;
+  top: 0;
+  transform: translateZ(120px);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  span {
+    background: white;
+    padding: 8px;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 300ms ${props => props.theme.ease.Smooth};
   }
 `
 
@@ -37,7 +60,7 @@ const EntryItem = ({ entry, index }) => {
         maxWidth={[320, null, null, null, 400, 600]}
         style={{ zIndex: 5 }}
       >
-        <Tilt tiltReverse={true} scale={1.05} glareEnable={true} tiltMaxAngleX={4} tiltMaxAngleY={4} transitionEasing="cubic-bezier(.23,1,.32,1)" transitionSpeed={300} style={{ zIndex: 2, position: 'relative' }}>
+        <Tilt tiltReverse={true} scale={1.05} glareEnable={true} tiltMaxAngleX={4} tiltMaxAngleY={4} transitionEasing="cubic-bezier(.23,1,.32,1)" transitionSpeed={300} style={{ zIndex: 2, position: 'relative', transformStyle: 'preserve-3d' }}>
           <Link href={`/work/${item.slug}`} passHref>
             <AnchorWrapper
               as="a"
@@ -54,6 +77,11 @@ const EntryItem = ({ entry, index }) => {
               />
             </AnchorWrapper>
           </Link>
+          <IconWrapper className="icon-wrapper">
+            <span>
+              <EyeOpen />
+            </span>
+          </IconWrapper>
         </Tilt>
         <Text
           as="h1"
