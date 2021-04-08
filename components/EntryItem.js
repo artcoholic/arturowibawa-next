@@ -35,7 +35,7 @@ const IconWrapper = styled(Box)`
   pointer-events: none;
   span {
     background: white;
-    padding: 8px;
+    padding: 12px;
     border-radius: 50%;
     transform: scale(0);
     transition: transform 300ms ${props => props.theme.ease.Smooth};
