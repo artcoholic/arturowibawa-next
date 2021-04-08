@@ -148,7 +148,7 @@ export const variants = {
   },
   slugTitle: {
     initial: {
-      y: '1em',
+      y: '1.2em',
       opacity: 0,
     },
     enter: {
