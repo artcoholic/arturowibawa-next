@@ -181,11 +181,16 @@ export const variants = {
   slugContent: {
     initial: {
       opacity: 0,
-      y: 100
+      y: 200
     },
     enter: {
       opacity: 1,
-      y: 0
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 50,
+      }
     },
   },
   MyName: {
