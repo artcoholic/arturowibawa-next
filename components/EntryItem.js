@@ -73,7 +73,6 @@ const EntryItem = ({ entry, index }) => {
                 width={4}
                 height={5}
                 layout="responsive"
-                objectFit="cover"
               />
             </AnchorWrapper>
           </Link>

@@ -57,7 +57,7 @@ const Toggle = ({ checked, onChange }) => (
     />
     <Thumb
       as="label"
-      for="switch"
+      htmlFor="switch"
       className="thumb"
       bg="content.inversePrimary"
     >

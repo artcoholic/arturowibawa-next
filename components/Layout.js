@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Header from './Header';
 import styled, { keyframes } from 'styled-components';
 import { GA_TRACKING_ID } from '../utils/gtag';
+import useDarkMode from 'use-dark-mode';
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0); }
@@ -24,13 +25,14 @@ const Main = styled.main`
     height: 300%;
     width: 300%;
     left: -50%;
-    opacity: 0.2;
+    opacity: ${({ DarkMode }) => DarkMode ? 0.5 : 0.15};
     position: fixed;
     top: -100%;
   }
 `
 
 const Layout = ({ children }) => {
+  const darkMode = useDarkMode(false);
   return (
     <>
       <Head>
@@ -91,7 +93,7 @@ const Layout = ({ children }) => {
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
         />
-        <script
+        < script
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];
@@ -103,9 +105,9 @@ const Layout = ({ children }) => {
           `,
           }}
         />
-      </Head>
+      </Head >
       <Header />
-      <Main>
+      <Main DarkMode={darkMode.value}>
         {children}
       </Main>
     </>
