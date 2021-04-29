@@ -80,8 +80,8 @@ const Header = () => {
           </Logo>
         </a>
       </Link>
-      { router.pathname.startsWith('/work') ? null :
-        <Name fontSize={3} pt={2}>Arturo • Wibawa</Name>
+      { router.pathname.startsWith('/work') || router.pathname.startsWith('/blog/[slug]') ? null :
+        <Name fontSize={3} pt={3}>Arturo • Wibawa</Name>
       }
       <Dot
         as="button"

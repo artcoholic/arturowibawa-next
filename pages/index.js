@@ -32,7 +32,7 @@ const ProgressBar = styled(Box)`
 `
 
 const HomePage = ({ data }) => {
-  const entries = data[0].fields.projects;
+  const entries = data[1].fields.items;
 
   const objectRef = useRef();
   const { scrollXProgress } = useElementScroll(objectRef)
@@ -116,7 +116,7 @@ export async function getStaticProps() {
 
   const data = await client
     .getEntries({
-      content_type: 'projectList',
+      content_type: 'list',
       include: 10,
     })
     .then((response) => response.items)

@@ -34,7 +34,7 @@ const StyledNavButton = styled(Text)`
     content: '';
     position: absolute;
     background: ${props => props.theme.colors.bg.primary};
-    transition: transform 250ms ${props => props.theme.ease.smooth};
+    transition: transform 300ms ${props => props.theme.ease.Smooth};
     height: 100%;
     width: 100%;
     transform: scaleX(0);

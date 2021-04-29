@@ -18,7 +18,18 @@ export const wipe = keyframes`
     transform-origin: right;
   }
 `
-
+export const grain = keyframes`
+  0%, 100% { transform:translate(0, 0); }
+  10% { transform:translate(-5%, -10%); }
+  20% { transform:translate(-15%, 5%); }
+  30% { transform:translate(7%, -25%); }
+  40% { transform:translate(-5%, 25%); }
+  50% { transform:translate(-15%, 10%); }
+  60% { transform:translate(15%, 0%); }
+  70% { transform:translate(0%, 15%); }
+  80% { transform:translate(3%, 35%); }
+  90% { transform:translate(-10%, 10%); }
+`
 export const blink = keyframes`
   from { opacity: 0}
   to {opacity: 1}
@@ -37,6 +48,11 @@ export const sphere = keyframes`
   80%   {rx: 18px; ry: 36px}
   90%   {rx: 10px; ry: 20px}
   100%  {cx: 0px; rx: 0px; ry: 0px}
+`
+
+export const radius = keyframes`
+  from   {r: 20}
+  to     {r: 40}
 `
 
 export const variants = {

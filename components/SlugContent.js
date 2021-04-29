@@ -27,7 +27,7 @@ const MarkdownWrapper = styled(Text)`
     &:after {
       content: '';
       background: ${props => props.theme.colors.content.primary};
-      transition: transform 250ms ${props => props.theme.ease.smooth};
+      transition: transform 250ms ${props => props.theme.ease.Smooth};
       height: 100%;
       left: 0;
       bottom: 0;
@@ -38,12 +38,6 @@ const MarkdownWrapper = styled(Text)`
     }
   }
 `
-
-const VideoWrapper = React.forwardRef((props, ref) => (
-  <Box ref={ref} span="span 1" borderRadius={[8, null, 16]} overflow="hidden">
-    {props.children}
-  </Box>
-));
 
 const SlugContent = ({ entry }) => {
   const matrix = entry.fields.matrix;

@@ -34,7 +34,7 @@ const EmailLink = styled(Text)`
   &:after {
     content: '';
     background: ${props => props.theme.colors.content.primary};
-    transition: transform 250ms ${props => props.theme.ease.smooth};
+    transition: transform 250ms ${props => props.theme.ease.Smooth};
     height: 100%;
     left: 0;
     bottom: 0;
@@ -54,6 +54,10 @@ const EllipseWrapper = styled(Box)`
   width: 100%;
   svg {
     stroke: ${props => props.theme.colors.content.inverseSecondary};
+    stroke-width: 1px;
+    overflow: visible;
+    display: block;
+    opacity: 0.5;
   }
 `
 
@@ -63,6 +67,36 @@ const ProfilePage = () => {
       <Head>
         <title>Profile — Arturo Wibawa</title>
       </Head>
+      <Box
+        position="fixed"
+        width='50%'
+        height='100%'
+        display={['none', null, null, 'flex']}
+        justifyContent="center"
+        alignItems="center"
+        right={0}
+        px="layout.3"
+        as={motion.section}
+        exit={{ opacity: 0 }}
+      >
+        <EllipseWrapper>
+          <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g>
+              {
+                Array.from({ length: 20 }).map((_, i) => (
+                  <Ellipse
+                    key={i}
+                    cy={50}
+                    begin={0 + i}
+                    vectorEffect="non-scaling-stroke"
+                    style={{ animationDelay: 0 + i + 's' }}
+                  />
+                ))
+              }
+            </g>
+          </svg>
+        </EllipseWrapper>
+      </Box>
       <Grid
         height="100vh"
         maxHeight="-webkit-fill-available"
@@ -70,24 +104,24 @@ const ProfilePage = () => {
         mx="layout.1"
         overflow="hidden"
         py="layout.1"
-        as={motion.article}
+        as={motion.section}
         initial="initial" animate="enter" exit="exit" variants={variants.main}
       >
         <Box
           display="flex"
           flexDirection="column"
           alignItems="flex-start"
-          columns={['1/span 2', '2/span 2', '2/span 6']}
+          columns={['1/span 2', '1/span 4', '2/span 6', '2/span 5']}
           placeSelf="center"
           border={['1px solid', null, null, 'none']}
           borderColor="bg.placeholder"
           p={['layout.1', null, null, 0]}
           borderRadius={8}
-          as={motion.section}
+          as={motion.div}
           variants={variants.ProfileSection}
         >
           <HeaderWrapper as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb={["layout.1/2", null, 'layout.1/4']}>
-            // Profile
+            Profile
           </HeaderWrapper>
           <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium", null, "ParagraphLarge"]} color="content.inverseTertiary" mb="layout.1/4">
             Arturo Wibawa is a product designer based in Los Angeles, California with a strong focus on product strategy, user experience, and interaction design.
@@ -106,29 +140,6 @@ const ProfilePage = () => {
             Discuss project
           </EmailLink>
         </Box>
-        <EllipseWrapper
-          span={[2, null, 5]}
-          p={[0, null, null, "layout.2"]}
-          placeSelf="center"
-          display={['none', null, null, 'block']}
-          as="section"
-        >
-          <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ strokeWidth: 1, overflow: 'visible', display: 'block', opacity: 0.5 }}>
-            <g>
-              {
-                Array.from({ length: 20 }).map((_, i) => (
-                  <Ellipse
-                    key={i}
-                    cy="50"
-                    begin={0 + i}
-                    vectorEffect="non-scaling-stroke"
-                    style={{ animationDelay: 0 + i + 's' }}
-                  />
-                ))
-              }
-            </g>
-          </svg>
-        </EllipseWrapper>
         <Text as="section" fontSize={3} position="fixed" width="100%" textAlign="center" bottom="layout.1" left={0} placeSelf="center" px="layout.1">
           © 2021. All Rights Reserved.
         </Text>

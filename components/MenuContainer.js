@@ -53,18 +53,11 @@ const MenuContainer = ({ open, setOpen }) => {
             <MenuItem key="1" path="/" setOpen={setOpen} title="Work">
               Work
             </MenuItem>
-            <MenuItem key="2" path="/profile" setOpen={setOpen} title="About Arturo">
-              Profile
+            <MenuItem key="2" path="/blog" setOpen={setOpen} title="Blog">
+              Thoughts
             </MenuItem>
-            <MenuItem
-              key="3"
-              path="#"
-              setOpen={setOpen}
-              style={{ textDecoration: 'line-through', textDecorationThickness: 4, pointerEvents: 'none' }}
-              color="content.secondary"
-              title="Experiments"
-            >
-              Lab
+            <MenuItem key="3" path="/profile" setOpen={setOpen} title="About">
+              Profile
             </MenuItem>
           </Grid>
           <Grid

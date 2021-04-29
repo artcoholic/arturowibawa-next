@@ -4,7 +4,7 @@ import Box from './Box';
 const Wrapper = styled(Box)`
   padding: 8px;
   border-bottom: 1px solid ${props => props.theme.colors.content.secondary};
-  transition: all 250ms ${props => props.theme.ease.smooth};
+  transition: all 250ms ${props => props.theme.ease.It};
   &:hover {
     color: ${props => props.theme.colors.content.tertiary};
     &:after {
@@ -16,7 +16,7 @@ const Wrapper = styled(Box)`
     content: '';
     width: 100%;
     height: 1px;
-    transition: transform 250ms ${props => props.theme.ease.smooth};
+    transition: transform 250ms ${props => props.theme.ease.It};
     background-color: ${props => props.theme.colors.content.inversePrimary};
     position: absolute;
     bottom: -1px;

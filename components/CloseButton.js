@@ -10,17 +10,17 @@ const Wrapper = styled(Box)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: sticky;
+  position: fixed;
   left: 50%;
   z-index: 98;
   transition: all 300ms ${props => props.theme.ease.Smooth};
   border-radius: 50%;
-  background-color: ${({ scrollY }) => scrollY > 24 ? 'rgba(255,255,255,0.25)' : 'none'};
-  border: ${({ scrollY }) => scrollY > 24 ? '1px solid var(--contentSecondary)' : 'none'};
-  box-shadow: ${({ scrollY }) => scrollY > 24 ? '0 4px 8px 0px rgba(0,0,0,0.15)' : 'none'};
+  background-color: ${({ scrollY }) => scrollY > 0 ? 'rgba(255,255,255,0.25)' : 'none'};
+  border: ${({ scrollY }) => scrollY > 0 ? '1px solid var(--contentSecondary)' : 'none'};
+  box-shadow: ${({ scrollY }) => scrollY > 0 ? '0 4px 8px 0px rgba(0,0,0,0.15)' : 'none'};
   backdrop-filter: blur(12px);
   &:hover {
-    background-color: ${({ scrollY }) => scrollY > 24 ? 'rgba(255,255,255,1)' : 'none'};
+    background-color: ${({ scrollY }) => scrollY > 0 ? 'rgba(255,255,255,1)' : 'none'};
   }
   &:active {
     box-shadow: none;
@@ -33,15 +33,15 @@ const Wrapper = styled(Box)`
   }
 `
 
-const CloseButton = ({ hookedYPosition, scrollYProgress }) => {
+const CloseButton = ({ hookedYPosition, scrollYProgress, path }) => {
   const yRange = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const pathLength = useSpring(yRange, { stiffness: 400, damping: 40 });
   return (
-    <Link href="/" passHref scroll={false}>
+    <Link href={path} passHref scroll={false}>
       <Wrapper
         as={motion.a}
         top="layout.1"
-        size={hookedYPosition > 24 ? 48 : 32}
+        size={hookedYPosition > 0 ? 48 : 32}
         color="content.primary"
         scrollY={hookedYPosition}
         initial={{ scale: 0, x: '-50%' }}

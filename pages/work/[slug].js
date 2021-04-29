@@ -25,11 +25,11 @@ export default function Slug({ entry }) {
 
   return (
     <>
-      <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} />
+      <Head>
+        <title>{entry.fields.title} — Arturo Wibawa</title>
+      </Head>
+      <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} path={'/'} />
       <motion.article initial="initial" animate="enter" exit="exit" variants={variants.main}>
-        <Head>
-          <title>{entry.fields.title} — Arturo Wibawa</title>
-        </Head>
         <SlugHeader entry={entry} />
         <DynamicContent entry={entry} />
       </motion.article>
