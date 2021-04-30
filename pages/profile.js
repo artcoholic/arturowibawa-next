@@ -99,7 +99,7 @@ const ProfilePage = () => {
       </Box>
       <Grid
         height="100vh"
-        maxHeight="-webkit-fill-available"
+        maxHeight={["-webkit-fill-available", null, null, "100%"]}
         mx="layout.1"
         overflow="hidden"
         py="layout.1"
@@ -122,10 +122,10 @@ const ProfilePage = () => {
           <HeaderWrapper as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb={["layout.1/2", null, 'layout.1/4']}>
             Profile
           </HeaderWrapper>
-          <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium", null, "ParagraphLarge"]} color="content.inverseTertiary" mb="layout.1/4">
+          <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium"]} color="content.inverseTertiary" mb="layout.1/4">
             Arturo Wibawa is a product designer based in Los Angeles, California with a strong focus on product strategy, user experience, and interaction design.
           </Text>
-          <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium", null, "ParagraphLarge"]} color="content.inverseTertiary" mb="layout.1/2">
+          <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium"]} color="content.inverseTertiary" mb="layout.1/2">
             He's keen to experiment with new technology and believes that the best solutions are the simplest ones.
           </Text>
           <EmailLink
@@ -140,7 +140,7 @@ const ProfilePage = () => {
           </EmailLink>
         </Box>
         <Text as="section" fontSize={3} position="fixed" width="100%" textAlign="center" bottom="layout.1" left={0} placeSelf="center" px="layout.1">
-          © 2021. All Rights Reserved.
+          © {new Date().getFullYear()}. All Rights Reserved.
         </Text>
       </Grid>
     </>

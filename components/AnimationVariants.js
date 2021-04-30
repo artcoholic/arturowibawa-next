@@ -51,8 +51,8 @@ export const sphere = keyframes`
 `
 
 export const radius = keyframes`
-  from   {r: 20}
-  to     {r: 40}
+  from   {r: 20px}
+  to     {r: 40px}
 `
 
 export const variants = {

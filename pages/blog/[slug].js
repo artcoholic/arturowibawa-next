@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { createClient } from 'contentful';
-import Image from 'next/image';
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
 import Head from 'next/head';
@@ -68,8 +67,8 @@ export default function Slug({ entry }) {
       <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} path={'/blog'} />
       <Grid mx="layout.1" py="layout.1" as={motion.section} initial="initial" animate="enter" exit="exit" variants={variants.main}>
         <Box as={motion.div} variants={variants.ProfileSection} columns={['1/-1', null, '2/span 6', '4/span 6']} mt={["layout.4", "layout.3"]}>
-          <Text as={motion.h2} variants={variants.ProfileContent} font="ParagraphMedium" color="content.primary" mb={['layout.1', "layout.3/4"]} bg="bg.secondary" display="inline-block" pt={3} px=".5em" borderRadius=".25em">
-            {entry.fields.date.slice(5, 7)} / {entry.fields.date.slice(0, 4)}
+          <Text as={motion.div} variants={variants.ProfileContent} font="ParagraphMedium" color="content.inverseTertiary" mb={['layout.1', "layout.3/4"]} display="flex" alignItems="baseline">
+            {`${entry.fields.date.slice(5, 7)} / ${entry.fields.date.slice(0, 4)}`}
           </Text>
           <Text as={motion.h1} variants={variants.ProfileContent} font="HeadingLarge">
             {entry.fields.title}

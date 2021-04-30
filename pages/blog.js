@@ -6,7 +6,7 @@ import Text from '../components/Text';
 import Grid from '../components/Grid';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import { variants, blink, radius } from '../components/AnimationVariants';
+import { variants, blink, radius, sphere } from '../components/AnimationVariants';
 
 const HeaderWrapper = styled(Text)`
   position: reltative;
@@ -80,10 +80,7 @@ const BlogPage = ({ data }) => {
         as={motion.section}
         exit={{ opacity: 0 }}
       >
-        <CircleWrapper
-          start={2}
-          span={4}
-        >
+        <CircleWrapper>
           <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g>
               {
@@ -109,23 +106,23 @@ const BlogPage = ({ data }) => {
         as={motion.section}
         initial="initial" animate="enter" exit="exit" variants={variants.main}
       >
-        <Box as={motion.a} variants={variants.ProfileSection} columns={['span 2', 'span 4', '2/span 6', '7/span 5']} style={{ cursor: 'pointer' }} mt={["layout.4", "layout.3", null, "layout.2"]}>
-          <HeaderWrapper as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb={["layout.1", "layout.1/2"]}>
+        <Box as={motion.div} variants={variants.ProfileSection} columns={['span 2', 'span 4', '2/span 6', '7/span 5']} style={{ cursor: 'pointer' }} mt={["layout.4", "layout.3", null, "layout.2"]}>
+          <HeaderWrapper as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb="layout.1">
             Thoughts
           </HeaderWrapper>
           {entries.map((entry, index) =>
-            <ArticleWrapper key={index} as={motion.article} variants={variants.ProfileContent} my="layout.1/4">
-              <Link href={`/blog/${entry.fields.slug}`} passHref>
-                <a style={{ textDecoration: 'none' }}>
-                  <Text as="h3" font="ParagraphSmall" color="content.primary" mb="layout.1/2" bg="bg.secondary" display="inline-block" pt={4} px=".5em" borderRadius=".25em">
-                    {entry.fields.date.slice(5, 7)} / {entry.fields.date.slice(0, 4)}
+            <Link key={index} href={`/blog/${entry.fields.slug}`} passHref>
+              <a style={{ textDecoration: 'none' }}>
+                <ArticleWrapper as={motion.div} variants={variants.ProfileContent} my="layout.1/4">
+                  <Text color="content.inverseTertiary" font="ParagraphMedium" mb="layout.1/2">
+                    {`${entry.fields.date.slice(5, 7)} / ${entry.fields.date.slice(0, 4)}`}
                   </Text>
-                  <Text as="h2" font="HeadingSmall" color="content.inverseTertiary" mb="layout.1/2">
+                  <Text as="h2" font="HeadingSmall" color="content.inverseTertiary" mb={["layout.1", null, null, "layout.1/2"]}>
                     {entry.fields.title}
                   </Text>
-                </a>
-              </Link>
-            </ArticleWrapper>
+                </ArticleWrapper>
+              </a>
+            </Link>
           )}
         </Box>
       </Grid>
