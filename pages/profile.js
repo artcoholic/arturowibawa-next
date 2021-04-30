@@ -70,7 +70,9 @@ const ProfilePage = () => {
       <Box
         position="fixed"
         width='50%'
-        height='100%'
+        height="100vh"
+        maxHeight="-webkit-fill-available"
+        maxHeight='100%'
         display={['none', null, null, 'flex']}
         justifyContent="center"
         alignItems="center"
