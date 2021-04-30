@@ -70,9 +70,7 @@ const ProfilePage = () => {
       <Box
         position="fixed"
         width='50%'
-        height="100vh"
-        maxHeight="-webkit-fill-available"
-        maxHeight='100%'
+        height='100%'
         display={['none', null, null, 'flex']}
         justifyContent="center"
         alignItems="center"
@@ -102,7 +100,6 @@ const ProfilePage = () => {
       <Grid
         height="100vh"
         maxHeight="-webkit-fill-available"
-        maxHeight="100%"
         mx="layout.1"
         overflow="hidden"
         py="layout.1"
