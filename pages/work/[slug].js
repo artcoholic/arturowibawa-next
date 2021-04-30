@@ -69,9 +69,10 @@ export async function getStaticPaths() {
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   })
-  const entries = await client
-    .getEntries({ content_type: 'project' })
-    .then((response) => response.items)
+  const entries = await client.getEntries({
+    content_type: 'project'
+  })
+    .then((response) => response.items);
 
   const paths = entries.map(({ fields: { slug } }) => ({ params: { slug } }));
 
