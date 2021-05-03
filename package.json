@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "server": "yarn build && NODE_ENV=production node server.js"
   },
   "dependencies": {
     "akar-icons": "^1.2.0",

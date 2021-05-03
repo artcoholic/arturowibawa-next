@@ -32,7 +32,7 @@ const ProgressBar = styled(Box)`
 `
 
 const HomePage = ({ data }) => {
-  const entries = data[1].fields.items;
+  const entries = data[0].fields.items;
 
   const objectRef = useRef();
   const { scrollXProgress } = useElementScroll(objectRef)

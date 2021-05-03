@@ -62,7 +62,7 @@ const ArticleWrapper = styled(Box)`
 `
 
 const BlogPage = ({ data }) => {
-  const entries = data[0].fields.items;
+  const entries = data[1].fields.items;
 
   return (
     <>

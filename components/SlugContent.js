@@ -82,7 +82,14 @@ const SlugContent = ({ entry }) => {
                   )
                 })
                 :
-                <Grid columns="1/-1" my={["layout.1/4", null, "layout.1/2"]} as="section" key={item.sys.id} gridTemplateColumns={["1fr", null, "repeat(2, 1fr)"]} gridRowGap={["layout.1/2", null, "layout.1"]}>
+                <Grid
+                  as="section"
+                  key={item.sys.id}
+                  columns="1/-1"
+                  my={["layout.1/4", null, "layout.1/2"]}
+                  gridTemplateColumns={["1fr", null, item.fields.layout === 'Split' ? "repeat(2, 1fr)" : "repeat(3, 1fr"]}
+                  gridRowGap={["layout.1/2", null, "layout.1"]}
+                >
                   {item.fields.assets.map((asset) => {
                     return (
                       <Box
