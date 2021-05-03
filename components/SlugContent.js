@@ -60,87 +60,35 @@ const SlugContent = ({ entry }) => {
         switch (id) {
           case 'media': // MEDIA BLOCK
             return (
-              item.fields.layout === 'Full width' ?
-                item.fields.assets.map((asset) => {
+              <Grid
+                as="section"
+                key={item.sys.id}
+                columns="1/-1"
+                my={["layout.1/4", null, "layout.1/2"]}
+                gridTemplateColumns={
+                  item.fields.layout === 'Thirds' ? ["1fr", null, "repeat(3, 1fr)"] : item.fields.layout === 'Split' ? ["1fr", null, "repeat(2, 1fr)"] : "1fr"}
+                gridRowGap={["layout.1/2", null, "layout.1"]}
+              >
+                {item.fields.assets.map((asset) => {
                   return (
                     <Box
-                      columns="1/-1"
-                      my={["layout.1/4", null, "layout.1/2"]}
-                      key={asset.sys.id}
-                      as="section"
+                      span="span 1"
+                      width="100%"
                       borderRadius={[8, null, 16]}
                       overflow="hidden"
                       bg="bg.placeholder"
+                      key={asset.sys.id}
                     >
                       {asset.fields.file.contentType.includes('image') &&
                         <Image src={`http:${asset.fields.file.url}`} alt={asset.fields.title} layout="responsive" width={asset.fields.file.details.image.width} height={asset.fields.file.details.image.height} />
                       }
                       {asset.fields.file.contentType.includes('video') &&
-                        <ReactPlayer url={asset.fields.file.url} playing muted loop width="100%" height="100%" playsinline />
+                        <ReactPlayer ref={ref} url={asset.fields.file.url} playing muted loop width="100%" height="100%" playsinline />
                       }
                     </Box>
                   )
-                })
-                : item.fields.layout === 'Split' ?
-                  <Grid
-                    as="section"
-                    key={item.sys.id}
-                    columns="1/-1"
-                    my={["layout.1/4", null, "layout.1/2"]}
-                    gridTemplateColumns={["1fr", null, "repeat(2, 1fr)"]}
-                    gridRowGap={["layout.1/2", null, "layout.1"]}
-                  >
-                    {item.fields.assets.map((asset) => {
-                      return (
-                        <Box
-                          span="span 1"
-                          width="100%"
-                          borderRadius={[8, null, 16]}
-                          overflow="hidden"
-                          bg="bg.placeholder"
-                          key={asset.sys.id}
-                        >
-                          {asset.fields.file.contentType.includes('image') &&
-                            <Image src={`http:${asset.fields.file.url}`} alt={asset.fields.title} layout="responsive" width={asset.fields.file.details.image.width} height={asset.fields.file.details.image.height} />
-                          }
-                          {asset.fields.file.contentType.includes('video') &&
-                            <ReactPlayer ref={ref} url={asset.fields.file.url} playing muted loop width="100%" height="100%" playsinline />
-                          }
-                        </Box>
-                      )
-                    }
-                    )}
-                  </Grid>
-                  :
-                  <Grid
-                    as="section"
-                    key={item.sys.id}
-                    columns="1/-1"
-                    my={["layout.1/4", null, "layout.1/2"]}
-                    gridTemplateColumns={["1fr", null, "repeat(3, 1fr)"]}
-                    gridRowGap={["layout.1/2", null, "layout.1"]}
-                  >
-                    {item.fields.assets.map((asset) => {
-                      return (
-                        <Box
-                          span="span 1"
-                          width="100%"
-                          borderRadius={[8, null, 16]}
-                          overflow="hidden"
-                          bg="bg.placeholder"
-                          key={asset.sys.id}
-                        >
-                          {asset.fields.file.contentType.includes('image') &&
-                            <Image src={`http:${asset.fields.file.url}`} alt={asset.fields.title} layout="responsive" width={asset.fields.file.details.image.width} height={asset.fields.file.details.image.height} />
-                          }
-                          {asset.fields.file.contentType.includes('video') &&
-                            <ReactPlayer ref={ref} url={asset.fields.file.url} playing muted loop width="100%" height="100%" playsinline />
-                          }
-                        </Box>
-                      )
-                    }
-                    )}
-                  </Grid>
+                })}
+              </Grid>
             );
             break;
           case 'text': // TEXT BLOCK
