@@ -1,7 +1,7 @@
 import Box from './Box';
 import Text from './Text';
 
-export default function Label() {
+const Label = () => {
   return (
     <Box
       position="fixed"
@@ -13,3 +13,5 @@ export default function Label() {
     </Box>
   )
 }
+
+export default Label;
