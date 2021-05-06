@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
+import ErrorPage from 'next/error';
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
 import Head from 'next/head';
