@@ -55,6 +55,6 @@ export async function getStaticPaths() {
   const allProjects = await getAllProjectsWithSlug()
   return {
     paths: allProjects?.map(({ slug }) => `/work/${slug}`) ?? [],
-    fallback: false,
+    fallback: true,
   }
 }
