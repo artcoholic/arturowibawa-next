@@ -35,9 +35,9 @@ export default function WorkSlug({ project, preview }) {
         <title>{project.title} — Arturo Wibawa</title>
       </Head>
       {preview && <PreviewLabel />}
-      <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/'} />
       {router.isFallback ? (<div>Loading...</div>) : (
         <>
+          <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/'} />
           <motion.article initial="initial" animate="enter" exit="exit" variants={variants.main}>
             <SlugHeader entry={project} />
             <DynamicContent entry={project} />

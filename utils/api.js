@@ -206,7 +206,7 @@ export async function getAllArticlesWithSlug() {
   return extractArticleEntries(entries)
 }
 
-export async function getArticlesAndMoreArticles(slug, preview) {
+export async function getArticleAndMoreArticles(slug, preview) {
   const entry = await fetchGraphQL(
     `query {
       articleCollection(where: { slug: "${slug}" }, preview: ${preview ? 'true' : 'false'
