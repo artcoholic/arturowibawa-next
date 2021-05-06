@@ -65,7 +65,7 @@ const BlogPage = ({ allArticles }) => {
   return (
     <>
       <Head>
-        <title>Writing — Arturo Wibawa</title>
+        <title>Thoughts — Arturo Wibawa</title>
       </Head>
       <Box
         position="fixed"
