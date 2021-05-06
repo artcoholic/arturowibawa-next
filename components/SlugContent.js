@@ -40,7 +40,7 @@ const MarkdownWrapper = styled(Text)`
 `
 
 const SlugContent = ({ entry }) => {
-  const matrix = entry.fields.matrix;
+  const matrix = entry.matrixCollection.items;
   const ref = React.createRef();
   return (
     <Grid
@@ -56,9 +56,9 @@ const SlugContent = ({ entry }) => {
       }}
     >
       {matrix && matrix.map((item) => {
-        const id = item.sys.contentType.sys.id;
+        const id = item.__typename;
         switch (id) {
-          case 'media': // MEDIA BLOCK
+          case 'Media': // MEDIA BLOCK
             return (
               <Grid
                 as="section"
@@ -66,10 +66,10 @@ const SlugContent = ({ entry }) => {
                 columns="1/-1"
                 my={["layout.1/4", null, "layout.1/2"]}
                 gridTemplateColumns={
-                  item.fields.layout === 'Thirds' ? ["1fr", null, "repeat(3, 1fr)"] : item.fields.layout === 'Split' ? ["1fr", null, "repeat(2, 1fr)"] : "1fr"}
+                  item.layout === 'Thirds' ? ["1fr", null, "repeat(3, 1fr)"] : item.layout === 'Split' ? ["1fr", null, "repeat(2, 1fr)"] : "1fr"}
                 gridRowGap={["layout.1/2", null, "layout.1"]}
               >
-                {item.fields.assets.map((asset) => {
+                {item.assetsCollection.items.map((asset) => {
                   return (
                     <Box
                       span="span 1"
@@ -79,11 +79,11 @@ const SlugContent = ({ entry }) => {
                       bg="bg.placeholder"
                       key={asset.sys.id}
                     >
-                      {asset.fields.file.contentType.includes('image') &&
-                        <Image src={`http:${asset.fields.file.url}`} alt={asset.fields.title} layout="responsive" width={asset.fields.file.details.image.width} height={asset.fields.file.details.image.height} />
+                      {asset.contentType.includes('image') &&
+                        <Image src={asset.url} alt={asset.title} layout="responsive" width={asset.width} height={asset.height} />
                       }
-                      {asset.fields.file.contentType.includes('video') &&
-                        <ReactPlayer ref={ref} url={asset.fields.file.url} playing muted loop width="100%" height="100%" playsinline />
+                      {asset.contentType.includes('video') &&
+                        <ReactPlayer ref={ref} url={asset.url} playing muted loop width="100%" height="100%" playsinline />
                       }
                     </Box>
                   )
@@ -91,22 +91,22 @@ const SlugContent = ({ entry }) => {
               </Grid>
             );
             break;
-          case 'text': // TEXT BLOCK
+          case 'Text': // TEXT BLOCK
             return (
               <MarkdownWrapper
                 as="section"
                 my={["layout.1", null, "layout.2"]}
                 columns={
-                  item.fields.alignText === "Left" ? ["1/-1", null, "1/span 4", "2/span 5"] : item.fields.alignText === "Center" ? ["1/-1", null, "3/span 4", "4/span 6"] : ["1/-1", null, "5/span 4", "7/span 5"]
+                  item.alignText === "Left" ? ["1/-1", null, "1/span 4", "2/span 5"] : item.alignText === "Center" ? ["1/-1", null, "3/span 4", "4/span 6"] : ["1/-1", null, "5/span 4", "7/span 5"]
                 }
                 key={item.sys.id}
                 color="content.inverseTertiary"
                 font={["ParagraphMedium", null, "ParagraphLarge"]}
                 textAlign={
-                  item.fields.alignText === "Center" ? 'center' : ['center', null, 'left']
+                  item.alignText === "Center" ? 'center' : ['center', null, 'left']
                 }
               >
-                <Markdown source={item.fields.paragraph} escapeHtml={true} linkTarget="_blank" />
+                <Markdown source={item.paragraph} escapeHtml={true} linkTarget="_blank" />
               </MarkdownWrapper>
             );
             break;

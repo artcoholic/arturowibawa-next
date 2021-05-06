@@ -49,7 +49,7 @@ const VisitButton = ({ hookedYPosition, url, entry }) => {
       >
         <Box display="flex" flexDirection="column" mr="spacing.4" pt={4}>
           <Text letterSpacing={1.2} fontSize={2} fontWeight="bold" color="#1B1C32" style={{ textTransform: 'uppercase' }}>Visit</Text>
-          <Text color="#1B1C32">{entry.fields.title}</Text>
+          <Text color="#1B1C32">{entry.title}</Text>
         </Box>
         <ArrowForwardThickFill color="#1B1C32" />
       </Wrapper>

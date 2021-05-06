@@ -1,4 +1,3 @@
-import { createClient } from 'contentful';
 import Link from "next/link";
 import styled from 'styled-components';
 import Box from '../components/Box';
@@ -6,7 +5,8 @@ import Text from '../components/Text';
 import Grid from '../components/Grid';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import { variants, blink, radius, sphere } from '../components/AnimationVariants';
+import { variants, blink, radius } from '../components/AnimationVariants';
+import { getAllArticlesForBlog } from '../utils/api';
 
 const HeaderWrapper = styled(Text)`
   position: reltative;
@@ -61,9 +61,7 @@ const ArticleWrapper = styled(Box)`
   }
 `
 
-const BlogPage = ({ data }) => {
-  const entries = data[1].fields.items;
-
+const BlogPage = ({ allArticles }) => {
   return (
     <>
       <Head>
@@ -110,15 +108,15 @@ const BlogPage = ({ data }) => {
           <HeaderWrapper as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb="layout.1">
             Thoughts
           </HeaderWrapper>
-          {entries.map((entry, index) =>
-            <Link key={index} href={`/blog/${entry.fields.slug}`} passHref>
+          {allArticles.map((article, index) =>
+            <Link key={index} href={`/blog/${article.slug}`} passHref>
               <a style={{ textDecoration: 'none' }}>
                 <ArticleWrapper as={motion.div} variants={variants.ProfileContent} my="layout.1/4">
                   <Text color="content.inverseTertiary" font="ParagraphMedium" mb="layout.1/2">
-                    {`${entry.fields.date.slice(5, 7)} / ${entry.fields.date.slice(0, 4)}`}
+                    {`${article.date.slice(5, 7)} / ${article.date.slice(0, 4)}`}
                   </Text>
                   <Text as="h2" font="HeadingSmall" color="content.inverseTertiary" mb={["layout.1", null, null, "layout.1/2"]}>
-                    {entry.fields.title}
+                    {article.title}
                   </Text>
                 </ArticleWrapper>
               </a>
@@ -133,23 +131,8 @@ const BlogPage = ({ data }) => {
 export default BlogPage;
 
 export async function getStaticProps() {
-
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-    removeUnresolved: true,
-  })
-
-  const data = await client
-    .getEntries({
-      content_type: 'list',
-      include: 10,
-    })
-    .then((response) => response.items)
-
+  const allArticles = await getAllArticlesForBlog() ?? []
   return {
-    props: {
-      data,
-    },
+    props: { allArticles },
   }
 }

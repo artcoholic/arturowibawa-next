@@ -1,5 +1,4 @@
 import { useRef, useEffect } from 'react';
-import { createClient } from 'contentful';
 import styled from 'styled-components';
 import EntryItem from '../components/EntryItem';
 import Box from '../components/Box';
@@ -7,6 +6,7 @@ import Text from '../components/Text';
 import { variants } from '../components/AnimationVariants';
 import { motion, useElementScroll } from 'framer-motion';
 import { ArrowRight } from 'akar-icons';
+import { getAllProjectsForHome } from '../utils/api';
 
 const HorizontalContainer = styled(Box)`
   display: flex;
@@ -31,8 +31,8 @@ const ProgressBar = styled(Box)`
   margin-top: -2px;
 `
 
-const HomePage = ({ data }) => {
-  const entries = data[0].fields.items;
+const HomePage = ({ allProjects }) => {
+  const entries = allProjects.itemsCollection.items;
 
   const objectRef = useRef();
   const { scrollXProgress } = useElementScroll(objectRef)
@@ -107,24 +107,9 @@ const HomePage = ({ data }) => {
 };
 
 export async function getStaticProps() {
-
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-    removeUnresolved: true,
-  })
-
-  const data = await client
-    .getEntries({
-      content_type: 'list',
-      include: 10,
-    })
-    .then((response) => response.items)
-
+  const allProjects = await getAllProjectsForHome() ?? []
   return {
-    props: {
-      data,
-    },
+    props: { allProjects },
   }
 }
 

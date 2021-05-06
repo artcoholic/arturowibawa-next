@@ -43,8 +43,6 @@ const IconWrapper = styled(Box)`
 `
 
 const EntryItem = ({ entry, index }) => {
-  const item = entry.fields;
-  const metadata = item.info.fields;
 
   return (
     <Box
@@ -61,15 +59,14 @@ const EntryItem = ({ entry, index }) => {
         style={{ zIndex: 5 }}
       >
         <Tilt tiltReverse={true} scale={1.05} glareEnable={true} tiltMaxAngleX={4} tiltMaxAngleY={4} transitionEasing="cubic-bezier(.23,1,.32,1)" transitionSpeed={300} style={{ zIndex: 2, position: 'relative', transformStyle: 'preserve-3d' }}>
-          <Link href={`/work/${item.slug}`} passHref>
+          <Link href={`/work/${entry.slug}`} passHref>
             <AnchorWrapper
               as="a"
-              aria-label={metadata.title}
-              title={metadata.title}
+              aria-label={entry.info.title}
             >
               <Image
-                src={`http:${metadata.image.fields.file.url}`}
-                alt={metadata.image.fields.description}
+                src={entry.info.image.url}
+                alt={entry.info.description}
                 width={4}
                 height={5}
                 layout="responsive"
@@ -90,11 +87,11 @@ const EntryItem = ({ entry, index }) => {
             zIndex: 1,
           }}
         >
-          {metadata.title}
+          {entry.info.title}
         </Text>
       </Box>
       <Text style={{ writingMode: "vertical-rl", zIndex: 1 }} ml="spacing.2" fontSize={[3, null, null, null, 4]}>
-        0{index + 1} — {metadata.category}
+        0{index + 1} — {entry.info.category}
       </Text>
     </Box>
   )

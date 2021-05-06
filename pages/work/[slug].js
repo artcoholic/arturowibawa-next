@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
-import { createClient } from 'contentful';
 import Head from 'next/head';
 import VisitButton from '../../components/VisitButton';
 import CloseButton from '../../components/CloseButton';
 import SlugHeader from '../../components/SlugHeader';
+import PreviewLabel from '../../components/PreviewLabel';
 import { motion, useViewportScroll } from 'framer-motion';
 import { variants } from '../../components/AnimationVariants';
 import dynamic from 'next/dynamic';
+import { getAllProjectsWithSlug, getProjectAndMoreProjects } from '../../utils/api';
 
 const DynamicContent = dynamic(() => import('../../components/SlugContent'));
 
-export default function Slug({ entry }) {
-  const metadata = entry.fields.info.fields;
+export default function WorkSlug({ project, preview }) {
 
   const [hookedYPosition, setHookedYPosition] = useState(0);
   const { scrollY, scrollYProgress } = useViewportScroll();
@@ -26,58 +26,35 @@ export default function Slug({ entry }) {
   return (
     <>
       <Head>
-        <title>{entry.fields.title} — Arturo Wibawa</title>
+        <title>{project.title} — Arturo Wibawa</title>
       </Head>
-      <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} path={'/'} />
+      {preview && <PreviewLabel />}
+      <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/'} />
       <motion.article initial="initial" animate="enter" exit="exit" variants={variants.main}>
-        <SlugHeader entry={entry} />
-        <DynamicContent entry={entry} />
+        <SlugHeader entry={project} />
+        <DynamicContent entry={project} />
       </motion.article>
-      {metadata.url && <VisitButton url={metadata.url} hookedYPosition={hookedYPosition} entry={entry} />}
+      {project.info.url && <VisitButton url={project.info.url} hookedYPosition={hookedYPosition} entry={project} />}
     </>
   )
 }
 
-export async function getStaticProps(context) {
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  })
-
-  const result = await client
-    .getEntries({
-      content_type: 'project',
-      'fields.slug': context.params.slug,
-    })
-    .then((response) => response.items);
-
-  const entry = result.pop();
-
-  if (!entry) {
-    return { props: {} }
-  }
+export async function getStaticProps({ params, preview = false }) {
+  const data = await getProjectAndMoreProjects(params.slug, preview)
 
   return {
     props: {
-      entry,
+      preview,
+      project: data?.project ?? null,
+      moreProjects: data?.moreProjects ?? null,
     },
   }
 }
 
 export async function getStaticPaths() {
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  })
-  const entries = await client.getEntries({
-    content_type: 'project'
-  })
-    .then((response) => response.items);
-
-  const paths = entries.map(({ fields: { slug } }) => ({ params: { slug } }));
-
+  const allProjects = await getAllProjectsWithSlug()
   return {
-    paths,
-    fallback: false,
+    paths: allProjects?.map(({ slug }) => `/work/${slug}`) ?? [],
+    fallback: true,
   }
 }

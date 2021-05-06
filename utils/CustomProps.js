@@ -22,14 +22,6 @@ const config = {
   cursor: {
     property: 'cursor',
   },
-  hoverbg: {
-    property: 'background-color',
-    scale: 'colors',
-  },
-  hovercolor: {
-    property: 'color',
-    scale: 'colors',
-  },
 }
 
 export const CustomProps = system(config);

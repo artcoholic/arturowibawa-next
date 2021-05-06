@@ -16,7 +16,6 @@ const ProjectTitle = styled(Text)`
 `
 
 const SlugHeader = ({ entry }) => {
-  const metadata = entry.fields.info.fields;
   return (
     <Box
       as="section"
@@ -32,7 +31,7 @@ const SlugHeader = ({ entry }) => {
           variants={variants.slugTitle}
           pb="layout.1/8"
         >
-          {entry.fields.title}
+          {entry.title}
         </ProjectTitle>
       </Box>
       <Line
@@ -51,8 +50,8 @@ const SlugHeader = ({ entry }) => {
         justifyContent="space-between"
         style={{ clipPath: 'inset(0%)' }}
       >
-        {metadata.year && <Text as={motion.h2} mr={12} variants={variants.slugStats} fontSize={[3, 4]}>{metadata.year}</Text>}
-        {metadata.tags && <Text as={motion.h2} variants={variants.slugStats} fontSize={[3, 4]}>{metadata.tags.join(", ")}</Text>}
+        {entry.info.year && <Text as={motion.h2} mr={12} variants={variants.slugStats} fontSize={[3, 4]}>{entry.info.year}</Text>}
+        {entry.info.tags && <Text as={motion.h2} variants={variants.slugStats} fontSize={[3, 4]}>{entry.info.tags.join(", ")}</Text>}
       </Box>
     </Box>
   )
