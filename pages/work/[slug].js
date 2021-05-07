@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/router'
 import Head from 'next/head';
-import ErrorPage from 'next/error';
 import VisitButton from '../../components/VisitButton';
 import CloseButton from '../../components/CloseButton';
 import SlugHeader from '../../components/SlugHeader';
@@ -14,10 +12,6 @@ import { getAllProjectsWithSlug, getProjectAndMoreProjects } from '../../utils/a
 const DynamicContent = dynamic(() => import('../../components/SlugContent'));
 
 export default function WorkSlug({ project, preview }) {
-  const router = useRouter();
-  if (!router.isFallback && !project) {
-    return <ErrorPage statusCode={404} />
-  }
 
   const [hookedYPosition, setHookedYPosition] = useState(0);
   const { scrollY, scrollYProgress } = useViewportScroll();
@@ -35,16 +29,12 @@ export default function WorkSlug({ project, preview }) {
         <title>{project.title} — Arturo Wibawa</title>
       </Head>
       {preview && <PreviewLabel />}
-      {router.isFallback ? (<div>Loading...</div>) : (
-        <>
-          <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/'} />
-          <motion.article initial="initial" animate="enter" exit="exit" variants={variants.main}>
-            <SlugHeader entry={project} />
-            <DynamicContent entry={project} />
-          </motion.article>
-          {project.info.url && <VisitButton url={project.info.url} hookedYPosition={hookedYPosition} entry={project} />}
-        </>
-      )}
+      <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/'} />
+      <motion.article initial="initial" animate="enter" exit="exit" variants={variants.main}>
+        <SlugHeader entry={project} />
+        <DynamicContent entry={project} />
+      </motion.article>
+      {project.info.url && <VisitButton url={project.info.url} hookedYPosition={hookedYPosition} entry={project} />}
     </>
   )
 }
@@ -65,6 +55,6 @@ export async function getStaticPaths() {
   const allProjects = await getAllProjectsWithSlug()
   return {
     paths: allProjects?.map(({ slug }) => `/work/${slug}`) ?? [],
-    fallback: true,
+    fallback: 'blocking',
   }
 }
