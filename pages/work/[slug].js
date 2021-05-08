@@ -11,17 +11,28 @@ import { getAllProjectsWithSlug, getProjectAndMoreProjects } from '../../utils/a
 
 const DynamicContent = dynamic(() => import('../../components/SlugContent'));
 
-export default function WorkSlug({ project, preview }) {
-
-  const [hookedYPosition, setHookedYPosition] = useState(0);
+export default function WorkSlug({ project, preview, moreProjects }) {
   const { scrollY, scrollYProgress } = useViewportScroll();
+  const [hookedYPosition, setHookedYPosition] = useState(0);
+
+  const projectArray = moreProjects;
+  const currentIndex = moreProjects.findIndex(x => x.slug === project.slug);
+  function getAtIndex(i) {
+    if (i === 0) {
+      return projectArray[currentIndex];
+    } else if (i < 0) {
+      return projectArray[(currentIndex + projectArray.length + i) % projectArray.length];
+    } else if (i > 0) {
+      return projectArray[(currentIndex + i) % projectArray.length];
+    }
+  }
 
   useEffect(() => {
-    scrollY.onChange(y => setHookedYPosition(y));
+    const unsubsribe = scrollY.onChange(y => setHookedYPosition(y));
     return () => {
-      setHookedYPosition(0);
+      unsubsribe();
     }
-  }, [scrollY]);
+  }, []);
 
   return (
     <>
@@ -29,18 +40,18 @@ export default function WorkSlug({ project, preview }) {
         <title>{project.title} — Arturo Wibawa</title>
       </Head>
       {preview && <PreviewLabel />}
-      <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/'} />
+      <CloseButton scrollY={scrollY.current} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/'} />
       <motion.article initial="initial" animate="enter" exit="exit" variants={variants.main}>
         <SlugHeader entry={project} />
         <DynamicContent entry={project} />
       </motion.article>
-      {project.info.url && <VisitButton url={project.info.url} hookedYPosition={hookedYPosition} entry={project} />}
+      {project.info.url && <VisitButton url={project.info.url} scrollY={scrollY.current} entry={project} />}
     </>
   )
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const data = await getProjectAndMoreProjects(params.slug, preview)
+  const data = await getProjectAndMoreProjects(params.slug, preview);
 
   return {
     props: {
@@ -52,7 +63,7 @@ export async function getStaticProps({ params, preview = false }) {
 }
 
 export async function getStaticPaths() {
-  const allProjects = await getAllProjectsWithSlug()
+  const allProjects = await getAllProjectsWithSlug();
   return {
     paths: allProjects?.map(({ slug }) => `/work/${slug}`) ?? [],
     fallback: 'blocking',

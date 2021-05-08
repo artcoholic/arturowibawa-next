@@ -39,20 +39,15 @@ matrixCollection {
 `
 
 const PROJECT_LIST_GRAPHQL_FIELDS = `
-title
-itemsCollection {
-  items {
-    ... on Project {
-      slug
-      info {
-        title
-        image {
-          url
-          description
-        }
-        category
-      }
+... on Project {
+  slug
+  info {
+    title
+    image {
+      url
+      description
     }
+    category
   }
 }
 `
@@ -81,14 +76,15 @@ async function fetchGraphQL(query, preview = false) {
   ).then((response) => response.json())
 }
 
+// WORK
+
 function extractProject(fetchResponse) {
   return fetchResponse?.data?.projectCollection?.items?.[0]
 }
 function extractProjectEntries(fetchResponse) {
-  return fetchResponse?.data?.listCollection?.items?.[0]
+  return fetchResponse?.data?.listCollection?.items?.[0].itemsCollection?.items
 }
 
-// WORK
 export async function getPreviewProjectBySlug(slug) {
   const entry = await fetchGraphQL(
     `query {
@@ -106,9 +102,13 @@ export async function getPreviewProjectBySlug(slug) {
 export async function getAllProjectsForHome() {
   const entries = await fetchGraphQL(
     `query {
-      listCollection(limit: 2) {
+      listCollection(limit: 1) {
         items {
-          ${PROJECT_LIST_GRAPHQL_FIELDS}
+          itemsCollection {
+            items {
+              ${PROJECT_LIST_GRAPHQL_FIELDS}
+            }
+          }
         }
       }
     }`,
@@ -119,9 +119,13 @@ export async function getAllProjectsForHome() {
 export async function getAllProjectsWithSlug() {
   const entries = await fetchGraphQL(
     `query {
-      listCollection(where: { slug_exists: true }) {
+      listCollection {
         items {
-          ${PROJECT_LIST_GRAPHQL_FIELDS}
+          itemsCollection {
+            items {
+              ${PROJECT_LIST_GRAPHQL_FIELDS}
+            }
+          }
         }
       }
     }`
@@ -132,8 +136,7 @@ export async function getAllProjectsWithSlug() {
 export async function getProjectAndMoreProjects(slug, preview) {
   const entry = await fetchGraphQL(
     `query {
-      projectCollection(where: { slug: "${slug}" }, preview: ${preview ? 'true' : 'false'
-    }, limit: 1) {
+      projectCollection(where: { slug: "${slug}" }, preview: ${preview ? 'true' : 'false'}, limit: 1) {
         items {
           ${PROJECT_GRAPHQL_FIELDS}
         }
@@ -143,10 +146,16 @@ export async function getProjectAndMoreProjects(slug, preview) {
   )
   const entries = await fetchGraphQL(
     `query {
-      listCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${preview ? 'true' : 'false'
-    }, limit: 2) {
+      listCollection {
         items {
-          ${PROJECT_GRAPHQL_FIELDS}
+          itemsCollection {
+            items {
+              ... on Project {
+                title
+                slug
+              }
+            }
+          }
         }
       }
     }`,
@@ -158,6 +167,8 @@ export async function getProjectAndMoreProjects(slug, preview) {
   }
 }
 
+// BLOG
+
 function extractArticle(fetchResponse) {
   return fetchResponse?.data?.articleCollection?.items?.[0]
 }
@@ -165,7 +176,6 @@ function extractArticleEntries(fetchResponse) {
   return fetchResponse?.data?.articleCollection?.items
 }
 
-// BLOG
 export async function getPreviewArticleBySlug(slug) {
   const entry = await fetchGraphQL(
     `query {
@@ -209,8 +219,7 @@ export async function getAllArticlesWithSlug() {
 export async function getArticleAndMoreArticles(slug, preview) {
   const entry = await fetchGraphQL(
     `query {
-      articleCollection(where: { slug: "${slug}" }, preview: ${preview ? 'true' : 'false'
-    }, limit: 1) {
+      articleCollection(where: { slug: "${slug}" }, preview: ${preview ? 'true' : 'false'}, limit: 1) {
         items {
           ${ARTICLE_GRAPHQL_FIELDS}
         }
@@ -220,8 +229,7 @@ export async function getArticleAndMoreArticles(slug, preview) {
   )
   const entries = await fetchGraphQL(
     `query {
-      articleCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${preview ? 'true' : 'false'
-    }) {
+      articleCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${preview ? 'true' : 'false'}) {
         items {
           ${ARTICLE_GRAPHQL_FIELDS}
         }

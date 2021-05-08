@@ -33,7 +33,7 @@ const Wrapper = styled(Box)`
   }
 `
 
-const CloseButton = ({ hookedYPosition, scrollYProgress, path }) => {
+const CloseButton = ({ scrollY, scrollYProgress, path }) => {
   const yRange = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const pathLength = useSpring(yRange, { stiffness: 400, damping: 40 });
   return (
@@ -41,9 +41,9 @@ const CloseButton = ({ hookedYPosition, scrollYProgress, path }) => {
       <Wrapper
         as={motion.a}
         top="layout.1"
-        size={hookedYPosition > 0 ? 48 : 32}
+        size={scrollY > 0 ? 48 : 32}
         color="content.primary"
-        scrollY={hookedYPosition}
+        scrollY={scrollY}
         initial={{ scale: 0, x: '-50%' }}
         animate={{ scale: 1 }}
         exit={{ scale: 0 }}

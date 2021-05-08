@@ -4,7 +4,7 @@ import EntryItem from '../components/EntryItem';
 import Box from '../components/Box';
 import Text from '../components/Text';
 import { variants } from '../components/AnimationVariants';
-import { motion, useElementScroll } from 'framer-motion';
+import { motion, useTransform, useSpring, useElementScroll } from 'framer-motion';
 import { ArrowRight } from 'akar-icons';
 import { getAllProjectsForHome } from '../utils/api';
 
@@ -32,10 +32,11 @@ const ProgressBar = styled(Box)`
 `
 
 const HomePage = ({ allProjects }) => {
-  const entries = allProjects.itemsCollection.items;
-
+  const entries = allProjects;
   const objectRef = useRef();
   const { scrollXProgress } = useElementScroll(objectRef)
+  const xRange = useTransform(scrollXProgress, [0, 1], [0, 1]);
+  const pathLength = useSpring(xRange, { stiffness: 400, damping: 40 });
 
   function onPan(event, info) {
     const scrollObject = objectRef.current;
@@ -97,7 +98,7 @@ const HomePage = ({ allProjects }) => {
             height={2}
             bg="content.primary"
             as={motion.div}
-            style={{ scaleX: scrollXProgress }}
+            style={{ scaleX: pathLength }}
             overflow="hidden"
           />
         </Box>

@@ -26,7 +26,7 @@ const Wrapper = styled(Text)`
   }
 `
 
-const VisitButton = ({ hookedYPosition, url, entry }) => {
+const VisitButton = ({ scrollY, url, entry }) => {
   return (
     <Box
       position="fixed"
@@ -43,7 +43,7 @@ const VisitButton = ({ hookedYPosition, url, entry }) => {
         width={['100%', null, null, 'auto']}
         target="_blank"
         rel="noopener"
-        style={{ y: hookedYPosition > 24 ? 0 : 92 }}
+        style={{ y: scrollY > 24 ? 0 : 92 }}
         exit={{ y: 92 }}
         transition={{ duration: 0.3 }}
       >
