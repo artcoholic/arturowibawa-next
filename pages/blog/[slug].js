@@ -56,18 +56,18 @@ export default function Slug({ article, preview }) {
   const { scrollY, scrollYProgress } = useViewportScroll();
 
   useEffect(() => {
-    scrollY.onChange(y => setHookedYPosition(y));
+    const unsubsribe = scrollY.onChange(y => setHookedYPosition(y));
     return () => {
-      setHookedYPosition(0);
+      unsubsribe();
     }
-  }, [scrollY]);
+  }, []);
   return (
     <>
       <Head>
         <title>{article.title} — Arturo Wibawa</title>
       </Head>
       {preview && <PreviewLabel />}
-      <CloseButton hookedYPosition={hookedYPosition} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/blog'} />
+      <CloseButton scrollY={scrollY.current} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/blog'} />
       <Grid mx="layout.1" py="layout.1" as={motion.section} initial="initial" animate="enter" exit="exit" variants={variants.main}>
         <Box as={motion.div} variants={variants.ProfileSection} columns={['1/-1', null, '2/span 6', '4/span 6']} mt={["layout.4", "layout.3"]}>
           <Text as={motion.div} variants={variants.ProfileContent} font="ParagraphMedium" color="content.inverseTertiary" mb={['layout.1', "layout.3/4"]} display="flex" alignItems="baseline">

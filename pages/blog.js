@@ -111,11 +111,23 @@ const BlogPage = ({ allArticles }) => {
           {allArticles.map((article, index) =>
             <Link key={index} href={`/blog/${article.slug}`} passHref>
               <a style={{ textDecoration: 'none' }}>
-                <ArticleWrapper as={motion.div} variants={variants.ProfileContent} my="layout.1/4">
+                <ArticleWrapper
+                  as={motion.div}
+                  variants={variants.ProfileContent}
+                  bg={['bg.tertiary', null, null, 'bg.primary']}
+                  borderRadius={[8, null, null, 0]}
+                  px={['layout.1', null, null, 0]} pt={['layout.1', null, null, 0]} pb={["layout.1", null, null, "layout.1/2"]}
+                  my="layout.1/4"
+                >
                   <Text color="content.inverseTertiary" font="ParagraphMedium" mb="layout.1/2">
                     {`${article.date.slice(5, 7)} / ${article.date.slice(0, 4)}`}
                   </Text>
-                  <Text as="h2" font="HeadingSmall" color="content.inverseTertiary" mb={["layout.1", null, null, "layout.1/2"]}>
+                  <Text
+                    as="h2"
+                    font="HeadingSmall"
+                    color="content.inverseTertiary"
+                  // mb={["layout.1", null, null, "layout.1/2"]}
+                  >
                     {article.title}
                   </Text>
                 </ArticleWrapper>

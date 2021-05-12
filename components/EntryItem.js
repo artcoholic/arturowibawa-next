@@ -10,7 +10,7 @@ import { EyeOpen } from 'akar-icons';
 
 const AnchorWrapper = styled(Box)`
   display: block;
-  border-radius: 4px;
+  border-radius: 8px;
   overflow: hidden;
   background-color: ${props => props.theme.colors.bg.placeholder};
   transition: all 300ms ${props => props.theme.ease.Smooth};
