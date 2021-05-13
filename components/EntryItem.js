@@ -58,7 +58,7 @@ const EntryItem = ({ entry, index }) => {
         maxWidth={[320, null, null, null, 400, 600]}
         style={{ zIndex: 5 }}
       >
-        <Tilt tiltReverse={true} scale={1.05} glareEnable={true} tiltMaxAngleX={4} tiltMaxAngleY={4} transitionEasing="cubic-bezier(.23,1,.32,1)" transitionSpeed={300} style={{ zIndex: 2, position: 'relative', transformStyle: 'preserve-3d' }}>
+        <Tilt tiltReverse={true} scale={1.05} glareEnable={true} glareBorderRadius="8px" tiltMaxAngleX={4} tiltMaxAngleY={4} transitionEasing="cubic-bezier(.23,1,.32,1)" transitionSpeed={300} style={{ zIndex: 2, position: 'relative', transformStyle: 'preserve-3d' }}>
           <Link href={`/work/${entry.slug}`} passHref>
             <AnchorWrapper
               as="a"
