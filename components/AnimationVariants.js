@@ -49,10 +49,27 @@ export const sphere = keyframes`
   90%   {rx: 10px; ry: 20px}
   100%  {cx: 0px; rx: 0px; ry: 0px}
 `
-
 export const radius = keyframes`
   from   {r: 20px}
   to     {r: 40px}
+`
+export const eyeLid = keyframes`
+  0%    {transform: scaleY(1)}
+  10%   {transform: scaleY(.57)}
+  20%   {transform: scaleY(1)}
+  100%  {transform: scaleY(1)}
+`
+export const eyeBall = keyframes`
+  0%    {transform: translate(0, 0); opacity: 1}
+  10%   {transform: translate(0, 2px); opacity: 0}
+  20%   {transform: translate(0, 0); opacity: 1}
+  100%  {transform: translate(0, 0); opacity: 1}
+`
+export const eyeLashes = keyframes`
+  0%    {opacity: 0}
+  10%   {opacity: 1}
+  20%   {opacity: 0}
+  100%  {opacity: 0}
 `
 
 export const variants = {
