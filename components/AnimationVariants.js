@@ -55,7 +55,7 @@ export const radius = keyframes`
 `
 export const eyeLid = keyframes`
   0%    {transform: scaleY(1)}
-  10%   {transform: scaleY(.57)}
+  10%   {transform: scaleY(.2)}
   20%   {transform: scaleY(1)}
   100%  {transform: scaleY(1)}
 `
@@ -64,12 +64,6 @@ export const eyeBall = keyframes`
   10%   {transform: translate(0, 2px); opacity: 0}
   20%   {transform: translate(0, 0); opacity: 1}
   100%  {transform: translate(0, 0); opacity: 1}
-`
-export const eyeLashes = keyframes`
-  0%    {opacity: 0}
-  10%   {opacity: 1}
-  20%   {opacity: 0}
-  100%  {opacity: 0}
 `
 
 export const variants = {
