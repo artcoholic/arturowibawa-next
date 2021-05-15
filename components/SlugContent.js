@@ -46,7 +46,7 @@ const SlugContent = ({ entry }) => {
     <Grid
       as={motion.section}
       mx="layout.1"
-      mb={["layout.4", 'layout.3', null, 'layout.1/2']}
+      mb={["layout.3/4", null, null, 'layout.1/2']}
       variants={variants.slugContent}
       transition={{
         type: 'spring',
@@ -101,9 +101,9 @@ const SlugContent = ({ entry }) => {
                 }
                 key={item.sys.id}
                 color="content.inverseTertiary"
-                font={["ParagraphMedium", null, "ParagraphLarge"]}
+                font={["ParagraphSmall", "ParagraphMedium", null, "ParagraphLarge"]}
                 textAlign={
-                  item.alignText === "Center" ? 'center' : ['center', null, 'left']
+                  item.alignText === "Center" ? ['left', null, 'center'] : 'left'
                 }
               >
                 <Markdown source={item.paragraph} escapeHtml={true} linkTarget="_blank" />

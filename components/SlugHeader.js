@@ -13,6 +13,9 @@ const Line = styled(Box)`
 const ProjectTitle = styled(Text)`
   text-align: center;
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 const SlugHeader = ({ entry }) => {
@@ -22,12 +25,12 @@ const SlugHeader = ({ entry }) => {
       width="100%"
       mb={["layout.1", null, "layout.1/2"]}
       px="layout.1"
-      mt={["layout.4", "layout.3"]}
+      mt={["layout.4", null, null, "layout.3"]}
     >
       <Box style={{ clipPath: 'inset(0%)' }}>
         <ProjectTitle
           as={motion.h1}
-          font={["HeadingMedium", "HeadingLarge"]}
+          font={["HeadingSmall", "HeadingMedium", "HeadingLarge"]}
           variants={variants.slugTitle}
           pb="layout.1/8"
         >

@@ -18,7 +18,7 @@ const Wrapper = styled(Box)`
   background-color: ${({ scrollY }) => scrollY > 0 ? 'rgba(255,255,255,0.25)' : 'none'};
   border: ${({ scrollY }) => scrollY > 0 ? '1px solid var(--contentSecondary)' : 'none'};
   box-shadow: ${({ scrollY }) => scrollY > 0 ? '0 4px 8px 0px rgba(0,0,0,0.15)' : 'none'};
-  backdrop-filter: blur(12px);
+  backdrop-filter: ${({ scrollY }) => scrollY > 0 ? 'blur(12px)' : 'none'};
   &:hover {
     background-color: ${({ scrollY }) => scrollY > 0 ? 'rgba(255,255,255,1)' : 'none'};
   }
