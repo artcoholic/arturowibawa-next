@@ -65,9 +65,9 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
           cursor={entry.info.url ? "pointer" : "not-allowed"}
           px="1.5rem"
           minWidth={0}
-          layout="position"
-          initial={{ borderRadius: 28 }}
-          transition={{ type: "spring", stiffness: 500, damping: 100, mass: 10 }}
+        // layout="position"
+        // initial={{ borderRadius: 28 }}
+        // transition={{ type: "spring", stiffness: 500, damping: 100, mass: 10 }}
         >
           <Box
             as={motion.div}
@@ -75,8 +75,8 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
             flexDirection="column"
             pt={4}
             minWidth={0}
-            layout="position"
-            transition={{ type: 'spring', stiffness: 500, damping: 100, mass: 10 }}
+          // layout="position"
+          // transition={{ type: 'spring', stiffness: 500, damping: 100, mass: 10 }}
           >
             <Text
               letterSpacing={1.2}
@@ -97,7 +97,7 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
           {entry.info.url &&
             <Box
               as={motion.div}
-              layout
+              // layout
               minWidth={24}
               ml="1rem"
             >
