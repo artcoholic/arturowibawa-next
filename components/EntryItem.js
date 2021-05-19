@@ -77,7 +77,7 @@ const EntryItem = ({ entry, index }) => {
             >
               <Image
                 src={entry.info.image.url}
-                alt={entry.info.description}
+                alt={entry.info.title}
                 width={4}
                 height={5}
                 layout="responsive"
