@@ -106,7 +106,7 @@ const SlugContent = ({ entry }) => {
                   item.alignText === "Center" ? ['left', null, 'center'] : 'left'
                 }
               >
-                <Markdown source={item.paragraph} escapeHtml={true} linkTarget="_blank" />
+                <Markdown children={item.paragraph} linkTarget="_blank" />
               </MarkdownWrapper>
             );
             break;
