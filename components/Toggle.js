@@ -12,6 +12,7 @@ const Wrapper = styled(Box)`
   display: flex;
   border-radius: 9999em;
   align-items: center;
+  cursor: pointer;
   &:before {
     content: '';
     width: 100%;
@@ -36,7 +37,6 @@ const Thumb = styled(Box)`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  cursor: pointer;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
   display: flex;
   justify-content: center;
@@ -47,7 +47,7 @@ const Thumb = styled(Box)`
 const Toggle = ({ checked, onChange }) => (
   <Wrapper
     top="layout.1"
-    as="span"
+    as="label"
   >
     <input
       type="checkbox"
@@ -56,7 +56,7 @@ const Toggle = ({ checked, onChange }) => (
       onChange={onChange}
     />
     <Thumb
-      as="label"
+      as="span"
       htmlFor="switch"
       className="thumb"
       bg="content.inversePrimary"

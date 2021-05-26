@@ -41,38 +41,41 @@ const MarkdownWrapper = styled(Text)`
   }
   h1, h2, h3, h4 {
     line-height: 1.25em;
-    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.25em;
+    color: ${props => props.theme.colors.content.inverseSecondary};
+    font-weight: normal;
+  }
+  h3, h4 {
+    font-weight: bold;
   }
   h1 {
-    font-size: 2.4em;
+    font-size: 2em;
   }
   h2 {
-    font-size: 1.8em;
+    font-size: 1.6em;
   }
   h3 {
-    font-size: 1.4em;
+    font-size: 1em;
   }
   h4 {
-    font-size: 1.2em;
+    font-size: 1em;
   }
   p {
     margin-bottom: ${props => props.theme.space.layout['1/2']};
-    font-family: "Eina Light";
   }
   ul, ol {
     padding-inline-start: ${props => props.theme.space.layout['1']};
-    font-family: "Eina Light";
     li {
       padding-left: 0.25em;
     }
-  }
-  strong {
-    font-family: "Eina Regular";
   }
   hr {
     border-style: none;
     background-color: ${props => props.theme.colors.content.inverseSecondary};
     height: 1px;
+    margin-top: 0.25em;
+    margin-bottom: 1em;
   }
   code {
     background-color: ${props => props.theme.colors.bg.placeholder};
@@ -93,6 +96,9 @@ const MarkdownWrapper = styled(Text)`
     p:first-child {
       margin-bottom: 0;
     }
+  }
+  img {
+    width: 100%;
   }
 `
 
@@ -122,10 +128,10 @@ export default function Slug({ article, preview }) {
       <CloseButton scrollY={scrollY.current} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/blog'} />
       <Grid mx="layout.1" py="layout.1" as={motion.section} initial="initial" animate="enter" exit="exit" variants={variants.main}>
         <Box as={motion.div} variants={variants.ProfileSection} columns={['1/-1', null, '2/span 6', '4/span 6']} mt={["layout.4", "layout.3"]}>
-          <Text as={motion.div} variants={variants.ProfileContent} font="ParagraphMedium" color="content.inverseTertiary" mb={['layout.1', "layout.3/4"]} display="flex" alignItems="baseline">
+          <Text as={motion.div} variants={variants.ProfileContent} font="ParagraphMedium" color="content.inverseTertiary" mb='layout.1/2' display="flex" alignItems="baseline">
             {`${article.date.slice(5, 7)} / ${article.date.slice(0, 4)}`}
           </Text>
-          <Text as={motion.h1} variants={variants.ProfileContent} font={["HeadingSmall", "HeadingMedium", "HeadingLarge"]}>
+          <Text as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]}>
             {article.title}
           </Text>
         </Box>
@@ -136,7 +142,7 @@ export default function Slug({ article, preview }) {
           bg="content.inverseSecondary"
           columns={['1/-1', null, null, '3/span 8']}
           mt={["layout.1", "layout.1/2"]}
-          mb={["layout.1n", "layout.1"]}
+          mb={["layout.1/2", "layout.1/2"]}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{
