@@ -102,7 +102,7 @@ export async function getPreviewProjectBySlug(slug) {
 export async function getAllProjectsForHome() {
   const entries = await fetchGraphQL(
     `query {
-      listCollection(limit: 1) {
+      listCollection(limit: 2, where: {title: "Project List"}) {
         items {
           itemsCollection {
             items {

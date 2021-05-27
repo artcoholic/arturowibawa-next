@@ -6,7 +6,6 @@ import Link from "next/link";
 import { variants, eyeLid, eyeBall, eyeLashes } from './AnimationVariants';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
-import { EyeOpen } from 'akar-icons';
 
 const AnchorWrapper = styled(Box)`
   display: block;
@@ -54,7 +53,6 @@ const IconWrapper = styled(Box)`
 `
 
 const EntryItem = ({ entry, index }) => {
-
   return (
     <Box
       display="flex"

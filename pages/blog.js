@@ -37,7 +37,6 @@ const CircleWrapper = styled(Box)`
 
 const ArticleWrapper = styled(Box)`
   width: 100%;
-  border-bottom: 1px solid ${props => props.theme.colors.bg.placeholder};
   &:after {
     content: '';
     position: absolute;
@@ -51,17 +50,25 @@ const ArticleWrapper = styled(Box)`
     transform-origin: right;
   }
   &:hover {
-    h2 {
-    color: ${props => props.theme.colors.content.primary};
-    }
-    &:after {
-      transform: scaleX(1);
-      transform-origin: left;
+    background: ${props => props.theme.colors.bg.secondary};
+  }
+  @media (min-width: ${props => props.theme.breakpoints[2]}) {
+    border-bottom: 1px solid ${props => props.theme.colors.bg.placeholder};
+    &:hover {
+      background: none;
+      h2 {
+      color: ${props => props.theme.colors.content.primary};
+      }
+      &:after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
     }
   }
 `
 
 const BlogPage = ({ allArticles }) => {
+  console.log(allArticles);
   return (
     <>
       <Head>
@@ -105,7 +112,7 @@ const BlogPage = ({ allArticles }) => {
         initial="initial" animate="enter" exit="exit" variants={variants.main}
       >
         <Box as={motion.div} variants={variants.ProfileSection} columns={['span 2', 'span 4', '2/span 6', '7/span 5']} style={{ cursor: 'pointer' }} mt={["layout.4", "layout.3", null, "layout.2"]}>
-          <HeaderWrapper as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb="layout.1">
+          <HeaderWrapper as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb={["layout.1", null, null, 0]}>
             Thoughts
           </HeaderWrapper>
           {allArticles.map((article, index) =>
@@ -116,7 +123,7 @@ const BlogPage = ({ allArticles }) => {
                   variants={variants.ProfileContent}
                   bg={['bg.tertiary', null, null, 'bg.primary']}
                   borderRadius={[8, null, null, 0]}
-                  px={['layout.1', null, null, 0]} pt={['layout.1', null, null, 0]} pb={["layout.1", null, null, "layout.1/2"]}
+                  px={['layout.1', null, null, 0]} py={["layout.1", null, null, "layout.1/2"]}
                   my="layout.1/4"
                 >
                   <Text color="content.inverseTertiary" font="ParagraphMedium" mb="layout.1/2">
@@ -126,7 +133,6 @@ const BlogPage = ({ allArticles }) => {
                     as="h2"
                     font="HeadingSmall"
                     color="content.inverseTertiary"
-                  // mb={["layout.1", null, null, "layout.1/2"]}
                   >
                     {article.title}
                   </Text>
