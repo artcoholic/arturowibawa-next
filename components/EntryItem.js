@@ -76,8 +76,8 @@ const EntryItem = ({ entry, index }) => {
               <Image
                 src={entry.info.image.url}
                 alt={entry.info.title}
-                width={4}
-                height={5}
+                width={40}
+                height={50}
                 layout="responsive"
                 placeholder="blur"
                 blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
