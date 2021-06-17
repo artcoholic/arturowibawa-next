@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link'
 import styled from 'styled-components';
-import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Text from './Text';
 import Box from './Box';
 import { ArrowForwardThickFill, ArrowLeft, ArrowRight } from 'akar-icons';
@@ -56,56 +56,49 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
           </ButtonWrapper>
         </Link>
       </Box>
-      <AnimatePresence>
-        <ButtonWrapper
-          as={motion.a}
-          href={entry.info.url}
-          target="_blank"
-          rel="noopener"
-          cursor={entry.info.url ? "pointer" : "not-allowed"}
-          px="1.5rem"
+      <ButtonWrapper
+        as={motion.a}
+        href={entry.info.url}
+        target="_blank"
+        rel="noopener"
+        cursor={entry.info.url ? "pointer" : "not-allowed"}
+        px="1.5rem"
+        minWidth={0}
+      >
+        <Box
+          as={motion.div}
+          display="flex"
+          flexDirection="column"
+          pt={4}
           minWidth={0}
-        // layout="position"
-        // initial={{ borderRadius: 28 }}
-        // transition={{ type: "spring", stiffness: 500, damping: 100, mass: 10 }}
         >
+          <Text
+            letterSpacing={1.2}
+            fontSize={2}
+            fontWeight="bold"
+            color="#1B1C32"
+            style={{ textTransform: 'uppercase' }}
+          >
+            Visit
+            </Text>
+          <Text
+            color="#1B1C32"
+            style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
+          >
+            {entry.info.url ? entry.title : "Unavailable"}
+          </Text>
+        </Box>
+        {entry.info.url &&
           <Box
             as={motion.div}
-            display="flex"
-            flexDirection="column"
-            pt={4}
-            minWidth={0}
-          // layout="position"
-          // transition={{ type: 'spring', stiffness: 500, damping: 100, mass: 10 }}
+            // layout
+            minWidth={24}
+            ml="1rem"
           >
-            <Text
-              letterSpacing={1.2}
-              fontSize={2}
-              fontWeight="bold"
-              color="#1B1C32"
-              style={{ textTransform: 'uppercase' }}
-            >
-              Visit
-            </Text>
-            <Text
-              color="#1B1C32"
-              style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
-            >
-              {entry.info.url ? entry.title : "Unavailable"}
-            </Text>
+            <ArrowForwardThickFill color="#1B1C32" />
           </Box>
-          {entry.info.url &&
-            <Box
-              as={motion.div}
-              // layout
-              minWidth={24}
-              ml="1rem"
-            >
-              <ArrowForwardThickFill color="#1B1C32" />
-            </Box>
-          }
-        </ButtonWrapper>
-      </AnimatePresence>
+        }
+      </ButtonWrapper>
     </Box>
   )
 }

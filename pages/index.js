@@ -54,7 +54,7 @@ const HomePage = ({ allProjects }) => {
   return (
     <motion.div variants={variants.main} initial="initial" animate="enter" exit="exit">
       <HorizontalContainer
-        px="layout.1"
+        pl="layout.1"
         ref={objectRef}
         as={motion.section}
         onPan={onPan}

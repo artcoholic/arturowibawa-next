@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Box from './Box';
 import Text from './Text';
 import Link from "next/link";
-import { variants, eyeLid, eyeBall, eyeLashes } from './AnimationVariants';
+import { variants, eyeLid, eyeBall } from './AnimationVariants';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 
@@ -79,6 +79,8 @@ const EntryItem = ({ entry, index }) => {
                 width={4}
                 height={5}
                 layout="responsive"
+                placeholder="blur"
+                blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
               />
             </AnchorWrapper>
           </Link>
