@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "server": "yarn build && NODE_ENV=production node server.js"
+    "server": "yarn build && NODE_ENV=production node server.js",
+    "lint": "next lint"
   },
   "dependencies": {
     "akar-icons": "^1.5.2",
@@ -23,6 +24,8 @@
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.12.0"
+    "babel-plugin-styled-components": "^1.12.0",
+    "eslint": "^7.29.0",
+    "eslint-config-next": "^11.0.1"
   }
 }

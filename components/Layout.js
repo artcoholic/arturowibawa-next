@@ -45,15 +45,15 @@ const Layout = ({ children }) => {
         <link rel='shortcut icon' href='/favicon.ico' />
         <link
           rel="preload"
-          href="/fonts/eina-01-light.ttf"
+          href="/fonts/eina-01-light.woff2"
           as="font"
-          crossOrigin=""
+          type="font/woff2"
         />
         <link
           rel="preload"
-          href="/fonts/eina-01-regular.ttf"
+          href="/fonts/eina-01-regular.woff2"
           as="font"
-          crossOrigin=""
+          type="font/woff2"
         />
 
         {/* TWITTER META */}
@@ -81,7 +81,7 @@ const Layout = ({ children }) => {
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
         />
-        < script
+        <script
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];

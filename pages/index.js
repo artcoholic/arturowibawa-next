@@ -2,13 +2,12 @@ import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Box from '../components/Box';
 import Text from '../components/Text';
+import EntryItem from '../components/EntryItem';
 import { variants } from '../components/AnimationVariants';
 import { motion, useTransform, useSpring, useElementScroll } from 'framer-motion';
 import { ArrowRight } from 'akar-icons';
 import { getAllProjectsForHome } from '../utils/api';
-import dynamic from 'next/dynamic';
 
-const DynamicContent = dynamic(() => import('../components/EntryItem'));
 
 const HorizontalContainer = styled(Box)`
   display: flex;
@@ -62,7 +61,7 @@ const HomePage = ({ allProjects }) => {
         onPan={onPan}
         variants={variants.entryList}
       >
-        {entries.map((entry, index) => <DynamicContent key={index} entry={entry} index={index} />)}
+        {entries.map((entry, index) => <EntryItem key={index} entry={entry} index={index} />)}
       </HorizontalContainer>
       <Box
         width="100%"

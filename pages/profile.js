@@ -126,7 +126,7 @@ const ProfilePage = () => {
             Arturo Wibawa is a product designer based in Los Angeles, California with a strong focus on product strategy, user experience, and interaction design.
           </Text>
           <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium"]} color="content.inverseTertiary" mb="layout.1/2">
-            He's keen to experiment with new technology and believes that the best solutions are the simplest ones.
+            He&apos;s keen to experiment with new technology and believes that the best solutions are the simplest ones.
           </Text>
           <EmailLink
             as={motion.a}
