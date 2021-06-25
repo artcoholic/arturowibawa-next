@@ -183,7 +183,7 @@ export default function Slug({ article, preview }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const data = await getArticleAndMoreArticles(params.slug, preview)
+  const data = await getArticleAndMoreArticles(params.slug, preview);
 
   return {
     props: {
@@ -195,7 +195,7 @@ export async function getStaticProps({ params, preview = false }) {
 }
 
 export async function getStaticPaths() {
-  const allArticles = await getAllArticlesForBlog()
+  const allArticles = await getAllArticlesForBlog();
   return {
     paths: allArticles?.map(({ slug }) => `/blog/${slug}`) ?? [],
     fallback: 'blocking',

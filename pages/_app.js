@@ -6,6 +6,7 @@ import { AnimatePresence } from "framer-motion";
 import Layout from '../components/Layout';
 import * as gtag from '../utils/gtag';
 
+
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter()
   useEffect(() => {

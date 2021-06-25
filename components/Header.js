@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Box from './Box';
 import Text from './Text';
-import MenuContainer from './MenuContainer';
 import { Cross, Circle } from 'akar-icons';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+
+const MenuContainer = dynamic(() => import('./MenuContainer'));
 
 const Container = styled(Box)`
   display: flex;
@@ -80,7 +82,7 @@ const Header = () => {
           </Logo>
         </a>
       </Link>
-      { router.pathname.startsWith('/work') || router.pathname.startsWith('/blog/[slug]') ? null :
+      {router.pathname.startsWith('/work') || router.pathname.startsWith('/blog/[slug]') ? null :
         <Name fontSize={3} pt={3}>Arturo • Wibawa</Name>
       }
       <Dot
