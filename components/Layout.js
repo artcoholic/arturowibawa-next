@@ -48,12 +48,14 @@ const Layout = ({ children }) => {
           href="/fonts/eina-01-light.woff2"
           as="font"
           type="font/woff2"
+          crossOrigin=""
         />
         <link
           rel="preload"
           href="/fonts/eina-01-regular.woff2"
           as="font"
           type="font/woff2"
+          crossOrigin=""
         />
 
         {/* TWITTER META */}
