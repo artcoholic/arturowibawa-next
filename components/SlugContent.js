@@ -89,7 +89,7 @@ const SlugContent = ({ entry }) => {
                           layout="responsive"
                           width={asset.width}
                           height={asset.height}
-                          sizes="(max-width: 600px) 100vw, (max-width: 1023px) 48vw, 23vw"
+                          sizes="(max-width: 600px) 50vw, (max-width: 1023px) 48vw, 23vw"
                         />
                       }
                       {asset.contentType.includes('video') &&
