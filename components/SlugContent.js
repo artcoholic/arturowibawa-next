@@ -80,7 +80,17 @@ const SlugContent = ({ entry }) => {
                       key={asset.sys.id}
                     >
                       {asset.contentType.includes('image') &&
-                        <Image src={asset.url} alt={asset.title} placeholder="blur" blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" layout="responsive" width={asset.width} height={asset.height} />
+                        <Image
+                          src={asset.url}
+                          alt={asset.title}
+                          placeholder="blur"
+                          quality={35}
+                          blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                          layout="responsive"
+                          width={asset.width}
+                          height={asset.height}
+                          sizes="(max-width: 600px) 100vw, (max-width: 1023px) 48vw, 23vw"
+                        />
                       }
                       {asset.contentType.includes('video') &&
                         <ReactPlayer ref={ref} url={asset.url} playing muted loop width="100%" height="100%" playsinline />

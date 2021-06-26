@@ -79,8 +79,10 @@ const EntryItem = ({ entry, index }) => {
                 width={40}
                 height={50}
                 layout="responsive"
+                quality={35}
                 placeholder="blur"
                 blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                sizes="(max-width: 600px) 100vw, (max-width: 1023px) 48vw, 23vw"
               />
             </AnchorWrapper>
           </Link>
