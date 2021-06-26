@@ -82,7 +82,7 @@ const EntryItem = ({ entry, index }) => {
                 quality={35}
                 placeholder="blur"
                 blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                sizes="(max-width: 600px) 100vw, (max-width: 1023px) 48vw, 23vw"
+                sizes="(max-width: 640px) 25vw, (max-width: 1280px) 50vw, 50vw"
               />
             </AnchorWrapper>
           </Link>
