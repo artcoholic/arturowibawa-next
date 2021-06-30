@@ -15,9 +15,9 @@ const Container = styled(Box)`
   align-items: center;
   pointer-events:none;
   width: 100%;
-  position: absolute;
   top: 0;
   left: 0;
+  z-index: 99;
 `
 
 const Dot = styled(Box)`
@@ -73,7 +73,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   return (
-    <Container as="header" p="layout.1">
+    <Container as="header" p="layout.1" position={['absolute', null, null, 'fixed']}>
       <MenuContainer open={open} setOpen={setOpen} />
       <Link href="/" passHref>
         <a style={{ zIndex: 1, pointerEvents: 'auto' }} title="Home" aria-label="Home">
