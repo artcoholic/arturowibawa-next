@@ -8,7 +8,7 @@ import Layout from '../components/Layout';
 import TagManager from "react-gtm-module"
 
 const tagManagerArgs = {
-  id: process.env.GTM,
+  id: 'GTM-W5B77X3',
 }
 
 const MyApp = ({ Component, pageProps }) => {
