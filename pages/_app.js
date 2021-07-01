@@ -4,24 +4,14 @@ import { GlobalStyles } from '../theme.config';
 import Providers from '../components/Providers';
 import { AnimatePresence } from "framer-motion";
 import Layout from '../components/Layout';
-// import * as gtag from '../utils/gtag';
-import TagManager from "react-gtm-module"
+import TagManager from "react-gtm-module";
 
 const tagManagerArgs = {
-  id: 'GTM-W5B77X3',
+  gtmId: 'GTM-W5B77X3',
 }
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter()
-  // useEffect(() => {
-  //   const handleRouteChange = (url) => {
-  //     gtag.pageview(url)
-  //   }
-  //   router.events.on('routeChangeComplete', handleRouteChange)
-  //   return () => {
-  //     router.events.off('routeChangeComplete', handleRouteChange)
-  //   }
-  // }, [router.events])
   useEffect(() => {
     TagManager.initialize(tagManagerArgs);
   }, [])
