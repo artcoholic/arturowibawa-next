@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Header from './Header';
 import styled from 'styled-components';
-import { GA_TRACKING_ID } from '../utils/gtag';
 import useDarkMode from 'use-dark-mode';
 import { grain } from './AnimationVariants';
 
