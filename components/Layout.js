@@ -79,7 +79,7 @@ const Layout = ({ children }) => {
         <meta property="og:image:height" content="630" />
 
         {/* Global Site Tag (gtag.js) - Google Analytics */}
-        <script
+        {/* <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
         />
@@ -94,7 +94,7 @@ const Layout = ({ children }) => {
             });
           `,
           }}
-        />
+        /> */}
       </Head >
       <Header />
       <Main DarkMode={darkMode.value}>
