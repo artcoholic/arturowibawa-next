@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import Text from './Text';
-import { blink, variants } from './AnimationVariants';
+import { variants } from './AnimationVariants';
 import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'akar-icons';
 
 const StyledNavButton = styled(Text)`
   display: flex;
@@ -14,36 +15,38 @@ const StyledNavButton = styled(Text)`
   outline: none;
   padding: 0;
   text-decoration: none;
-  &:focus {
-    &:before {
-      content: '';
-      height:100%;
-      width: 100%;
-      position: absolute;
-      box-shadow: inset -1px 0 0 ${props => props.theme.colors.bg.primary};
-      animation: ${blink} 750ms ${props => props.theme.ease.It} infinite alternate;
-    }
-  }
-  &:hover {
+  &:hover, &:focus {
     &:after {
-      transform: scaleX(1);
-      transform-origin: 0%;
+      transform: translateX(0%);
+      transform-origin: 100%;
     }
   }
   &:after {
     content: '';
     position: absolute;
+    left: 0;
+    top: 0;
     background: ${props => props.theme.colors.bg.primary};
     transition: transform 300ms ${props => props.theme.ease.Smooth};
     height: 100%;
     width: 100%;
-    transform: scaleX(0);
-    transform-origin: 100%;
-  }
-  sup {
-    font-size: xxx-large;
+    transform: translateX(-101%);
+    transform-origin: 0%;
+    color: ${props => props.theme.colors.content.inverseTertiary};
+    padding: ${props => props.theme.space.layout['1/2']};
+    display: flex;
+    align-items: flex-end; 
+    box-sizing: inherit;
+    @media (min-width: ${props => props.theme.breakpoints[1]}) {
+      content: attr(data-title);
+      font-size: ${props => props.theme.fontSizes[6]}px;
+    }
+    @media (min-width: ${props => props.theme.breakpoints[2]}) {
+      font-size: ${props => props.theme.fontSizes[8]}px;
+    }
   }
 `
+
 
 const MenuItem = ({ children, path, setOpen, style, title, color }) => {
   return (
@@ -57,7 +60,7 @@ const MenuItem = ({ children, path, setOpen, style, title, color }) => {
           onClick={() => setOpen(false)}
           style={style}
           aria-label={title}
-          title={title}
+          data-title={title}
         >
           {children}
         </StyledNavButton>

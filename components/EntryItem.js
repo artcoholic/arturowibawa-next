@@ -38,6 +38,7 @@ const IconWrapper = styled(Box)`
     border-radius: 50%;
     transform: scale(0);
     transition: transform 300ms ${props => props.theme.ease.Smooth};
+    border: 1px solid ${props => props.theme.colors.content.inverseSecondary};
     svg {
       stroke: #1B1C32;
       display: block;

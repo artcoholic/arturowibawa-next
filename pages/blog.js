@@ -37,6 +37,7 @@ const CircleWrapper = styled(Box)`
 
 const ArticleWrapper = styled(Box)`
   width: 100%;
+  border: 1px solid ${props => props.theme.colors.content.inverseSecondary};
   &:after {
     content: '';
     position: absolute;
@@ -53,6 +54,7 @@ const ArticleWrapper = styled(Box)`
     background: ${props => props.theme.colors.bg.secondary};
   }
   @media (min-width: ${props => props.theme.breakpoints[2]}) {
+    border: 0;
     border-bottom: 1px solid ${props => props.theme.colors.bg.placeholder};
     &:hover {
       background: none;
@@ -111,7 +113,7 @@ const BlogPage = ({ allArticles }) => {
         as={motion.section}
         initial="initial" animate="enter" exit="exit" variants={variants.main}
       >
-        <Box as={motion.div} variants={variants.ProfileSection} columns={['span 2', 'span 4', '2/span 6', '7/span 5']} style={{ cursor: 'pointer' }} mt={["layout.4", "layout.3", null, "layout.2"]}>
+        <Box as={motion.div} variants={variants.ProfileSection} columns={['span 2', 'span 4', '2/span 6', '7/span 5']} mt={["layout.4", "layout.3", null, "layout.2"]}>
           <HeaderWrapper as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb={["layout.1", null, null, 0]}>
             Thoughts
           </HeaderWrapper>
@@ -122,7 +124,7 @@ const BlogPage = ({ allArticles }) => {
                   as={motion.div}
                   variants={variants.ProfileContent}
                   bg={['bg.tertiary', null, null, 'bg.primary']}
-                  borderRadius={[8, null, null, 0]}
+                  borderRadius={[12, null, null, 0]}
                   px={['layout.1', null, null, 0]} py={["layout.1", null, null, "layout.1/2"]}
                   my="layout.1/4"
                 >

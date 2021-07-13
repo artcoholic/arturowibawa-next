@@ -12,7 +12,7 @@ const Wrapper = styled(Box)`
   }
 `
 
-const SocialLink = ({ href, children, color }) => {
+const SocialLink = ({ href, children, color, title }) => {
   return (
     <Wrapper
       as="a"
@@ -20,6 +20,7 @@ const SocialLink = ({ href, children, color }) => {
       target="_blank"
       rel="noopener"
       color={color || 'content.primary'}
+      title={title}
     >
       {children}
     </Wrapper>

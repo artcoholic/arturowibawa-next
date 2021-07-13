@@ -91,6 +91,7 @@ const Header = () => {
         onClick={() => setOpen(!open)}
         size={32}
         aria-label="Menu"
+        title="Menu"
       >
         {open ?
           <Box color='content.primary'><Cross size={14} strokeWidth={3} /></Box>
