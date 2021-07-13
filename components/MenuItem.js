@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import Box from './Box';
 import Text from './Text';
 import { variants } from './AnimationVariants';
 import { motion } from 'framer-motion';
@@ -16,13 +17,12 @@ const StyledNavButton = styled(Text)`
   padding: 0;
   text-decoration: none;
   &:hover, &:focus {
-    &:after {
+    .hovered-element {
       transform: translateX(0%);
       transform-origin: 100%;
     }
   }
-  &:after {
-    content: '';
+  .hovered-element {
     position: absolute;
     left: 0;
     top: 0;
@@ -38,11 +38,15 @@ const StyledNavButton = styled(Text)`
     align-items: flex-end; 
     box-sizing: inherit;
     @media (min-width: ${props => props.theme.breakpoints[1]}) {
-      content: attr(data-title);
       font-size: ${props => props.theme.fontSizes[6]}px;
     }
     @media (min-width: ${props => props.theme.breakpoints[2]}) {
       font-size: ${props => props.theme.fontSizes[8]}px;
+    }
+    svg {
+      position: absolute;
+      top: ${props => props.theme.space.layout['1/2']};
+      right: ${props => props.theme.space.layout['1/2']};
     }
   }
 `
@@ -60,9 +64,12 @@ const MenuItem = ({ children, path, setOpen, style, title, color }) => {
           onClick={() => setOpen(false)}
           style={style}
           aria-label={title}
-          data-title={title}
         >
           {children}
+          <Box className="hovered-element">
+            {title}
+            <ArrowUpRight strokeWidth={1.5} />
+          </Box>
         </StyledNavButton>
       </Link>
     </span>
