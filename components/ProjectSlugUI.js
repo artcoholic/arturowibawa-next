@@ -46,12 +46,12 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
     >
       <Box display="flex">
         <Link href={`/work/${prevUrl}`} passHref>
-          <ButtonWrapper as="a" mr="spacing.2" px={["1rem", null, "1.5rem"]}>
+          <ButtonWrapper as="a" mr="spacing.2" px={["1rem", null, "1.5rem"]} title="Previous">
             <ArrowLeft color="#1B1C32" />
           </ButtonWrapper>
         </Link>
         <Link href={`/work/${nextUrl}`} passHref>
-          <ButtonWrapper as="a" mr="spacing.6" px={["1rem", null, "1.5rem"]}>
+          <ButtonWrapper as="a" mr="spacing.6" px={["1rem", null, "1.5rem"]} title="Next">
             <ArrowRight color="#1B1C32" />
           </ButtonWrapper>
         </Link>
@@ -80,7 +80,7 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
             style={{ textTransform: 'uppercase' }}
           >
             Visit
-            </Text>
+          </Text>
           <Text
             color="#1B1C32"
             style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
