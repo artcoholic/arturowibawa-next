@@ -84,12 +84,11 @@ const SlugContent = ({ entry }) => {
                           src={asset.url}
                           alt={asset.title}
                           placeholder="blur"
-                          quality={35}
                           blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                           layout="responsive"
                           width={asset.width}
                           height={asset.height}
-                          sizes="(max-width: 600px) 24vw, (max-width: 1023px) 48vw, 24vw"
+                          sizes="(max-width: 600px) 24vw, (max-width: 1023px) 48vw, 96vw"
                         />
                       }
                       {asset.contentType.includes('video') &&

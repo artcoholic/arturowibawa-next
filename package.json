@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "akar-icons": "^1.7.6",
+    "akar-icons": "^1.7.10",
     "contentful": "^8.4.2",
     "framer-motion": "^4.1.17",
     "next": "^11.0.0",

@@ -3,26 +3,12 @@ import Box from './Box';
 
 const Wrapper = styled(Box)`
   padding: 8px;
-  border-bottom: 1px solid ${props => props.theme.colors.content.secondary};
-  transition: all 250ms ${props => props.theme.ease.It};
+  transition: all 150ms ${props => props.theme.ease.It};
+  background: ${props => props.theme.colors.content.secondary};
+  border-radius: 50%;
   &:hover {
-    color: ${props => props.theme.colors.content.tertiary};
-    &:after {
-      transform: scaleX(1);
-      transform-origin: 0%;
-    }
-  }
-  &:after {
-    content: '';
-    width: 100%;
-    height: 1px;
-    transition: transform 250ms ${props => props.theme.ease.It};
-    background-color: ${props => props.theme.colors.content.inversePrimary};
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    transform: scaleX(0);
-    transform-origin: 100%;
+    color: ${props => props.theme.colors.content.inverseTertiary};
+    background: ${props => props.theme.colors.bg.primary};
   }
 `
 
@@ -33,7 +19,7 @@ const SocialLink = ({ href, children, color }) => {
       href={href}
       target="_blank"
       rel="noopener"
-      color={color || 'content.secondary'}
+      color={color || 'content.primary'}
     >
       {children}
     </Wrapper>

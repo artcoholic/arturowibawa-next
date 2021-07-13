@@ -7,7 +7,7 @@ import Toggle from './Toggle';
 import SocialLink from './SocialLink';
 import { variants } from './AnimationVariants'
 import { motion, AnimatePresence } from 'framer-motion';
-import { LinkedInFill, CodepenFill, TwitterFill, GithubFill } from 'akar-icons';
+import { LinkedInV2Fill, CodepenFill, TwitterFill, OctocatFill } from 'akar-icons';
 import useDarkMode from 'use-dark-mode';
 
 const Container = styled(Box)`
@@ -61,16 +61,16 @@ const MenuContainer = ({ open, setOpen }) => {
             </MenuItem>
           </Grid>
           <Grid
-            gridRowGap={8}
+            gridRowGap={12}
             gridColumnGap={12}
             gridTemplateColumns={["repeat(4, 1fr)", null, "1fr"]}
             position={["fixed", null, 'relative']}
             bottom={["layout.2", null, 0]}
             placeSelf={["center", null, "flex-end"]}
           >
-            <SocialLink href="https://www.linkedin.com/in/arturowibawa/"><LinkedInFill size={16} /></SocialLink>
+            <SocialLink href="https://www.linkedin.com/in/arturowibawa/"><LinkedInV2Fill size={16} /></SocialLink>
             <SocialLink href="https://twitter.com/agwibawa"><TwitterFill size={16} /></SocialLink>
-            <SocialLink href="https://github.com/artcoholic/"><GithubFill size={16} /></SocialLink>
+            <SocialLink href="https://github.com/artcoholic/"><OctocatFill size={16} /></SocialLink>
             <SocialLink href="https://codepen.io/artcoholic"><CodepenFill size={16} /></SocialLink>
           </Grid>
           <Toggle checked={darkMode.value} onChange={darkMode.toggle} />

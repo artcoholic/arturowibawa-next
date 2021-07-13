@@ -125,8 +125,8 @@ export const variants = {
       x: 0,
       transition: {
         type: 'spring',
-        stiffness: 50,
-        damping: 10,
+        stiffness: 400,
+        damping: 40,
       }
     },
   },
