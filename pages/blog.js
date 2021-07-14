@@ -126,7 +126,7 @@ const BlogPage = ({ allArticles }) => {
                   bg={['bg.tertiary', null, null, 'bg.primary']}
                   borderRadius={[12, null, null, 0]}
                   px={['layout.1', null, null, 0]} py={["layout.1", null, null, "layout.1/2"]}
-                  my="layout.1/4"
+                  my="layout.1/2"
                 >
                   <Text color="content.inverseTertiary" font="ParagraphMedium" mb="layout.1/2">
                     {`${article.date.slice(5, 7)} / ${article.date.slice(0, 4)}`}

@@ -37,8 +37,14 @@ const StyledNavButton = styled(Text)`
     display: flex;
     align-items: flex-end; 
     box-sizing: inherit;
+    span {
+      display: none;
+    }
     @media (min-width: ${props => props.theme.breakpoints[1]}) {
       font-size: ${props => props.theme.fontSizes[6]}px;
+      span {
+        display: block;
+      }
     }
     @media (min-width: ${props => props.theme.breakpoints[2]}) {
       font-size: ${props => props.theme.fontSizes[8]}px;
@@ -67,8 +73,10 @@ const MenuItem = ({ children, path, setOpen, style, title, color }) => {
         >
           {children}
           <Box className="hovered-element">
-            {title}
-            <ArrowUpRight strokeWidth={1.5} />
+            <span>
+              {title}
+              <ArrowUpRight strokeWidth={1.5} />
+            </span>
           </Box>
         </StyledNavButton>
       </Link>
