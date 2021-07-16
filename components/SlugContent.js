@@ -41,23 +41,11 @@ const MarkdownWrapper = styled(Text)`
 `
 
 const GalleryWrapper = styled(Box)`
-  aspect-ratio: 16 / 9;
   display: flex;
   justify-content:center;
-  align-items:center;
+  align-items:flex-end;
   flex-flow: row nowrap;
-  @supports not (aspect-ratio: 16 / 9) {
-    div::before {
-      float: left;
-      padding-top: 56.25%;
-      content: '';
-    }
-    div::after {
-      display: block;
-      content: '';
-      clear: both;
-    }
-  }
+  padding-top: 56.25%;
   img {
     cursor: grab;
     &:active {

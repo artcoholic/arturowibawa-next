@@ -8,20 +8,29 @@ import { TriangleLeft, TriangleRight } from 'akar-icons';
 
 const PaginationButton = styled(Box)`
   border: none;
-  padding: 14px;
+  padding: 6px;
   border-radius: 50%;
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 2;
   cursor: pointer;
   color: #1B1C32;
-  background: rgba(255,255,255,0.5);
-  backdrop-filter: blur(4px);
-  border: 1px solid ${props => props.theme.colors.content.tertiary};
-  transition: all 500ms ${props => props.theme.ease.Smooth};
-  &:hover {
-    background: white;
-    svg {
-      fill: #1B1C32;
+  background: none;
+  transition: all 300ms ${props => props.theme.ease.Smooth};
+  svg {
+    fill: #1B1C32;
+  }
+  @media (min-width: ${props => props.theme.breakpoints[2]}) {
+    padding: 12px;
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(4px);
+    border: 1px solid ${props => props.theme.colors.content.tertiary};
+    &:hover {
+      background: white;
+      svg {
+        fill: #1B1C32;
+      }
     }
   }
 `
@@ -75,16 +84,16 @@ const GalleryBlock = ({ item }) => {
       <PaginationButton
         as="button"
         onClick={() => paginate(-1)}
-        left="layout.1"
+        left={["layout.1/4", null, "layout.1"]}
       >
-        <TriangleLeft size={28} strokeWidth={1.5} />
+        <TriangleLeft />
       </PaginationButton>
       <PaginationButton
         as="button"
         onClick={() => paginate(1)}
-        right="layout.1"
+        right={["layout.1/4", null, "layout.1"]}
       >
-        <TriangleRight size={28} strokeWidth={1.5} />
+        <TriangleRight />
       </PaginationButton>
     </>
   )
