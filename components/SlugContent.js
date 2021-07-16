@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Grid from './Grid'
 import Box from './Box';
 import Text from './Text';
+import GalleryBlock from './GalleryBlock';
 import Image from 'next/image';
 import { variants } from './AnimationVariants'
 import { motion } from 'framer-motion';
@@ -39,6 +40,32 @@ const MarkdownWrapper = styled(Text)`
   }
 `
 
+const GalleryWrapper = styled(Box)`
+  aspect-ratio: 16 / 9;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  flex-flow: row nowrap;
+  @supports not (aspect-ratio: 16 / 9) {
+    div::before {
+      float: left;
+      padding-top: 56.25%;
+      content: '';
+    }
+    div::after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+  }
+  img {
+    cursor: grab;
+    &:active {
+      cursor: grabbing;
+    }
+  }
+`
+
 const SlugContent = ({ entry }) => {
   const matrix = entry.matrixCollection.items;
   const ref = React.createRef();
@@ -61,12 +88,10 @@ const SlugContent = ({ entry }) => {
           case 'Media': // MEDIA BLOCK
             return (
               <Grid
-                as="section"
                 key={item.sys.id}
                 columns="1/-1"
                 my={["layout.1/4", null, "layout.1/2"]}
-                gridTemplateColumns={
-                  item.layout === 'Thirds' ? ["1fr", null, "repeat(3, 1fr)"] : item.layout === 'Split' ? ["1fr", null, "repeat(2, 1fr)"] : "1fr"}
+                gridTemplateColumns={item.layout === 'Thirds' ? ["1fr", null, "repeat(3, 1fr)"] : item.layout === 'Split' ? ["1fr", null, "repeat(2, 1fr)"] : "1fr"}
                 gridRowGap={["layout.1/2", null, "layout.1"]}
               >
                 {item.assetsCollection.items.map((asset) => {
@@ -103,7 +128,6 @@ const SlugContent = ({ entry }) => {
           case 'Text': // TEXT BLOCK
             return (
               <MarkdownWrapper
-                as="section"
                 my={["layout.1", null, "layout.2"]}
                 columns={
                   item.alignText === "Left" ? ["1/-1", null, "1/span 4", "2/span 5"] : item.alignText === "Center" ? ["1/-1", null, "3/span 4", "4/span 6"] : ["1/-1", null, "5/span 4", "7/span 5"]
@@ -117,6 +141,17 @@ const SlugContent = ({ entry }) => {
               >
                 <Markdown children={item.paragraph} linkTarget="_blank" />
               </MarkdownWrapper>
+            );
+            break;
+          case 'Gallery': // GALLERY BLOCK
+            return (
+              <GalleryWrapper
+                columns="-1/1"
+                my={["layout.1/4", null, "layout.1/2"]}
+                key="galleryWrapper"
+              >
+                <GalleryBlock item={item} key={item.sys.id} />
+              </GalleryWrapper>
             );
             break;
           default:

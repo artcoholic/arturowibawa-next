@@ -34,7 +34,7 @@ const IconWrapper = styled(Box)`
   pointer-events: none;
   span {
     background: white;
-    padding: 12px;
+    padding: 16px;
     border-radius: 50%;
     transform: scale(0);
     transition: transform 300ms ${props => props.theme.ease.Smooth};
@@ -106,8 +106,8 @@ const EntryItem = ({ entry, index }) => {
           {entry.info.title}
         </Text>
       </Box>
-      <Text style={{ writingMode: "vertical-rl", zIndex: 1 }} ml="spacing.2" fontSize={[3, null, null, null, 4]}>
-        0{index + 1} — {entry.info.category}
+      <Text style={{ writingMode: "vertical-rl", zIndex: 1, textTransform: 'uppercase' }} ml="spacing.2" letterSpacing={1} fontSize={[3, null, null, null, 4]}>
+        0{index + 1} • {entry.info.category}
       </Text>
     </Box>
   )

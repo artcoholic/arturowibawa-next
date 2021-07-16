@@ -34,6 +34,23 @@ matrixCollection {
         id
       }
     }
+    ... on Gallery {
+      assetsCollection {
+        items {
+          title
+          url
+          contentType
+          width
+          height
+          sys {
+            id
+          }
+        }
+      }
+      sys {
+        id
+      }
+    }
   }
 }
 `

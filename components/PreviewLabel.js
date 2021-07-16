@@ -5,11 +5,18 @@ const Label = () => {
   return (
     <Box
       position="fixed"
-      px="1em" py=".5em"
       bottom={0} left={0}
-      bg="bg.tertiary"
+      width="100%"
+      display="flex"
+      justifyContent="center"
+      zIndex={99}
     >
-      <Text color="content.inverseSecondary">Preview Mode</Text>
+      <Box
+        px="1em" py=".5em"
+        bg="bg.inverseTertiary"
+      >
+        <Text color="content.secondary">Preview Mode</Text>
+      </Box>
     </Box>
   )
 }
