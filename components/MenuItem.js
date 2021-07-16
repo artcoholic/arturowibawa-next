@@ -35,7 +35,8 @@ const StyledNavButton = styled(Text)`
     color: ${props => props.theme.colors.content.inverseTertiary};
     padding: ${props => props.theme.space.layout['1/2']};
     display: flex;
-    align-items: flex-end; 
+    flex-flow: column;
+    justify-content: space-between;
     box-sizing: inherit;
     span {
       display: none;
@@ -49,16 +50,11 @@ const StyledNavButton = styled(Text)`
     @media (min-width: ${props => props.theme.breakpoints[2]}) {
       font-size: ${props => props.theme.fontSizes[8]}px;
     }
-    svg {
-      position: absolute;
-      top: ${props => props.theme.space.layout['1/2']};
-      right: ${props => props.theme.space.layout['1/2']};
-    }
   }
 `
 
 
-const MenuItem = ({ children, path, setOpen, style, title, color }) => {
+const MenuItem = ({ children, path, index, setOpen, style, title, color }) => {
   return (
     <span style={{ clipPath: 'inset(0%)', display: 'flex' }}>
       <Link href={path} passHref>
@@ -73,10 +69,14 @@ const MenuItem = ({ children, path, setOpen, style, title, color }) => {
         >
           {children}
           <Box className="hovered-element">
-            <span>
-              {title}
+            <Box
+              display="flex"
+              justifyContent="space-between"
+            >
+              <Text fontSize={3} color="inverse.tertiary">_00{index}</Text>
               <ArrowUpRight strokeWidth={1.5} />
-            </span>
+            </Box>
+            {title}
           </Box>
         </StyledNavButton>
       </Link>

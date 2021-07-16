@@ -60,7 +60,8 @@ const SlugContent = ({ entry }) => {
   return (
     <Grid
       as={motion.section}
-      mx="layout.1"
+      px="layout.1"
+      overflow="hidden"
       mb={["layout.3/4", null, null, 'layout.1/2']}
       variants={variants.slugContent}
       transition={{
@@ -79,8 +80,8 @@ const SlugContent = ({ entry }) => {
                 key={item.sys.id}
                 columns="1/-1"
                 my={["layout.1/4", null, "layout.1/2"]}
-                gridTemplateColumns={item.layout === 'Thirds' ? ["1fr", null, "repeat(3, 1fr)"] : item.layout === 'Split' ? ["1fr", null, "repeat(2, 1fr)"] : "1fr"}
-                gridRowGap={["layout.1/2", null, "layout.1"]}
+                gridTemplateColumns={item.layout === 'Thirds' ? ["1fr", null, "repeat(3, 1fr)"] : item.layout === 'Split' ? ["1fr", "repeat(2, 1fr)"] : "1fr"}
+                gridRowGap={["layout.1/2", "layout.1"]}
               >
                 {item.assetsCollection.items.map((asset) => {
                   return (

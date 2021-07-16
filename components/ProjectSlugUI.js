@@ -25,6 +25,44 @@ const ButtonWrapper = styled(Text)`
   &:active {
     box-shadow: none;
   }
+  
+  &.previous, &.next {
+    color: #1B1C32;
+    &::after, &::before {
+      transition: all 500ms ${props => props.theme.ease.Smooth};
+      padding-top: 4px;
+      max-width: 0;
+    }
+  }
+  &.previous {
+    &:after {
+      content: 'PREV';
+      transform: translateX(1.4rem);
+    }
+    &:hover {
+      &:after {
+        width: auto;
+        max-width: 100px;
+        margin-left: .25rem;
+        transform: translateX(0);
+      }
+    }
+  }
+  &.next {
+    overflow: hidden;
+    &:before {
+      content: 'NEXT';
+      transform: translateX(-4.1rem);
+    }
+    &:hover {
+      &:before {
+        width: auto;
+        max-width: 100px;
+        margin-right: .25rem;
+        transform: translateX(0);
+      }
+    }
+  }
 `
 
 const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
@@ -46,13 +84,13 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
     >
       <Box display="flex">
         <Link href={`/work/${prevUrl}`} passHref>
-          <ButtonWrapper as="a" mr="spacing.2" px={["1rem", null, "1.5rem"]} title="Previous">
-            <ArrowLeft color="#1B1C32" />
+          <ButtonWrapper className="previous" as="a" mr="spacing.2" px={["1rem", null, "1.5rem"]} title="Previous Work">
+            <ArrowLeft />
           </ButtonWrapper>
         </Link>
         <Link href={`/work/${nextUrl}`} passHref>
-          <ButtonWrapper as="a" mr="spacing.6" px={["1rem", null, "1.5rem"]} title="Next">
-            <ArrowRight color="#1B1C32" />
+          <ButtonWrapper className="next" as="a" mr="spacing.6" px={["1rem", null, "1.5rem"]} title="Next Work">
+            <ArrowRight />
           </ButtonWrapper>
         </Link>
       </Box>
