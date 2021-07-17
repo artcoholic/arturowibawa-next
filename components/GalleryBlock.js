@@ -60,6 +60,7 @@ const GalleryBlock = ({ item }) => {
           as={motion.img}
           borderRadius={[8, null, 16]}
           width="100%"
+          bg="bg.placeholder"
           position="absolute"
           key={page}
           src={images[imageIndex]}
@@ -105,7 +106,7 @@ const GalleryBlock = ({ item }) => {
         px={[6, null, 8]}
         py={[2, null, 4]}
       >
-        {(page % images.length) + 1} / {images.length}
+        {(page % images.length) + 1} of {images.length}
       </PaginationNumber>
     </>
   )

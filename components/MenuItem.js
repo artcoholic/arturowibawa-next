@@ -41,14 +41,10 @@ const StyledNavButton = styled(Text)`
     span {
       display: none;
     }
-    @media (min-width: ${props => props.theme.breakpoints[1]}) {
-      font-size: ${props => props.theme.fontSizes[6]}px;
-      span {
-        display: block;
-      }
-    }
-    @media (min-width: ${props => props.theme.breakpoints[2]}) {
-      font-size: ${props => props.theme.fontSizes[8]}px;
+    svg {
+      position: absolute;
+      top: -8px;
+      right: -8px;
     }
   }
 `
@@ -76,7 +72,7 @@ const MenuItem = ({ children, path, index, setOpen, style, title, color }) => {
               <Text fontSize={3} color="inverse.tertiary">_00{index}</Text>
               <ArrowUpRight strokeWidth={1.5} />
             </Box>
-            <Box display={["none", null, "block"]}>{title}</Box>
+            <Text color="content.inverseTertiary" fontSize={[null, null, 6, 8]} display={["none", null, "block"]}>{title}</Text>
           </Box>
         </StyledNavButton>
       </Link>
