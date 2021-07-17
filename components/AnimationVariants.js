@@ -191,7 +191,7 @@ export const variants = {
   },
   slugStats: {
     initial: {
-      y: '-3em',
+      y: '-4em',
     },
     enter: {
       y: 0,
