@@ -113,9 +113,10 @@ const ProfilePage = () => {
           columns={['1/span 2', '1/span 4', '2/span 6', '2/span 5']}
           placeSelf="center"
           border={['1px solid', null, null, 'none']}
-          borderColor="bg.placeholder"
+          borderColor="content.inverseSecondary"
+          bg={["bg.tertiary", null, null, 'bg.primary']}
           p={['layout.1', null, null, 0]}
-          borderRadius={8}
+          borderRadius={12}
           as={motion.div}
           variants={variants.ProfileSection}
         >
