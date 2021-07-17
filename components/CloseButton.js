@@ -42,7 +42,7 @@ const CloseButton = ({ scrollY, scrollYProgress, path }) => {
         as={motion.a}
         top="layout.1"
         size={scrollY > 0 ? 48 : 32}
-        color={scrollY > 0 ? "content.inversePrimary" : "content.primary"}
+        color="content.primary"
         scrollY={scrollY}
         initial={{ scale: 0, x: '-50%' }}
         animate={{ scale: 1 }}

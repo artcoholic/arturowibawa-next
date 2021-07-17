@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { wrap } from "popmotion";
 import { variants } from './AnimationVariants';
 import Box from './Box';
+import Text from './Text';
 import { TriangleLeft, TriangleRight } from 'akar-icons';
 
 const PaginationButton = styled(Box)`
@@ -13,26 +14,28 @@ const PaginationButton = styled(Box)`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 2;
+  z-index: 1;
   cursor: pointer;
   color: #1B1C32;
   background: none;
   transition: all 300ms ${props => props.theme.ease.Smooth};
-  svg {
-    fill: #1B1C32;
-  }
   @media (min-width: ${props => props.theme.breakpoints[2]}) {
     padding: 12px;
-    background: rgba(255,255,255,0.5);
-    backdrop-filter: blur(4px);
-    border: 1px solid ${props => props.theme.colors.content.tertiary};
     &:hover {
-      background: white;
-      svg {
+       svg {
         fill: #1B1C32;
       }
     }
   }
+`
+
+const PaginationNumber = styled(Text)`
+  position: absolute;
+  z-index: 1;
+  color: #1B1C32;
+  background: rgba(255,255,255,0.5);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
 `
 
 const swipeConfidenceThreshold = 10000;
@@ -84,17 +87,25 @@ const GalleryBlock = ({ item }) => {
       <PaginationButton
         as="button"
         onClick={() => paginate(-1)}
-        left={["layout.1/4", null, "layout.1"]}
+        left={["layout.1/4", null, "layout.1/2"]}
       >
         <TriangleLeft />
       </PaginationButton>
       <PaginationButton
         as="button"
         onClick={() => paginate(1)}
-        right={["layout.1/4", null, "layout.1"]}
+        right={["layout.1/4", null, "layout.1/2"]}
       >
         <TriangleRight />
       </PaginationButton>
+      <PaginationNumber
+        bottom="layout.1/2"
+        fontSize={['.75rem', null, '1rem']}
+        px={[6, null, 8]}
+        pt={[2, null, 4]}
+      >
+        {(page % images.length) + 1} / {images.length}
+      </PaginationNumber>
     </>
   )
 }
