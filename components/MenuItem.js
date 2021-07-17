@@ -70,13 +70,13 @@ const MenuItem = ({ children, path, index, setOpen, style, title, color }) => {
           {children}
           <Box className="hovered-element">
             <Box
-              display="flex"
+              display={["none", null, "flex"]}
               justifyContent="space-between"
             >
               <Text fontSize={3} color="inverse.tertiary">_00{index}</Text>
               <ArrowUpRight strokeWidth={1.5} />
             </Box>
-            {title}
+            <Box display={["none", null, "block"]}>{title}</Box>
           </Box>
         </StyledNavButton>
       </Link>

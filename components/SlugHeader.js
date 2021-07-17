@@ -32,7 +32,7 @@ const SlugHeader = ({ entry }) => {
           as={motion.h1}
           font={["HeadingSmall", "HeadingMedium", "HeadingLarge"]}
           variants={variants.slugTitle}
-          pb="layout.1/8"
+          pb="layout.1/4"
         >
           {entry.title}
         </ProjectTitle>
@@ -48,13 +48,13 @@ const SlugHeader = ({ entry }) => {
       />
       <Box
         columns="1/-1"
-        pt={["layout.1/2", "layout.1/4"]}
+        pt="layout.1/2"
         display="flex"
         justifyContent="space-between"
         style={{ clipPath: 'inset(0%)' }}
       >
-        {entry.info.year && <Text as={motion.h2} mr={12} variants={variants.slugStats} fontSize={[3, 4]}>{entry.info.year}</Text>}
-        {entry.info.tags && <Text as={motion.h2} variants={variants.slugStats} fontSize={[3, 4]}>{entry.info.tags.join(", ")}</Text>}
+        {entry.info.tags && <Text as={motion.h2} mr={12} variants={variants.slugStats} fontSize={[3, 4]}>{entry.info.tags.join(", ")}</Text>}
+        {entry.info.year && <Text as={motion.h2} variants={variants.slugStats} fontSize={[3, 4]}>{entry.info.year}</Text>}
       </Box>
     </Box>
   )
