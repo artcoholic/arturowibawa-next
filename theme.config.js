@@ -124,6 +124,7 @@ export const GlobalStyles = createGlobalStyle`
     --color: rgba(229, 79, 79, 0.3);
     --eina-regular: 'Eina Regular';
     --eina-light: 'Eina Light';
+    --system-fonts:  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
     @media (min-width: ${props => props.theme.breakpoints[0]}) { // 640
       --columns: 4;
@@ -156,9 +157,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${props => props.theme.colors.bg.primary};
   }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
+    font-family: var(--system-fonts);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
