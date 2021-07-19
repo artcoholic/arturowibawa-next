@@ -5,6 +5,7 @@ import Providers from '../components/Providers';
 import { AnimatePresence } from "framer-motion";
 import Layout from '../components/Layout';
 import TagManager from "react-gtm-module";
+import smoothscroll from 'smoothscroll-polyfill';
 
 const tagManagerArgs = {
   gtmId: 'GTM-W5B77X3',
@@ -15,6 +16,9 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     TagManager.initialize(tagManagerArgs);
   }, [])
+  if (typeof window !== 'undefined') {
+    smoothscroll.polyfill();
+  }
   return (
     <Providers>
       <GlobalStyles />

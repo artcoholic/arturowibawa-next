@@ -20,6 +20,7 @@
     "react-markdown": "^6.0.2",
     "react-parallax-tilt": "^1.5.26",
     "react-player": "^2.9.0",
+    "smoothscroll-polyfill": "^0.4.4",
     "styled-components": "^5.2.1",
     "styled-system": "^5.1.5",
     "use-dark-mode": "^2.3.1"

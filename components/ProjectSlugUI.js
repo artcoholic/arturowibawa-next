@@ -18,6 +18,7 @@ const ButtonWrapper = styled(Text)`
   border-radius: 28px;
   background-color: rgba(255,255,255,0.5);
   overflow: hidden;
+  pointer-events: auto;
   backdrop-filter: blur(12px);
   &:hover {
     background-color: rgba(255,255,255,1);
@@ -81,6 +82,7 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
       animate={{ y: 0 }}
       exit={{ y: 92 }}
       transition={{ type: 'spring', stiffness: 300, damping: 50 }}
+      style={{ pointerEvents: 'none' }}
     >
       <Box display="flex">
         <Link href={`/work/${prevUrl}`} passHref>
