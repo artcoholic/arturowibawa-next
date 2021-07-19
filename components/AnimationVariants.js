@@ -75,7 +75,6 @@ export const variants = {
   main: {
     exit: {
       opacity: 0,
-      filter: 'blur(24px)',
       transition: {
         ease: [.23, 1, .32, 1],
         duration: 0.5
