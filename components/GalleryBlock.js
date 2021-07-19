@@ -106,7 +106,7 @@ const GalleryBlock = ({ item }) => {
         px={[6, null, 8]}
         py={[2, null, 4]}
       >
-        {(page % images.length) + 1} of {images.length}
+        {(Math.abs(page) % images.length) + 1} of {images.length}
       </PaginationNumber>
     </>
   )
