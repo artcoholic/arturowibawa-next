@@ -180,6 +180,7 @@ const SlugContent = ({ entry }) => {
         display="flex"
         justifyContent="center"
         py="layout.3"
+        mb={56}
         color="content.inverseSecondary"
       >
         <BackToTop
