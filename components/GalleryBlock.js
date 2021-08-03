@@ -103,6 +103,7 @@ const GalleryBlock = ({ item }) => {
         bottom="layout.1/2"
         fontSize={['.75rem', null, '1rem']}
         px={8}
+        pb={1}
       >
         {(Math.abs(page) % images.length) + 1} of {images.length}
       </PaginationNumber>
