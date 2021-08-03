@@ -45,7 +45,7 @@ const EllipseWrapper = styled(Box)`
     stroke-width: 1px;
     overflow: visible;
     display: block;
-    opacity: 0.5;
+    shape-rendering: optimizeSpeed;
   }
 `
 
