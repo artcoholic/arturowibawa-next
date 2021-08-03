@@ -44,14 +44,14 @@ const Layout = ({ children }) => {
         <link rel='shortcut icon' href='/favicon.ico' />
         <link
           rel="preload"
-          href="/fonts/eina-01-light.woff2"
+          href="/fonts/whyte-inktrap-light.woff2"
           as="font"
           type="font/woff2"
           crossOrigin=""
         />
         <link
           rel="preload"
-          href="/fonts/eina-01-regular.woff2"
+          href="/fonts/whyte-light.woff2"
           as="font"
           type="font/woff2"
           crossOrigin=""

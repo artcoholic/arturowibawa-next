@@ -6,6 +6,7 @@ const Wrapper = styled(Box)`
   transition: all 150ms ${props => props.theme.ease.It};
   background: ${props => props.theme.colors.content.secondary};
   border-radius: 50%;
+  margin-left: .75rem;
   &:hover {
     color: ${props => props.theme.colors.content.inverseTertiary};
     background: ${props => props.theme.colors.bg.primary};

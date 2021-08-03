@@ -84,17 +84,11 @@ export const variants = {
   menuItem: {
     open: {
       y: 0,
-      transition: {
-        stiffness: 1000,
-        damping: 300,
-      }
+      opacity: 1,
     },
     closed: {
-      y: 200,
-      transition: {
-        stiffness: 40,
-        damping: 40,
-      }
+      y: '2em',
+      opacity: 0,
     }
   },
   menuContainer: {

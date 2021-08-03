@@ -66,7 +66,7 @@ const EntryItem = ({ entry, index }) => {
         width={["50vw"]}
         minWidth={240}
         maxWidth={[320, null, null, null, 400, 600]}
-        style={{ zIndex: 5 }}
+        zIndex={5}
       >
         <Tilt tiltReverse={true} scale={1.05} glareEnable={true} glareBorderRadius="8px" tiltMaxAngleX={4} tiltMaxAngleY={4} transitionEasing="cubic-bezier(.23,1,.32,1)" transitionSpeed={300} style={{ zIndex: 2, position: 'relative', transformStyle: 'preserve-3d' }}>
           <Link href={`/work/${entry.slug}`} passHref>
@@ -99,14 +99,12 @@ const EntryItem = ({ entry, index }) => {
           as="h1"
           font="ParagraphLarge"
           mt=".5em"
-          style={{
-            zIndex: 1,
-          }}
+          zIndex={1}
         >
           {entry.info.title}
         </Text>
       </Box>
-      <Text style={{ writingMode: "vertical-rl", zIndex: 1, textTransform: 'uppercase' }} ml="spacing.2" letterSpacing={1} fontSize={[3, null, null, null, 4]}>
+      <Text style={{ writingMode: "vertical-rl", textTransform: 'uppercase' }} zIndex={1} ml="spacing.2" letterSpacing={1} fontSize={[3, null, null, null, 4]}>
         0{index + 1} • {entry.info.category}
       </Text>
     </Box>

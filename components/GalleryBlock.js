@@ -36,7 +36,6 @@ const PaginationNumber = styled(Text)`
   background: rgba(255,255,255,0.5);
   border-radius: 16px;
   backdrop-filter: blur(4px);
-  font-family: var(--system-fonts);
 `
 
 const swipeConfidenceThreshold = 10000;
@@ -103,8 +102,8 @@ const GalleryBlock = ({ item }) => {
       <PaginationNumber
         bottom="layout.1/2"
         fontSize={['.75rem', null, '1rem']}
-        px={[6, null, 8]}
-        py={[2, null, 4]}
+        px={8}
+        pb={2}
       >
         {(Math.abs(page) % images.length) + 1} of {images.length}
       </PaginationNumber>

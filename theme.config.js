@@ -60,13 +60,13 @@ const defaultTheme = {
   fontSizes: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96, 100],
   typeScale:
   {
-    'ParagraphSmall': 'var(--base)/var(--lineHeight-for-p) var(--eina-regular)',
-    'ParagraphMedium': 'calc(var(--scale) * 1em)/var(--lineHeight-for-p) var(--eina-regular)',
-    'ParagraphLarge': 'calc(var(--scale) * var(--scale) * 1em)/var(--lineHeight-for-p) var(--eina-light)',
-    'HeadingSmall': 'calc(var(--scale) * var(--scale) * var(--scale) * 1em)/var(--lineHeight-for-h) var(--eina-light)',
-    'HeadingMedium': 'calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * 1em)/var(--lineHeight-for-h) var(--eina-light)',
-    'HeadingLarge': 'calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale) * 1em)/var(--lineHeight-for-h) var(--eina-light)',
-    'Display': 'calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale) * 1em)/var(--lineHeight-for-h) var(--eina-light)',
+    'ParagraphSmall': 'var(--base)/var(--lineHeight-for-p) var(--paragraph)',
+    'ParagraphMedium': 'calc(var(--scale) * 1em)/var(--lineHeight-for-p) var(--paragraph)',
+    'ParagraphLarge': 'calc(var(--scale) * var(--scale) * 1em)/var(--lineHeight-for-p) var(--paragraph)',
+    'HeadingSmall': 'calc(var(--scale) * var(--scale) * var(--scale) * 1em)/var(--lineHeight-for-h) var(--heading)',
+    'HeadingMedium': 'calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * 1em)/var(--lineHeight-for-h) var(--heading)',
+    'HeadingLarge': 'calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale) * 1em)/var(--lineHeight-for-h) var(--heading)',
+    'Display': 'calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale) * 1em)/var(--lineHeight-for-h) var(--heading)',
   },
   space:
   {
@@ -118,12 +118,12 @@ export const GlobalStyles = createGlobalStyle`
     --gutter: 24px;
     --margins: 1;
     --scale: 1.200;
-    --lineHeight-for-h: 1.05;
+    --lineHeight-for-h: 1.2;
     --lineHeight-for-p: 1.5;
     --base: 16px;
     --color: rgba(229, 79, 79, 0.3);
-    --eina-regular: 'Eina Regular';
-    --eina-light: 'Eina Light';
+    --heading: 'Whyte Inktrap Light';
+    --paragraph: 'Whyte Light';
     --system-fonts:  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
     @media (min-width: ${props => props.theme.breakpoints[0]}) { // 640
@@ -171,22 +171,22 @@ export const GlobalStyles = createGlobalStyle`
     display: block;
   }
   @font-face {
-    font-family: 'Eina Regular';
+    font-family: 'Whyte Inktrap Light';
     font-style: normal;
     font-weight: normal;
     font-display: swap;
-    src: url('/fonts/eina-01-regular.woff') format('woff'), 
-    url('/fonts/eina-01-regular.woff2') format('woff2'), 
-    url('/fonts/eina-01-regular.ttf') format('truetype');
+    src: url('/fonts/whyte-inktrap-light.woff') format('woff'),
+    url('/fonts/whyte-inktrap-light.woff2') format('woff2'),
+    url('/fonts/whyte-inktrap-light.ttf') format('truetype');
   }
   @font-face {
-    font-family: 'Eina Light';
+    font-family: 'Whyte Light';
     font-style: normal;
     font-weight: normal;
     font-display: swap;
-    src: url('/fonts/eina-01-light.woff') format('woff'), 
-    url('/fonts/eina-01-light.woff2') format('woff2'), 
-    url('/fonts/eina-01-light.ttf') format('truetype');
+    src: url('/fonts/whyte-light.woff') format('woff'),
+    url('/fonts/whyte-light.woff2') format('woff2'),
+    url('/fonts/whyte-light.ttf') format('truetype');
   }
   .glare-wrapper { pointer-events: none; }
 `

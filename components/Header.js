@@ -61,7 +61,7 @@ const Name = styled(Text)`
   text-transform: uppercase;
   line-height: 1em;
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 `
 
 const Logo = styled.svg`
@@ -83,7 +83,7 @@ const Header = () => {
         </a>
       </Link>
       {router.pathname.startsWith('/work') || router.pathname.startsWith('/blog/[slug]') ? null :
-        <Name fontSize={3} pt={3}>Arturo • Wibawa</Name>
+        <Name fontSize={[3, null, null, null, 4]} pt={3}>Arturo • Wibawa</Name>
       }
       <Dot
         as="button"

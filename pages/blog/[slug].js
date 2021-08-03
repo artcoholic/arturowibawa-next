@@ -131,7 +131,7 @@ export default function Slug({ article, preview }) {
       <CloseButton scrollY={scrollY.current} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/blog'} />
       <Grid mx="layout.1" py="layout.1" as={motion.section} initial="initial" animate="enter" exit="exit" variants={variants.main}>
         <Box as={motion.div} variants={variants.ProfileSection} columns={['1/-1', null, '2/span 6', '4/span 6']} mt={["layout.4", "layout.3"]}>
-          <Text as={motion.div} variants={variants.ProfileContent} font="ParagraphMedium" color="content.inverseTertiary" mb='layout.1/2' display="flex" alignItems="baseline">
+          <Text as={motion.div} variants={variants.ProfileContent} font="ParagraphMedium" color="content.secondary" mb='layout.1/2' display="flex" alignItems="baseline">
             {`${article.date.slice(5, 7)} / ${article.date.slice(0, 4)}`}
           </Text>
           <Text as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]}>

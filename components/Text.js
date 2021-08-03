@@ -10,7 +10,7 @@ const Text = styled(Box)`
 
 Text.defaultProps = {
   color: 'content.primary',
-  fontFamily: 'Eina Regular',
+  fontFamily: 'Whyte Light',
   fontWeight: 'normal'
 }
 

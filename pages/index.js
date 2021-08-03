@@ -80,9 +80,9 @@ const HomePage = ({ allProjects }) => {
           alignItems="baseline"
           pb={12}
         >
-          <Text as="p" fontSize={3}>© {new Date().getFullYear()}. All Rights Reserved.</Text>
-          <Text as="p" display={["none", "flex"]} font="ParagraphSmall">
-            Scroll or Drag Sideways <ArrowRight size={16} style={{ marginTop: 2, marginLeft: '.5em' }} />
+          <Text as="p" fontSize={[3, null, null, 4]}>© {new Date().getFullYear()}. All Rights Reserved.</Text>
+          <Text as="p" display={["none", "flex"]} alignItems="center" fontSize={[3, null, null, 4]}>
+            Scroll or Drag Sideways <ArrowRight size={16} style={{ marginLeft: '.5em' }} />
           </Text>
         </Box>
         <Box overflow="hidden">

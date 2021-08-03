@@ -8,18 +8,6 @@ import { motion } from 'framer-motion';
 import { variants, blink, radius } from '../components/AnimationVariants';
 import { getAllArticlesForBlog } from '../utils/api';
 
-const HeaderWrapper = styled(Text)`
-  position: reltative;
-  &:after {
-    content: '';
-    height:90%;
-    width: 1px;
-    position: absolute;
-    background-color: ${props => props.theme.colors.content.primary};
-    animation: ${blink} 750ms ${props => props.theme.ease.It} infinite alternate;
-  }
-`
-
 const Circle = styled.circle`
   animation: ${radius} 4s cubic-bezier(0.4, 0, 0.1, 0.8) infinite alternate-reverse;
 `
@@ -70,7 +58,6 @@ const ArticleWrapper = styled(Box)`
 `
 
 const BlogPage = ({ allArticles }) => {
-  console.log(allArticles);
   return (
     <>
       <Head>
@@ -114,9 +101,9 @@ const BlogPage = ({ allArticles }) => {
         initial="initial" animate="enter" exit="exit" variants={variants.main}
       >
         <Box as={motion.div} variants={variants.ProfileSection} columns={['span 2', 'span 4', '2/span 6', '7/span 5']} mt={["layout.4", "layout.3", null, "layout.2"]}>
-          <HeaderWrapper as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb={["layout.1", null, null, 0]}>
+          <Text as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]}>
             Thoughts
-          </HeaderWrapper>
+          </Text>
           {allArticles.map((article, index) =>
             <Link key={index} href={`/blog/${article.slug}`} passHref>
               <a style={{ textDecoration: 'none' }}>
@@ -128,7 +115,7 @@ const BlogPage = ({ allArticles }) => {
                   px={['layout.1', null, null, 0]} py={["layout.1", null, null, "layout.1/2"]}
                   my="layout.1/2"
                 >
-                  <Text color="content.inverseTertiary" font="ParagraphMedium" mb="layout.1/2">
+                  <Text color="content.inverseSecondary" font="ParagraphMedium" mb="layout.1/2">
                     {`${article.date.slice(5, 7)} / ${article.date.slice(0, 4)}`}
                   </Text>
                   <Text

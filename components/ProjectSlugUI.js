@@ -31,7 +31,6 @@ const ButtonWrapper = styled(Text)`
     color: #1B1C32;
     &::after, &::before {
       transition: all 500ms ${props => props.theme.ease.Smooth};
-      padding-top: 4px;
       max-width: 0;
     }
   }

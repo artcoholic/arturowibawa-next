@@ -6,18 +6,6 @@ import Text from '../components/Text';
 import { motion } from 'framer-motion';
 import { blink, sphere, variants } from '../components/AnimationVariants';
 
-const HeaderWrapper = styled(Text)`
-  position: reltative;
-  &:after {
-    content: '';
-    height:90%;
-    width: 1px;
-    position: absolute;
-    background-color: ${props => props.theme.colors.content.primary};
-    animation: ${blink} 750ms ${props => props.theme.ease.It} infinite alternate;
-  }
-`
-
 const EmailLink = styled(Text)`
   position: relative;
   text-decoration: underline dotted;
@@ -120,9 +108,9 @@ const ProfilePage = () => {
           as={motion.div}
           variants={variants.ProfileSection}
         >
-          <HeaderWrapper as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb={["layout.1/2", null, 'layout.1/4']}>
+          <Text as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]}>
             Profile
-          </HeaderWrapper>
+          </Text>
           <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphSmall", null, "ParagraphMedium"]} color="content.inverseTertiary" mb="layout.1/4">
             Arturo Wibawa is a product designer based in Los Angeles, California with a strong focus on product strategy, user experience, and interaction design.
           </Text>
