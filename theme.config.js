@@ -20,7 +20,11 @@ const morning = {
       inversePrimary: '#FFD542',
       inverseSecondary: '#AE922E',
       inverseTertiary: '#67571C',
-    }
+    },
+    gradient: [
+      'rgba(255,213,66,0)',
+      'rgba(255,213,66,1)'
+    ]
   }
 }
 
@@ -44,7 +48,11 @@ const night = {
       inversePrimary: '#1B1C32',
       inverseSecondary: '#505177',
       inverseTertiary: '#9B9BB1',
-    }
+    },
+    gradient: [
+      'rgba(27,28,50,0)',
+      'rgba(27,28,50,1)'
+    ]
   }
 }
 

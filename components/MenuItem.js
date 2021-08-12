@@ -56,7 +56,7 @@ const MenuItem = ({ children, path, index, setOpen, title, color }) => {
           className="svgContainer"
           opacity={[1, null, null, 0]}
         >
-          <ArrowRight size="100%" stroke-width={1} />
+          <ArrowRight size="100%" strokeWidth={1} />
         </Box>
       </StyledNavButton>
     </Link>
