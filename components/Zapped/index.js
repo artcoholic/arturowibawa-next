@@ -6,7 +6,6 @@ const Zapped = ({ id }) => {
   return (
     <Provider
       apiKey="pt_24f41aec661cfe264e7a4a77bcb0de"
-      recaptchaSiteKey="6LeoKfwbAAAAAPGQQHB5ufU36Eo5IIB8tlTuXgoh"
     >
       <LikeButton
         namespace="thoughts"
