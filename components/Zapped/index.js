@@ -28,7 +28,7 @@ const Zapped = ({ id }) => {
             >
               <Tooltip
                 className="tooltip"
-                bg="bg.inverseTertiary"
+                bg="bg.inversePrimary"
                 color="content.tertiary"
               >
                 {userLiked ? 'Unzap' : 'Zap!'}
