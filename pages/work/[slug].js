@@ -6,7 +6,6 @@ import SlugHeader from '../../components/SlugHeader';
 import PreviewLabel from '../../components/PreviewLabel';
 import { motion, useViewportScroll } from 'framer-motion';
 import { variants } from '../../components/AnimationVariants';
-import Box from '../../components/Box';
 import dynamic from 'next/dynamic';
 import { getAllProjectsWithSlug, getProjectAndMoreProjects } from '../../utils/api';
 

@@ -10,7 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "akar-icons": "^1.8.6",
+    "@lyket/react": "^1.4.7",
+    "akar-icons": "^1.8.8",
     "contentful": "^8.4.2",
     "framer-motion": "^4.1.17",
     "next": "^11.0.0",

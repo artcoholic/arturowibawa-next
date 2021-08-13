@@ -24,7 +24,11 @@ const morning = {
     gradient: [
       'rgba(255,213,66,0)',
       'rgba(255,213,66,1)'
-    ]
+    ],
+    zapped: {
+      stroke: '#E2264D',
+      fill: '#d46abf'
+    },
   }
 }
 
@@ -52,7 +56,11 @@ const night = {
     gradient: [
       'rgba(27,28,50,0)',
       'rgba(27,28,50,1)'
-    ]
+    ],
+    zapped: {
+      stroke: '#FFD542',
+      fill: '#AE922E',
+    },
   }
 }
 

@@ -11,6 +11,9 @@ const Wrapper = styled(Box)`
     color: ${props => props.theme.colors.content.inverseTertiary};
     background: ${props => props.theme.colors.bg.primary};
   }
+  svg {
+    display: block;
+  }
 `
 
 const SocialLink = ({ href, children, color, title }) => {
