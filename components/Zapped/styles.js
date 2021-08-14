@@ -9,12 +9,12 @@ export const Wrapper = styled(Box)`
 
 export const Tooltip = styled(Text)`
   position: absolute;
-  bottom: 0;
+  top: 0;
   font-size: 12px;
   padding: 2px .5em;
   border-radius: 4px;
   left: 50%;
-  transform: translateX(-50%) translateY(1.5em);
+  transform: translateX(-50%) translateY(0);
   text-transform: uppercase;
   transition: all 0.15s ease-out;
   pointer-events: none;
@@ -22,12 +22,12 @@ export const Tooltip = styled(Text)`
   &::after {
     content: '';
     position: absolute;
-    bottom: 100%;
+    top: 100%;
     left: 50%;
     margin-left: -4px;
     border-width: 4px;
     border-style: solid;
-    border-color: transparent transparent ${props => props.theme.colors.content.primary} transparent;
+    border-color: ${props => props.theme.colors.content.primary} transparent transparent transparent;
   }
 `
 
@@ -38,7 +38,7 @@ export const Button = styled(Box)`
   transition: opacity 0.15s ease-out;
   &:hover {
     .tooltip {
-      transform: translateX(-50%) translateY(1em);
+      transform: translateX(-50%) translateY(-1.5em);
       opacity: 1;
     }
   }

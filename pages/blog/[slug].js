@@ -110,6 +110,7 @@ const Footer = styled(Box)`
   display: flex;
   justify-content: space-between;
   height:48px;
+  overflow: visible;
  .signature {
    width: 50vw;
    min-width: 120px;
