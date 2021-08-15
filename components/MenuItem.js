@@ -4,7 +4,6 @@ import Box from './Box';
 import Text from './Text';
 import { variants } from './AnimationVariants';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'akar-icons';
 
 const StyledNavButton = styled(Text)`
   display: flex;
@@ -21,6 +20,9 @@ const StyledNavButton = styled(Text)`
       opacity: 1;
       transform: translateX(0);
     }
+  }
+  &:after {
+    display: none;
   }
   
   .svgContainer {

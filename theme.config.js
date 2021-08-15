@@ -205,6 +205,31 @@ export const GlobalStyles = createGlobalStyle`
     url('/fonts/whyte-light.ttf') format('truetype');
   }
   .glare-wrapper { pointer-events: none; }
+  a {
+    position: relative;
+    text-decoration: underline dotted;
+    text-decoration-thickness: 1px;
+    white-space: nowrap;
+    color: ${props => props.theme.colors.content.primary};
+    &:hover {
+      &:after {
+        transform: scaleX(1);
+        transform-origin: 0%;
+      }
+    }
+    &:after {
+      content: '';
+      background: ${props => props.theme.colors.content.primary};
+      transition: transform 150ms ${props => props.theme.ease.Btn};
+      height: 100%;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      transform: scaleX(0);
+      transform-origin: 100%;
+      position: absolute;
+    }
+  }
 `
 
 export const morningTheme = { ...defaultTheme, ...morning };

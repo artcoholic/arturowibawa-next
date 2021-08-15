@@ -3,7 +3,7 @@ import Box from './Box';
 
 const Wrapper = styled(Box)`
   padding: 8px;
-  transition: all 150ms ${props => props.theme.ease.It};
+  transition: all 150ms ${props => props.theme.ease.Btn};
   background: ${props => props.theme.colors.content.secondary};
   border-radius: 50%;
   margin-left: .75rem;
@@ -13,6 +13,9 @@ const Wrapper = styled(Box)`
   }
   svg {
     display: block;
+  }
+  &:after {
+    display: none;
   }
 `
 

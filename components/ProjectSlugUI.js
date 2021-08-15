@@ -26,25 +26,29 @@ const ButtonWrapper = styled(Text)`
   &:active {
     box-shadow: none;
   }
+  &:after {
+    display: none;
+  }
   
   &.previous, &.next {
     color: #1B1C32;
-    &::after, &::before {
+    &::before {
       transition: all 300ms ${props => props.theme.ease.Btn};
       max-width: 0;
     }
   }
   &.previous {
-    &:after {
+    flex-direction: row-reverse;
+    &:before {
       content: 'PREV';
-      transform: translateX(1.4rem);
+      transform: translateX(2rem);
     }
     &:hover {
-      &:after {
+      &:before {
         width: auto;
         max-width: 100px;
         margin-left: .25rem;
-        transform: translateX(0);
+        transform: translateX(0rem);
       }
     }
   }
@@ -99,7 +103,6 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
         as={motion.a}
         href={entry.info.url}
         target="_blank"
-        rel="noopener"
         cursor={entry.info.url ? "pointer" : "not-allowed"}
         px="1.5rem"
         minWidth={0}

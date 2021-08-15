@@ -12,33 +12,7 @@ import Markdown from 'react-markdown';
 import { ArrowUpThick } from 'akar-icons';
 
 const MarkdownWrapper = styled(Text)`
-  a {
-    position: relative;
-    transition: transform 1000ms ${props => props.theme.ease.Smooth};
-    text-decoration: underline dotted;
-    text-decoration-thickness: 1px;
-    white-space: nowrap;
-    font-family: var(--eina-regular);
-    color: ${props => props.theme.colors.content.primary};
-    &:hover {
-      &:after {
-        transform: scaleX(1);
-        transform-origin: 0%;
-      }
-    }
-    &:after {
-      content: '';
-      background: ${props => props.theme.colors.content.primary};
-      transition: transform 150ms ${props => props.theme.ease.Btn};
-      height: 100%;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      transform: scaleX(0);
-      transform-origin: 100%;
-      position: absolute;
-    }
-  }
+  
 `
 
 const GalleryWrapper = styled(Box)`

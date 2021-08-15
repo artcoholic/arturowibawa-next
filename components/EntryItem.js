@@ -20,6 +20,9 @@ const AnchorWrapper = styled(Box)`
       transform: scale(1);
     }
   }
+  &:after {
+    display: none;
+  }
 `
 
 const IconWrapper = styled(Box)`

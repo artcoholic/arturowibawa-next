@@ -31,6 +31,9 @@ const Wrapper = styled(Box)`
   .path {
     stroke: ${props => props.theme.colors.content.secondary};
   }
+  &:after {
+    display: none;
+  }
 `
 
 const CloseButton = ({ scrollY, scrollYProgress, path }) => {
