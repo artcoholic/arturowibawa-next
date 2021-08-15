@@ -163,7 +163,7 @@ export default ProfilePage;
 const ExperienceItem = ({ position, date, line, timeline }) => {
   return (
     <Box display="flex" pt="layout.1/8">
-      <Box display="flex" flexDirection="column" alignItems="center" mt={10} mr={12} display={timeline === false ? "none" : "flex"}>
+      <Box flexDirection="column" alignItems="center" mt={10} mr={12} display={timeline === false ? "none" : "flex"}>
         <Dot />
         <Line display={line === false ? "none" : "block"} />
       </Box>
