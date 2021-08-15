@@ -4,7 +4,7 @@ import Box from '../components/Box';
 import Grid from '../components/Grid';
 import Text from '../components/Text';
 import { motion } from 'framer-motion';
-import { blink, sphere, variants } from '../components/AnimationVariants';
+import { sphere, variants } from '../components/AnimationVariants';
 
 const EmailLink = styled(Text)`
   position: relative;
@@ -22,7 +22,7 @@ const EmailLink = styled(Text)`
   &:after {
     content: '';
     background: ${props => props.theme.colors.content.primary};
-    transition: transform 250ms ${props => props.theme.ease.Smooth};
+    transition: transform 150ms ${props => props.theme.ease.Btn};
     height: 100%;
     left: 0;
     bottom: 0;

@@ -108,7 +108,7 @@ const BlogPage = ({ allArticles }) => {
           columns={['span 2', 'span 4', '2/span 6', '7/span 5']}
           mt={["layout.4", "layout.3", null, "layout.2"]}
         >
-          <Text as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]}>
+          <Text as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb={["layout.1", null, null, 0]}>
             Thoughts
           </Text>
           {allArticles.map((article, index) =>

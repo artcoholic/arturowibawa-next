@@ -14,7 +14,7 @@ const ButtonWrapper = styled(Text)`
   justify-content: space-between;
   border: 1px solid ${props => props.theme.colors.content.secondary};
   box-shadow: 0 4px 8px 0px rgba(0,0,0,0.15);
-  transition: all 500ms ${props => props.theme.ease.Smooth};
+  transition: all 300ms ${props => props.theme.ease.Btn};
   border-radius: 28px;
   background-color: rgba(255,255,255,0.5);
   overflow: hidden;
@@ -30,7 +30,7 @@ const ButtonWrapper = styled(Text)`
   &.previous, &.next {
     color: #1B1C32;
     &::after, &::before {
-      transition: all 500ms ${props => props.theme.ease.Smooth};
+      transition: all 300ms ${props => props.theme.ease.Btn};
       max-width: 0;
     }
   }
@@ -52,7 +52,7 @@ const ButtonWrapper = styled(Text)`
     overflow: hidden;
     &:before {
       content: 'NEXT';
-      transform: translateX(-4.1rem);
+      transform: translateX(-4.2rem);
     }
     &:hover {
       &:before {
@@ -85,12 +85,12 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
     >
       <Box display="flex">
         <Link href={`/work/${prevUrl}`} passHref>
-          <ButtonWrapper className="previous" as="a" mr="spacing.2" px={["1rem", null, "1.5rem"]} title="Previous Work">
+          <ButtonWrapper className="previous" as="a" mr="spacing.2" px={["1rem", null, "1.5rem"]}>
             <ArrowLeft />
           </ButtonWrapper>
         </Link>
         <Link href={`/work/${nextUrl}`} passHref>
-          <ButtonWrapper className="next" as="a" mr="spacing.6" px={["1rem", null, "1.5rem"]} title="Next Work">
+          <ButtonWrapper className="next" as="a" mr="spacing.6" px={["1rem", null, "1.5rem"]}>
             <ArrowRight />
           </ButtonWrapper>
         </Link>
@@ -130,11 +130,10 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
         {entry.info.url &&
           <Box
             as={motion.div}
-            // layout
             minWidth={24}
             ml="1rem"
           >
-            <ArrowForwardThickFill color="#1B1C32" />
+            <ArrowForwardThickFill color="#1B1C32" style={{ display: 'block' }} />
           </Box>
         }
       </ButtonWrapper>

@@ -29,7 +29,7 @@ const MarkdownWrapper = styled(Text)`
     &:after {
       content: '';
       background: ${props => props.theme.colors.content.primary};
-      transition: transform 250ms ${props => props.theme.ease.Smooth};
+      transition: transform 150ms ${props => props.theme.ease.Btn};
       height: 100%;
       left: 0;
       bottom: 0;
@@ -58,7 +58,7 @@ const GalleryWrapper = styled(Box)`
 const BackToTop = styled(Box)`
   cursor: pointer;
   svg {
-    transition: transform 500ms ${props => props.theme.ease.It};
+    transition: transform 500ms ${props => props.theme.ease.Btn};
   }
   .arrowUp > svg {
     fill: ${props => props.theme.colors.bg.primary};

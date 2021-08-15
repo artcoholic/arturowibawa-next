@@ -24,10 +24,10 @@ const StyledNavButton = styled(Text)`
   }
   
   .svgContainer {
-    transition: all 250ms ${props => props.theme.ease.Smooth};
+    transition: all 150ms ${props => props.theme.ease.Btn};
     transform: translateX(0em);
      @media (min-width: ${props => props.theme.breakpoints[2]}) { // 1280
-      transform: translateX(-1em);
+      transform: translateX(-.5em);
     }
   }
 `
@@ -52,11 +52,10 @@ const MenuItem = ({ children, path, index, setOpen, title, color }) => {
       >
         {children}
         <Box
-          size=".75em"
           className="svgContainer"
           opacity={[1, null, null, 0]}
         >
-          <ArrowRight size="100%" strokeWidth={1} />
+          →
         </Box>
       </StyledNavButton>
     </Link>
