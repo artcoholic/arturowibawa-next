@@ -18,6 +18,12 @@ const Container = styled(Box)`
   top: 0;
   left: 0;
   z-index: 99;
+
+  a {
+    &:after {
+      display: none;
+    }
+  }
 `
 
 const Dot = styled(Box)`
@@ -68,6 +74,7 @@ const Logo = styled.svg`
   fill: ${props => props.theme.colors.content.primary};
   display: block;
 `
+
 
 const Header = () => {
   const [open, setOpen] = useState(false);

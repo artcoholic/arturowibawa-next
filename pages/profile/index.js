@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import Head from 'next/head';
-import Box from '../components/Box';
-import Grid from '../components/Grid';
-import Text from '../components/Text';
-import GradientBox from '../components/GradientBox';
+import Box from '../../components/Box';
+import Grid from '../../components/Grid';
+import Text from '../../components/Text';
+import GradientBox from '../../components/GradientBox';
 import { motion } from 'framer-motion';
-import { sphere, variants } from '../components/AnimationVariants';
+import { sphere, variants } from '../../components/AnimationVariants';
+import ExperienceItem from './ExperienceItem';
+import SocialItem from './SocialItem';
 
 const Ellipse = styled.ellipse`
   animation: ${sphere} 20s linear infinite;
@@ -27,22 +29,6 @@ const List = styled(Text)`
   margin: 0;
   padding: 0;
   list-style: none;
-`
-
-const Dot = styled(Box)`
-  width: 5px;
-  height: 5px;
-  border-radius:1px;
-  flex-shrink: 0;
-  transform: rotate(45deg);
-  background: ${props => props.theme.colors.content.inverseSecondary};
-  margin-bottom: 8px;
-`
-
-const Line = styled(Box)`
-  width: 1px;
-  height: 100%;
-  background: ${props => props.theme.colors.content.inverseSecondary};
 `
 
 const ProfilePage = () => {
@@ -159,61 +145,3 @@ const ProfilePage = () => {
 }
 
 export default ProfilePage;
-
-const ExperienceItem = ({ position, date, line, timeline }) => {
-  return (
-    <Box display="flex" pt="layout.1/8">
-      <Box flexDirection="column" alignItems="center" mt={10} mr={12} display={timeline === false ? "none" : "flex"}>
-        <Dot />
-        <Line display={line === false ? "none" : "block"} />
-      </Box>
-      <Box mb="layout.1/8">
-        <Text font="ParagraphSmall" color="content.inverseTertiary">{position}</Text>
-        <Text font="ParagraphSmall" color="content.inverseTertiary">{date}</Text>
-      </Box>
-    </Box>
-  )
-}
-
-const SocialItemWrapper = styled(Box)`
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  text-decoration: none;
-  align-items: baseline;
-  border-bottom: 1px solid ${props => props.theme.colors.bg.placeholder};
-  padding-bottom: .5em;
-  &:hover {
-    &:before {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-    .social {
-      color: ${props => props.theme.colors.content.inverseTertiary};
-    }
-  }
-  &:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    background-color: ${props => props.theme.colors.content.primary};
-    bottom: 0;
-    left: 0;
-    transform: scaleX(0);
-    transition: transform 300ms ${props => props.theme.ease.Smooth};
-    transform-origin: right;
-  }
-  &:after {
-    display: none;
-  }
-`
-
-const SocialItem = ({ label, social, href }) => {
-  return (
-    <SocialItemWrapper as="a" href={href} my="layout.1/4" target="_blank">
-      <Text color="content.inverseTertiary">{label}</Text>
-      <Text className="social" font="ParagraphSmall" color="content.inverseSecondary">{social}</Text>
-    </SocialItemWrapper>
-  )
-}
