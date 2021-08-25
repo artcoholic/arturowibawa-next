@@ -19,11 +19,10 @@ const Line = styled(Box)`
   background: ${props => props.theme.colors.content.inverseSecondary};
 `
 
-const ExperienceItem = ({ position, date, line, timeline }) => {
+const ExperienceItem = ({ position, date, mt, line, timeline }) => {
   return (
-    <Box display="flex">
-      < Box flexDirection="column" alignItems="center" mt={10} mr={12} display={timeline === false ? "none" : "flex"
-      }>
+    <Box display="flex" mt={mt ? 8 : 0}>
+      < Box flexDirection="column" alignItems="center" mt={10} mr={12} display={timeline === false ? "none" : "flex"}>
         <Dot />
         <Line display={line === false ? "none" : "block"} />
       </Box >

@@ -96,7 +96,7 @@ const ProfilePage = () => {
           </Text>
         </Box>
         <Box as={motion.div} variants={variants.ProfileSection} columns={['-1/1', '1/span 4', '2/span 6', '2/span 5']} mt={[0, null, null, "-1.5em"]} mb={["layout.1", null, null, "layout.1/2"]}>
-          <Text as={motion.h2} variants={variants.ProfileContent} font="HeadingSmall" color="content.inverseSecondary">Areas of Focus</Text>
+          <Text as={motion.h2} variants={variants.ProfileContent} mb={8} font="HeadingSmall" color="content.inverseSecondary">Areas of Focus</Text>
           <List as={motion.ul} variants={variants.ProfileContent} font="ParagraphMedium" color="content.inverseTertiary">
             <li>UI and UX Design</li>
             <li>Art Direction</li>
@@ -106,30 +106,30 @@ const ProfilePage = () => {
           </List>
         </Box>
         <Box as={motion.div} variants={variants.ProfileSection} columns={['-1/1', '1/span 4', '2/span 6', '2/span 5']} my={["layout.1", null, null, "layout.1/2"]}>
-          <Text as={motion.h2} variants={variants.ProfileContent} font="HeadingSmall" color="content.inverseSecondary">Experience</Text>
+          <Text as={motion.h2} variants={variants.ProfileContent} mb={8} font="HeadingSmall" color="content.inverseSecondary">Experience</Text>
           <List as={motion.ul} variants={variants.ProfileContent} font="ParagraphMedium" color="content.inverseTertiary">
             <Box as="li" mb="layout.1/4">
               <Text as="a" href="https://madeinhaus.com/" target="_blank">HAUS</Text>
-              <ExperienceItem position="Senior Product Designer" date="2020 – Present" />
+              <ExperienceItem position="Senior Product Designer" date="2020 – Present" mt />
               <ExperienceItem position="Product Designer" date="2018 – 2020" />
               <ExperienceItem position="Web Designer" date="2016 – 2018" line={false} />
             </Box>
             <Box as="li" mb="layout.1/4">
               <Text as="a" href="https://wonderful.io/" target="_blank">Wonderful Collective</Text>
-              <ExperienceItem position="Web Designer" date="2014 – 2016" line={false} />
+              <ExperienceItem position="Web Designer" date="2014 – 2016" line={false} mt />
             </Box>
             <Box as="li" mb="layout.1/4">
               <Text as="a" href="https://www.columnfivemedia.com/" target="_blank">Column Five Media</Text>
-              <ExperienceItem position="Visual Designer" date="2012 – 2014" line={false} />
+              <ExperienceItem position="Visual Designer" date="2012 – 2014" line={false} mt />
             </Box>
             <Box as="li">
               <Text color="content.inverseTertiary">Cal Poly Pomona</Text>
-              <ExperienceItem position="Graphic Designer" date="2010 – 2011" line={false} />
+              <ExperienceItem position="Graphic Designer" date="2010 – 2011" line={false} mt />
             </Box>
           </List>
         </Box>
         <Box as={motion.div} variants={variants.ProfileSection} columns={['-1/1', '1/span 4', '2/span 6', '2/span 5']} mt={["layout.1", null, null, "layout.1/2"]}>
-          <Text as={motion.h2} variants={variants.ProfileContent} font="HeadingSmall" color="content.inverseSecondary">Socials</Text>
+          <Text as={motion.h2} variants={variants.ProfileContent} mb={8} font="HeadingSmall" color="content.inverseSecondary">Socials</Text>
           <List as={motion.ul} variants={variants.ProfileContent} font="ParagraphMedium" color="content.inverseTertiary">
             <SocialItem label="Email" social="agwibawa@gmail.com" href="mailto:agwibawa@gmail.com" />
             <SocialItem label="Twitter" social="@agwibawa" href="https://twitter.com/agwibawa" />
