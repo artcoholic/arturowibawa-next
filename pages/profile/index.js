@@ -11,17 +11,18 @@ import SocialItem from './SocialItem';
 
 const Ellipse = styled.ellipse`
   animation: ${sphere} 20s linear infinite;
-`
+  transform: translateZ(0);
+  `
 
 const EllipseWrapper = styled(Box)`
   transform: rotate(-30deg);
   width: 100%;
+  opacity: 0.5;
   svg {
     stroke: ${props => props.theme.colors.content.inverseSecondary};
     stroke-width: 1px;
     overflow: visible;
     display: block;
-    shape-rendering: optimizeSpeed;
   }
 `
 
@@ -57,7 +58,6 @@ const ProfilePage = () => {
                   <Ellipse
                     key={i}
                     cy={50}
-                    begin={0 + i}
                     vectorEffect="non-scaling-stroke"
                     style={{ animationDelay: 0 + i + 's' }}
                   />
