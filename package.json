@@ -14,7 +14,7 @@
     "akar-icons": "^1.8.8",
     "contentful": "^8.4.2",
     "framer-motion": "^4.1.17",
-    "next": "^11.0.0",
+    "next": "^11.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-gtm-module": "^2.0.11",

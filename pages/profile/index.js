@@ -1,13 +1,15 @@
+import {useEffect} from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import Box from '../../components/Box';
 import Grid from '../../components/Grid';
 import Text from '../../components/Text';
 import GradientBox from '../../components/GradientBox';
-import { motion } from 'framer-motion';
+import { motion, useViewportScroll, useMotionValue, transform } from 'framer-motion';
 import { sphere, variants } from '../../components/AnimationVariants';
 import ExperienceItem from './ExperienceItem';
 import SocialItem from './SocialItem';
+import { ArrowDown } from 'akar-icons';
 
 const Ellipse = styled.ellipse`
   animation: ${sphere} 20s linear infinite;
@@ -33,6 +35,13 @@ const List = styled(Text)`
 `
 
 const ProfilePage = () => {
+  const { scrollYProgress } = useViewportScroll();
+  const opacity = useMotionValue(1);
+  useEffect(() => {
+    scrollYProgress.onChange((latest) => {
+      latest > 0.2 ? opacity.set(0) : opacity.set(1);
+    });
+  }, []);
   return (
     <>
       <Head>
@@ -86,17 +95,17 @@ const ProfilePage = () => {
           mt={["layout.4", null, null, 0]}
           mb={["layout.2", null, null, 0]}
         >
-          <Text as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]}>
+          <Text as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb="layout.1/2">
             Profile
           </Text>
-          <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphMedium", null, "ParagraphMedium"]} color="content.inverseTertiary">
+          <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphMedium", null, null, null, "ParagraphLarge"]} color="content.inverseTertiary">
             Arturo Wibawa is a product designer based in Los Angeles, California with a strong focus on product strategy, user experience, and interaction design.
             <br /><br />
             He&apos;s keen to experiment with new technology and believes that the best solutions are the simplest ones.
           </Text>
         </Box>
-        <Box as={motion.div} variants={variants.ProfileSection} columns={['-1/1', '1/span 4', '2/span 6', '2/span 5']} mt={[0, null, null, "-1.5em"]} mb={["layout.1", null, null, "layout.1/2"]}>
-          <Text as={motion.h2} variants={variants.ProfileContent} mb={8} font="HeadingSmall" color="content.inverseSecondary">Areas of Focus</Text>
+        <Box as={motion.div} variants={variants.ProfileSection} columns={['-1/1', '1/span 4', '2/span 6', '2/span 5']} mt={[0, null, null, "-4em"]} mb={["layout.1", null, null, "layout.1/2"]}>
+          <Text as={motion.h2} variants={variants.ProfileContent} mb="1rem" font="HeadingSmall" color="content.inverseSecondary">Areas of Focus</Text>
           <List as={motion.ul} variants={variants.ProfileContent} font="ParagraphMedium" color="content.inverseTertiary">
             <li>UI and UX Design</li>
             <li>Art Direction</li>
@@ -106,7 +115,7 @@ const ProfilePage = () => {
           </List>
         </Box>
         <Box as={motion.div} variants={variants.ProfileSection} columns={['-1/1', '1/span 4', '2/span 6', '2/span 5']} my={["layout.1", null, null, "layout.1/2"]}>
-          <Text as={motion.h2} variants={variants.ProfileContent} mb={8} font="HeadingSmall" color="content.inverseSecondary">Experience</Text>
+          <Text as={motion.h2} variants={variants.ProfileContent} mb="1rem" font="HeadingSmall" color="content.inverseSecondary">Experience</Text>
           <List as={motion.ul} variants={variants.ProfileContent} font="ParagraphMedium" color="content.inverseTertiary">
             <Box as="li" mb="layout.1/4">
               <Text as="a" href="https://madeinhaus.com/" target="_blank">HAUS</Text>
@@ -128,8 +137,8 @@ const ProfilePage = () => {
             </Box>
           </List>
         </Box>
-        <Box as={motion.div} variants={variants.ProfileSection} columns={['-1/1', '1/span 4', '2/span 6', '2/span 5']} mt={["layout.1", null, null, "layout.1/2"]}>
-          <Text as={motion.h2} variants={variants.ProfileContent} mb={8} font="HeadingSmall" color="content.inverseSecondary">Socials</Text>
+        <Box as={motion.div} variants={variants.ProfileSection} columns={['-1/1', '1/span 4', '2/span 6', '2/span 4']} mt={["layout.1", null, null, "layout.1/2"]}>
+          <Text as={motion.h2} variants={variants.ProfileContent} mb="1rem" font="HeadingSmall" color="content.inverseSecondary">Socials</Text>
           <List as={motion.ul} variants={variants.ProfileContent} font="ParagraphMedium" color="content.inverseTertiary">
             <SocialItem label="Email" social="agwibawa@gmail.com" href="mailto:agwibawa@gmail.com" />
             <SocialItem label="Twitter" social="@agwibawa" href="https://twitter.com/agwibawa" />
@@ -139,6 +148,16 @@ const ProfilePage = () => {
           </List>
         </Box>
       </Grid>
+      <Box
+        as={motion.div}
+        position="fixed"
+        bottom="layout.1" left="layout.1"
+        style={{
+          opacity: opacity,
+        }}
+      >
+        <ArrowDown size={32} style={{display: 'block'}}/>
+      </Box>
       <GradientBox />
     </>
   )
