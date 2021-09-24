@@ -155,6 +155,8 @@ const ProfilePage = () => {
         style={{
           opacity: opacity,
         }}
+        display={['none', null, null, 'block']}
+        color="content.primary"
       >
         <ArrowDown size={32} style={{display: 'block'}}/>
       </Box>
