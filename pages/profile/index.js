@@ -37,9 +37,16 @@ const List = styled(Text)`
 const ProfilePage = () => {
   const { scrollYProgress } = useViewportScroll();
   const opacity = useMotionValue(1);
+  const y = useMotionValue(0);
   useEffect(() => {
     scrollYProgress.onChange((latest) => {
-      latest > 0.2 ? opacity.set(0) : opacity.set(1);
+      if (latest > 0.2) {
+        y.set(12);
+        opacity.set(0);
+      } else {
+        y.set(0);
+        opacity.set(1);
+      }
     });
   }, []);
   return (
@@ -154,6 +161,8 @@ const ProfilePage = () => {
         bottom="layout.1" left="layout.1"
         style={{
           opacity: opacity,
+          transition: 'all 300ms ease-out',
+          y: y,
         }}
         display={['none', null, null, 'block']}
         color="content.primary"
