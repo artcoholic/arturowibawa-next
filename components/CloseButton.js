@@ -48,7 +48,7 @@ const CloseButton = ({ scrollYProgress, path }) => {
     return () => {
       unsubsribe();
     }
-  }, []);
+  }, [scrollYProgress]);
   return (
     <Link href={path} passHref scroll={false}>
       <Wrapper

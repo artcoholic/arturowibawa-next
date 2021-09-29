@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Box from './Box';
-import { useMousePosition } from './useMousePosition';
+import useMousePosition from './UseMousePosition';
 
 const Wrapper = styled(Box)`
   position: fixed;

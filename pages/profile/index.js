@@ -49,7 +49,7 @@ const ProfilePage = () => {
         opacity.set(1);
       }
     });
-  }, []);
+  }, [opacity, scrollYProgress, y]);
   return (
     <>
       <Head>
