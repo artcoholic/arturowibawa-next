@@ -141,7 +141,7 @@ export const GlobalStyles = createGlobalStyle`
     --heading: 'Whyte Inktrap Light';
     --paragraph: 'Whyte Light';
     --system-fonts:  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-
+    
     @media (min-width: ${props => props.theme.breakpoints[0]}) { // 640
       --columns: 4;
       --gutter: 32px;
@@ -166,6 +166,7 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
   * {
+    /* cursor: none; */
     box-sizing: border-box;
   }
   html {

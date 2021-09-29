@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Link from "next/link";
 import { motion, useSpring, useTransform } from 'framer-motion';
@@ -13,7 +14,7 @@ const Wrapper = styled(Box)`
   position: fixed;
   left: 50%;
   z-index: 98;
-  transition: all 300ms ${props => props.theme.ease.Smooth};
+  transition: all 500ms ${props => props.theme.ease.Smooth};
   border-radius: 50%;
   background-color: ${({ scrollY }) => scrollY > 0 ? 'rgba(255,255,255,0.25)' : 'none'};
   border: ${({ scrollY }) => scrollY > 0 ? '1px solid var(--contentSecondary)' : 'none'};
@@ -36,17 +37,26 @@ const Wrapper = styled(Box)`
   }
 `
 
-const CloseButton = ({ scrollY, scrollYProgress, path }) => {
+const CloseButton = ({ scrollYProgress, path }) => {
   const yRange = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const pathLength = useSpring(yRange, { stiffness: 400, damping: 40 });
+  const [yPos, setYPos] = useState(0);
+  useEffect(() => {
+    const unsubsribe = scrollYProgress.onChange((y) => {
+      setYPos(y);
+    });
+    return () => {
+      unsubsribe();
+    }
+  }, []);
   return (
     <Link href={path} passHref scroll={false}>
       <Wrapper
         as={motion.a}
         top="layout.1"
-        size={scrollY > 0 ? 48 : 32}
+        size={yPos > 0 ? 48 : 32}
         color="content.primary"
-        scrollY={scrollY}
+        scrollY={yPos}
         initial={{ scale: 0, x: '-50%' }}
         animate={{ scale: 1 }}
         exit={{ scale: 0 }}

@@ -33,7 +33,7 @@ const ButtonWrapper = styled(Text)`
   &.previous, &.next {
     color: #1B1C32;
     &::before {
-      transition: all 300ms ${props => props.theme.ease.Btn};
+      transition: all 500ms ${props => props.theme.ease.Btn};
       max-width: 0;
     }
   }

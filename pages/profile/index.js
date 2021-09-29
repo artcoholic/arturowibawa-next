@@ -1,11 +1,11 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import Box from '../../components/Box';
 import Grid from '../../components/Grid';
 import Text from '../../components/Text';
 import GradientBox from '../../components/GradientBox';
-import { motion, useViewportScroll, useMotionValue, transform } from 'framer-motion';
+import { motion, useViewportScroll, useMotionValue } from 'framer-motion';
 import { sphere, variants } from '../../components/AnimationVariants';
 import ExperienceItem from './ExperienceItem';
 import SocialItem from './SocialItem';
@@ -14,6 +14,7 @@ import { ArrowDown } from 'akar-icons';
 const Ellipse = styled.ellipse`
   animation: ${sphere} 20s linear infinite;
   transform: translateZ(0);
+  will-change: transform;
   `
 
 const EllipseWrapper = styled(Box)`
@@ -167,7 +168,7 @@ const ProfilePage = () => {
         display={['none', null, null, 'block']}
         color="content.primary"
       >
-        <ArrowDown size={32} style={{display: 'block'}}/>
+        <ArrowDown size={32} style={{ display: 'block' }} />
       </Box>
       <GradientBox />
     </>

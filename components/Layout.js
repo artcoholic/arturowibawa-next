@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import Header from './Header';
+import Box from './Box';
+import Dot from './Dot';
 import styled from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 import { grain } from './AnimationVariants';
@@ -83,6 +85,7 @@ const Layout = ({ children }) => {
       <Main DarkMode={darkMode.value}>
         {children}
       </Main>
+      <Dot />
     </>
   )
 }

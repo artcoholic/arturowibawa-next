@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Head from 'next/head';
 import ProjectSlugUI from '../../components/ProjectSlugUI';
 import CloseButton from '../../components/CloseButton';
@@ -12,8 +11,7 @@ import { getAllProjectsWithSlug, getProjectAndMoreProjects } from '../../utils/a
 const DynamicContent = dynamic(() => import('../../components/SlugContent'));
 
 export default function WorkSlug({ project, preview, moreProjects }) {
-  const { scrollY, scrollYProgress } = useViewportScroll();
-  const [hookedYPosition, setHookedYPosition] = useState(0);
+  const { scrollYProgress } = useViewportScroll();
 
   const projectArray = moreProjects;
   const currentIndex = moreProjects.findIndex(x => x.slug === project.slug);
@@ -26,12 +24,6 @@ export default function WorkSlug({ project, preview, moreProjects }) {
       return projectArray[(currentIndex + i) % projectArray.length];
     }
   }
-  useEffect(() => {
-    const unsubsribe = scrollY.onChange(y => setHookedYPosition(y));
-    return () => {
-      unsubsribe();
-    }
-  }, [scrollY]);
 
   return (
     <>
@@ -39,12 +31,12 @@ export default function WorkSlug({ project, preview, moreProjects }) {
         <title>{project.title} — Arturo Wibawa</title>
       </Head>
       {preview && <PreviewLabel />}
-      <CloseButton scrollY={scrollY.current} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/'} />
+      <CloseButton scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/'} />
       <motion.article initial="initial" animate="enter" exit="exit" variants={variants.main}>
         <SlugHeader layout entry={project} />
         <DynamicContent entry={project} />
       </motion.article>
-      <ProjectSlugUI prevUrl={getAtIndex(-1).slug} nextUrl={getAtIndex(1).slug} scrollY={scrollY.current} entry={project} />
+      <ProjectSlugUI prevUrl={getAtIndex(-1).slug} nextUrl={getAtIndex(1).slug} entry={project} />
     </>
   )
 }

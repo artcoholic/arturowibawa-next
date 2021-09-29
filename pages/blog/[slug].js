@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
 import Head from 'next/head';
@@ -94,15 +93,7 @@ const Footer = styled(Box)`
 
 export default function Slug({ article, preview }) {
 
-  const [hookedYPosition, setHookedYPosition] = useState(0);
-  const { scrollY, scrollYProgress } = useViewportScroll();
-
-  useEffect(() => {
-    const unsubsribe = scrollY.onChange(y => setHookedYPosition(y));
-    return () => {
-      unsubsribe();
-    }
-  }, [scrollY]);
+  const { scrollYProgress } = useViewportScroll();
 
   return (
     <>
@@ -110,7 +101,7 @@ export default function Slug({ article, preview }) {
         <title>{article.title} — Arturo Wibawa</title>
       </Head>
       {preview && <PreviewLabel />}
-      <CloseButton scrollY={scrollY.current} scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/blog'} />
+      <CloseButton scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/blog'} />
       <Grid mx="layout.1" py="layout.1" as={motion.section} overflow="visible" initial="initial" animate="enter" exit="exit" variants={variants.main}>
         <Box as={motion.div} variants={variants.ProfileSection} columns={['1/-1', null, '2/span 6', '4/span 6']} mt={["layout.4", "layout.3"]}>
           <Text as={motion.div} variants={variants.ProfileContent} font="ParagraphMedium" color="content.secondary" mb='layout.1/2' display="flex" alignItems="baseline">
