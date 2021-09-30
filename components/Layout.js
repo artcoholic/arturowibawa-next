@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Header from './Header';
-import Box from './Box';
 import Dot from './Dot';
 import styled from 'styled-components';
 import useDarkMode from 'use-dark-mode';
@@ -85,7 +84,7 @@ const Layout = ({ children }) => {
       <Main DarkMode={darkMode.value}>
         {children}
       </Main>
-      <Dot />
+      {/* <Dot /> */}
     </>
   )
 }
