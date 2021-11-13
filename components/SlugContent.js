@@ -92,7 +92,7 @@ const SlugContent = ({ entry }) => {
                       width="100%"
                       borderRadius={[8, null, 16]}
                       overflow="hidden"
-                      bg="bg.placeholder"
+                      // bg="bg.placeholder"
                       key={asset.sys.id}
                     >
                       {asset.contentType.includes('image') &&
