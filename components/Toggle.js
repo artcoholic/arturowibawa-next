@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import Box from './Box';
+import Text from './Text';
 import { Sun, MoonFill } from 'akar-icons'
 
 const Wrapper = styled(Box)`
@@ -13,10 +14,11 @@ const Wrapper = styled(Box)`
   border-radius: 9999em;
   align-items: center;
   cursor: pointer;
+
   &:before {
     content: '';
     width: 100%;
-    height: 24px;
+    height: 20px;
     background-color: ${props => props.theme.colors.bg.inverseSecondary};
     position: absolute;
     left: 0;
@@ -31,6 +33,12 @@ const Wrapper = styled(Box)`
   input:checked + .thumb svg {
     color: ${props => props.theme.colors.content.primary};
   }
+  &:hover{
+    .toggleLabel {
+      opacity: 1;
+      transform: translateY(28px) translateX(-50%);
+    }
+  }
 `
 
 const Thumb = styled(Box)`
@@ -42,6 +50,15 @@ const Thumb = styled(Box)`
   justify-content: center;
   align-items: center;
   transition: transform .15s ${props => props.theme.ease.It};
+`
+
+const Label = styled(Text)`
+  position: absolute;
+  left: 50%;
+  transform: translateY(20px) translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 150ms ease-out;
 `
 
 const Toggle = ({ checked, onChange }) => (
@@ -63,6 +80,7 @@ const Toggle = ({ checked, onChange }) => (
     >
       {checked ? <MoonFill size={16} /> : <Sun size={16} />}
     </Thumb>
+    <Label className="toggleLabel" fontSize={3} color="content.inversePrimary">{checked ? "Good Night" : "Good Morning"}</Label>
   </Wrapper>
 );
 
