@@ -13,9 +13,12 @@ const Main = styled.main`
     height: 300%;
     width: 300%;
     left: -50%;
-    opacity: ${({ DarkMode }) => DarkMode ? 0.5 : 0.15};
+    opacity: 0.15;
     position: fixed;
     top: -100%;
+    z-index: 999;
+    pointer-events: none;
+    will-change: transform;
   }
 `
 
@@ -81,7 +84,7 @@ const Layout = ({ children }) => {
         <meta property="og:image:height" content="630" />
       </Head >
       <Header />
-      <Main DarkMode={darkMode.value}>
+      <Main>
         {children}
       </Main>
       {/* <Dot /> */}

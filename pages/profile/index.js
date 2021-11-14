@@ -14,7 +14,6 @@ import { ArrowDown } from 'akar-icons';
 const Ellipse = styled.ellipse`
   animation: ${sphere} 20s linear infinite;
   transform: translateZ(0);
-  will-change: transform;
   `
 
 const EllipseWrapper = styled(Box)`

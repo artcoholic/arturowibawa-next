@@ -112,7 +112,7 @@ const BlogPage = ({ allArticles }) => {
           </Text>
           {allArticles.map((article, index) =>
             <Link key={index} href={`/blog/${article.slug}`} passHref>
-              <a style={{ textDecoration: 'none' }}>
+              <a style={{ textDecoration: 'none' }} title={article.title}>
                 <ArticleWrapper
                   as={motion.div}
                   variants={variants.ProfileContent}
@@ -128,6 +128,8 @@ const BlogPage = ({ allArticles }) => {
                     as="h2"
                     font="HeadingSmall"
                     color="content.inverseTertiary"
+                    overflow="hidden"
+                    style={{ textOverflow: 'ellipsis' }}
                   >
                     {article.title}
                   </Text>
