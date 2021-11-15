@@ -39,12 +39,16 @@ const BackToTop = styled(Box)`
   }
   .textPath {
     animation: ${rotation} 30s linear infinite;
+    animation-play-state: paused;
     svg {
       fill: ${props => props.theme.colors.content.inverseSecondary};
       transform: scale(1);
     }
   }
   &:hover {
+    .textPath {
+      animation-play-state: running;
+    }
     .textPath > svg {
       transform: scale(1.2);
     }
