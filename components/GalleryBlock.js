@@ -22,6 +22,7 @@ const PaginationButton = styled(Box)`
   @media (min-width: ${props => props.theme.breakpoints[2]}) {
     padding: 12px;
     &:hover {
+      background: white;
        svg {
         fill: #1B1C32;
       }
@@ -90,14 +91,14 @@ const GalleryBlock = ({ item }) => {
         onClick={() => paginate(-1)}
         left={["layout.1/4", null, "layout.1/2"]}
       >
-        <TriangleLeft />
+        <TriangleLeft style={{ display: 'block' }} />
       </PaginationButton>
       <PaginationButton
         as="button"
         onClick={() => paginate(1)}
         right={["layout.1/4", null, "layout.1/2"]}
       >
-        <TriangleRight />
+        <TriangleRight style={{ display: 'block' }} />
       </PaginationButton>
       <PaginationNumber
         bottom="layout.1/2"
