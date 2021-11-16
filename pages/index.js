@@ -78,11 +78,11 @@ const HomePage = ({ allProjects }) => {
           display='flex'
           justifyContent={['center', 'space-between']}
           alignItems="baseline"
-          pb={12}
+          pb={16}
         >
-          <Text as="p" fontSize={[3, null, null, 4]}>© {new Date().getFullYear()}. All Rights Reserved.</Text>
-          <Text as="p" display={["none", "flex"]} alignItems="center" fontSize={[3, null, null, 4]}>
-            Scroll or Drag Sideways <ArrowRight size={16} style={{ marginLeft: '.5em' }} />
+          <Text as="p" fontSize={4}>© {new Date().getFullYear()}. All Rights Reserved.</Text>
+          <Text as="p" display={["none", "flex"]} alignItems="center" fontSize={4}>
+            Scroll or Drag Sideways <ArrowRight size={20} style={{ marginLeft: '.5em' }} />
           </Text>
         </Box>
         <Box overflow="hidden">
