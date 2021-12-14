@@ -84,11 +84,9 @@ export const variants = {
   menuItem: {
     open: {
       y: 0,
-      opacity: 1,
     },
     closed: {
-      y: '2em',
-      opacity: 0,
+      y: '300%',
     }
   },
   menuContainer: {

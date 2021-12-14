@@ -15,7 +15,8 @@ const StyledNavButton = styled(Text)`
   width: 100%;
   text-decoration: none;
   border-top: 1px solid ${props => props.theme.colors.content.inversePrimary};
-  &:hover {
+  &:hover, &:active {
+    background: ${props => props.theme.colors.bg.inverseTertiary};
     .svgContainer {
       opacity: 1;
       transform: translateX(0);

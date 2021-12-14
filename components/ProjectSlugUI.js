@@ -32,38 +32,41 @@ const ButtonWrapper = styled(Text)`
   
   &.previous, &.next {
     color: #1B1C32;
+    width: 56px;
+    justify-content: center;
     &::before {
-      transition: all 500ms ${props => props.theme.ease.Btn};
-      max-width: 0;
+      transition: all 300ms ${props => props.theme.ease.Btn};
+      position: absolute;
+      opacity: 0;
+    }
+    svg {
+      flex-shrink: 0;
     }
   }
   &.previous {
     flex-direction: row-reverse;
     &:before {
       content: 'PREV';
-      transform: translateX(2rem);
+      margin-left: .25rem;
     }
     &:hover {
+      width: 106px;
       &:before {
-        width: auto;
-        max-width: 100px;
-        margin-left: .25rem;
-        transform: translateX(0rem);
+        position: relative;
+        opacity: 1;
       }
     }
   }
   &.next {
-    overflow: hidden;
     &:before {
       content: 'NEXT';
-      transform: translateX(-4.2rem);
+      margin-right: .25rem;
     }
     &:hover {
+      width: 106px;
       &:before {
-        width: auto;
-        max-width: 100px;
-        margin-right: .25rem;
-        transform: translateX(0);
+        position: relative;
+        opacity: 1;
       }
     }
   }
