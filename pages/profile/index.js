@@ -6,15 +6,10 @@ import Grid from '../../components/Grid';
 import Text from '../../components/Text';
 import GradientBox from '../../components/GradientBox';
 import { motion, useViewportScroll, useMotionValue } from 'framer-motion';
-import { sphere, variants } from '../../components/AnimationVariants';
+import { variants } from '../../components/AnimationVariants';
 import ExperienceItem from './ExperienceItem';
 import SocialItem from './SocialItem';
 import { ArrowDown } from 'akar-icons';
-
-const Ellipse = styled.ellipse`
-  animation: ${sphere} 20s linear infinite;
-  transform: translateZ(0);
-  `
 
 const EllipseWrapper = styled(Box)`
   transform: rotate(-30deg);
@@ -71,11 +66,21 @@ const ProfilePage = () => {
             <g>
               {
                 Array.from({ length: 20 }).map((_, i) => (
-                  <Ellipse
+                  <motion.ellipse
                     key={i}
                     cy={50}
                     vectorEffect="non-scaling-stroke"
-                    style={{ animationDelay: 0 + i + 's' }}
+                    animate={{
+                      x: [100, 0],
+                      rx: [0, 10, 18, 22, 24.5, 25, 24.5, 22, 18, 10, 0],
+                      ry: [0, 20, 36, 44, 49, 50, 49, 44, 36, 20, 0]
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 20,
+                      delay: i,
+                      ease: 'linear',
+                    }}
                   />
                 ))
               }

@@ -34,21 +34,7 @@ export const blink = keyframes`
   from { opacity: 0}
   to {opacity: 1}
 `
-export const sphere = keyframes`
-  0%    {transform: translateX(100px); rx: 0px; ry: 0px;}
-  10%   {rx: 10px; ry: 20px}
-  20%   {rx: 18px; ry: 36px}
-  30%   {rx: 22px; ry: 44px}
-  40%   {rx: 24.5px; ry: 49px}
-  45%   {rx: 25px; ry: 50px}
-  50%   {rx: 25px; ry: 50px;}
-  55%   {rx: 25px; ry: 50px}
-  60%   {rx: 24.5px; ry: 49px}
-  70%   {rx: 22px; ry: 44px}
-  80%   {rx: 18px; ry: 36px}
-  90%   {rx: 10px; ry: 20px}
-  100%  {transform: translateX(0px); rx: 0px; ry: 0px;}
-`
+
 export const radius = keyframes`
   from   {r: 20px}
   to     {r: 40px}

@@ -6,8 +6,8 @@ const Wrapper = styled(Box)`
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   border-radius: 100%;
   transform: translate(-50%, -50%);
   z-index: 999;

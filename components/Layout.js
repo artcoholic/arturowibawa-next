@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import Header from './Header';
-import Dot from './Dot';
+// import Dot from './Dot';
 import styled from 'styled-components';
-import useDarkMode from 'use-dark-mode';
 import { grain } from './AnimationVariants';
 
 const Main = styled.main`
@@ -23,7 +22,6 @@ const Main = styled.main`
 `
 
 const Layout = ({ children }) => {
-  const darkMode = useDarkMode(false);
   return (
     <>
       <Head>
