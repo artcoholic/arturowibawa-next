@@ -36,7 +36,7 @@ const MenuContainer = ({ open, setOpen }) => {
     open ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto";
     const timer = setInterval(() => {
       setTime(new Date());
-    }, 60000);
+    }, 1000);
     return () => {
       clearInterval(timer);
     }
