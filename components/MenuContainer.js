@@ -70,7 +70,7 @@ const MenuContainer = ({ open, setOpen }) => {
               keyword_1="Product"
               keyword_2="Web Design"
               keyword_3="User Interface"
-              keyword_4="Work"
+              keyword_4="work"
             >
               Work
             </MenuItem>
@@ -83,7 +83,7 @@ const MenuContainer = ({ open, setOpen }) => {
               keyword_1="Blog"
               keyword_2="Writing"
               keyword_3="Ideas"
-              keyword_4="Thoughts"
+              keyword_4="thoughts"
             >
               Thoughts
             </MenuItem>
@@ -96,7 +96,7 @@ const MenuContainer = ({ open, setOpen }) => {
               keyword_1="About"
               keyword_2="Contact"
               keyword_3="History"
-              keyword_4="Profile"
+              keyword_4="profile"
             >
               Profile
             </MenuItem>
