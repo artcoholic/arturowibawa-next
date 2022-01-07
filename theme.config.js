@@ -192,9 +192,9 @@ export const GlobalStyles = createGlobalStyle`
     font-style: normal;
     font-weight: normal;
     font-display: swap;
-    src: url('/fonts/whyte-inktrap-light.woff') format('woff'),
-    url('/fonts/whyte-inktrap-light.woff2') format('woff2'),
-    url('/fonts/whyte-inktrap-light.ttf') format('truetype');
+    src: url('/fonts/WhyteInktrap-Light.woff') format('woff'),
+    url('/fonts/WhyteInktrap-Light.woff2') format('woff2'),
+    url('/fonts/WhyteInktrap-Light.ttf') format('truetype');
   }
   @font-face {
     font-family: 'Whyte Light';

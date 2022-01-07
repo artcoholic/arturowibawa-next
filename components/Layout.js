@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
         <link rel='shortcut icon' href='/favicon.ico' />
         <link
           rel="preload"
-          href="/fonts/whyte-inktrap-light.woff2"
+          href="/fonts/WhyteInktrap-Light.woff2"
           as="font"
           type="font/woff2"
           crossOrigin=""

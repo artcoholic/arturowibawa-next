@@ -32,7 +32,7 @@ const SlugHeader = ({ entry }) => {
           as={motion.h1}
           font={["HeadingSmall", "HeadingMedium", "HeadingLarge"]}
           variants={variants.slugTitle}
-          pb={["layout.1/4", null, null, 0]}
+          pb={["layout.1/2", null, null, "layout.1/8"]}
         >
           {entry.title}
         </ProjectTitle>

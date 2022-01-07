@@ -36,7 +36,7 @@ const MenuContainer = ({ open, setOpen }) => {
     open ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto";
     const timer = setInterval(() => {
       setTime(new Date());
-    }, 1000);
+    }, 60000);
     return () => {
       clearInterval(timer);
     }
@@ -61,13 +61,43 @@ const MenuContainer = ({ open, setOpen }) => {
             width={['100%', null, '100%']}
             justifyItems={['center', null, 'start']}
           >
-            <MenuItem key="1" path="/" setOpen={setOpen} index={1} title="Project Gallery">
+            <MenuItem
+              key="1"
+              path="/"
+              setOpen={setOpen}
+              index={1}
+              title="Project Gallery"
+              keyword_1="Product"
+              keyword_2="Web Design"
+              keyword_3="User Interface"
+              keyword_4="Work"
+            >
               Work
             </MenuItem>
-            <MenuItem key="2" path="/blog" setOpen={setOpen} index={2} title="Blog Collection">
+            <MenuItem
+              key="2"
+              path="/blog"
+              setOpen={setOpen}
+              index={2}
+              title="Blog Collection"
+              keyword_1="Blog"
+              keyword_2="Writing"
+              keyword_3="Ideas"
+              keyword_4="Thoughts"
+            >
               Thoughts
             </MenuItem>
-            <MenuItem key="3" path="/profile" setOpen={setOpen} index={3} title="About Me">
+            <MenuItem
+              key="3"
+              path="/profile"
+              setOpen={setOpen}
+              index={3}
+              title="About Me"
+              keyword_1="About"
+              keyword_2="Contact"
+              keyword_3="History"
+              keyword_4="Profile"
+            >
               Profile
             </MenuItem>
           </Grid>
