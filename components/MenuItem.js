@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import styled, { keyframes } from 'styled-components';
 import Box from './Box';
@@ -16,60 +16,69 @@ const Container = styled(Box)`
   position: relative;
   background: none;
   outline: none;
-  width: 100%;
+  width: 100vw;
   text-decoration: none;
   overflow: hidden;
   border-top: 1px solid ${props => props.theme.colors.content.inversePrimary};
   
-  &:hover {
-    .marquee,  .marquee__inner-wrap {
-      transform: translateY(0);
+  &:hover, &:focus {
+    .marquee {
+      transform: translateY(0%);
+      .marquee__inner-wrap {
+        transform: translateY(0%);
+      }
     }
   }
-`
-
-const Marquee = styled(Box)`
-  position: absolute;
-  top: 0; left: 0;
-  overflow: hidden;
-  width: 100%;
-	height: 100%;
-	pointer-events: none;
-	background: ${props => props.theme.colors.bg.primary};
-	transform: translateY(101%);
-  transition: transform 500ms ${props => props.theme.ease.It};
-
-  .marquee__inner-wrap {
-    height: 100%;
+  .marquee {
+    position: absolute;
+    top: 0; left: 0;
+    overflow: hidden;
     width: 100%;
-    transform: translateY(-101%);
-    transition: transform 500ms ${props => props.theme.ease.It};
-  }
-
-  .marquee__inner {
     height: 100%;
-    width: fit-content;
-    align-items: center;
-    display: flex;
-    position: relative;
-    animation: ${marquee} 20s linear infinite;
-    will-change: transform;
+    pointer-events: none;
+    background: ${props => props.theme.colors.bg.primary};
+    transform: ${props => props.edge === 'top' ? 'translateY(-100%)' : 'translateY(100%)'};
+    transition: transform 500ms ${props => props.theme.ease.It};
 
-    span {
-      color: ${props => props.theme.colors.content.inverseTertiary};
-      font-family: 'Whyte Light';
-      white-space: nowrap;
-      text-transform: uppercase;
-      padding: 0 .5em ${props => props.theme.space.layout['1/4']}; 
+    .marquee__inner-wrap {
+      height: 100%;
+      width: 100%;
+      transform: ${props => props.edge === 'top' ? 'translateY(200%)' : 'translateY(-200%)'};
+      transition: transform 500ms ${props => props.theme.ease.It};
     }
 
-    img {
-      height: .9em;
+    .marquee__inner {
+      height: 100%;
+      width: fit-content;
+      align-items: center;
+      display: flex;
+      position: relative;
+      animation: ${marquee} 20s linear infinite;
+      will-change: transform;
+
+      span {
+        color: ${props => props.theme.colors.content.inverseTertiary};
+        font-family: 'Whyte Light';
+        white-space: nowrap;
+        text-transform: uppercase;
+        padding: 0 .5em ${props => props.theme.space.layout['1/4']}; 
+      }
+
+      img {
+        height: .9em;
+      }
     }
   }
 `
 
 const MenuItem = ({ children, path, setOpen, title, keyword_1, keyword_2, keyword_3, keyword_4 }) => {
+  const [edge, setEdge] = useState('')
+  const ref = useRef(null);
+  function findClosestEdge(ev, node) {
+    const x = ev.pageX - node.offsetLeft;
+    const y = ev.pageY - node.offsetTop;
+    return closestEdge(x, y, node.clientWidth, node.clientHeight);
+  }
   return (
     <Link href={path} passHref>
       <Container
@@ -86,9 +95,13 @@ const MenuItem = ({ children, path, setOpen, title, keyword_1, keyword_2, keywor
           stiffness: 1000,
           damping: 100,
         }}
+        edge={edge}
+        ref={ref}
+        onHoverStart={(ev) => setEdge(findClosestEdge(ev, ref.current))}
+        onHoverEnd={(ev) => setEdge(findClosestEdge(ev, ref.current))}
       >
         {children}
-        <Marquee className="marquee">
+        <div className="marquee">
           <div className="marquee__inner-wrap">
             <div className="marquee__inner" aria-hidden="true">
               <span>{keyword_1}</span>
@@ -109,7 +122,7 @@ const MenuItem = ({ children, path, setOpen, title, keyword_1, keyword_2, keywor
               <img src={`/images/menu/${keyword_4}-04.png`} />
             </div>
           </div>
-        </Marquee>
+        </div>
       </Container>
     </Link>
   );

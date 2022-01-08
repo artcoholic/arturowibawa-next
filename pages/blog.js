@@ -24,9 +24,31 @@ const CircleWrapper = styled(Box)`
   }
 `
 
+const ArticleLink = styled.a`
+  text-decoration: none;
+
+  &:hover, &:focus {
+    .article-wrapper {
+       background: ${props => props.theme.colors.bg.secondary};
+    }
+    @media (min-width: ${props => props.theme.breakpoints[2]}) {
+      .article-wrapper {
+        background: none;
+        h2 {
+        color: ${props => props.theme.colors.content.primary};
+        }
+        &:after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+      }
+    }
+  }
+
+`
+
 const ArticleWrapper = styled(Box)`
   width: 100%;
-  border: 1px solid ${props => props.theme.colors.content.inverseSecondary};
   &:after {
     content: '';
     position: absolute;
@@ -39,22 +61,9 @@ const ArticleWrapper = styled(Box)`
     transition: transform 300ms ${props => props.theme.ease.Smooth};
     transform-origin: right;
   }
-  &:hover {
-    background: ${props => props.theme.colors.bg.secondary};
-  }
   @media (min-width: ${props => props.theme.breakpoints[2]}) {
     border: 0;
     border-bottom: 1px solid ${props => props.theme.colors.bg.placeholder};
-    &:hover {
-      background: none;
-      h2 {
-      color: ${props => props.theme.colors.content.primary};
-      }
-      &:after {
-        transform: scaleX(1);
-        transform-origin: left;
-      }
-    }
   }
 `
 
@@ -107,19 +116,20 @@ const BlogPage = ({ allArticles }) => {
           columns={['span 2', 'span 4', '2/span 6', '7/span 5']}
           mt={["layout.4", "layout.3", null, "layout.2"]}
         >
-          <Text as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb={["layout.1", null, null, 0]}>
+          <Text as={motion.h1} variants={variants.ProfileContent} font={["Display", null, null, "HeadingLarge"]} mb={["layout.1", null, null, 0]}>
             Thoughts
           </Text>
           {allArticles.map((article, index) =>
             <Link key={index} href={`/blog/${article.slug}`} passHref>
-              <a style={{ textDecoration: 'none' }} title={article.title}>
+              <ArticleLink title={article.title}>
                 <ArticleWrapper
                   as={motion.div}
+                  className="article-wrapper"
                   variants={variants.ProfileContent}
                   bg={['bg.tertiary', null, null, 'bg.primary']}
-                  borderRadius={[12, null, null, 0]}
+                  borderRadius={[8, null, null, 0]}
                   px={['layout.1', null, null, 0]} py={["layout.1", null, null, "layout.1/2"]}
-                  my="layout.1/2"
+                  my={["layout.3/4", null, null, "layout.1/2"]}
                 >
                   <Text color="content.inverseSecondary" font="ParagraphMedium" mb="layout.1/2">
                     {`${article.date.slice(5, 7)} / ${article.date.slice(0, 4)}`}
@@ -134,7 +144,7 @@ const BlogPage = ({ allArticles }) => {
                     {article.title}
                   </Text>
                 </ArticleWrapper>
-              </a>
+              </ArticleLink>
             </Link>
           )}
         </Box>

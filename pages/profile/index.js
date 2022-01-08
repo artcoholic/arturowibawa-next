@@ -107,7 +107,7 @@ const ProfilePage = () => {
           mt={["layout.4", null, null, 0]}
           mb={["layout.2", null, null, 0]}
         >
-          <Text as={motion.h1} variants={variants.ProfileContent} font={["HeadingLarge"]} mb="layout.1/2">
+          <Text as={motion.h1} variants={variants.ProfileContent} font={["Display", null, null, "HeadingLarge"]} mb="layout.1/2">
             Profile
           </Text>
           <Text as={motion.p} variants={variants.ProfileContent} font={["ParagraphMedium", null, null, null, "ParagraphLarge"]} color="content.inverseTertiary">

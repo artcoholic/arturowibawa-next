@@ -74,7 +74,8 @@ const MarkdownWrapper = styled(Text)`
     width: 100%;
     border-radius: .5rem;
     margin-top: ${props => props.theme.space.layout['3/4']};
-    box-shadow: 0 8px 16px ${props => props.theme.colors.bg.boxShadow};
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
   }
 `
 
