@@ -100,7 +100,7 @@ const MenuContainer = ({ open, setOpen }) => {
             px="layout.1"
             py={["layout.1", null, null, "layout.1/2"]}
             borderTop="1px solid"
-            borderColor="content.secondary"
+            borderColor="content.inversePrimary"
             bg="bg.inversePrimary"
             justifyContent="space-between"
             alignItems="center"

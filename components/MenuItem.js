@@ -37,7 +37,7 @@ const Container = styled(Box)`
     height: 100%;
     pointer-events: none;
     background: ${props => props.theme.colors.bg.primary};
-    transform: ${props => props.edge === 'top' ? 'translateY(-100%)' : 'translateY(100%)'};
+    transform: ${props => props.edge === 'top' ? 'translateY(-101%)' : 'translateY(101%)'};
     transition: transform 500ms ${props => props.theme.ease.It};
 
     .marquee__inner-wrap {
