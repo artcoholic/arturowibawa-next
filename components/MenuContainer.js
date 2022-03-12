@@ -7,7 +7,7 @@ import Toggle from './Toggle';
 import SocialLink from './SocialLink';
 import { variants } from './AnimationVariants'
 import { motion, AnimatePresence } from 'framer-motion';
-import { LinkedInV2Fill, CodepenFill, TwitterFill, OctocatFill } from 'akar-icons';
+import { LinkedinFill, CodepenFill, TwitterFill, OctocatFill } from 'akar-icons';
 import useDarkMode from 'use-dark-mode';
 
 const Container = styled(Box)`
@@ -115,7 +115,7 @@ const MenuContainer = ({ open, setOpen }) => {
               display="flex"
               flexFlow="row"
             >
-              <SocialLink href="https://www.linkedin.com/in/arturowibawa/" title="LinkedIn"><LinkedInV2Fill size={16} /></SocialLink>
+              <SocialLink href="https://www.linkedin.com/in/arturowibawa/" title="LinkedIn"><LinkedinFill size={16} /></SocialLink>
               <SocialLink href="https://twitter.com/agwibawa" title="Twitter"><TwitterFill size={16} /></SocialLink>
               <SocialLink href="https://github.com/artcoholic/" title="Github"><OctocatFill size={16} /></SocialLink>
               <SocialLink href="https://codepen.io/artcoholic" title="Codepen"><CodepenFill size={16} /></SocialLink>
