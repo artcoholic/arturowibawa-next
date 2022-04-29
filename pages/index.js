@@ -68,7 +68,7 @@ const HomePage = ({ allProjects }) => {
         position="fixed"
         bottom="layout.1"
         as="section"
-        style={{ clipPath: 'inset(0%)' }}
+        style={{ clipPath: 'inset(0%)', pointerEvents: 'none' }}
         px="layout.1"
         overflow="hidden"
       >
