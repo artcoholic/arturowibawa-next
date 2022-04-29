@@ -36,7 +36,7 @@ const Wrapper = styled(Box)`
   &:hover{
     .toggleLabel {
       opacity: 1;
-      transform: translateY(28px) translateX(-50%);
+      transform: translateY(36px) translateX(-50%);
     }
   }
 `
@@ -54,11 +54,28 @@ const Thumb = styled(Box)`
 
 const Label = styled(Text)`
   position: absolute;
+  text-transform: uppercase;
+  padding: .25em .75em;
+  border-radius: 4px;
   left: 50%;
-  transform: translateY(20px) translateX(-50%);
+  transform: translateY(24px) translateX(-50%);
   white-space: nowrap;
   opacity: 0;
   transition: all 150ms ease-out;
+  display: flex;
+  justify-content: center;
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    width: 12px;
+    height: 12px;
+    background-color: ${props => props.theme.colors.bg.primary};
+    transform: rotate(45deg);
+    transform-origin: center;
+    border-radius: 2px;
+    transition: background-color 150ms ease-out;
+  }
 `
 
 const Toggle = ({ checked, onChange }) => (
@@ -80,7 +97,7 @@ const Toggle = ({ checked, onChange }) => (
     >
       {checked ? <MoonFill size={16} /> : <Sun size={16} />}
     </Thumb>
-    <Label className="toggleLabel" fontSize={3} color="content.inversePrimary">{checked ? "Good Night" : "Good Morning"}</Label>
+    <Label className="toggleLabel" fontSize={3} color="content.inverseTertiary" bg="bg.primary">{checked ? "Good Night" : "Good Morning"}</Label>
   </Wrapper>
 );
 

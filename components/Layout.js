@@ -9,8 +9,8 @@ const Main = styled.main`
     content: '';
     animation: ${grain} 8s steps(10) infinite;
     background-image: url('../images/noise.png');
-    height: 300%;
-    width: 300%;
+    height: 200vh;
+    width: 200vw;
     left: -50%;
     opacity: 0.15;
     position: fixed;

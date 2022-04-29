@@ -11,7 +11,7 @@ export const Tooltip = styled(Text)`
   position: absolute;
   top: 0;
   font-size: 12px;
-  padding: 2px .5em;
+  padding: .25em .5em;
   border-radius: 4px;
   left: 50%;
   transform: translateX(-50%) translateY(0);
@@ -19,15 +19,20 @@ export const Tooltip = styled(Text)`
   transition: all 0.15s ease-out;
   pointer-events: none;
   opacity: 0;
+  display: flex;
+  justify-content: center;
   &::after {
     content: '';
     position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -4px;
-    border-width: 4px;
-    border-style: solid;
-    border-color: ${props => props.theme.colors.content.primary} transparent transparent transparent;
+    bottom: -4px;
+    width: 12px;
+    height: 12px;
+    background-color: ${props => props.theme.colors.bg.inversePrimary};
+    transform: rotate(45deg);
+    transform-origin: center;
+    border-radius: 2px;
+    transition: background-color 150ms ease-out;
+    z-index: -1;
   }
 `
 
