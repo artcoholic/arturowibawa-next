@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import styled, { keyframes } from 'styled-components';
 import Box from './Box';
@@ -105,21 +105,21 @@ const MenuItem = ({ children, path, setOpen, title, keyword_1, keyword_2, keywor
           <div className="marquee__inner-wrap">
             <div className="marquee__inner" aria-hidden="true">
               <span>{keyword_1}</span>
-              <img src={`/images/menu/${keyword_4}-01.png`} />
+              <img src={`/images/menu/${keyword_4}-01.png`} alt="menu icon" />
               <span>{keyword_2}</span>
-              <img src={`/images/menu/${keyword_4}-02.png`} />
+              <img src={`/images/menu/${keyword_4}-02.png`} alt="menu icon" />
               <span>{keyword_3}</span>
-              <img src={`/images/menu/${keyword_4}-03.png`} />
+              <img src={`/images/menu/${keyword_4}-03.png`} alt="menu icon" />
               <span>{keyword_4}</span>
-              <img src={`/images/menu/${keyword_4}-04.png`} />
+              <img src={`/images/menu/${keyword_4}-04.png`} alt="menu icon" />
               <span>{keyword_1}</span>
-              <img src={`/images/menu/${keyword_4}-01.png`} />
+              <img src={`/images/menu/${keyword_4}-01.png`} alt="menu icon" />
               <span>{keyword_2}</span>
-              <img src={`/images/menu/${keyword_4}-02.png`} />
+              <img src={`/images/menu/${keyword_4}-02.png`} alt="menu icon" />
               <span>{keyword_3}</span>
-              <img src={`/images/menu/${keyword_4}-03.png`} />
+              <img src={`/images/menu/${keyword_4}-03.png`} alt="menu icon" />
               <span>{keyword_4}</span>
-              <img src={`/images/menu/${keyword_4}-04.png`} />
+              <img src={`/images/menu/${keyword_4}-04.png`} alt="menu icon" />
             </div>
           </div>
         </div>
