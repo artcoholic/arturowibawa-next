@@ -39,9 +39,13 @@ const MarkdownWrapper = styled(Text)`
   }
   ul, ol {
     margin-left: ${props => props.theme.space.layout['1/2']};
+    padding-inline-start: 0;
     li {
       padding-left: 0.25em;
     }
+  }
+  ol {
+    
   }
   hr {
     border-style: none;
