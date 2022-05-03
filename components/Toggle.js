@@ -64,6 +64,7 @@ const Label = styled(Text)`
   transition: all 150ms ease-out;
   display: flex;
   justify-content: center;
+  pointer-events: none;
   &::after {
     content: '';
     position: absolute;
