@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 
 const Providers = ({ children }) => {
-  const { value } = useDarkMode(false);
+  const { value } = useDarkMode(true);
   const theme = value ? nightTheme : morningTheme;
 
   const [mounted, setMounted] = useState(false)
