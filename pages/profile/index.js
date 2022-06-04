@@ -157,6 +157,7 @@ const ProfilePage = () => {
             <SocialItem label="LinkedIn" social="@arturowibawa" href="https://www.linkedin.com/in/arturowibawa/" />
             <SocialItem label="Github" social="@artcoholic" href="https://github.com/artcoholic/" />
             <SocialItem label="CodePen" social="@artcoholic" href="https://codepen.io/artcoholic" />
+            <SocialItem label="Dribbble" social="@artcoholic" href="https://dribbble.com/artcoholic" />
           </List>
         </Box>
       </Grid>
