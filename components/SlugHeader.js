@@ -23,7 +23,7 @@ const SlugHeader = ({ entry }) => {
     <Box
       as="section"
       width="100%"
-      mb={["layout.1", null, "layout.1/2"]}
+      mb="layout.1"
       px="layout.1"
       mt={["layout.4", null, null, "layout.3"]}
     >

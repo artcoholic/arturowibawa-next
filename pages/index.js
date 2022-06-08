@@ -16,7 +16,7 @@ const HorizontalContainer = styled(Box)`
   height: 100vh;
   max-height: -webkit-fill-available;
   cursor: grab;
-  overflow: auto;
+  overflow: scroll;
   scrollbar-width: none;
   user-select: none;
   &:active {
@@ -34,29 +34,35 @@ const ProgressBar = styled(Box)`
 
 const HomePage = ({ allProjects }) => {
   const entries = allProjects;
-  const objectRef = useRef();
-  const { scrollXProgress } = useElementScroll(objectRef)
-  const xRange = useTransform(scrollXProgress, [0, 1], [0, 1]);
-  const pathLength = useSpring(xRange, { stiffness: 400, damping: 40 });
+  const ref = useRef(null);
+
+  const { scrollXProgress } = useElementScroll(ref)
+  const pathLength = useSpring(scrollXProgress, { stiffness: 400, damping: 40 });
 
   function onPan(event, info) {
-    const scrollObject = objectRef.current;
+    const scrollObject = ref.current;
     scrollObject.scrollLeft = scrollObject.scrollLeft - info.delta.x;
   }
 
+  function transformScroll(event) {
+    if (!event.deltaY) {
+      return;
+    }
+    event.currentTarget.scrollLeft += event.deltaY
+    event.preventDefault();
+  }
+
   useEffect(() => {
-    objectRef.current.addEventListener('wheel', (ev) => {
-      if (!ev.shiftKey) {
-        ev.preventDefault();
-        objectRef.current.scrollLeft += ev.deltaY + ev.deltaX;
-      }
-    }, { passive: false });
+    const node = ref.current;
+    node.addEventListener('wheel', transformScroll);
+    return () => node.removeEventListener('wheel', transformScroll);
   }, []);
+
   return (
     <motion.div variants={variants.main} initial="initial" animate="enter" exit="exit">
       <HorizontalContainer
         pl="layout.1"
-        ref={objectRef}
+        ref={ref}
         as={motion.section}
         onPan={onPan}
         variants={variants.entryList}
@@ -96,7 +102,7 @@ const HomePage = ({ allProjects }) => {
           />
           <ProgressBar
             width="100%"
-            height={2}
+            height={1}
             bg="content.primary"
             as={motion.div}
             style={{ scaleX: pathLength }}

@@ -38,17 +38,16 @@ const Wrapper = styled(Box)`
 `
 
 const CloseButton = ({ scrollYProgress, path }) => {
-  const yRange = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const pathLength = useSpring(yRange, { stiffness: 400, damping: 40 });
+  const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 40 });
   const [yPos, setYPos] = useState(0);
   useEffect(() => {
-    const unsubsribe = scrollYProgress.onChange((y) => {
+    const unsubscribe = scrollYProgress.onChange((y) => {
       setYPos(y);
     });
     return () => {
-      unsubsribe();
+      unsubscribe();
     }
-  }, [scrollYProgress]);
+  }, []);
   return (
     <Link href={path} passHref scroll={false}>
       <Wrapper

@@ -33,7 +33,7 @@ export default function WorkSlug({ project, preview, moreProjects }) {
       {preview && <PreviewLabel />}
       <CloseButton scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/'} />
       <motion.article initial="initial" animate="enter" exit="exit" variants={variants.main}>
-        <SlugHeader layout entry={project} />
+        <SlugHeader entry={project} />
         <DynamicContent entry={project} />
       </motion.article>
       <ProjectSlugUI prevUrl={getAtIndex(-1).slug} nextUrl={getAtIndex(1).slug} entry={project} />

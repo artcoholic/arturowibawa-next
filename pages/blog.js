@@ -27,7 +27,7 @@ const CircleWrapper = styled(Box)`
 const ArticleLink = styled.a`
   text-decoration: none;
   &:after {
-    content: none;
+    display: none;
   }
 
   &:hover, &:focus {
