@@ -20,6 +20,7 @@ const Wrapper = styled(Box)`
 `
 
 const SocialLink = ({ href, children, color, title }) => {
+  console.log('SocialLink');
   return (
     <Wrapper
       as="a"

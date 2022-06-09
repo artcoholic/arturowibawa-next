@@ -53,6 +53,8 @@ const GalleryBlock = ({ item }) => {
   const paginate = (newDirection) => {
     setPage([page + newDirection, newDirection]);
   };
+
+  console.log('GalleryBlock');
   return (
     <>
       <AnimatePresence initial={false} custom={direction}>

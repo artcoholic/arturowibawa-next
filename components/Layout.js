@@ -22,6 +22,7 @@ const Main = styled.main`
 `
 
 const Layout = ({ children }) => {
+  console.log('Layout');
   return (
     <>
       <Head>
@@ -47,18 +48,18 @@ const Layout = ({ children }) => {
         <link rel='mask-icon' href='/images/safari-pinned-tab.svg' color='#5bbad5' />
         <link rel='shortcut icon' href='/favicon.ico' />
         <link
-          rel="preload"
+          rel="prefetch"
           href="/fonts/WhyteInktrap-Light.woff2"
           as="font"
           type="font/woff2"
-          crossOrigin=""
+          crossOrigin
         />
         <link
-          rel="preload"
+          rel="prefetch"
           href="/fonts/whyte-light.woff2"
           as="font"
           type="font/woff2"
-          crossOrigin=""
+          crossOrigin
         />
 
         {/* TWITTER META */}

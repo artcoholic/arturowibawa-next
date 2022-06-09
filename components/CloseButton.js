@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Link from "next/link";
-import { motion, useSpring, useTransform } from 'framer-motion';
+import { motion, useSpring } from 'framer-motion';
 import { Cross } from 'akar-icons';
 import Box from './Box';
 
@@ -16,12 +15,12 @@ const Wrapper = styled(Box)`
   z-index: 98;
   transition: all 500ms ${props => props.theme.ease.Smooth};
   border-radius: 50%;
-  background-color: ${({ scrollY }) => scrollY > 0 ? 'rgba(255,255,255,0.25)' : 'none'};
-  border: ${({ scrollY }) => scrollY > 0 ? '1px solid var(--contentSecondary)' : 'none'};
-  box-shadow: ${({ scrollY }) => scrollY > 0 ? '0 4px 8px 0px rgba(0,0,0,0.15)' : 'none'};
-  backdrop-filter: ${({ scrollY }) => scrollY > 0 ? 'blur(12px)' : 'none'};
+  background-color: rgba(255,255,255,0.25);
+  border: 1px solid var(--contentSecondary);
+  box-shadow: 0 4px 8px 0px rgba(0,0,0,0.15);
+  backdrop-filter: blur(12px);
   &:hover {
-    background-color: ${({ scrollY }) => scrollY > 0 ? 'rgba(255,255,255,1)' : 'none'};
+    background-color: rgba(255,255,255,1);
   }
   &:active {
     box-shadow: none;
@@ -39,23 +38,14 @@ const Wrapper = styled(Box)`
 
 const CloseButton = ({ scrollYProgress, path }) => {
   const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 40 });
-  const [yPos, setYPos] = useState(0);
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange((y) => {
-      setYPos(y);
-    });
-    return () => {
-      unsubscribe();
-    }
-  }, []);
+  console.log('CloseButton');
   return (
     <Link href={path} passHref scroll={false}>
       <Wrapper
         as={motion.a}
         top="layout.1"
-        size={yPos > 0 ? 48 : 32}
+        size={48}
         color="content.primary"
-        scrollY={yPos}
         initial={{ scale: 0, x: '-50%' }}
         animate={{ scale: 1 }}
         exit={{ scale: 0 }}

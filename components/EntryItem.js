@@ -84,6 +84,7 @@ const EntryItem = ({ entry, index }) => {
     return () => node.vanillaTilt.destroy();
   }, []);
 
+  console.log('EntryItem');
   return (
     <Box
       display="flex"

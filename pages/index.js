@@ -54,8 +54,8 @@ const HomePage = ({ allProjects }) => {
 
   useEffect(() => {
     const node = ref.current;
-    node.addEventListener('wheel', transformScroll);
-    return () => node.removeEventListener('wheel', transformScroll);
+    node.addEventListener('wheel', transformScroll, { passive: false });
+    return () => node.removeEventListener('wheel', transformScroll, { passive: false });
   }, []);
 
   return (

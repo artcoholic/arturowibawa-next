@@ -6,6 +6,7 @@ import Text from './Text';
 import { Cross, Circle } from 'akar-icons';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import { AnimatePresence } from 'framer-motion';
 
 const MenuContainer = dynamic(() => import('./MenuContainer'));
 
@@ -79,9 +80,12 @@ const Logo = styled.svg`
 const Header = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  console.log('Header');
   return (
     <Container as="header" p="layout.1" position={['absolute', null, null, 'fixed']}>
-      <MenuContainer open={open} setOpen={setOpen} />
+      <AnimatePresence>
+        {open && <MenuContainer setOpen={setOpen} />}
+      </AnimatePresence>
       <Link href="/" passHref>
         <a style={{ zIndex: 1, pointerEvents: 'auto' }} title="Home" aria-label="Home">
           <Logo width="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
