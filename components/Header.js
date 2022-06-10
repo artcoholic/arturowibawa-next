@@ -80,7 +80,7 @@ const Logo = styled.svg`
 const Header = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  console.log('Header');
+  // console.log('Header');
   return (
     <Container as="header" p="layout.1" position={['absolute', null, null, 'fixed']}>
       <AnimatePresence>

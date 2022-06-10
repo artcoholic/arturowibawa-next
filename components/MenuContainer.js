@@ -28,7 +28,7 @@ const Logo = styled(Box)`
 
 const MenuContainer = ({ open, setOpen }) => {
   const darkMode = useDarkMode(false);
-  console.log('MenuContainer');
+  // console.log('MenuContainer');
   return (
     <Container
       as={motion.nav}

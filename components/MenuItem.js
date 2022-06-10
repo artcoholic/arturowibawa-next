@@ -79,7 +79,7 @@ const MenuItem = ({ children, path, setOpen, title, keyword_1, keyword_2, keywor
     const y = ev.pageY - node.offsetTop;
     return closestEdge(x, y, node.clientWidth, node.clientHeight);
   }
-  console.log('MenuItem');
+  // console.log('MenuItem');
   return (
     <Link href={path} passHref>
       <Container

@@ -19,7 +19,7 @@ const ProjectTitle = styled(Text)`
 `
 
 const SlugHeader = ({ entry }) => {
-  console.log('SlugHeader');
+  // console.log('SlugHeader');
   return (
     <Box
       as="section"

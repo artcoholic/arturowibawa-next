@@ -22,7 +22,7 @@ const Main = styled.main`
 `
 
 const Layout = ({ children }) => {
-  console.log('Layout');
+  // console.log('Layout');
   return (
     <>
       <Head>

@@ -30,7 +30,7 @@ const AnchorWrapper = styled(Box)`
     background-color: ${props => props.theme.colors.bg.entryCard};
     box-shadow:0 16px 32px 0 ${props => props.theme.colors.bg.boxShadow};
     ~.icon-wrapper {
-      transform: translate3d(-50%, -50%, 60px) scale(1);
+      transform: translate3d(-50%, -50%, 48px) scale(1);
     }
   }
   &:after {
@@ -38,7 +38,7 @@ const AnchorWrapper = styled(Box)`
   }
 `
 
-const IconWrapper = styled.div`
+const IconWrapper = styled(Box)`
     position: absolute;
     top: 50%;
     left: 50%;
@@ -48,11 +48,17 @@ const IconWrapper = styled.div`
     transform-style: preserve-3d;
     transition: transform 300ms ${props => props.theme.ease.Smooth};
     border: 1px solid ${props => props.theme.colors.content.inverseSecondary};
-    transform: translate3d(-50%, -50%, 60px) scale(0);
+    transform: translate3d(-50%, -50%, 48px) scale(0);
     pointer-events: none;
+    box-shadow:0 16px 32px 0 ${props => props.theme.colors.bg.boxShadow};
+    will-change: transform;
     svg {
       stroke: #1B1C32;
       display: block;
+      width: 2vw;
+      height: 2vw;
+      min-width: 24px;
+      min-height: 24px;
     }
     #eye-lid {
       transform-origin: center;
@@ -84,7 +90,7 @@ const EntryItem = ({ entry, index }) => {
     return () => node.vanillaTilt.destroy();
   }, []);
 
-  console.log('EntryItem');
+  // console.log('EntryItem');
   return (
     <Box
       display="flex"
@@ -120,7 +126,7 @@ const EntryItem = ({ entry, index }) => {
           <IconWrapper className="icon-wrapper">
             <svg width={24} height={24} viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path id="eye-lid" d="M21.257 10.962C21.731 11.582 21.731 12.419 21.257 13.038C19.764 14.987 16.182 19 12 19C7.81801 19 4.23601 14.987 2.74301 13.038C2.51239 12.7411 2.38721 12.3759 2.38721 12C2.38721 11.6241 2.51239 11.2589 2.74301 10.962C4.23601 9.013 7.81801 5 12 5C16.182 5 19.764 9.013 21.257 10.962V10.962Z" vectorEffect="non-scaling-stroke" />
-              <path id="eye-ball" d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" />
+              <path id="eye-ball" d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" vectorEffect="non-scaling-stroke" />
             </svg>
           </IconWrapper>
         </Tilt>

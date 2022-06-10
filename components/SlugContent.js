@@ -62,7 +62,7 @@ const BackToTop = styled(Box)`
 const SlugContent = ({ entry }) => {
   const matrix = entry.matrixCollection.items;
   const ref = React.createRef();
-  console.log('SlugContent');
+  // console.log('SlugContent');
   return (
     <Grid
       as={motion.section}

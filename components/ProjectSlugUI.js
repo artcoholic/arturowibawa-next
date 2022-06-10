@@ -73,7 +73,7 @@ const ButtonWrapper = styled(Text)`
 `
 
 const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
-  console.log('ProjectSlugUI');
+  // console.log('ProjectSlugUI');
   return (
     <Box
       as={motion.div}

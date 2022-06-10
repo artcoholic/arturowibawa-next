@@ -38,7 +38,7 @@ const Wrapper = styled(Box)`
 
 const CloseButton = ({ scrollYProgress, path }) => {
   const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 40 });
-  console.log('CloseButton');
+  // console.log('CloseButton');
   return (
     <Link href={path} passHref scroll={false}>
       <Wrapper
