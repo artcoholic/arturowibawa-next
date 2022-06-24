@@ -36,7 +36,7 @@ const Wrapper = styled(Box)`
   &:hover{
     .toggleLabel {
       opacity: 1;
-      transform: translateY(36px) translateX(-50%);
+      transform: translateY(40px) translateX(-50%);
     }
   }
 `
@@ -54,11 +54,11 @@ const Thumb = styled(Box)`
 
 const Label = styled(Text)`
   position: absolute;
-  text-transform: uppercase;
-  padding: .25em .75em;
+  /* text-transform: uppercase; */
+  padding: .5em 1em;
   border-radius: 4px;
   left: 50%;
-  transform: translateY(24px) translateX(-50%);
+  transform: translateY(36px) translateX(-50%);
   white-space: nowrap;
   opacity: 0;
   transition: all 150ms ease-out;

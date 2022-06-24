@@ -131,7 +131,8 @@ const ProfilePage = () => {
           <List as={motion.ul} variants={variants.ProfileContent} font="ParagraphMedium" color="content.inverseTertiary">
             <Box as="li" mb="layout.1/4">
               <Text as="a" href="https://madeinhaus.com/" target="_blank">HAUS</Text>
-              <ExperienceItem position="Senior Product Designer" date="2020 – Present" mt />
+              <ExperienceItem position="ACD" date="2022 – Present" mt />
+              <ExperienceItem position="Senior Product Designer" date="2020 – 2022" />
               <ExperienceItem position="Product Designer" date="2018 – 2020" />
               <ExperienceItem position="Web Designer" date="2016 – 2018" line={false} />
             </Box>

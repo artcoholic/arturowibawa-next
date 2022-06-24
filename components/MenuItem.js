@@ -90,7 +90,7 @@ const MenuItem = ({ children, path, setOpen, title, keyword_1, keyword_2, keywor
         onClick={() => setOpen(false)}
         aria-label={title}
         px="layout.1"
-        pt="layout.1/4"
+        py={["layout.1/2", null, null, "layout.1/4"]}
         transition={{
           type: "spring",
           stiffness: 1000,
