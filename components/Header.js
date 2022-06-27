@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Box from './Box';
 import Text from './Text';
+import MenuContainer from './MenuContainer';
 import { Cross, Circle } from 'akar-icons';
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
 import { AnimatePresence } from 'framer-motion';
 
-const MenuContainer = dynamic(() => import('./MenuContainer'));
 
 const Container = styled(Box)`
   display: flex;

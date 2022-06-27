@@ -2,13 +2,12 @@ import Head from 'next/head';
 import ProjectSlugUI from '../../components/ProjectSlugUI';
 import CloseButton from '../../components/CloseButton';
 import SlugHeader from '../../components/SlugHeader';
+import SlugContent from '../../components/SlugContent';
 import PreviewLabel from '../../components/PreviewLabel';
 import { motion, useViewportScroll } from 'framer-motion';
 import { variants } from '../../components/AnimationVariants';
-import dynamic from 'next/dynamic';
 import { getAllProjectsWithSlug, getProjectAndMoreProjects } from '../../utils/api';
 
-const DynamicContent = dynamic(() => import('../../components/SlugContent'));
 
 export default function WorkSlug({ project, preview, moreProjects }) {
   const { scrollYProgress } = useViewportScroll();
@@ -34,7 +33,7 @@ export default function WorkSlug({ project, preview, moreProjects }) {
       <CloseButton scrollYProgress={scrollYProgress} path={preview ? '/api/exit-preview' : '/'} />
       <motion.article initial="initial" animate="enter" exit="exit" variants={variants.main}>
         <SlugHeader entry={project} />
-        <DynamicContent entry={project} />
+        <SlugContent entry={project} />
       </motion.article>
       <ProjectSlugUI prevUrl={getAtIndex(-1).slug} nextUrl={getAtIndex(1).slug} entry={project} />
     </>
