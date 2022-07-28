@@ -2,42 +2,14 @@ import React from 'react';
 import styled from 'styled-components'
 import Box from './Box';
 import Text from './Text';
-import { Sun, MoonFill } from 'akar-icons'
 
-const Wrapper = styled(Box)`
-  position: absolute;  
-  left: 50%;
-  transform: translateX(-50%);
-  height: 32px;
-  width: 48px;
-  display: flex;
-  border-radius: 9999em;
-  align-items: center;
+const Select = styled(Box)`
   cursor: pointer;
-
-  &:before {
-    content: '';
-    width: 100%;
-    height: 20px;
-    background-color: ${props => props.theme.colors.bg.inverseSecondary};
-    position: absolute;
-    left: 0;
-    border-radius: 12px;
-  }
-  input {
+  padding: .5em 1em;
+  border: none;
+  border-radius: 8px;
+  &::-ms-expand {
     display: none;
-  }
-  input:checked + .thumb {
-    transform: translateX(24px);
-  }
-  input:checked + .thumb svg {
-    color: ${props => props.theme.colors.content.primary};
-  }
-  &:hover{
-    .toggleLabel {
-      opacity: 1;
-      transform: translateY(40px) translateX(-50%);
-    }
   }
 `
 
@@ -54,7 +26,6 @@ const Thumb = styled(Box)`
 
 const Label = styled(Text)`
   position: absolute;
-  /* text-transform: uppercase; */
   padding: .5em 1em;
   border-radius: 4px;
   left: 50%;
@@ -79,27 +50,21 @@ const Label = styled(Text)`
   }
 `
 
-const Toggle = ({ checked, onChange }) => (
-  <Wrapper
-    top="layout.1"
-    as="label"
-  >
-    <input
-      type="checkbox"
-      id="switch"
-      checked={checked}
-      onChange={onChange}
-    />
-    <Thumb
-      as="span"
-      htmlFor="switch"
-      className="thumb"
-      bg="content.inversePrimary"
+const Toggle = ({theme, setTheme}) => {
+  return (
+    <Select 
+      as="select" 
+      value={theme} 
+      onChange={(e) => {
+          setTheme(e.target.value);
+          window.localStorage.setItem('theme', e.target.value); 
+        }
+      }
     >
-      {checked ? <MoonFill size={16} /> : <Sun size={16} />}
-    </Thumb>
-    <Label className="toggleLabel" fontSize={3} color="content.inverseTertiary" bg="bg.primary">{checked ? "Good Night" : "Good Morning"}</Label>
-  </Wrapper>
-);
+      <option value="Night" selected>Night</option>
+      <option value="Morning">Morning</option>
+    </Select>
+  )
+};
 
 export default Toggle;

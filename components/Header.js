@@ -76,14 +76,14 @@ const Logo = styled.svg`
 `
 
 
-const Header = () => {
+const Header = ({setTheme, theme, toggler}) => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   // console.log('Header');
   return (
     <Container as="header" p="layout.1" position={['absolute', null, null, 'fixed']}>
       <AnimatePresence>
-        {open && <MenuContainer setOpen={setOpen} />}
+        {open && <MenuContainer setOpen={setOpen} setTheme={setTheme} theme={theme} toggler={toggler}/>}
       </AnimatePresence>
       <Link href="/" passHref>
         <a style={{ zIndex: 1, pointerEvents: 'auto' }} title="Home" aria-label="Home">

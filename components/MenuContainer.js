@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 import MenuItem from './MenuItem';
 import Box from './Box';
-import Toggle from './Toggle';
 import SocialLink from './SocialLink';
 import { variants } from './AnimationVariants'
 import { motion } from 'framer-motion';
-import { LinkedinFill, CodepenFill, TwitterFill, OctocatFill } from 'akar-icons';
-import useDarkMode from 'use-dark-mode';
+import { LinkedinFill, CodepenFill, TwitterFill, OctocatFill, Water } from 'akar-icons';
 
 const Container = styled(Box)`
   pointer-events: auto;
@@ -22,12 +20,63 @@ const Container = styled(Box)`
   z-index: 99;
 `
 
+const Button = styled.button`
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: ${props => props.theme.colors.bg.primary};
+  color: ${props => props.theme.colors.content.inverseTertiary};
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+  transition: all 300ms ${props => props.theme.ease.Btn};
+  svg {
+    display: block;
+    color: ${props => props.theme.colors.content.inverseTertiary};
+    fill: ${props => props.theme.colors.content.inverseTertiary};
+  }
+  &:hover {
+    background-color: ${props => props.theme.colors.bg.secondary};
+    .tooltip {
+      opacity: 1;
+      transform: translateY(-12px);
+    }
+  }
+  .tooltip {
+      position: absolute;
+      background-color: ${props => props.theme.colors.bg.primary};
+      color: ${props => props.theme.colors.content.inverseTertiary};
+      text-align: center;
+      border-radius: 4px;
+      font-size: 12px;
+      opacity: 0;
+      top: -28px;
+      padding: .5em .75em;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      transition: all 300ms ${props => props.theme.ease.Btn};
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -4px;
+        border-width: 4px;
+        border-style: solid;
+        border-color: ${props => props.theme.colors.bg.primary} transparent transparent transparent;
+      }
+    }
+`
+
 const Logo = styled(Box)`
   fill: ${props => props.theme.colors.content.inversePrimary};
 `
 
-const MenuContainer = ({ open, setOpen }) => {
-  const darkMode = useDarkMode(false);
+const MenuContainer = ({setOpen, setTheme, theme, toggler }) => {
   // console.log('MenuContainer');
   return (
     <Container
@@ -99,8 +148,13 @@ const MenuContainer = ({ open, setOpen }) => {
           <SocialLink href="https://github.com/artcoholic/" title="Github"><OctocatFill size={16} /></SocialLink>
           <SocialLink href="https://codepen.io/artcoholic" title="Codepen"><CodepenFill size={16} /></SocialLink>
         </Box>
+        <Button onClick={toggler} aria-label="Theme Toggle">
+          <span className="tooltip">
+            Change theme
+          </span>
+          <Water size={12} /> {theme}
+        </Button>
       </Box>
-      <Toggle checked={darkMode.value} onChange={darkMode.toggle} />
     </Container >
   )
 }

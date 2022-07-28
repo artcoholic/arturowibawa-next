@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const morning = {
+const morningTheme = {
   colors: {
     bg: {
       primary: '#FFD542',
@@ -32,7 +32,7 @@ const morning = {
   }
 }
 
-const night = {
+const nightTheme = {
   colors: {
     bg: {
       primary: '#1B1C32',
@@ -233,5 +233,5 @@ export const GlobalStyles = createGlobalStyle`
   }
 `
 
-export const morningTheme = { ...defaultTheme, ...morning };
-export const nightTheme = { ...defaultTheme, ...night };
+export const Morning = { ...defaultTheme, ...morningTheme };
+export const Night = { ...defaultTheme, ...nightTheme };

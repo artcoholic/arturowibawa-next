@@ -1,24 +1,17 @@
-import { useEffect, useState } from 'react';
-import { morningTheme, nightTheme } from '../theme.config';
+import { Morning, Night, GlobalStyles } from '../theme.config';
 import { ThemeProvider } from 'styled-components';
-import useDarkMode from 'use-dark-mode';
+import ThemeToggler from '../utils/ThemeToggler';
 
-const Providers = ({ children }) => {
-  const { value } = useDarkMode(true);
-  const theme = value ? nightTheme : morningTheme;
-
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+const Providers = ({ children, theme, mountedComponent }) => {
+  const themeMode = (theme === "Night") ? Night : Morning;
 
   const body =
-    <ThemeProvider theme={theme}>
-      {children}
-    </ThemeProvider>
+  <ThemeProvider theme={themeMode}>
+    <GlobalStyles />
+    {children}
+  </ThemeProvider>
 
-  if (!mounted) {
+  if (!mountedComponent) {
     return <div style={{ visibility: 'hidden' }}>{body}</div>
   }
 

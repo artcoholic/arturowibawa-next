@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Header from './Header';
-// import Dot from './Dot';
 import styled from 'styled-components';
 import { grain } from './AnimationVariants';
 
@@ -21,7 +20,7 @@ const Main = styled.main`
   }
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, setTheme, theme, toggler }) => {
   // console.log('Layout');
   return (
     <>
@@ -82,11 +81,10 @@ const Layout = ({ children }) => {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
       </Head >
-      <Header />
+      <Header setTheme={setTheme} theme={theme} toggler={toggler}/>
       <Main>
         {children}
       </Main>
-      {/* <Dot /> */}
     </>
   )
 }

@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@lyket/react": "^1.4.7",
-    "akar-icons": "^1.9.14",
+    "akar-icons": "^1.9.20",
     "contentful": "^8.4.2",
     "framer-motion": "^4.1.17",
     "next": "^11.1.2",
@@ -23,7 +23,6 @@
     "smoothscroll-polyfill": "^0.4.4",
     "styled-components": "^5.2.1",
     "styled-system": "^5.1.5",
-    "use-dark-mode": "^2.3.1",
     "vanilla-tilt": "^1.7.2"
   },
   "devDependencies": {
