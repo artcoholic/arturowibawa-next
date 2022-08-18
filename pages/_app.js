@@ -22,7 +22,7 @@ const MyApp = ({ Component, pageProps }) => {
   globalStyles();
   return (
     <Layout>
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait">
         <Component {...pageProps} key={router.route} />
       </AnimatePresence>
     </Layout>

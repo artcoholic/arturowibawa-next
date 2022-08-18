@@ -44,7 +44,7 @@ export default function WorkSlug({ project, preview, moreProjects }) {
         animate="enter"
         exit="exit"
       >
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence mode="wait">
           <motion.div
             key={project.slug}
             variants={variants.main}

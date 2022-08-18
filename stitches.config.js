@@ -46,19 +46,19 @@ export const {
       6: "calc(var(--gutter) * 6)",
     },
     typeScale: {
-      paragraphSmall: "var(--base)/var(--paragraphLineheight) var(--paragraph)",
+      paragraphSmall: "1rem/var(--paragraphLineheight) var(--paragraph)",
       paragraphMedium:
-        "calc(var(--scale) * 1em)/var(--paragraphLineheight) var(--paragraph)",
+        "calc(var(--scale) * 1rem)/var(--paragraphLineheight) var(--paragraph)",
       paragraphLarge:
-        "calc(var(--scale) * var(--scale) * 1em)/var(--paragraphLineheight) var(--paragraph)",
+        "calc(var(--scale) * var(--scale) * 1rem)/var(--paragraphLineheight) var(--paragraph)",
       headingSmall:
-        "calc(var(--scale) * var(--scale) * var(--scale) * 1em)/var(--headingLineHeight) var(--heading)",
+        "calc(var(--scale) * var(--scale) * var(--scale) * 1rem)/var(--headingLineHeight) var(--heading)",
       headingMedium:
-        "calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * 1em)/var(--headingLineHeight) var(--heading)",
+        "calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * 1rem)/var(--headingLineHeight) var(--heading)",
       headingLarge:
-        "calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale) * 1em)/var(--headingLineHeight) var(--heading)",
+        "calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale) * 1rem)/var(--headingLineHeight) var(--heading)",
       display:
-        "calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale) * 1em)/var(--headingLineHeight) var(--heading)",
+        "calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale) * 1rem)/var(--headingLineHeight) var(--heading)",
     },
     ease: {
       it: "cubic-bezier(0.6, 0.2, 0.1, 1)",
@@ -150,7 +150,6 @@ export const globalStyles = globalCss({
     $scale: 1.2,
     $headingLineHeight: 1.2,
     $paragraphLineheight: 1.5,
-    $base: 16,
     $color: "rgba(229, 79, 79, 0.3)",
     $heading: "Whyte Inktrap Thin",
     $paragraph: "Whyte Light",
