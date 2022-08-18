@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import TagManager from "react-gtm-module";
 import smoothscroll from "smoothscroll-polyfill";
 import { globalStyles } from "../stitches.config";
+import "../fonts.css";
 
 const tagManagerArgs = {
   gtmId: "GTM-W5B77X3",

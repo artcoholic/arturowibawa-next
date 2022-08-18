@@ -16,7 +16,7 @@ import {
   Torus,
   Lights,
   transition,
-} from "../../components/Object";
+} from "../../components/Objects";
 
 const List = styled(Text, {
   margin: 0,

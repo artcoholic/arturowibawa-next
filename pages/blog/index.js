@@ -15,7 +15,7 @@ import {
   Dodecahedron,
   transition,
   Torus,
-} from "../../components/Object";
+} from "../../components/Objects";
 
 const ArticleLink = styled("a", {
   textDecoration: "none",

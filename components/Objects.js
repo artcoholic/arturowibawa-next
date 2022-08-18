@@ -90,5 +90,5 @@ export function Lights() {
 export const transition = {
   type: "spring",
   stiffness: 50,
-  damping: 30,
+  damping: 50,
 };

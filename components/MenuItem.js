@@ -62,7 +62,7 @@ const Container = styled("div", {
 
         span: {
           color: "$fg_inverseTertiary",
-          fontFamily: "Whyte Light",
+          fontFamily: "Whyte Inktrap Thin",
           whiteSpace: "nowrap",
           textTransform: "uppercase",
         },

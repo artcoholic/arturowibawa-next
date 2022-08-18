@@ -152,7 +152,7 @@ export const globalStyles = globalCss({
     $paragraphLineheight: 1.5,
     $base: 16,
     $color: "rgba(229, 79, 79, 0.3)",
-    $heading: "Whyte Inktrap Light",
+    $heading: "Whyte Inktrap Thin",
     $paragraph: "Whyte Light",
     $systemFonts: ` -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
     "@bp1": {
@@ -201,26 +201,6 @@ export const globalStyles = globalCss({
   "img, video": {
     display: "block",
   },
-  "@font-face": [
-    {
-      fontFamily: "Whyte Inktrap Light",
-      fontStyle: "normal",
-      fontWeight: "normal",
-      fontDisplay: "swap",
-      src: `url('/fonts/WhyteInktrap-Light.woff') format('woff'),
-            url('/fonts/WhyteInktrap-Light.woff2') format('woff2'),
-            url('/fonts/WhyteInktrap-Light.ttf') format('truetype'),`,
-    },
-    {
-      fontFamily: "Whyte Light",
-      fontStyle: "normal",
-      fontWeight: "normal",
-      fontDisplay: "swap",
-      src: `url('/fonts/whyte-light.woff') format('woff'),
-            url('/fonts/whyte-light.woff2') format('woff2'),
-            url('/fonts/whyte-light.ttf') format('truetype'),`,
-    },
-  ],
   a: {
     position: "relative",
     textDecoration: "underline",

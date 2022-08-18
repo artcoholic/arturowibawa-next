@@ -2,7 +2,6 @@ import Head from "next/head";
 import Header from "./Header";
 import { grain } from "./AnimationVariants";
 import { styled } from "../stitches.config";
-import { motion } from "framer-motion";
 
 const Main = styled("main", {
   "&:before": {
@@ -74,6 +73,13 @@ const Layout = ({ children, setTheme, theme, toggler }) => {
         <link
           rel="prefetch"
           href="/fonts/WhyteInktrap-Light.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="true"
+        />
+        <link
+          rel="prefetch"
+          href="/fonts/WhyteInktrap-Thin.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="true"
