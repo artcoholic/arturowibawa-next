@@ -52,10 +52,12 @@ const ButtonWrapper = styled(Text, {
       marginLeft: ".25rem",
     },
     "&:hover": {
-      width: 106,
-      "&:before": {
-        position: "relative",
-        opacity: 1,
+      "@bp3": {
+        width: 106,
+        "&:before": {
+          position: "relative",
+          opacity: 1,
+        },
       },
     },
   },
@@ -65,10 +67,12 @@ const ButtonWrapper = styled(Text, {
       marginRight: ".25rem",
     },
     "&:hover": {
-      width: 106,
-      "&:before": {
-        position: "relative",
-        opacity: 1,
+      "@bp3": {
+        width: 106,
+        "&:before": {
+          position: "relative",
+          opacity: 1,
+        },
       },
     },
   },
