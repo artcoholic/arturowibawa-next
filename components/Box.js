@@ -1,21 +1,7 @@
-import styled from 'styled-components';
-import { compose, color, layout, space, position, flexbox, border } from 'styled-system';
-import { CustomProps } from '../utils/CustomProps';
+import { styled } from '../stitches.config';
 
-const Box = styled.div(
-  compose(
-    color,
-    layout,
-    space,
-    position,
-    flexbox,
-    border,
-    CustomProps,
-  )
-);
-
-Box.defaultProps = {
+const Box = styled('div', {
   position: 'relative',
-}
+});
 
 export default Box;

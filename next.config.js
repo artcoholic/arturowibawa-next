@@ -1,19 +1,21 @@
-module.exports = {
+const withTM = require("next-transpile-modules")(["three"]);
+
+module.exports = withTM({
   async redirects() {
     return [
       {
-        source: '/work',
-        destination: '/',
+        source: "/work",
+        destination: "/",
         permanent: true,
-      }
-    ]
+      },
+    ];
   },
   images: {
-    domains: ['images.ctfassets.net'],
+    domains: ["images.ctfassets.net"],
   },
-  reactStrictMode: true,
+  // reactStrictMode: true,
   i18n: {
-    locales: ['en-US'],
-    defaultLocale: 'en-US'
+    locales: ["en-US"],
+    defaultLocale: "en-US",
   },
-}
+});

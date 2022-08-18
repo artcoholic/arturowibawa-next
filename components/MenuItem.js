@@ -1,78 +1,112 @@
-import { useRef, useState } from 'react';
-import Link from 'next/link';
-import styled, { keyframes } from 'styled-components';
-import Box from './Box';
-import { variants } from './AnimationVariants';
-import { motion } from 'framer-motion';
-import { closestEdge } from '../utils/ClosestEdge';
+import { useRef, useState } from "react";
+import Link from "next/link";
+import { styled, keyframes } from "../stitches.config";
+import { variants } from "./AnimationVariants";
+import { motion } from "framer-motion";
+import { closestEdge } from "../utils/ClosestEdge";
 
-const marquee = keyframes`
-  100% {
-		transform: translate3d(-50%, 0, 0);
-	}
-`
+const marquee = keyframes({
+  "100%": {
+    transform: "translate3d(-50%, 0, 0)",
+  },
+});
 
-const Container = styled(Box)`
-  position: relative;
-  background: none;
-  outline: none;
-  width: 100vw;
-  text-decoration: none;
-  overflow: hidden;
-  border-top: 1px solid ${props => props.theme.colors.content.inversePrimary};
-  
-  &:hover, &:focus {
-    .marquee {
-      transform: translateY(0%);
-      .marquee__inner-wrap {
-        transform: translateY(0%);
-      }
-    }
-  }
-  .marquee {
-    position: absolute;
-    top: 0; left: 0;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: ${props => props.theme.colors.bg.primary};
-    transform: ${props => props.edge === 'top' ? 'translateY(-101%)' : 'translateY(101%)'};
-    transition: transform 500ms ${props => props.theme.ease.It};
+const Container = styled("div", {
+  position: "relative",
+  background: "none",
+  outline: "none",
+  width: "100vw",
+  textDecoration: "none",
+  overflow: "hidden",
+  borderTop: "1px solid $fg_inversePrimary",
+  color: "$fg_inversePrimary",
+  px: "$1",
+  py: "$0_5",
+  "@bp3": { py: "$0_25" },
+  font: "$display",
+  "@bp5": { font: "$headingLarge" },
 
-    .marquee__inner-wrap {
-      height: 100%;
-      width: 100%;
-      transform: ${props => props.edge === 'top' ? 'translateY(200%)' : 'translateY(-200%)'};
-      transition: transform 500ms ${props => props.theme.ease.It};
-    }
+  "&:hover": {
+    ".marquee": {
+      transform: "translateY(0%)",
+      ".marquee__inner-wrap": {
+        transform: "translateY(0%)",
+      },
+    },
+  },
 
-    .marquee__inner {
-      height: 100%;
-      width: fit-content;
-      align-items: center;
-      display: flex;
-      position: relative;
-      animation: ${marquee} 20s linear infinite;
-      will-change: transform;
+  ".marquee": {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    overflow: "hidden",
+    size: "100%",
+    pointerEvents: "none",
+    background: "$bg_primary",
+    transition: "transform 500ms $ease$it",
 
-      span {
-        color: ${props => props.theme.colors.content.inverseTertiary};
-        font-family: 'Whyte Light';
-        white-space: nowrap;
-        text-transform: uppercase;
-        padding: 0 .5em ${props => props.theme.space.layout['1/4']}; 
-      }
+    ".marquee__inner-wrap": {
+      height: "100%",
+      width: "100%",
+      transition: "transform 500ms $ease$it",
 
-      img {
-        height: .9em;
-      }
-    }
-  }
-`
+      ".marquee__inner": {
+        height: "100%",
+        width: "fit-content",
+        alignItems: "center",
+        display: "flex",
+        position: "relative",
+        animation: `${marquee} 20s linear infinite`,
+        willChange: "transform",
+        gap: "2rem",
 
-const MenuItem = ({ children, path, setOpen, title, keyword_1, keyword_2, keyword_3, keyword_4 }) => {
-  const [edge, setEdge] = useState('')
+        span: {
+          color: "$fg_inverseTertiary",
+          fontFamily: "Whyte Light",
+          whiteSpace: "nowrap",
+          textTransform: "uppercase",
+        },
+
+        img: {
+          height: ".9em",
+        },
+      },
+    },
+  },
+
+  variants: {
+    edge: {
+      top: {
+        ".marquee": {
+          transform: "translateY(-101%)",
+          ".marquee__inner-wrap": {
+            transform: "translateY(200%)",
+          },
+        },
+      },
+      bottom: {
+        ".marquee": {
+          transform: "translateY(101%)",
+          ".marquee__inner-wrap": {
+            transform: "translateY(-200%)",
+          },
+        },
+      },
+    },
+  },
+});
+
+const MenuItem = ({
+  children,
+  path,
+  setOpen,
+  title,
+  keyword_1,
+  keyword_2,
+  keyword_3,
+  keyword_4,
+}) => {
+  const [edge, setEdge] = useState("bottom");
   const ref = useRef(null);
   function findClosestEdge(ev, node) {
     const x = ev.pageX - node.offsetLeft;
@@ -84,13 +118,9 @@ const MenuItem = ({ children, path, setOpen, title, keyword_1, keyword_2, keywor
     <Link href={path} passHref>
       <Container
         as={motion.a}
-        color="content.inversePrimary"
-        font={["Display", null, null, null, null, "HeadingLarge"]}
         variants={variants.menuItem}
         onClick={() => setOpen(false)}
         aria-label={title}
-        px="layout.1"
-        py={["layout.1/2", null, null, "layout.1/4"]}
         transition={{
           type: "spring",
           stiffness: 1000,

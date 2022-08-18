@@ -4,18 +4,22 @@ import Text from './Text';
 const Label = () => {
   return (
     <Box
-      position="fixed"
-      bottom={0} left={0}
-      width="100%"
-      display="flex"
-      justifyContent="center"
-      zIndex={99}
+      css={{
+        position: "fixed",
+        bottom: 0, left: 0,
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        zIndex: 99,
+      }}
     >
       <Box
-        px="1em" py=".5em"
-        bg="bg.inverseTertiary"
+        css={{
+          px:"1rem", py:".5em",
+          bg:"$bg_inverseTertiary"
+        }}
       >
-        <Text color="content.secondary">Preview Mode</Text>
+        <Text css={{ color: "$fg._secondary" }}>Preview Mode</Text>
       </Box>
     </Box>
   )

@@ -1,17 +1,9 @@
-import styled from 'styled-components';
-import { typography } from 'styled-system';
-import CustomProps from '../utils/CustomProps';
-import Box from './Box';
+import { styled } from '../stitches.config';
 
-const Text = styled(Box)`
-  ${typography}
-  ${CustomProps.font}
-`;
-
-Text.defaultProps = {
-  color: 'content.primary',
+const Text = styled('p', {
+  color: '$fg_primary',
   fontFamily: 'Whyte Light',
-  fontWeight: 'normal'
-}
+  fontWeight: 'normal',
+});
 
 export default Text;

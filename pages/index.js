@@ -1,42 +1,82 @@
 import { useRef, useEffect } from 'react';
-import styled from 'styled-components';
-import Box from '../components/Box';
 import Text from '../components/Text';
 import EntryItem from '../components/EntryItem';
 import { variants } from '../components/AnimationVariants';
-import { motion, useTransform, useSpring, useElementScroll } from 'framer-motion';
+import { motion, useSpring, useScroll } from 'framer-motion';
 import { ArrowRight } from 'akar-icons';
 import { getAllProjectsForHome } from '../utils/api';
+import { styled } from '../stitches.config';
 
-
-const HorizontalContainer = styled(Box)`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  height: 100vh;
-  max-height: -webkit-fill-available;
-  cursor: grab;
-  overflow: scroll;
-  scrollbar-width: none;
-  user-select: none;
-  &:active {
-    cursor: grabbing;
+const HorizontalContainer = styled('section', {
+  display: 'flex',
+  flexFlow: 'row nowrap',
+  alignItems: 'center',
+  height: '100vh',
+  maxHeight: '-webkit-fill-available',
+  cursor: 'grab',
+  overflow: 'scroll',
+  scrollbarWidth: 'none',
+  userSelect: 'none',
+  pl: '$1',
+  '&:active': {
+    cursor: 'grabbing',
+  },
+  '&::-webkit-scrollbar': {
+    display: 'none'
   }
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`
+});
 
-const ProgressBar = styled(Box)`
-  transform-origin: left;
-  margin-top: -2px;
-`
+const ProgressBar = styled('div', {
+  transformOrigin: 'left',
+  width: '100%',
+  height: 1,
+  overflow: 'hidden',
+  bg: '$fg_primary',
+});
+
+const ProgressBarBg = styled('div', {
+  width: '100%',
+  height: 1,
+  bg: '$bg_secondary',
+
+})
+
+const Footer = styled('section', {
+  width: '100%',
+  position: 'fixed',
+  bottom: '$1',
+  px: '$1',
+  overflow: 'hidden',
+  lipPath: 'inset(0%)', 
+  pointerEvents: 'none',
+});
+
+const FooterContent = styled('div', {
+  display: 'flex',
+  alignItems: 'baseline',
+  pb: 16,
+  justifyContent: 'center',
+  '@bp1': {
+    justifyContent: 'space-between',
+  }
+})
+
+const FooterCopy = styled(Text, {
+  fontSize: '1em',
+  alignItems: 'center',
+  variants: {
+    display: {
+      none: {display: 'none'},
+      flex: {display: 'flex'}
+    }
+  }
+})
 
 const HomePage = ({ allProjects }) => {
   const entries = allProjects;
   const ref = useRef(null);
 
-  const { scrollXProgress } = useElementScroll(ref)
+  const { scrollXProgress } = useScroll({container: ref})
   const pathLength = useSpring(scrollXProgress, { stiffness: 400, damping: 40 });
 
   function onPan(event, info) {
@@ -61,7 +101,6 @@ const HomePage = ({ allProjects }) => {
   return (
     <motion.div variants={variants.main} initial="initial" animate="enter" exit="exit">
       <HorizontalContainer
-        pl="layout.1"
         ref={ref}
         as={motion.section}
         onPan={onPan}
@@ -69,47 +108,23 @@ const HomePage = ({ allProjects }) => {
       >
         {entries.map((entry, index) => <EntryItem key={index} entry={entry} index={index} />)}
       </HorizontalContainer>
-      <Box
-        width="100%"
-        position="fixed"
-        bottom="layout.1"
-        as="section"
-        style={{ clipPath: 'inset(0%)', pointerEvents: 'none' }}
-        px="layout.1"
-        overflow="hidden"
-      >
-        <Box
-          as={motion.div}
-          variants={variants.footer}
-          display='flex'
-          justifyContent={['center', 'space-between']}
-          alignItems="baseline"
-          pb={16}
-        >
-          <Text as="p" fontSize={4}>© {new Date().getFullYear()}. All Rights Reserved.</Text>
-          <Text as="p" display={["none", "flex"]} alignItems="center" fontSize={4}>
+      <Footer>
+        <FooterContent as={motion.div} variants={variants.footer}>
+          <FooterCopy>© {new Date().getFullYear()}. All Rights Reserved.</FooterCopy>
+          <FooterCopy display={{'@initial': 'none', '@bp1': 'flex'}}>
             Scroll or Drag Sideways <ArrowRight size={20} style={{ marginLeft: '.5em' }} />
-          </Text>
-        </Box>
-        <Box overflow="hidden">
-          <Box
-            width="100%"
-            height={2}
-            bg="content.inverseSecondary"
-            opacity={0.3}
-            variants={variants.progress}
+          </FooterCopy>
+        </FooterContent>
+          <ProgressBarBg
             as={motion.div}
-          />
+            variants={variants.progress}
+          >
           <ProgressBar
-            width="100%"
-            height={1}
-            bg="content.primary"
             as={motion.div}
             style={{ scaleX: pathLength }}
-            overflow="hidden"
           />
-        </Box>
-      </Box>
+        </ProgressBarBg>
+      </Footer>
     </motion.div>
   )
 };

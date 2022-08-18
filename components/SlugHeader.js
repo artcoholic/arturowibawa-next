@@ -1,40 +1,42 @@
-import styled from 'styled-components'
-import Box from './Box';
-import Text from './Text';
-import { motion } from 'framer-motion'
-import { variants } from './AnimationVariants';
+import { styled } from "../stitches.config";
+import Box from "./Box";
+import Text from "./Text";
+import { motion } from "framer-motion";
+import { variants } from "./AnimationVariants";
 
-const Line = styled(Box)`
-  height: 1px;
-  background: ${props => props.theme.colors.content.primary};
-  width: 100%;
-`
+const Line = styled(Box, {
+  height: 1,
+  background: "$fg_primary",
+  width: "100%",
+});
 
-const ProjectTitle = styled(Text)`
-  text-align: center;
-  text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`
+const ProjectTitle = styled(Text, {
+  textAlign: "center",
+  textTransform: "uppercase",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  typeScale: "$headingSmall",
+  pb: "$0_5",
+  "@bp1": { typeScale: "$headingMedium" },
+  "@bp2": { typeScale: "$headingLarge" },
+  "@bp3": { pb: "$0_125" },
+});
 
 const SlugHeader = ({ entry }) => {
   // console.log('SlugHeader');
   return (
     <Box
-      as="section"
-      width="100%"
-      mb="layout.1"
-      px="layout.1"
-      mt={["layout.4", null, null, "layout.3"]}
+      css={{
+        width: "100%",
+        mb: "$1",
+        px: "$1",
+        mt: "$4",
+        "@bp3": { mt: "$3" },
+      }}
     >
-      <Box style={{ clipPath: 'inset(0%)' }}>
-        <ProjectTitle
-          as={motion.h1}
-          font={["HeadingSmall", "HeadingMedium", "HeadingLarge"]}
-          variants={variants.slugTitle}
-          pb={["layout.1/2", null, null, "layout.1/8"]}
-        >
+      <Box style={{ clipPath: "inset(0%)" }}>
+        <ProjectTitle as={motion.h1} variants={variants.slugTitle}>
           {entry.title}
         </ProjectTitle>
       </Box>
@@ -43,22 +45,47 @@ const SlugHeader = ({ entry }) => {
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{
-          type: 'spring',
+          type: "spring",
           damping: 20,
         }}
       />
       <Box
-        columns="1/-1"
-        pt="layout.1/2"
-        display="flex"
-        justifyContent="space-between"
-        style={{ clipPath: 'inset(0%)' }}
+        css={{
+          columns: "1/-1",
+          pt: "$0_5",
+          display: "flex",
+          justifyContent: "space-between",
+          clipPath: "inset(0%)",
+        }}
       >
-        {entry.info.tags && <Text as={motion.h2} mr={12} variants={variants.slugStats} fontSize={[3, 4]}>{entry.info.tags.join(", ")}</Text>}
-        {entry.info.year && <Text as={motion.h2} variants={variants.slugStats} fontSize={[3, 4]}>{entry.info.year}</Text>}
+        {entry.info.tags && (
+          <Text
+            as={motion.h2}
+            css={{
+              mr: 12,
+              fontSize: 12,
+              "@bp1": { fontSize: 16 },
+            }}
+            variants={variants.slugStats}
+          >
+            {entry.info.tags.join(", ")}
+          </Text>
+        )}
+        {entry.info.year && (
+          <Text
+            as={motion.h2}
+            variants={variants.slugStats}
+            css={{
+              fontSize: 12,
+              "@bp1": { fontSize: 16 },
+            }}
+          >
+            {entry.info.year}
+          </Text>
+        )}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export default SlugHeader;

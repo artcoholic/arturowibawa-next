@@ -1,23 +1,24 @@
-import styled from 'styled-components'
+import {styled} from '../stitches.config';
 import Box from './Box';
 
-const Wrapper = styled(Box)`
-  padding: 8px;
-  transition: all 150ms ${props => props.theme.ease.Btn};
-  background: ${props => props.theme.colors.content.secondary};
-  border-radius: 50%;
-  margin-right: .75rem;
-  &:hover {
-    color: ${props => props.theme.colors.content.inverseTertiary};
-    background: ${props => props.theme.colors.bg.primary};
+const Wrapper = styled(Box, {
+  padding: 8,
+  transition: 'all 150ms $ease$button',
+  background: '$fg_secondary',
+  borderRadius: '50%',
+  marginRight: '.75rem',
+  color: '$fg_primary',
+  '&:hover': {
+    color: '$fg_inverseTertiary',
+    background: '$bg_primary',
+  },
+  'svg': {
+    display: 'block',
+  },
+  '&:after': {
+    display: 'none',
   }
-  svg {
-    display: block;
-  }
-  &:after {
-    display: none;
-  }
-`
+})
 
 const SocialLink = ({ href, children, color, title }) => {
   // console.log('SocialLink');
@@ -27,7 +28,6 @@ const SocialLink = ({ href, children, color, title }) => {
       href={href}
       target="_blank"
       rel="noopener"
-      color={color || 'content.primary'}
       title={title}
     >
       {children}

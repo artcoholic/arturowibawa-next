@@ -1,63 +1,114 @@
-import React from 'react';
-import styled from 'styled-components';
-import Grid from './Grid'
-import Box from './Box';
-import Text from './Text';
-import GalleryBlock from './GalleryBlock';
-import Image from 'next/image';
-import { variants, rotation } from './AnimationVariants'
-import { motion } from 'framer-motion';
-import ReactPlayer from 'react-player/lazy';
-import Markdown from 'react-markdown';
-import { ArrowUpThick } from 'akar-icons';
+import React from "react";
+import { styled } from "../stitches.config";
+import Grid from "./Grid";
+import Box from "./Box";
+import GalleryBlock from "./GalleryBlock";
+import Image from "next/image";
+import { variants, rotation } from "./AnimationVariants";
+import { motion } from "framer-motion";
+import ReactPlayer from "react-player/lazy";
+import Markdown from "react-markdown";
+import { ArrowUpThick } from "akar-icons";
 
-const MarkdownWrapper = styled(Text)`
-  
-`
+const MarkdownWrapper = styled("div", {
+  my: "$1",
+  color: "$fg_inverseTertiary",
+  typeScale: "$paragraphSmall",
+  "@bp1": { typeScale: "$paragraphMedium" },
+  "@bp2": { my: "$2" },
+  "@bp3": { typeScale: "$paragraphLarge" },
+  gridColumn: "1/-1",
+  textAlign: "left",
+  variants: {
+    alignText: {
+      Left: {
+        "@bp2": { gridColumn: "1/span 4" },
+        "@bp3": { gridColumn: "2/span 5" },
+      },
+      Center: {
+        "@bp2": { gridColumn: "3/span 4", textAlign: "center" },
+        "@bp3": { gridColumn: "4/span 6" },
+      },
+      Right: {
+        "@bp2": { gridColumn: "5/span 4" },
+        "@bp3": { gridColumn: "7/span 5" },
+      },
+    },
+  },
+});
 
-const GalleryWrapper = styled(Box)`
-  display: flex;
-  justify-content:center;
-  align-items:flex-end;
-  flex-flow: row nowrap;
-  padding-top: 56.25%;
-  img {
-    cursor: grab;
-    &:active {
-      cursor: grabbing;
-    }
-  }
-`
+const MediaBlockGrid = styled(Grid, {
+  gridColumn: "1/-1",
+  my: "$0_25",
+  gridRowGap: "$0_5",
+  gridColumnGap: "$0_5",
+  gridTemplateColumns: "1fr",
+  variants: {
+    layout: {
+      Thirds: {
+        "@bp2": { gridTemplateColumns: "repeat(3, 1fr)" },
+      },
+      Split: {
+        "@bp1": { gridTemplateColumns: "repeat(2, 1fr)" },
+      },
+    },
+  },
+  "@bp2": {
+    gridRowGap: "$1",
+    gridColumnGap: "$1",
+    my: "$0_5",
+  },
+});
 
-const BackToTop = styled(Box)`
-  cursor: pointer;
-  svg {
-    transition: transform 500ms ${props => props.theme.ease.Btn};
-  }
-  .arrowUp > svg {
-    fill: ${props => props.theme.colors.bg.primary};
-  }
-  .textPath {
-    animation: ${rotation} 30s linear infinite;
-    animation-play-state: paused;
-    svg {
-      fill: ${props => props.theme.colors.content.inverseSecondary};
-      transform: scale(1);
-    }
-  }
-  &:hover {
-    .textPath {
-      animation-play-state: running;
-    }
-    .textPath > svg {
-      transform: scale(1.2);
-    }
-    .arrowUp > svg {
-      fill: ${props => props.theme.colors.content.inverseSecondary};
-      transform: scale(0.9);
-    }
-  }
-`
+const GalleryWrapper = styled(Box, {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "flex-end",
+  flexFlow: "row nowrap",
+  paddingTop: "56.25%",
+  gridColumn: "-1/1",
+  my: "$0_25",
+  "@bp2": { my: "$0_5" },
+  img: {
+    cursor: "grab",
+    "&:active": {
+      cursor: "grabbing",
+    },
+  },
+});
+
+const BackToTop = styled(Box, {
+  cursor: "pointer",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  svg: {
+    transition: "transform 500ms $ease$button",
+  },
+  ".arrowUp > svg": {
+    fill: "$bg_primary",
+  },
+  ".textPath": {
+    animation: `${rotation} 30s linear infinite`,
+    animationPlayState: "paused",
+    svg: {
+      fill: "$fg_inverseSecondary",
+      transform: "scale(1)",
+    },
+  },
+  "&:hover": {
+    ".textPath": {
+      animationPlayState: "running",
+    },
+    ".textPath > svg": {
+      transform: "scale(1.2)",
+    },
+    ".arrowUp > svg": {
+      fill: "$fg_inverseSecondary",
+      transform: "scale(0.9)",
+    },
+  },
+});
 
 const SlugContent = ({ entry }) => {
   const matrix = entry.matrixCollection.items;
@@ -65,114 +116,136 @@ const SlugContent = ({ entry }) => {
   // console.log('SlugContent');
   return (
     <Grid
-      as={motion.section}
-      px="layout.1"
-      overflow="hidden"
-      mb={["layout.3/4", null, null, 'layout.1/2']}
-      variants={variants.slugContent}
-      transition={{
-        type: 'spring',
-        stiffness: 600,
-        damping: 100,
-        mass: 10,
+      css={{
+        px: "$1",
+        overflow: "hidden",
+        mb: "$0_75",
+        "@bp3": { mb: "$0_5" },
       }}
     >
-      {matrix && matrix.map((item) => {
-        const id = item.__typename;
-        switch (id) {
-          case 'Media': // MEDIA BLOCK
-            return (
-              <Grid
-                key={item.sys.id}
-                columns="1/-1"
-                my={["layout.1/4", null, "layout.1/2"]}
-                gridTemplateColumns={item.layout === 'Thirds' ? ["1fr", null, "repeat(3, 1fr)"] : item.layout === 'Split' ? ["1fr", "repeat(2, 1fr)"] : "1fr"}
-                gridRowGap={["layout.1/2", null, "layout.1"]}
-                gridColumnGap={["layout.1/2", null, "layout.1"]}
-              >
-                {item.assetsCollection.items.map((asset) => {
-                  return (
-                    <Box
-                      span="span 1"
-                      width="100%"
-                      borderRadius={[8, null, 16]}
-                      overflow="hidden"
-                      // bg="bg.placeholder"
-                      key={asset.sys.id}
-                    >
-                      {asset.contentType.includes('image') &&
-                        <Image
-                          src={asset.url}
-                          alt={asset.title}
-                          placeholder="blur"
-                          blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                          layout="responsive"
-                          width={asset.width}
-                          height={asset.height}
-                          sizes="(max-width: 600px) 48vw, (max-width: 1023px) 96vw"
-                        />
-                      }
-                      {asset.contentType.includes('video') &&
-                        <ReactPlayer ref={ref} url={asset.url} playing muted loop width="100%" height="100%" playsinline />
-                      }
-                    </Box>
-                  )
-                })}
-              </Grid>
-            );
-            break;
-          case 'Text': // TEXT BLOCK
-            return (
-              <MarkdownWrapper
-                my={["layout.1", null, "layout.2"]}
-                columns={
-                  item.alignText === "Left" ? ["1/-1", null, "1/span 4", "2/span 5"] : item.alignText === "Center" ? ["1/-1", null, "3/span 4", "4/span 6"] : ["1/-1", null, "5/span 4", "7/span 5"]
-                }
-                key={item.sys.id}
-                color="content.inverseTertiary"
-                font={["ParagraphSmall", "ParagraphMedium", null, "ParagraphLarge"]}
-                textAlign={
-                  item.alignText === "Center" ? ['left', null, 'center'] : 'left'
-                }
-              >
-                <Markdown children={item.paragraph} linkTarget="_blank" />
-              </MarkdownWrapper>
-            );
-            break;
-          case 'Gallery': // GALLERY BLOCK
-            return (
-              <GalleryWrapper
-                columns="-1/1"
-                my={["layout.1/4", null, "layout.1/2"]}
-                key={item.sys.id}
-              >
-                <GalleryBlock item={item} />
-              </GalleryWrapper>
-            );
-            break;
-          default:
-            console.log(`We don't have the ${id} component.`);
-        }
-      })}
+      {matrix &&
+        matrix.map((item) => {
+          const id = item.__typename;
+          switch (id) {
+            case "Media": // MEDIA BLOCK
+              return (
+                <MediaBlockGrid key={item.sys.id} layout={item.layout}>
+                  {item.assetsCollection.items.map((asset) => {
+                    return (
+                      <Box
+                        as={motion.div}
+                        variants={variants.trigger}
+                        initial="offscreen"
+                        whileInView="onscreen"
+                        viewport={{ once: true, amount: 0.1 }}
+                        css={{
+                          span: "span 1",
+                          width: "100%",
+                          borderRadius: ".5rem",
+                          overflow: "hidden",
+                          "@bp2": { borderRadius: "1rem" },
+                        }}
+                        key={asset.sys.id}
+                      >
+                        {asset.contentType.includes("image") && (
+                          <Image
+                            src={asset.url}
+                            alt={asset.title}
+                            placeholder="blur"
+                            blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                            layout="responsive"
+                            width={asset.width}
+                            height={asset.height}
+                            sizes="(max-width: 600px) 48vw, (max-width: 1023px) 96vw"
+                          />
+                        )}
+                        {asset.contentType.includes("video") && (
+                          <ReactPlayer
+                            ref={ref}
+                            url={asset.url}
+                            playing
+                            muted
+                            loop
+                            width="100%"
+                            height="100%"
+                            playsinline
+                          />
+                        )}
+                      </Box>
+                    );
+                  })}
+                </MediaBlockGrid>
+              );
+              break;
+            case "Text": // TEXT BLOCK
+              return (
+                <MarkdownWrapper
+                  as={motion.div}
+                  alignText={item.alignText}
+                  key={item.sys.id}
+                  variants={variants.trigger}
+                  initial="offscreen"
+                  whileInView="onscreen"
+                  viewport={{ once: true, amount: 0.1 }}
+                >
+                  <Markdown children={item.paragraph} linkTarget="_blank" />
+                </MarkdownWrapper>
+              );
+              break;
+            case "Gallery": // GALLERY BLOCK
+              return (
+                <GalleryWrapper
+                  as={motion.div}
+                  key={item.sys.id}
+                  variants={variants.trigger}
+                  initial="offscreen"
+                  whileInView="onscreen"
+                  viewport={{ once: true, amount: 0.1 }}
+                >
+                  <GalleryBlock item={item} />
+                </GalleryWrapper>
+              );
+              break;
+            default:
+              console.log(`We don't have the ${id} component.`);
+          }
+        })}
       <Box
-        columns="-1/1"
-        display="flex"
-        justifyContent="center"
-        py="layout.3"
-        mb={56}
-        color="content.inverseSecondary"
+        css={{
+          gridColumn: "-1/1",
+          display: "flex",
+          justifyContent: "center",
+          py: "$3",
+          mb: 56,
+          color: "$fg_inverseSecondary",
+        }}
       >
         <BackToTop
-          onClick={() => window.scroll({ top: 0, left: 0, behavior: 'smooth' })}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
+          onClick={() => window.scroll({ top: 0, left: 0, behavior: "smooth" })}
         >
-          <Box position="absolute" size={["24vw", "12vw"]} className="arrowUp">
+          <Box
+            css={{
+              position: "absolute",
+              size: "24vw",
+              "@bp1": { size: "12vw" },
+            }}
+            className="arrowUp"
+          >
             <ArrowUpThick size="100%" strokeWidth={0.25} />
           </Box>
-          <Box className="textPath" size={["50vw", "25vw"]}>
-            <svg width="100%" height="100%" viewBox="0 0 696 696" xmlns="http://www.w3.org/2000/svg">
+          <Box
+            css={{
+              size: "50vw",
+              "@bp1": { size: "25vw" },
+            }}
+            className="textPath"
+          >
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 696 696"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path d="M46.1724 505.073C45.9591 504.303 45.8905 503.488 45.9666 502.627C46.0428 501.766 46.3242 500.945 46.8109 500.165C47.2837 499.38 47.9879 498.746 48.9237 498.261C50.0795 497.663 51.2014 497.422 52.2892 497.54C53.3679 497.662 54.3475 498.082 55.2282 498.799C56.1089 499.517 56.8439 500.463 57.4334 501.636L61.8898 510.508L42.1572 520.725L37.9886 512.426C37.3429 511.141 37.0019 509.944 36.9656 508.836C36.9154 507.724 37.1427 506.75 37.6473 505.913C38.1519 505.077 38.8951 504.405 39.8766 503.896C40.7298 503.455 41.5687 503.249 42.3933 503.28C43.2088 503.315 43.9402 503.506 44.5877 503.851C45.2305 504.187 45.7587 504.595 46.1724 505.073ZM49.7264 514.288L46.6737 508.211C46.2479 507.363 45.7339 506.708 45.1315 506.245C44.5292 505.783 43.8893 505.521 43.2118 505.461C42.5251 505.406 41.8424 505.554 41.1635 505.906C40.1544 506.428 39.5434 507.202 39.3303 508.228C39.1127 509.245 39.3266 510.395 39.9723 511.681L43.025 517.758L49.7264 514.288ZM55.7231 502.891C55.2787 502.007 54.7322 501.321 54.0836 500.836C53.4258 500.355 52.726 500.089 51.9841 500.039C51.2331 499.994 50.4952 500.159 49.7705 500.534C49.0458 500.909 48.4947 501.412 48.1174 502.041C47.7263 502.666 47.5431 503.383 47.5678 504.192C47.5787 504.996 47.8088 505.845 48.2579 506.739L51.5703 513.333L59.0286 509.472L55.7231 502.891Z" />
               <path d="M39.4675 476.917L43.3016 486.389L50.1376 486.114L51.0536 488.377L27.3949 489.092L26.2206 486.191L43.5791 469.911L44.5303 472.261L39.4675 476.917ZM37.8264 478.432L31.7455 484.038L28.9753 486.601L28.5373 487.005L29.1624 486.981L32.8728 486.823L41.0851 486.483L37.8264 478.432Z" />
               <path d="M38.1899 452.388C38.8525 454.511 38.9276 456.499 38.4152 458.353C37.893 460.21 36.9072 461.811 35.4577 463.154C33.9985 464.501 32.2234 465.511 30.1324 466.184C28.0905 466.841 26.1291 467.011 24.248 466.695C22.3638 466.369 20.7257 465.585 19.3337 464.344C17.9287 463.096 16.9105 461.461 16.279 459.438C15.7315 457.683 15.5826 456.064 15.8323 454.58C16.0691 453.089 16.5387 451.825 17.241 450.787C17.9403 449.74 18.7176 448.925 19.5729 448.343L21.0098 450.299C20.3353 450.768 19.7139 451.39 19.1456 452.165C18.5743 452.93 18.1793 453.88 17.9608 455.014C17.7324 456.151 17.8345 457.413 18.2669 458.798C18.7677 460.403 19.5566 461.684 20.6336 462.643C21.6977 463.595 22.9821 464.18 24.4868 464.397C25.9915 464.615 27.6274 464.44 29.3944 463.871C31.1713 463.3 32.662 462.469 33.8667 461.38C35.0683 460.28 35.8816 459.009 36.3065 457.568C36.7315 456.126 36.6967 454.612 36.202 453.028C35.5737 451.014 34.6187 449.616 33.3372 448.833C32.0459 448.053 30.5356 447.662 28.8063 447.659L28.9395 445.23C30.1773 445.216 31.3986 445.443 32.6033 445.911C33.8048 446.368 34.9041 447.139 35.9012 448.222C36.8951 449.295 37.658 450.684 38.1899 452.388Z" />
@@ -213,13 +286,17 @@ const SlugContent = ({ entry }) => {
               <path d="M668.982 408.037C669.317 406.027 670.099 404.279 671.328 402.794C672.557 401.308 674.11 400.233 675.985 399.569C677.87 398.918 679.918 398.782 682.132 399.162C684.345 399.542 686.231 400.354 687.789 401.597C689.345 402.85 690.458 404.383 691.127 406.194C691.807 408.008 691.979 409.919 691.644 411.93C691.308 413.95 690.526 415.698 689.298 417.173C688.081 418.65 686.535 419.715 684.661 420.369C682.787 421.023 680.743 421.159 678.53 420.779C676.316 420.399 674.425 419.586 672.857 418.341C671.299 417.098 670.18 415.575 669.499 413.772C668.817 411.969 668.645 410.057 668.982 408.037ZM671.04 408.375C670.762 410.045 670.917 411.588 671.507 413.004C672.106 414.422 673.053 415.602 674.347 416.546C675.642 417.489 677.167 418.112 678.924 418.413C680.67 418.713 682.308 418.634 683.836 418.175C685.364 417.717 686.636 416.917 687.651 415.777C688.666 414.636 689.313 413.231 689.591 411.561C689.869 409.891 689.714 408.348 689.125 406.932C688.535 405.516 687.594 404.336 686.299 403.393C685.015 402.451 683.494 401.829 681.738 401.528C679.981 401.226 678.339 401.304 676.811 401.763C675.282 402.222 674.006 403.02 672.98 404.159C671.965 405.299 671.319 406.705 671.04 408.375Z" />
               <path d="M686.87 434.115L684.77 442.44C684.397 443.919 683.809 445.115 683.004 446.029C682.2 446.942 681.251 447.543 680.158 447.83C679.075 448.121 677.92 448.107 676.693 447.788C675.466 447.469 674.448 446.913 673.638 446.119C672.825 445.336 672.284 444.343 672.013 443.139C671.74 441.946 671.793 440.6 672.171 439.101L673.707 433.009L664.863 430.71L665.411 428.537L686.87 434.115ZM674.182 439.219C673.896 440.353 673.85 441.356 674.045 442.227C674.24 443.098 674.621 443.801 675.188 444.337C675.761 444.885 676.457 445.266 677.275 445.478C678.103 445.694 678.883 445.702 679.613 445.503C680.341 445.315 680.986 444.884 681.55 444.21C682.12 443.549 682.553 442.636 682.846 441.471L684.287 435.758L675.622 433.506L674.182 439.219Z" />
               <path d="M653.273 484.018C653.671 483.065 654.271 482.284 655.073 481.675C655.875 481.066 656.77 480.69 657.758 480.547C658.755 480.408 659.709 480.535 660.619 480.926C661.577 481.338 662.356 481.951 662.955 482.765C663.56 483.593 663.927 484.511 664.054 485.52C664.187 486.542 664.054 487.53 663.657 488.483C663.259 489.436 662.655 490.215 661.843 490.82C661.041 491.429 660.139 491.796 659.136 491.921C658.139 492.06 657.161 491.923 656.203 491.511C655.293 491.12 654.54 490.512 653.944 489.688C653.354 488.878 652.997 487.964 652.874 486.946C652.747 485.937 652.88 484.961 653.273 484.018Z" />
-              <path fillRule="evenodd" clipRule="evenodd" d="M548.02 627.07C596.359 590.68 634.156 541.745 657.442 485.403L659.293 486.164C635.872 542.833 597.853 592.057 549.225 628.664C500.598 665.271 443.157 687.91 382.935 694.202C322.713 700.494 261.934 690.206 206.981 664.419C152.028 638.633 104.93 598.301 70.6323 547.66L72.291 546.541C106.389 596.887 153.209 636.98 207.833 662.612C262.456 688.244 322.869 698.469 382.727 692.216C442.584 685.962 499.681 663.46 548.02 627.07Z" />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M548.02 627.07C596.359 590.68 634.156 541.745 657.442 485.403L659.293 486.164C635.872 542.833 597.853 592.057 549.225 628.664C500.598 665.271 443.157 687.91 382.935 694.202C322.713 700.494 261.934 690.206 206.981 664.419C152.028 638.633 104.93 598.301 70.6323 547.66L72.291 546.541C106.389 596.887 153.209 636.98 207.833 662.612C262.456 688.244 322.869 698.469 382.727 692.216C442.584 685.962 499.681 663.46 548.02 627.07Z"
+              />
             </svg>
           </Box>
         </BackToTop>
       </Box>
     </Grid>
-  )
-}
+  );
+};
 
 export default SlugContent;
