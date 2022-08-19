@@ -29,10 +29,7 @@ const SlugHeader = ({ entry }) => {
     <Box
       css={{
         width: "100%",
-        mb: "$1",
-        px: "$1",
-        mt: "$4",
-        "@bp3": { mt: "$3" },
+        p: "$1",
       }}
     >
       <Box style={{ clipPath: "inset(0%)" }}>

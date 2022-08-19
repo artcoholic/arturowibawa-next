@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { styled } from "../stitches.config";
 import Link from "next/link";
 import Box from "./Box";
@@ -90,21 +90,17 @@ const Logo = styled("svg", {
   display: "block",
 });
 
-const Header = ({ setTheme, theme, toggler }) => {
+const Header = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "auto";
+  });
   // console.log('Header');
   return (
     <Container as="header">
       <AnimatePresence>
-        {open && (
-          <MenuContainer
-            setOpen={setOpen}
-            setTheme={setTheme}
-            theme={theme}
-            toggler={toggler}
-          />
-        )}
+        {open && <MenuContainer setOpen={setOpen} />}
       </AnimatePresence>
       <Link href="/" passHref>
         <a

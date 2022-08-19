@@ -87,7 +87,7 @@ const Logo = styled("div", {
   position: "absolute",
 });
 
-const MenuContainer = ({ setOpen, setTheme, theme, toggler }) => {
+const MenuContainer = ({ setOpen }) => {
   // console.log('MenuContainer');
   return (
     <Container

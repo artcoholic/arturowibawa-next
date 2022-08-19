@@ -63,12 +63,12 @@ export const rotation = keyframes({
 
 export const variants = {
   main: {
-    // initial: {
-    //   opacity: 0,
-    // },
-    // enter: {
-    //   opacity: 1,
-    // },
+    initial: {
+      opacity: 0,
+    },
+    enter: {
+      opacity: 1,
+    },
     exit: {
       opacity: 0,
       transition: {
@@ -120,7 +120,7 @@ export const variants = {
       x: 0,
       transition: {
         type: "spring",
-        stiffness: 400,
+        stiffness: 200,
         damping: 40,
       },
     },
@@ -128,7 +128,7 @@ export const variants = {
   entryList: {
     enter: {
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.2,
       },
     },
   },
