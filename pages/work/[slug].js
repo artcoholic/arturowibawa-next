@@ -96,7 +96,7 @@ export default function WorkSlug({ project, preview, moreProjects }) {
       />
       <Box
         as={motion.article}
-        css={{ bg: "$bg_inversePrimary" }}
+        css={{ bg: "$bg_inversePrimary", pb: elHeight }}
         variants={variants.main}
         initial="initial"
         animate="enter"
@@ -113,7 +113,6 @@ export default function WorkSlug({ project, preview, moreProjects }) {
             "@bp3": { pt: "$3" },
             borderRadius: "0 0 1rem 1rem",
             "@bp2": { borderRadius: "0 0 2rem 2rem" },
-            mb: elHeight - 1,
             zIndex: 2,
             transformOrigin: "bottom",
           }}
