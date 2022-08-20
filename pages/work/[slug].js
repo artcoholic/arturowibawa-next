@@ -58,7 +58,8 @@ const BackToTop = styled(Box, {
 
 export default function WorkSlug({ project, preview, moreProjects }) {
   const { scrollYProgress } = useScroll();
-  const scrollY = useTransform(scrollYProgress, [0.98, 1], [1, 0.9]);
+  const scrollYMap = useTransform(scrollYProgress, [0.98, 1], [1, 0.95]);
+  const scrollY = useSpring(scrollYMap, { stiffness: 400, damping: 40 });
   const ref = useRef(null);
   const [elHeight, setElHeight] = useState(0);
 

@@ -113,14 +113,14 @@ export const variants = {
   entryItem: {
     initial: {
       opacity: 0,
-      x: 400,
+      x: "20vw",
     },
     enter: {
       opacity: 1,
       x: 0,
       transition: {
         type: "spring",
-        stiffness: 200,
+        stiffness: 400,
         damping: 40,
       },
     },

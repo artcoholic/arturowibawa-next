@@ -4,9 +4,10 @@ import Link from "next/link";
 import Box from "./Box";
 import Text from "./Text";
 import MenuContainer from "./MenuContainer";
-import { Cross, Circle } from "akar-icons";
+import { Cross, Circle, TwoLineHorizontal } from "akar-icons";
 import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
+import { getRootState } from "@react-three/fiber";
 
 const Container = styled(Box, {
   display: "flex",
@@ -90,6 +91,49 @@ const Logo = styled("svg", {
   display: "block",
 });
 
+const Burger = styled("span", {
+  size: 14,
+  display: "flex",
+  flexFlow: "column nowrap",
+  transition: "300ms ease-out",
+  "&:before, &:after": {
+    content: "",
+    borderRadius: 1,
+    display: "block",
+    width: "100%",
+    height: 2,
+    bg: "$fg_tertiary",
+    transition: "300ms ease-out",
+    position: "absolute",
+  },
+  "&:before": {
+    bottom: 3,
+  },
+  "&:after": {
+    top: 3,
+  },
+  variants: {
+    open: {
+      true: {
+        "&:before, &:after": {
+          bg: "$fg_primary",
+        },
+        "&:before": {
+          transform: "rotate(45deg) translate(-2px, -2px)",
+        },
+        "&:after": {
+          transform: "rotate(135deg) translate(2px, -2px)",
+        },
+      },
+      false: {
+        "&:before, &:after": {
+          bg: "$fg_tertiary",
+        },
+      },
+    },
+  },
+});
+
 const Header = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -128,15 +172,9 @@ const Header = () => {
         aria-label="Menu"
         title="Menu"
       >
-        {open ? (
-          <Box css={{ color: "$fg_primary" }}>
-            <Cross size={14} strokeWidth={3} />
-          </Box>
-        ) : (
-          <Box css={{ color: "$fg_inversePrimary" }}>
-            <Circle size={14} strokeWidth={3} />
-          </Box>
-        )}
+        <Box css={{ color: open ? "$fg_primary" : "$fg_inversePrimary" }}>
+          <Burger open={open} />
+        </Box>
       </Dot>
     </Container>
   );
