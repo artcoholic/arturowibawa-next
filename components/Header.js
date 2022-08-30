@@ -4,10 +4,8 @@ import Link from "next/link";
 import Box from "./Box";
 import Text from "./Text";
 import MenuContainer from "./MenuContainer";
-import { Cross, Circle, TwoLineHorizontal } from "akar-icons";
 import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
-import { getRootState } from "@react-three/fiber";
 
 const Container = styled(Box, {
   display: "flex",
@@ -19,8 +17,8 @@ const Container = styled(Box, {
   left: 0,
   zIndex: 99,
   p: "$1",
-  position: "absolute",
-  "@bp3": { position: "fixed" },
+  position: "fixed",
+  // "@bp3": { position: "fixed" },
 
   a: {
     "&:after": {

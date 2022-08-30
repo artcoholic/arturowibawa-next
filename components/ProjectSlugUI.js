@@ -87,6 +87,7 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
         position: "fixed",
         zIndex: 98,
         width: "100%",
+        left: 0,
         bottom: 0,
         p: "$0_5",
         display: "flex",

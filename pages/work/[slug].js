@@ -30,8 +30,6 @@ const BackToTop = styled(Box, {
   svg: {
     transition: "transform 500ms $ease$button",
     stroke: "none",
-  },
-  ".arrowUp > svg": {
     fill: "$fg_tertiary",
   },
   ".textPath": {
@@ -112,8 +110,8 @@ export default function WorkSlug({ project, preview, moreProjects }) {
             bg: "$bg_primary",
             pt: "$4",
             "@bp3": { pt: "$3" },
-            borderRadius: "0 0 1rem 1rem",
-            "@bp2": { borderRadius: "0 0 2rem 2rem" },
+            borderRadius: "0 0 var(--space-0_5) var(--space-0_5)",
+            // "@bp2": { borderRadius: "0 0 2rem 2rem" },
             zIndex: 2,
             transformOrigin: "bottom",
           }}

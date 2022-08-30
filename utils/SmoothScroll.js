@@ -1,61 +1,60 @@
-import React, { useRef, useState, useCallback, useLayoutEffect } from "react";
+import React, {
+  useState,
+  useCallback,
+  useLayoutEffect,
+  useEffect,
+  useRef,
+} from "react";
 import ResizeObserver from "resize-observer-polyfill";
 import { useScroll, useTransform, useSpring, motion } from "framer-motion";
-import { styled } from "../stitches.config";
+import Box from "../components/Box";
 
-const Container = styled("div", {
-  position: "fixed",
-  top: 0,
-  left: 0,
-  width: "100%",
-  overflow: "hidden",
-  willChange: "transform",
-});
-
-const SmoothScroll = ({ children }) => {
-  // scroll container
+const SmoothScroll = ({ children, css }) => {
   const scrollRef = useRef(null);
+  const ghostRef = useRef(null);
+  const [scrollRange, setScrollRange] = useState(0);
+  const [pageWidth, setPageWidth] = useState(0);
 
-  // page scrollable height based on content length
-  const [pageHeight, setPageHeight] = useState(0);
+  useEffect(() => {
+    scrollRef && setScrollRange(scrollRef.current.scrollWidth);
+  }, [scrollRef]);
 
-  // update scrollable height when browser is resizing
-  const resizePageHeight = useCallback((entries) => {
+  const onResize = useCallback((entries) => {
     for (let entry of entries) {
-      setPageHeight(entry.contentRect.height);
+      setPageWidth(entry.contentRect.width);
     }
   }, []);
 
-  // observe when browser is resizing
-  useLayoutEffect(() => {
-    const resizeObserver = new ResizeObserver((entries) =>
-      resizePageHeight(entries)
-    );
-    scrollRef && resizeObserver.observe(scrollRef.current);
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver((entries) => {
+      onResize(entries);
+    });
+    resizeObserver.observe(ghostRef.current);
     return () => resizeObserver.disconnect();
-  }, [scrollRef, resizePageHeight]);
+  }, [onResize]);
 
-  const { scrollY } = useScroll(); // measures how many pixels user has scrolled vertically
-  // as scrollY changes between 0px and the scrollable height, create a negative scroll value...
-  // ... based on current scroll position to translateY the document in a natural way
-  const transform = useTransform(scrollY, [0, pageHeight], [0, -pageHeight]);
-  const physics = { damping: 15, mass: 0.27, stiffness: 55 }; // easing of smooth scroll
-  const spring = useSpring(transform, physics); // apply easing to the negative scroll value
+  const { scrollYProgress } = useScroll();
+  const transform = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -scrollRange + pageWidth]
+  );
+
+  const physics = { damping: 15, mass: 0.27, stiffness: 55 };
+
+  const spring = useSpring(transform, physics);
 
   return (
     <>
-      <Container
-        as={motion.div}
-        ref={scrollRef}
-        style={{ y: spring }} // translateY of scroll container using negative scroll value
-        className="scroll-container"
-      >
+      <Box as={motion.div} ref={scrollRef} style={{ x: spring }} css={css}>
         {children}
-      </Container>
-      {/* blank div that has a dynamic height based on the content's inherent height */}
-      {/* this is neccessary to allow the scroll container to scroll... */}
-      {/* ... using the browser's native scroll bar */}
-      <div style={{ height: pageHeight }} />
+      </Box>
+      <Box
+        ref={ghostRef}
+        style={{
+          height: scrollRange,
+        }}
+      />
     </>
   );
 };

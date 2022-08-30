@@ -11,7 +11,7 @@ import VanillaTilt from "vanilla-tilt";
 const Tilt = styled("div", {
   position: "relative",
   zIndex: 2,
-  borderRadius: 8,
+  borderRadius: 16,
   transformStyle: "preserve-3d",
   ".js-tilt-glare": {
     borderRadius: "inherit",
@@ -21,10 +21,10 @@ const Tilt = styled("div", {
 const AnchorWrapper = styled("div", {
   position: "relative",
   display: "block",
-  borderRadius: 8,
+  borderRadius: 16,
   overflow: "hidden",
   bg: "$bg_placeholder",
-  transition: "all 300ms $ease$smooth",
+  transition: "all 500ms $ease$smooth",
   "&:hover": {
     bg: "$bg_entryCard",
     boxShadow: "0 16px 32px 0 $colors$bg_boxShadow",
@@ -44,7 +44,7 @@ const IconWrapper = styled("div", {
   bg: "white",
   padding: 16,
   borderRadius: "50%",
-  transition: "transform 300ms $ease$smooth",
+  transition: "transform 500ms $ease$smooth",
   border: "1px solid $colors$fg_inverseSecondary",
   transform: "translate3d(-50%, -50%, 48px) scale(0)",
   pointerEvents: "none",
@@ -68,10 +68,10 @@ const IconWrapper = styled("div", {
 const vanillaTiltOptions = {
   max: 6,
   perspective: 1000,
-  speed: 300,
+  speed: 500,
   glare: true,
   "max-glare": 0.25,
-  scale: 1.05,
+  scale: 1.1,
   reverse: true,
   easing: "cubic-bezier(.23,1,.32,1)",
 };
@@ -92,8 +92,7 @@ const EntryItem = ({ entry, index }) => {
       variants={variants.entryItem}
       css={{
         display: "flex",
-        placeSelf: "center",
-        pr: "$1",
+        // px: "$1",
       }}
     >
       <Box
@@ -163,8 +162,8 @@ const EntryItem = ({ entry, index }) => {
           zIndex: 1,
           ml: ".5em",
           letterSpacing: 1,
-          "@bp1": { fontSize: 12 },
-          "@bp5": { fontSize: 16 },
+          fontSize: 12,
+          "@bp2": { fontSize: 16 },
         }}
       >
         0{index + 1} • {entry.info.category}
