@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowLeft } from "akar-icons";
 import { getAllProjectsForHome } from "../utils/api";
 import { styled } from "../stitches.config";
-import InfiniteScrollLoop from "../utils/InfiniteScrollLoop";
+import InfiniteScrollLoop from "../components/InfiniteScrollLoop";
 
 const HomePage = ({ allProjects }) => {
   const entries = allProjects;
@@ -49,18 +49,14 @@ const HomePage = ({ allProjects }) => {
       animate="enter"
       exit="exit"
     >
-      <InfiniteScrollLoop
-        scrollRef={scrollRef}
-        onPan={onPan}
-        scrollXProgress={scrollXProgress}
-      >
+      <InfiniteScrollLoop scrollRef={scrollRef} onPan={onPan}>
         {entries.map((entry, index) => (
           <EntryItem key={index} entry={entry} index={index} />
         ))}
       </InfiniteScrollLoop>
       <Footer>
         <FooterContent>
-          <svg
+          <StyledSVG
             width="36"
             height="36"
             viewBox="0 0 36 36"
@@ -89,7 +85,7 @@ const HomePage = ({ allProjects }) => {
                 stroke: "var(--colors-fg_primary)",
               }}
             />
-          </svg>
+          </StyledSVG>
           <FooterCopy>
             <ArrowLeft size={20} style={{ marginRight: "1rem" }} />
             Scroll or Drag Sideways
@@ -132,4 +128,9 @@ const FooterCopy = styled(Text, {
   fontSize: "1em",
   alignItems: "center",
   display: "flex",
+});
+
+const StyledSVG = styled("svg", {
+  display: "none",
+  "@bp3": { display: "block" },
 });

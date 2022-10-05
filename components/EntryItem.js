@@ -24,7 +24,8 @@ const EntryItem = ({ entry, index }) => {
       variants={variants.entryItem}
       css={{
         display: "flex",
-        mx: "$1",
+        mx: "$0_5",
+        "@bp3": { mx: "$1" },
       }}
     >
       <Box
