@@ -9,7 +9,15 @@ import { motion, useScroll, useMotionValue, MotionConfig } from "framer-motion";
 import { variants } from "../../components/AnimationVariants";
 import ExperienceItem from "./ExperienceItem";
 import SocialItem from "./SocialItem";
-import { ArrowDown } from "akar-icons";
+import {
+  ArrowDown,
+  Envelope,
+  TwitterFill,
+  LinkedinFill,
+  GithubFill,
+  CodepenFill,
+  DribbbleFill,
+} from "akar-icons";
 import { Canvas } from "@react-three/fiber";
 import {
   Icosahedron,
@@ -19,7 +27,6 @@ import {
 } from "../../components/Objects";
 
 const List = styled(Text, {
-  margin: 0,
   padding: 0,
   listStyle: "none",
   typeScale: "$paragraphMedium",
@@ -92,6 +99,18 @@ const ProfilePage = () => {
       >
         <Box
           css={{
+            position: "fixed",
+            top: 0,
+            left: "calc($2 + 32px)",
+            height: "100%",
+            width: 1,
+            bg: "$bg_placeholder",
+            display: "none",
+            "@bp3": { display: "block" },
+          }}
+        />
+        <Box
+          css={{
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
@@ -118,7 +137,7 @@ const ProfilePage = () => {
               "@bp3": { typeScale: "$headingLarge" },
             }}
           >
-            Profile
+            About Me
           </Text>
           <Text
             as="p"
@@ -270,35 +289,41 @@ const ProfilePage = () => {
               color: "$fg_inverseSecondary",
             }}
           >
-            Socials
+            Connect
           </Text>
           <List as="ul">
             <SocialItem
+              icon={<Envelope size={20} />}
               label="Email"
               social="agwibawa@gmail.com"
               href="mailto:agwibawa@gmail.com"
             />
             <SocialItem
+              icon={<TwitterFill size={20} />}
               label="Twitter"
               social="@agwibawa"
               href="https://twitter.com/agwibawa"
             />
             <SocialItem
+              icon={<LinkedinFill size={20} />}
               label="LinkedIn"
               social="@arturowibawa"
               href="https://www.linkedin.com/in/arturowibawa/"
             />
             <SocialItem
+              icon={<GithubFill size={20} />}
               label="Github"
               social="@artcoholic"
               href="https://github.com/artcoholic/"
             />
             <SocialItem
+              icon={<CodepenFill size={20} />}
               label="CodePen"
               social="@artcoholic"
               href="https://codepen.io/artcoholic"
             />
             <SocialItem
+              icon={<DribbbleFill size={20} />}
               label="Dribbble"
               social="@artcoholic"
               href="https://dribbble.com/artcoholic"

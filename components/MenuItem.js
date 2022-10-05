@@ -5,97 +5,6 @@ import { variants } from "./AnimationVariants";
 import { motion } from "framer-motion";
 import { closestEdge } from "../utils/ClosestEdge";
 
-const marquee = keyframes({
-  "100%": {
-    transform: "translate3d(-50%, 0, 0)",
-  },
-});
-
-const Container = styled("div", {
-  position: "relative",
-  background: "none",
-  outline: "none",
-  width: "100vw",
-  textDecoration: "none",
-  overflow: "hidden",
-  borderTop: "1px solid $fg_inversePrimary",
-  color: "$fg_inversePrimary",
-  px: "$1",
-  py: "$0_5",
-  "@bp3": { py: "$0_25" },
-  font: "$display",
-  "@bp5": { font: "$headingLarge" },
-
-  "&:hover": {
-    ".marquee": {
-      transform: "translateY(0%)",
-      ".marquee__inner-wrap": {
-        transform: "translateY(0%)",
-      },
-    },
-  },
-
-  ".marquee": {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    overflow: "hidden",
-    size: "100%",
-    pointerEvents: "none",
-    background: "$bg_primary",
-    transition: "transform 500ms $ease$it",
-
-    ".marquee__inner-wrap": {
-      height: "100%",
-      width: "100%",
-      transition: "transform 500ms $ease$it",
-
-      ".marquee__inner": {
-        height: "100%",
-        width: "fit-content",
-        alignItems: "center",
-        display: "flex",
-        position: "relative",
-        animation: `${marquee} 20s linear infinite`,
-        willChange: "transform",
-        gap: "2rem",
-
-        span: {
-          color: "$fg_inverseTertiary",
-          fontFamily: "Whyte Inktrap Thin",
-          whiteSpace: "nowrap",
-          textTransform: "uppercase",
-        },
-
-        img: {
-          height: ".9em",
-        },
-      },
-    },
-  },
-
-  variants: {
-    edge: {
-      top: {
-        ".marquee": {
-          transform: "translateY(-101%)",
-          ".marquee__inner-wrap": {
-            transform: "translateY(200%)",
-          },
-        },
-      },
-      bottom: {
-        ".marquee": {
-          transform: "translateY(101%)",
-          ".marquee__inner-wrap": {
-            transform: "translateY(-200%)",
-          },
-        },
-      },
-    },
-  },
-});
-
 const MenuItem = ({
   children,
   path,
@@ -131,26 +40,18 @@ const MenuItem = ({
         onHoverStart={(ev) => setEdge(findClosestEdge(ev, ref.current))}
         onHoverEnd={(ev) => setEdge(findClosestEdge(ev, ref.current))}
       >
-        {children}
+        {title}
         <div className="marquee">
           <div className="marquee__inner-wrap">
             <div className="marquee__inner" aria-hidden="true">
-              <span>{keyword_1}</span>
-              <img src={`/images/menu/${keyword_4}-01.png`} alt="menu icon" />
-              <span>{keyword_2}</span>
-              <img src={`/images/menu/${keyword_4}-02.png`} alt="menu icon" />
-              <span>{keyword_3}</span>
-              <img src={`/images/menu/${keyword_4}-03.png`} alt="menu icon" />
-              <span>{keyword_4}</span>
-              <img src={`/images/menu/${keyword_4}-04.png`} alt="menu icon" />
-              <span>{keyword_1}</span>
-              <img src={`/images/menu/${keyword_4}-01.png`} alt="menu icon" />
-              <span>{keyword_2}</span>
-              <img src={`/images/menu/${keyword_4}-02.png`} alt="menu icon" />
-              <span>{keyword_3}</span>
-              <img src={`/images/menu/${keyword_4}-03.png`} alt="menu icon" />
-              <span>{keyword_4}</span>
-              <img src={`/images/menu/${keyword_4}-04.png`} alt="menu icon" />
+              <span>{title}</span>
+              <span>{title}</span>
+              <span>{title}</span>
+              <span>{title}</span>
+              <span>{title}</span>
+              <span>{title}</span>
+              <span>{title}</span>
+              <span>{title}</span>
             </div>
           </div>
         </div>
@@ -160,3 +61,100 @@ const MenuItem = ({
 };
 
 export default MenuItem;
+
+const marquee = keyframes({
+  "0%": {
+    transform: "translate3d(var(--move-initial), 0, 0)",
+  },
+  "100%": {
+    transform: "translate3d(var(--move-final), 0, 0)",
+  },
+});
+
+const Container = styled("div", {
+  position: "relative",
+  background: "none",
+  outline: "none",
+  width: "100vw",
+  textDecoration: "none",
+  overflow: "hidden",
+  borderTop: "1px solid $fg_inversePrimary",
+  color: "$fg_inversePrimary",
+  px: "$1",
+  py: "$0_5",
+  font: "$display",
+  "@bp3": { py: "$0_25" },
+  "@bp5": { font: "$headingLarge" },
+
+  "&:hover": {
+    ".marquee": {
+      transform: "translateY(0%)",
+      ".marquee__inner-wrap": {
+        transform: "translateY(0%)",
+        ".marquee__inner": {
+          animationPlayState: "running",
+        },
+      },
+    },
+  },
+
+  ".marquee": {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    overflow: "hidden",
+    size: "100%",
+    pointerEvents: "none",
+    background: "$bg_primary",
+    transition: "transform 500ms $ease$it",
+    "--move-initial": "calc(-25% - .5em)",
+    "--move-final": "calc(-50% - .5em)",
+
+    ".marquee__inner-wrap": {
+      height: "100%",
+      width: "100%",
+      transition: "transform 500ms $ease$it",
+
+      ".marquee__inner": {
+        height: "100%",
+        width: "fit-content",
+        alignItems: "center",
+        display: "flex",
+        position: "relative",
+        transform: "translate3d(var(--move-initial), 0, 0)",
+        animation: `${marquee} 10s linear infinite`,
+        willChange: "transform",
+        animationPlayState: "paused",
+
+        span: {
+          color: "$fg_inverseTertiary",
+          fontFamily: "Whyte Inktrap Thin",
+          whiteSpace: "nowrap",
+          textTransform: "uppercase",
+          marginRight: ".5em",
+        },
+      },
+    },
+  },
+
+  variants: {
+    edge: {
+      top: {
+        ".marquee": {
+          transform: "translateY(-101%)",
+          ".marquee__inner-wrap": {
+            transform: "translateY(200%)",
+          },
+        },
+      },
+      bottom: {
+        ".marquee": {
+          transform: "translateY(101%)",
+          ".marquee__inner-wrap": {
+            transform: "translateY(-200%)",
+          },
+        },
+      },
+    },
+  },
+});

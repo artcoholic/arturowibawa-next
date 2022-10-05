@@ -202,10 +202,11 @@ export const globalStyles = globalCss({
   },
   a: {
     position: "relative",
-    textDecoration: "underline",
+    textDecoration: "none",
     textDecorationThickness: 1,
     whiteSpace: "nowrap",
     color: "$fg_primary",
+    transition: "color 250ms $ease$button",
     "&:hover": {
       color: "$fg_inversePrimary",
       textDecoration: "none",
@@ -217,10 +218,10 @@ export const globalStyles = globalCss({
     "&:after": {
       content: "",
       background: "$fg_primary",
-      transition: "transform 150ms $ease$button",
-      height: "100%",
+      transition: "transform 500ms $ease$button",
+      height: "70%",
       left: 0,
-      bottom: 0,
+      bottom: 4,
       width: "100%",
       transform: "scaleX(0)",
       transformOrigin: "100%",

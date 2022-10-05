@@ -67,8 +67,9 @@ const CloseButton = ({ scrollYProgress, path }) => {
             fill="none"
             className="path"
             strokeWidth="2"
-            strokeDasharray="0 1"
             strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeDasharray="0"
             d="M -24 0 a 24 24 0 1 0 48 0 a 24 24 0 1 0 -48 0"
             style={{
               pathLength,

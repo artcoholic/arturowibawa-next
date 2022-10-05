@@ -4,9 +4,9 @@ import { motion } from "framer-motion-3d";
 import { useTransform, useSpring } from "framer-motion";
 
 export const Icosahedron = ({ scrollYProgress }) => {
-  const myMesh = useRef();
   const rotationZ = useTransform(scrollYProgress, [0, 1], [-1, 1]);
   const rotation = useSpring(rotationZ, { stiffness: 400, damping: 40 });
+  const myMesh = useRef();
   useFrame(() => {
     myMesh.current.rotation.x += 0.003;
     myMesh.current.rotation.y += 0.002;

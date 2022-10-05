@@ -38,10 +38,19 @@ const SocialItemWrapper = styled(Box, {
   },
 });
 
-const SocialItem = ({ label, social, href }) => {
+const SocialItem = ({ label, social, href, icon }) => {
   return (
     <SocialItemWrapper as="a" href={href} target="_blank">
-      <Text css={{ color: "$fg_inverseTertiary" }}>{label}</Text>
+      <Text
+        css={{
+          color: "$fg_inverseTertiary",
+          display: "flex",
+          alignItems: "center",
+          gap: "1rem",
+        }}
+      >
+        {icon} {label}
+      </Text>
       <Text
         className="social"
         css={{ typeScale: "$paragraphSmall", color: "$fg_inverseSecondary" }}

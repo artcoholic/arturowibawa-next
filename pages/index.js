@@ -2,90 +2,29 @@ import { useRef, useEffect } from "react";
 import Text from "../components/Text";
 import EntryItem from "../components/EntryItem";
 import { variants } from "../components/AnimationVariants";
-import { motion, useSpring, useScroll } from "framer-motion";
-import { ArrowRight } from "akar-icons";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, ArrowLeft } from "akar-icons";
 import { getAllProjectsForHome } from "../utils/api";
 import { styled } from "../stitches.config";
-
-const HorizontalContainer = styled("section", {
-  display: "flex",
-  flexFlow: "row nowrap",
-  alignItems: "center",
-  height: "calc(100vh - var(--space-0_25))",
-  maxHeight: "-webkit-fill-available",
-  cursor: "grab",
-  overflow: "scroll",
-  scrollbarWidth: "none",
-  userSelect: "none",
-  px: "$1",
-  gap: "$1",
-  "&:active": {
-    cursor: "grabbing",
-  },
-  "&::-webkit-scrollbar": {
-    display: "none",
-  },
-});
-
-const ProgressBar = styled("div", {
-  transformOrigin: "left",
-  width: "100%",
-  height: 1,
-  overflow: "hidden",
-  bg: "$fg_primary",
-});
-
-const ProgressBarBg = styled("div", {
-  width: "100%",
-  height: 1,
-  bg: "$bg_secondary",
-});
-
-const Footer = styled("section", {
-  width: "100%",
-  position: "fixed",
-  bottom: "$1",
-  left: 0,
-  px: "$1",
-  overflow: "hidden",
-  lipPath: "inset(0%)",
-  pointerEvents: "none",
-});
-
-const FooterContent = styled("div", {
-  display: "flex",
-  alignItems: "baseline",
-  pb: 16,
-  justifyContent: "center",
-  "@bp1": {
-    justifyContent: "space-between",
-  },
-});
-
-const FooterCopy = styled(Text, {
-  fontSize: "1em",
-  alignItems: "center",
-  variants: {
-    display: {
-      none: { display: "none" },
-      flex: { display: "flex" },
-    },
-  },
-});
+import InfiniteScrollLoop from "../utils/InfiniteScrollLoop";
 
 const HomePage = ({ allProjects }) => {
   const entries = allProjects;
-  const ref = useRef(null);
+  const scrollRef = useRef(null);
 
-  const { scrollXProgress } = useScroll({ container: ref });
-  const pathLength = useSpring(scrollXProgress, {
-    stiffness: 400,
-    damping: 40,
-  });
+  const { scrollXProgress } = useScroll({ container: scrollRef });
+  const scrollXMap = useTransform(
+    scrollXProgress,
+    [0, 0.4, 0.83, 0.4],
+    [-100, 100, 100, -100],
+    {
+      clamp: false,
+    }
+  );
 
   function onPan(event, info) {
-    const scrollObject = ref.current;
-    scrollObject.scrollLeft = scrollObject.scrollLeft - info.delta.x;
+    const scrollObject = scrollRef.current;
+    scrollObject.scrollLeft -= info.delta.x;
   }
 
   function transformScroll(event) {
@@ -97,7 +36,7 @@ const HomePage = ({ allProjects }) => {
   }
 
   useEffect(() => {
-    const node = ref.current;
+    const node = scrollRef.current;
     node.addEventListener("wheel", transformScroll, { passive: false });
     return () =>
       node.removeEventListener("wheel", transformScroll, { passive: false });
@@ -110,29 +49,53 @@ const HomePage = ({ allProjects }) => {
       animate="enter"
       exit="exit"
     >
-      <HorizontalContainer
-        ref={ref}
-        as={motion.section}
+      <InfiniteScrollLoop
+        scrollRef={scrollRef}
         onPan={onPan}
-        variants={variants.entryList}
+        scrollXProgress={scrollXProgress}
       >
         {entries.map((entry, index) => (
           <EntryItem key={index} entry={entry} index={index} />
         ))}
-      </HorizontalContainer>
+      </InfiniteScrollLoop>
       <Footer>
-        <FooterContent as={motion.div} variants={variants.footer}>
+        <FooterContent>
+          <svg
+            width="36"
+            height="36"
+            viewBox="0 0 36 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <motion.path
+              d="M17.5 18.5C15.4186 21.3877 13 26 8.5 26C4 26 2 22 2 18C2 14 4 10 8.5 10C13 10 15.3813 14.3597 18 18C20.619 21.6403 23.3797 26 27.546 26C32 26 34 22 34 18C34 14 32 10 27.5 10C24.6583 10 22.6234 11.9128 21 14"
+              className="path"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{
+                stroke: "var(--colors-fg_inverseSecondary)",
+              }}
+            />
+            <motion.path
+              d="M17.5 18.5C15.4186 21.3877 13 26 8.5 26C4 26 2 22 2 18C2 14 4 10 8.5 10C13 10 15.3813 14.3597 18 18C20.619 21.6403 23.3797 26 27.546 26C32 26 34 22 34 18C34 14 32 10 27.5 10C24.6583 10 22.6234 11.9128 21 14"
+              className="path"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{
+                strokeDasharray: 100,
+                strokeDashoffset: scrollXMap,
+                stroke: "var(--colors-fg_primary)",
+              }}
+            />
+          </svg>
           <FooterCopy>
-            © {new Date().getFullYear()}. All Rights Reserved.
-          </FooterCopy>
-          <FooterCopy display={{ "@initial": "none", "@bp1": "flex" }}>
-            Scroll or Drag Sideways{" "}
-            <ArrowRight size={20} style={{ marginLeft: ".5em" }} />
+            <ArrowLeft size={20} style={{ marginRight: "1rem" }} />
+            Scroll or Drag Sideways
+            <ArrowRight size={20} style={{ marginLeft: "1rem" }} />
           </FooterCopy>
         </FooterContent>
-        <ProgressBarBg as={motion.div} variants={variants.progress}>
-          <ProgressBar as={motion.div} style={{ scaleX: pathLength }} />
-        </ProgressBarBg>
       </Footer>
     </motion.div>
   );
@@ -146,3 +109,27 @@ export async function getStaticProps() {
 }
 
 export default HomePage;
+
+const Footer = styled("footer", {
+  width: "100%",
+  position: "fixed",
+  bottom: "$1",
+  left: 0,
+  px: "$1",
+  overflow: "hidden",
+  clipPath: "inset(0%)",
+  pointerEvents: "none",
+});
+
+const FooterContent = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+});
+
+const FooterCopy = styled(Text, {
+  fontSize: "1em",
+  alignItems: "center",
+  display: "flex",
+});
