@@ -69,7 +69,7 @@ const InfiniteScrollLoop = ({ scrollRef, onPan, children }) => {
         variants={variants.entryList}
         css={{
           display: "flex",
-          mx: "$0_5",
+          px: "$0_5",
           "@bp3": { mx: 0 },
         }}
       >

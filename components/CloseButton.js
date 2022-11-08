@@ -45,9 +45,9 @@ const CloseButton = ({ scrollYProgress, path }) => {
   });
   // console.log('CloseButton');
   return (
-    <Link href={path} passHref scroll={false}>
+    <Link href={path} scroll={false}>
       <Wrapper
-        as={motion.a}
+        as={motion.div}
         initial={{ scale: 0, x: "-50%" }}
         animate={{ scale: 1 }}
         exit={{ scale: 0 }}

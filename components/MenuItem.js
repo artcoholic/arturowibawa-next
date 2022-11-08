@@ -24,9 +24,9 @@ const MenuItem = ({
   }
   // console.log('MenuItem');
   return (
-    <Link href={path} passHref>
+    <Link href={path}>
       <Container
-        as={motion.a}
+        as={motion.div}
         variants={variants.menuItem}
         onClick={() => setOpen(false)}
         aria-label={title}
