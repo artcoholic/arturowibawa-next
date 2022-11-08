@@ -39,20 +39,22 @@ const EntryItem = ({ entry, index }) => {
         }}
       >
         <Tilt ref={ref}>
-          <Link href={`/work/${entry.slug}`} passHref>
-            <AnchorWrapper as="a" aria-label={entry.info.title}>
-              <Image
-                src={entry.info.image.url}
-                alt={entry.info.title}
-                width={40}
-                height={50}
-                layout="responsive"
-                placeholder="blur"
-                blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                sizes="(max-width: 600px) 48vw, (max-width: 1023px) 96vw"
-              />
-            </AnchorWrapper>
-          </Link>
+          <AnchorWrapper
+            href={`/work/${entry.slug}`}
+            aria-label={entry.info.title}
+            style={{}}
+          >
+            <Image
+              src={entry.info.image.url}
+              alt={entry.info.title}
+              width={40}
+              height={50}
+              layout="responsive"
+              placeholder="blur"
+              blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+              sizes="(max-width: 600px) 48vw, (max-width: 1023px) 96vw"
+            />
+          </AnchorWrapper>
           <IconWrapper className="icon-wrapper">
             <svg
               width={24}
@@ -118,7 +120,7 @@ const Tilt = styled("div", {
   },
 });
 
-const AnchorWrapper = styled("div", {
+const AnchorWrapper = styled(Link, {
   position: "relative",
   display: "block",
   borderRadius: 16,

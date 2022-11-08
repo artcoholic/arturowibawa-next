@@ -6,7 +6,7 @@ import Text from "./Text";
 import Box from "./Box";
 import { ArrowForwardThickFill, ArrowLeft, ArrowRight } from "akar-icons";
 
-const ButtonWrapper = styled(Text, {
+const ButtonWrapper = styled(Link, {
   textDecoration: "none",
   display: "flex",
   height: 56,
@@ -101,16 +101,20 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
       transition={{ type: "spring", stiffness: 300, damping: 50 }}
     >
       <Box css={{ display: "flex" }}>
-        <Link href={`/work/${prevUrl}`} passHref>
-          <ButtonWrapper as="a" className="previous" css={{ mr: ".5rem" }}>
-            <ArrowLeft />
-          </ButtonWrapper>
-        </Link>
-        <Link href={`/work/${nextUrl}`} passHref>
-          <ButtonWrapper className="next" as="a" css={{ mr: "1.5rem" }}>
-            <ArrowRight />
-          </ButtonWrapper>
-        </Link>
+        <ButtonWrapper
+          href={`/work/${prevUrl}`}
+          className="previous"
+          css={{ mr: ".5rem" }}
+        >
+          <ArrowLeft />
+        </ButtonWrapper>
+        <ButtonWrapper
+          href={`/work/${nextUrl}`}
+          className="next"
+          css={{ mr: "1.5rem" }}
+        >
+          <ArrowRight />
+        </ButtonWrapper>
       </Box>
       <ButtonWrapper
         as={motion.a}

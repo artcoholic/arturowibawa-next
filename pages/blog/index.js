@@ -17,7 +17,7 @@ import {
   Torus,
 } from "../../components/Objects";
 
-const ArticleLink = styled("a", {
+const ArticleLink = styled(Box, {
   textDecoration: "none",
   "&:after": {
     display: "none",

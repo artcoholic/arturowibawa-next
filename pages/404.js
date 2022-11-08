@@ -32,15 +32,13 @@ export default function Custom404() {
       >
         Woah! You found 404
       </Text>
-      <Link href="/" passHref>
-        <Wrapper as="a">Go back home</Wrapper>
-      </Link>
+      <Wrapper href="/">Go back home</Wrapper>
       <Image src="/images/404.gif" />
     </Box>
   );
 }
 
-const Wrapper = styled(Box, {
+const Wrapper = styled(Link, {
   transition: "all 500ms $ease$smooth",
   borderRadius: 24,
   backgroundColor: "rgba(255,255,255,0.25)",
