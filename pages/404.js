@@ -33,7 +33,7 @@ export default function Custom404() {
         Woah! You found 404
       </Text>
       <Wrapper href="/">Go back home</Wrapper>
-      <Image src="/images/404.gif" />
+      <Image src="/images/404.gif" alt="404" />
     </Box>
   );
 }

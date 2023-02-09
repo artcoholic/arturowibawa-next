@@ -179,7 +179,7 @@ const ContactPage = () => {
               "@bp4": { typeScale: "$paragraphLarge" },
             }}
           >
-            Don't hesitate to give me a shout on potential projects,
+            Don&apos;t hesitate to give me a shout on potential projects,
             collaboration, or just to say hi.
           </Text>
         </Box>
