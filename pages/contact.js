@@ -169,7 +169,7 @@ const ContactPage = () => {
               "@bp3": { typeScale: "$headingLarge" },
             }}
           >
-            Get in touch
+            Say hello
           </Text>
           <Text
             as="p"
