@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "../stitches.config";
+import { styled } from "../config/stitches.config";
 import Grid from "./Grid";
 import Box from "./Box";
 import GalleryBlock from "./GalleryBlock";
@@ -107,6 +107,7 @@ const SlugContent = ({ entry }) => {
                           borderRadius: ".5rem",
                           overflow: "hidden",
                           "@bp2": { borderRadius: "1rem" },
+                          position: "relative",
                         }}
                         key={asset.sys.id}
                       >
@@ -116,10 +117,14 @@ const SlugContent = ({ entry }) => {
                             alt={asset.title}
                             placeholder="blur"
                             blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                            layout="responsive"
                             width={asset.width}
                             height={asset.height}
                             sizes="(max-width: 600px) 48vw, (max-width: 1023px) 96vw"
+                            style={{
+                              width: "100%",
+                              height: "auto",
+                              objectFit: "contain",
+                            }}
                           />
                         )}
                         {asset.contentType.includes("video") && (

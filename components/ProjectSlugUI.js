@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { styled } from "../stitches.config";
+import { styled } from "../config/stitches.config";
 import { motion } from "framer-motion";
 import Text from "./Text";
 import Box from "./Box";

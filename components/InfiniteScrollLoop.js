@@ -1,5 +1,5 @@
 import React, { useRef, useCallback, useState, useEffect } from "react";
-import { styled } from "../stitches.config";
+import { styled } from "../config/stitches.config";
 import { motion } from "framer-motion";
 import { variants } from "./AnimationVariants";
 import Box from "./Box";

@@ -1,4 +1,4 @@
-import { keyframes } from "../stitches.config";
+import { keyframes } from "../config/stitches.config";
 
 export const wipe = keyframes({
   "0%": {
@@ -73,7 +73,7 @@ export const variants = {
       opacity: 0,
       transition: {
         ease: [0.23, 1, 0.32, 1],
-        duration: 1,
+        duration: 0.5,
       },
     },
   },

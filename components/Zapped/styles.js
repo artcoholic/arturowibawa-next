@@ -1,4 +1,4 @@
-import { styled, keyframes } from "../../stitches.config";
+import { styled, keyframes } from "../../config/stitches.config";
 import Box from "../Box";
 import Text from "../Text";
 

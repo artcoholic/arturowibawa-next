@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { styled } from "../stitches.config";
+import { styled } from "../config/stitches.config";
 import Image from "next/image";
 import Box from "./Box";
 import Text from "./Text";

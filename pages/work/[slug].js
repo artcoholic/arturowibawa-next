@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import Head from "next/head";
-import { styled } from "../../stitches.config";
+import { styled } from "../../config/stitches.config";
 import ProjectSlugUI from "../../components/ProjectSlugUI";
 import CloseButton from "../../components/CloseButton";
 import SlugHeader from "../../components/SlugHeader";
@@ -18,7 +18,7 @@ import { variants, rotation } from "../../components/AnimationVariants";
 import {
   getAllProjectsWithSlug,
   getProjectAndMoreProjects,
-} from "../../utils/api";
+} from "../../libs/api";
 import { ArrowUpThick } from "akar-icons";
 import ResizeObserver from "resize-observer-polyfill";
 
@@ -56,8 +56,8 @@ const BackToTop = styled(Box, {
 
 export default function WorkSlug({ project, preview, moreProjects }) {
   const { scrollYProgress } = useScroll();
-  const scrollYMap = useTransform(scrollYProgress, [0.98, 1], [1, 0.95]);
-  const scrollY = useSpring(scrollYMap, { stiffness: 400, damping: 40 });
+  const scrollYMap = useTransform(scrollYProgress, [0.8, 1], [600, 0]);
+  const scrollY = useSpring(scrollYMap, { stiffness: 500, damping: 50 });
   const ref = useRef(null);
   const [elHeight, setElHeight] = useState(0);
 
@@ -102,10 +102,6 @@ export default function WorkSlug({ project, preview, moreProjects }) {
         exit="exit"
       >
         <Box
-          as={motion.div}
-          style={{
-            scale: scrollY,
-          }}
           css={{
             bg: "$bg_primary",
             pt: "$4",
@@ -130,6 +126,8 @@ export default function WorkSlug({ project, preview, moreProjects }) {
           </AnimatePresence>
         </Box>
         <Box
+          as={motion.div}
+          style={{ y: scrollY }}
           css={{
             gridColumn: "-1/1",
             display: "flex",

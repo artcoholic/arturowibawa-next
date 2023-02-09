@@ -4,7 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import Layout from "../components/Layout";
 import TagManager from "react-gtm-module";
 import smoothscroll from "smoothscroll-polyfill";
-import { globalStyles } from "../stitches.config";
+import { globalStyles } from "../config/stitches.config";
 import "../fonts.css";
 
 const tagManagerArgs = {

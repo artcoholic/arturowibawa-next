@@ -1,7 +1,7 @@
-import { styled } from '../stitches.config';
+import { styled } from "../config/stitches.config";
 
-const Box = styled('div', {
-  position: 'relative',
+const Box = styled("div", {
+  position: "relative",
 });
 
 export default Box;

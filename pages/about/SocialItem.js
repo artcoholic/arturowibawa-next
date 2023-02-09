@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "../../stitches.config";
+import { styled } from "../../config/stitches.config";
 import Box from "../../components/Box";
 import Text from "../../components/Text";
 

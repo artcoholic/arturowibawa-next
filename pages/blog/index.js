@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import { styled } from "../../stitches.config";
+import { styled } from "../../config/stitches.config";
 import Box from "../../components/Box";
 import Text from "../../components/Text";
 import Grid from "../../components/Grid";
@@ -8,7 +8,7 @@ import GradientBox from "../../components/GradientBox";
 import Head from "next/head";
 import { motion, MotionConfig, useScroll } from "framer-motion";
 import { variants } from "../../components/AnimationVariants";
-import { getAllArticlesForBlog } from "../../utils/api";
+import { getAllArticlesForBlog } from "../../libs/api";
 import { Canvas } from "@react-three/fiber";
 import {
   Lights,

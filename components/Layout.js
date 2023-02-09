@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Header from "./Header";
 import { grain } from "./AnimationVariants";
-import { styled } from "../stitches.config";
+import { styled } from "../config/stitches.config";
 
 const Main = styled("main", {
   "&:before": {
@@ -13,7 +13,7 @@ const Main = styled("main", {
     left: "-50%",
     opacity: 0.035,
     position: "fixed",
-    top: "-100%",
+    top: "-110%",
     zIndex: "998",
     pointerEvents: "none",
     willChange: "transform",

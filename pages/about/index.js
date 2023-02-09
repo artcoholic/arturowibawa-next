@@ -1,5 +1,5 @@
 import { useEffect, Suspense } from "react";
-import { styled, keyframes } from "../../stitches.config";
+import { styled, keyframes } from "../../config/stitches.config";
 import Head from "next/head";
 import Box from "../../components/Box";
 import Grid from "../../components/Grid";
@@ -11,7 +11,7 @@ import ExperienceItem from "./ExperienceItem";
 import SocialItem from "./SocialItem";
 import {
   ArrowDown,
-  Envelope,
+  Send,
   TwitterFill,
   LinkedinFill,
   GithubFill,
@@ -293,7 +293,7 @@ const ProfilePage = () => {
           </Text>
           <List as="ul">
             <SocialItem
-              icon={<Envelope size={20} />}
+              icon={<Send size={20} />}
               label="Email"
               social="agwibawa@gmail.com"
               href="mailto:agwibawa@gmail.com"

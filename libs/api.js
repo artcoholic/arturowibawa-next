@@ -53,7 +53,7 @@ matrixCollection {
     }
   }
 }
-`
+`;
 
 const PROJECT_LIST_GRAPHQL_FIELDS = `
 ... on Project {
@@ -67,39 +67,40 @@ const PROJECT_LIST_GRAPHQL_FIELDS = `
     category
   }
 }
-`
+`;
 
 const ARTICLE_GRAPHQL_FIELDS = `
 slug
 date
 title
 content
-`
+`;
 
 async function fetchGraphQL(query, preview = false) {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${preview
-          ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-          : process.env.CONTENTFUL_ACCESS_TOKEN
-          }`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${
+          preview
+            ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
+            : process.env.CONTENTFUL_ACCESS_TOKEN
+        }`,
       },
       body: JSON.stringify({ query }),
     }
-  ).then((response) => response.json())
+  ).then((response) => response.json());
 }
 
 // WORK
 
 function extractProject(fetchResponse) {
-  return fetchResponse?.data?.projectCollection?.items?.[0]
+  return fetchResponse?.data?.projectCollection?.items?.[0];
 }
 function extractProjectEntries(fetchResponse) {
-  return fetchResponse?.data?.listCollection?.items?.[0].itemsCollection?.items
+  return fetchResponse?.data?.listCollection?.items?.[0].itemsCollection?.items;
 }
 
 export async function getPreviewProjectBySlug(slug) {
@@ -112,8 +113,8 @@ export async function getPreviewProjectBySlug(slug) {
       }
     }`,
     true
-  )
-  return extractProject(entry)
+  );
+  return extractProject(entry);
 }
 
 export async function getAllProjectsForHome() {
@@ -128,9 +129,9 @@ export async function getAllProjectsForHome() {
           }
         }
       }
-    }`,
-  )
-  return extractProjectEntries(entries)
+    }`
+  );
+  return extractProjectEntries(entries);
 }
 
 export async function getAllProjectsWithSlug() {
@@ -146,21 +147,23 @@ export async function getAllProjectsWithSlug() {
         }
       }
     }`
-  )
-  return extractProjectEntries(entries)
+  );
+  return extractProjectEntries(entries);
 }
 
 export async function getProjectAndMoreProjects(slug, preview) {
   const entry = await fetchGraphQL(
     `query {
-      projectCollection(where: { slug: "${slug}" }, preview: ${preview ? 'true' : 'false'}, limit: 1) {
+      projectCollection(where: { slug: "${slug}" }, preview: ${
+      preview ? "true" : "false"
+    }, limit: 1) {
         items {
           ${PROJECT_GRAPHQL_FIELDS}
         }
       }
     }`,
     preview
-  )
+  );
   const entries = await fetchGraphQL(
     `query {
       listCollection {
@@ -177,20 +180,20 @@ export async function getProjectAndMoreProjects(slug, preview) {
       }
     }`,
     preview
-  )
+  );
   return {
     project: extractProject(entry),
     moreProjects: extractProjectEntries(entries),
-  }
+  };
 }
 
 // BLOG
 
 function extractArticle(fetchResponse) {
-  return fetchResponse?.data?.articleCollection?.items?.[0]
+  return fetchResponse?.data?.articleCollection?.items?.[0];
 }
 function extractArticleEntries(fetchResponse) {
-  return fetchResponse?.data?.articleCollection?.items
+  return fetchResponse?.data?.articleCollection?.items;
 }
 
 export async function getPreviewArticleBySlug(slug) {
@@ -203,8 +206,8 @@ export async function getPreviewArticleBySlug(slug) {
       }
     }`,
     true
-  )
-  return extractArticle(entry)
+  );
+  return extractArticle(entry);
 }
 
 export async function getAllArticlesForBlog() {
@@ -215,9 +218,9 @@ export async function getAllArticlesForBlog() {
           ${ARTICLE_GRAPHQL_FIELDS}
         }
       }
-    }`,
-  )
-  return extractArticleEntries(entries)
+    }`
+  );
+  return extractArticleEntries(entries);
 }
 
 export async function getAllArticlesWithSlug() {
@@ -229,33 +232,47 @@ export async function getAllArticlesWithSlug() {
         }
       }
     }`
-  )
-  return extractArticleEntries(entries)
+  );
+  return extractArticleEntries(entries);
 }
 
 export async function getArticleAndMoreArticles(slug, preview) {
   const entry = await fetchGraphQL(
     `query {
-      articleCollection(where: { slug: "${slug}" }, preview: ${preview ? 'true' : 'false'}, limit: 1) {
+      articleCollection(where: { slug: "${slug}" }, preview: ${
+      preview ? "true" : "false"
+    }, limit: 1) {
         items {
           ${ARTICLE_GRAPHQL_FIELDS}
         }
       }
     }`,
     preview
-  )
+  );
   const entries = await fetchGraphQL(
     `query {
-      articleCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${preview ? 'true' : 'false'}) {
+      articleCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${
+      preview ? "true" : "false"
+    }) {
         items {
           ${ARTICLE_GRAPHQL_FIELDS}
         }
       }
     }`,
     preview
-  )
+  );
   return {
     article: extractArticle(entry),
     moreArticles: extractArticleEntries(entries),
-  }
+  };
 }
+
+export const sendContactForm = async (data) =>
+  fetch("/api/contact", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+  }).then((res) => {
+    if (!res.ok) throw new Error("Failed to send message");
+    return res.json();
+  });

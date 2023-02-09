@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { styled } from "../stitches.config";
+import { styled } from "../config/stitches.config";
 import { wrap } from "popmotion";
 import { variants } from "./AnimationVariants";
 import Box from "./Box";

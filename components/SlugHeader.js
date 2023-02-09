@@ -1,4 +1,4 @@
-import { styled } from "../stitches.config";
+import { styled } from "../config/stitches.config";
 import Box from "./Box";
 import Text from "./Text";
 import { motion } from "framer-motion";

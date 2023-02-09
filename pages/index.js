@@ -4,8 +4,8 @@ import EntryItem from "../components/EntryItem";
 import { variants } from "../components/AnimationVariants";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowLeft } from "akar-icons";
-import { getAllProjectsForHome } from "../utils/api";
-import { styled } from "../stitches.config";
+import { getAllProjectsForHome } from "../libs/api";
+import { styled } from "../config/stitches.config";
 import InfiniteScrollLoop from "../components/InfiniteScrollLoop";
 
 const HomePage = ({ allProjects }) => {

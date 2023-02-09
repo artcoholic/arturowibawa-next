@@ -1,4 +1,4 @@
-import { styled } from "../../stitches.config";
+import { styled } from "../../config/stitches.config";
 import Markdown from "react-markdown";
 import Head from "next/head";
 import Text from "../../components/Text";
@@ -12,7 +12,7 @@ import CloseButton from "../../components/CloseButton";
 import {
   getAllArticlesForBlog,
   getArticleAndMoreArticles,
-} from "../../utils/api";
+} from "../../libs/api";
 
 const MarkdownWrapper = styled(Box, {
   gridColumn: "1/-1",

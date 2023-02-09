@@ -1,4 +1,4 @@
-import { styled } from "../stitches.config";
+import { styled } from "../config/stitches.config";
 import MenuItem from "./MenuItem";
 import Box from "./Box";
 import Text from "./Text";

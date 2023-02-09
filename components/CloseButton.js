@@ -1,4 +1,4 @@
-import { styled } from "../stitches.config";
+import { styled } from "../config/stitches.config";
 import Link from "next/link";
 import { motion, useSpring } from "framer-motion";
 import { Cross } from "akar-icons";

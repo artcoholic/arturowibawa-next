@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { styled } from "../stitches.config";
+import { styled } from "../config/stitches.config";
 import Box from "../components/Box";
 import Text from "../components/Text";
 import { motion } from "framer-motion";
@@ -39,17 +39,19 @@ export default function Custom404() {
 }
 
 const Wrapper = styled(Link, {
-  transition: "all 500ms $ease$smooth",
-  borderRadius: 24,
-  backgroundColor: "rgba(255,255,255,0.25)",
+  borderRadius: 32,
+  bg: "none",
   border: "1px solid $colors$fg_secondary",
-  boxShadow: "0 4px 8px 0px rgba(0,0,0,0.15)",
-  backdropFilter: "blur(12px)",
   color: "$fg_primary",
-  p: ".75rem 1rem",
-  textDecoration: "none",
+  p: "1rem 2rem",
+  typeScale: "$paragraphMedium",
+  cursor: "pointer",
+  mt: "$0_25",
+  transition: "all 500ms $ease$smooth",
   "&:hover": {
-    backgroundColor: "rgba(255,255,255,1)",
+    backgroundColor: "$fg_primary",
+    color: "$fg_inversePrimary",
+    borderColor: "$fg_primary",
   },
   "&:active": {
     boxShadow: "none",

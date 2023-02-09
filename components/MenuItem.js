@@ -1,28 +1,27 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { styled, keyframes } from "../stitches.config";
+import { styled, keyframes } from "../config/stitches.config";
 import { variants } from "./AnimationVariants";
 import { motion } from "framer-motion";
-import { closestEdge } from "../utils/ClosestEdge";
+import { closestEdge } from "../libs/closestEdge";
 
-const MenuItem = ({
-  children,
-  path,
-  setOpen,
-  title,
-  keyword_1,
-  keyword_2,
-  keyword_3,
-  keyword_4,
-}) => {
-  const [edge, setEdge] = useState("bottom");
-  const ref = useRef(null);
+const MenuItem = ({ path, setOpen, title }) => {
+  const [edge, setEdge] = useState("");
+
+  const ref = useRef();
+
   function findClosestEdge(ev, node) {
     const x = ev.pageX - node.offsetLeft;
     const y = ev.pageY - node.offsetTop;
     return closestEdge(x, y, node.clientWidth, node.clientHeight);
   }
+
+  const onHover = (ev) => {
+    setEdge(findClosestEdge(ev, ref.current));
+  };
+
   // console.log('MenuItem');
+
   return (
     <Link href={path}>
       <Container
@@ -37,8 +36,8 @@ const MenuItem = ({
         }}
         edge={edge}
         ref={ref}
-        onHoverStart={(ev) => setEdge(findClosestEdge(ev, ref.current))}
-        onHoverEnd={(ev) => setEdge(findClosestEdge(ev, ref.current))}
+        onHoverStart={onHover}
+        onHoverEnd={onHover}
       >
         {title}
         <div className="marquee">
@@ -107,10 +106,12 @@ const Container = styled("div", {
     pointerEvents: "none",
     background: "$bg_primary",
     transition: "transform 500ms $ease$it",
+    transform: "translateY(101%)",
     "--move-initial": "calc(-25% - .5em)",
     "--move-final": "calc(-50% - .5em)",
 
     ".marquee__inner-wrap": {
+      position: "relative",
       height: "100%",
       width: "100%",
       transition: "transform 500ms $ease$it",
