@@ -23,7 +23,7 @@ const MenuItem = ({ path, setOpen, title }) => {
   // console.log('MenuItem');
 
   return (
-    <Link href={path}>
+    <Link href={path} ref={ref}>
       <Container
         as={motion.div}
         variants={variants.menuItem}
@@ -35,7 +35,6 @@ const MenuItem = ({ path, setOpen, title }) => {
           damping: 100,
         }}
         edge={edge}
-        ref={ref}
         onHoverStart={onHover}
         onHoverEnd={onHover}
       >
