@@ -88,7 +88,7 @@ const Container = styled("div", {
     ".marquee": {
       transform: "translateY(0%)",
       ".marquee__inner-wrap": {
-        transform: "translateY(0%)",
+        transform: "translateY(0%) skewY(0deg)",
         ".marquee__inner": {
           animationPlayState: "running",
         },
@@ -113,7 +113,7 @@ const Container = styled("div", {
       position: "relative",
       height: "100%",
       width: "100%",
-      transition: "transform 500ms $ease$it",
+      transition: "transform 500ms $ease$it 10ms",
 
       ".marquee__inner": {
         height: "100%",
@@ -143,7 +143,7 @@ const Container = styled("div", {
         ".marquee": {
           transform: "translateY(-101%)",
           ".marquee__inner-wrap": {
-            transform: "translateY(200%)",
+            transform: "translateY(200%) skewY(-10deg)",
           },
         },
       },
@@ -151,7 +151,7 @@ const Container = styled("div", {
         ".marquee": {
           transform: "translateY(101%)",
           ".marquee__inner-wrap": {
-            transform: "translateY(-200%)",
+            transform: "translateY(-200%) skewY(10deg)",
           },
         },
       },
