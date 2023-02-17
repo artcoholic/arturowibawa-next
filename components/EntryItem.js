@@ -49,10 +49,14 @@ const EntryItem = ({ entry, index }) => {
               alt={entry.info.title}
               width={40}
               height={50}
-              layout="responsive"
               placeholder="blur"
               blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
               sizes="(max-width: 600px) 48vw, (max-width: 1023px) 96vw"
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "contain",
+              }}
             />
           </AnchorWrapper>
           <IconWrapper className="icon-wrapper">
