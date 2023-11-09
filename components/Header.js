@@ -44,6 +44,7 @@ const Header = () => {
         onClick={() => setOpen(!open)}
         aria-label="Menu"
         title="Menu"
+        data-umami-event="menu-button"
       >
         <Box css={{ color: open ? "$fg_primary" : "$fg_inversePrimary" }}>
           <Burger open={open} />

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from "./Header";
+import Script from "next/script";
 import { grain } from "./AnimationVariants";
 import { styled } from "../config/stitches.config";
 
@@ -140,6 +141,11 @@ const Layout = ({ children, setTheme, theme, toggler }) => {
         <meta property="og:image:alt" content="Arturo Wibawa" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <script
+          async
+          src="https://analytics.eu.umami.is/script.js"
+          data-website-id="cac89657-8172-4522-b6e6-edbbd4b56774"
+        ></script>
       </Head>
       <Header setTheme={setTheme} theme={theme} toggler={toggler} />
       <Main>{children}</Main>

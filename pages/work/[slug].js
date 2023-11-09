@@ -27,6 +27,9 @@ const BackToTop = styled(Box, {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  background: "none",
+  border: "none",
+  padding: 0,
   svg: {
     transition: "transform 500ms $ease$button",
     stroke: "none",
@@ -144,9 +147,11 @@ export default function WorkSlug({ project, preview, moreProjects }) {
           ref={ref}
         >
           <BackToTop
+            as="button"
             onClick={() =>
               window.scroll({ top: 0, left: 0, behavior: "smooth" })
             }
+            data-umami-event="backToTop-button"
           >
             <Box
               css={{
