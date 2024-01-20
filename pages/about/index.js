@@ -295,8 +295,8 @@ const ProfilePage = () => {
             <SocialItem
               icon={<Send size={20} />}
               label="Email"
-              social="agwibawa@gmail.com"
-              href="mailto:agwibawa@gmail.com"
+              social="hello@arturowibawa.com"
+              href="mailto:hello@arturowibawa.com"
             />
             <SocialItem
               icon={<TwitterFill size={20} />}
