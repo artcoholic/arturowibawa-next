@@ -12,14 +12,13 @@ import {
   OctocatFill,
 } from "akar-icons";
 
-const MenuContainer = ({ setOpen }) => {
+const MenuContainer = ({ open, setOpen }) => {
   // console.log('MenuContainer');
   return (
     <Container
       as={motion.nav}
-      initial="closed"
-      animate="open"
-      exit="closed"
+      initial={false}
+      animate={open ? "open" : "closed"}
       variants={variants.menuContainer}
       key="menu"
     >

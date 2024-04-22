@@ -16,9 +16,7 @@ const Header = () => {
   // console.log('Header');
   return (
     <Container as="header">
-      <AnimatePresence>
-        {open && <MenuContainer setOpen={setOpen} />}
-      </AnimatePresence>
+      <MenuContainer setOpen={setOpen} open={open} />
       <Link href="/" passHref>
         <div
           style={{ zIndex: 1, pointerEvents: "auto" }}
