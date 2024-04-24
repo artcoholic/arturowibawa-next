@@ -54,7 +54,7 @@ const Layout = ({ children, setTheme, theme, toggler }) => {
         />
         <meta
           name="description"
-          content="Based in Los Angeles, California, Arturo Wibawa is a seasoned product designer renowned for his expertise in product strategy, user experience, and interaction design."
+          content="Arturo Wibawa, a product designer in Los Angeles, California, specializes in product strategy, user experience, and interaction design."
         />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
