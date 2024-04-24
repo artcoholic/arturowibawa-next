@@ -54,7 +54,7 @@ const Layout = ({ children, setTheme, theme, toggler }) => {
         />
         <meta
           name="description"
-          content="Arturo Wibawa's personal space in the whole world wide web."
+          content="Based in Los Angeles, California, Arturo Wibawa is a seasoned product designer renowned for his expertise in product strategy, user experience, and interaction design."
         />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -116,7 +116,7 @@ const Layout = ({ children, setTheme, theme, toggler }) => {
         <meta name="twitter:title" content="Arturo Wibawa's Portfolio" />
         <meta
           name="twitter:description"
-          content="Arturo Wibawa's personal space in the whole world wide web."
+          content="Based in Los Angeles, California, Arturo Wibawa is a seasoned product designer renowned for his expertise in product strategy, user experience, and interaction design."
         />
         <meta
           name="twitter:image"
@@ -129,7 +129,7 @@ const Layout = ({ children, setTheme, theme, toggler }) => {
         <meta property="og:title" content="Arturo Wibawa's Portfolio" />
         <meta
           property="og:description"
-          content="Arturo Wibawa's personal space in the whole world wide web."
+          content="Based in Los Angeles, California, Arturo Wibawa is a seasoned product designer renowned for his expertise in product strategy, user experience, and interaction design."
         />
         <meta property="og:site_name" content="Arturo Wibawa" />
         <meta property="og:url" content="https://arturowibawa.com" />
