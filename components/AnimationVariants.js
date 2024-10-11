@@ -99,7 +99,7 @@ export const variants = {
     },
     closed: {
       clipPath:
-        "circle(calc(12px * 1) at calc(100% - (var(--gutter) + 16px)) calc(var(--gutter) + 16px))",
+        "circle(calc(12px * 0) at calc(100% - (var(--gutter) + 16px)) calc(var(--gutter) + 16px))",
       transition: {
         delay: 0.5,
         type: "spring",
