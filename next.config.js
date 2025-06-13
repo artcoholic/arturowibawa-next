@@ -1,4 +1,4 @@
-const withTM = require("next-transpile-modules")(["three"]);
+const withTM = require("next-transpile-modules")(["three", "framer-motion-3d"]);
 
 const nextConfig = {
   async redirects() {
