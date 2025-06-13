@@ -1,24 +1,25 @@
 import Head from "next/head";
 import Header from "./Header";
+import { useRef } from "react";
 import Script from "next/script";
 import { grain } from "./AnimationVariants";
 import { styled } from "../config/stitches.config";
 
 const Main = styled("main", {
-  "&:before": {
-    content: "",
-    animation: `${grain} 8s steps(10) infinite`,
-    backgroundImage: `url('../images/noise-full.png')`,
-    height: "300vh",
-    width: "300vw",
-    left: "-50%",
-    opacity: 0.015,
-    position: "fixed",
-    top: "-110%",
-    zIndex: "998",
-    pointerEvents: "none",
-    willChange: "transform",
-  },
+  // "&:before": {
+  //   content: "",
+  //   animation: `${grain} 8s steps(10) infinite`,
+  //   backgroundImage: `url('../images/noise-full.png')`,
+  //   height: "300vh",
+  //   width: "300vw",
+  //   left: "-50%",
+  //   opacity: 0.015,
+  //   position: "fixed",
+  //   top: "-110%",
+  //   zIndex: "998",
+  //   pointerEvents: "none",
+  //   willChange: "transform",
+  // },
   // "&:after": {
   //   content: "",
   //   width: "100%",
@@ -40,6 +41,7 @@ const Main = styled("main", {
 
 const Layout = ({ children, setTheme, theme, toggler }) => {
   // console.log('Layout');
+
   return (
     <>
       <Head>

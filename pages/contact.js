@@ -25,6 +25,12 @@ import {
 } from "akar-icons";
 import { sendContactForm } from "../libs/api";
 import useAutosizeTextArea from "../libs/useAutoSizeTextArea";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 
 const initValues = { name: "", email: "", message: "" };
 const initState = { values: initValues };
@@ -34,6 +40,8 @@ const ContactPage = () => {
   const [state, setState] = useState(initState);
   const [touched, setTouched] = useState({});
   const [success, setSuccess] = useState(false);
+  const main = useRef();
+  const smoother = useRef();
 
   const { values, isLoading, error } = state;
 
@@ -82,6 +90,19 @@ const ContactPage = () => {
     return regexp.test(email);
   };
 
+  useGSAP(
+    () => {
+      smoother.current = ScrollSmoother.create({
+        smooth: 1.25,
+        effects: true,
+        smoothTouch: 0.5,
+      });
+    },
+    {
+      scope: main,
+    }
+  );
+
   return (
     <>
       <Head>
@@ -111,216 +132,220 @@ const ContactPage = () => {
           </Canvas>
         </Suspense>
       </Box>
-      <Grid
-        css={{
-          mx: "$1",
-          pt: "$2",
-          "@bp3": { pt: 0 },
-          pb: "$2",
-        }}
-        as={motion.section}
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        variants={variants.main}
-      >
-        <Box
-          css={{
-            position: "fixed",
-            top: 0,
-            left: "calc($2 + 32px)",
-            height: "100%",
-            width: 1,
-            bg: "$bg_placeholder",
-            display: "none",
-            "@bp3": { display: "block" },
-          }}
-        />
-        <Box
-          css={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            gridColumn: "-1/1",
-            justifyContent: "center",
-            height: "auto",
-            mt: "$4",
-            mb: "$2",
-            "@bp1": { gridColumn: "1/span 4" },
-            "@bp2": { gridColumn: "2/span 6" },
-            "@bp3": {
-              gridColumn: "2/span 5",
-              height: "100vh",
-              mt: 0,
-              mb: -200,
-            },
-          }}
-          as={motion.div}
-          variants={variants.trigger}
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          <Text
-            as="h1"
+      <div id="smooth-wrapper" ref={main}>
+        <div id="smooth-content">
+          <Grid
             css={{
-              mb: "$0_5",
-              typeScale: "$display",
-              "@bp3": { typeScale: "$headingLarge" },
+              mx: "$1",
+              pt: "$2",
+              "@bp3": { pt: 0 },
+              pb: "$2",
             }}
+            as={motion.section}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            variants={variants.main}
           >
-            Say hello
-          </Text>
-          <Text
-            as="p"
-            css={{
-              color: "$fg_inverseTertiary",
-              typeScale: "$paragraphMedium",
-              "@bp4": { typeScale: "$paragraphLarge" },
-            }}
-          >
-            Don&apos;t hesitate to give me a shout on potential projects,
-            collaboration, or just to say hi.
-          </Text>
-        </Box>
-
-        <Box
-          as={motion.form}
-          autoComplete="off"
-          variants={variants.trigger}
-          initial="offscreen"
-          whileInView="onscreen"
-          css={{
-            gridColumn: "-1/1",
-            "@bp1": { gridColumn: "1/span 4" },
-            "@bp2": { gridColumn: "2/span 6" },
-            "@bp3": { gridColumn: "2/span 5" },
-            mb: "$2",
-          }}
-        >
-          <FormControl isInvalid={touched.name && !values.name}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your name"
-              value={values.name}
-              onChange={handleChange}
-              onBlur={onBlur}
-            />
-            <Text className="error-message">Please fill your name</Text>
-          </FormControl>
-          <FormControl
-            isInvalid={
-              (touched.email && !values.email) ||
-              (!validateEmail(values.email) && touched.email)
-            }
-          >
-            <input
-              type="email"
-              name="email"
-              placeholder="Your email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={onBlur}
-            />
-            <Text className="error-message">
-              {!validateEmail(values.email) && values.email
-                ? "That email looks a bit weird"
-                : !values.email
-                ? "Please fill your email"
-                : "Please fill your email"}
-            </Text>
-          </FormControl>
-          <FormControl isInvalid={touched.message && !values.message}>
-            <textarea
-              type="text"
-              name="message"
-              placeholder="Leave a message"
-              rows={1}
-              value={values.message}
-              onChange={handleChange}
-              onBlur={onBlur}
-              ref={textareaRef}
-              style={{
-                resize: "none",
-                overflow: "hidden",
-                overflowWrap: "break-word",
+            <Box
+              css={{
+                position: "fixed",
+                top: 0,
+                left: "calc($2 + 32px)",
+                height: "100%",
+                width: 1,
+                bg: "$bg_placeholder",
+                display: "none",
+                "@bp3": { display: "block" },
               }}
             />
-            <Text className="error-message">Please leave me a message</Text>
-          </FormControl>
-          <FormSubmitButton
-            as="button"
-            disabled={!values.name || !values.email || !values.message}
-            onClick={onSubmit}
-          >
-            {isLoading ? "Loading..." : "Submit"}
-          </FormSubmitButton>
-        </Box>
+            <Box
+              css={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                gridColumn: "-1/1",
+                justifyContent: "center",
+                height: "auto",
+                mt: "$4",
+                mb: "$2",
+                "@bp1": { gridColumn: "1/span 4" },
+                "@bp2": { gridColumn: "2/span 6" },
+                "@bp3": {
+                  gridColumn: "2/span 5",
+                  height: "100vh",
+                  mt: 0,
+                  mb: -200,
+                },
+              }}
+              as={motion.div}
+              variants={variants.trigger}
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: true, amount: 0.1 }}
+            >
+              <Text
+                as="h1"
+                css={{
+                  mb: "$0_5",
+                  typeScale: "$display",
+                  "@bp3": { typeScale: "$headingLarge" },
+                }}
+              >
+                Say hello
+              </Text>
+              <Text
+                as="p"
+                css={{
+                  color: "$fg_inverseTertiary",
+                  typeScale: "$paragraphMedium",
+                  "@bp4": { typeScale: "$paragraphLarge" },
+                }}
+              >
+                Don&apos;t hesitate to give me a shout on potential projects,
+                collaboration, or just to say hi.
+              </Text>
+            </Box>
 
-        <Box
-          as={motion.div}
-          variants={variants.trigger}
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.1 }}
-          css={{
-            gridColumn: "-1/1",
-            "@bp1": { gridColumn: "1/span 4" },
-            "@bp2": { gridColumn: "2/span 6" },
-            "@bp3": { gridColumn: "2/span 5" },
-          }}
-        >
-          <Text
-            as="h2"
-            css={{
-              mb: "1rem",
-              font: "$headingSmall",
-              color: "$fg_inverseSecondary",
-            }}
-          >
-            Connect
-          </Text>
-          <List as="ul">
-            <SocialItem
-              icon={<Send size={20} />}
-              label="Email"
-              social="hello@arturowibawa.com"
-              href="mailto:hello@arturowibawa.com"
-            />
-            <SocialItem
-              icon={<TwitterFill size={20} />}
-              label="Twitter"
-              social="@agwibawa"
-              href="https://twitter.com/agwibawa"
-            />
-            <SocialItem
-              icon={<LinkedinFill size={20} />}
-              label="LinkedIn"
-              social="@arturowibawa"
-              href="https://www.linkedin.com/in/arturowibawa/"
-            />
-            <SocialItem
-              icon={<GithubFill size={20} />}
-              label="Github"
-              social="@artcoholic"
-              href="https://github.com/artcoholic/"
-            />
-            <SocialItem
-              icon={<CodepenFill size={20} />}
-              label="CodePen"
-              social="@artcoholic"
-              href="https://codepen.io/artcoholic"
-            />
-            <SocialItem
-              icon={<DribbbleFill size={20} />}
-              label="Dribbble"
-              social="@artcoholic"
-              href="https://dribbble.com/artcoholic"
-            />
-          </List>
-        </Box>
-      </Grid>
+            <Box
+              as={motion.form}
+              autoComplete="off"
+              variants={variants.trigger}
+              initial="offscreen"
+              whileInView="onscreen"
+              css={{
+                gridColumn: "-1/1",
+                "@bp1": { gridColumn: "1/span 4" },
+                "@bp2": { gridColumn: "2/span 6" },
+                "@bp3": { gridColumn: "2/span 5" },
+                mb: "$2",
+              }}
+            >
+              <FormControl isInvalid={touched.name && !values.name}>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  value={values.name}
+                  onChange={handleChange}
+                  onBlur={onBlur}
+                />
+                <Text className="error-message">Please fill your name</Text>
+              </FormControl>
+              <FormControl
+                isInvalid={
+                  (touched.email && !values.email) ||
+                  (!validateEmail(values.email) && touched.email)
+                }
+              >
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={onBlur}
+                />
+                <Text className="error-message">
+                  {!validateEmail(values.email) && values.email
+                    ? "That email looks a bit weird"
+                    : !values.email
+                    ? "Please fill your email"
+                    : "Please fill your email"}
+                </Text>
+              </FormControl>
+              <FormControl isInvalid={touched.message && !values.message}>
+                <textarea
+                  type="text"
+                  name="message"
+                  placeholder="Leave a message"
+                  rows={1}
+                  value={values.message}
+                  onChange={handleChange}
+                  onBlur={onBlur}
+                  ref={textareaRef}
+                  style={{
+                    resize: "none",
+                    overflow: "hidden",
+                    overflowWrap: "break-word",
+                  }}
+                />
+                <Text className="error-message">Please leave me a message</Text>
+              </FormControl>
+              <FormSubmitButton
+                as="button"
+                disabled={!values.name || !values.email || !values.message}
+                onClick={onSubmit}
+              >
+                {isLoading ? "Loading..." : "Submit"}
+              </FormSubmitButton>
+            </Box>
+
+            <Box
+              as={motion.div}
+              variants={variants.trigger}
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: true, amount: 0.1 }}
+              css={{
+                gridColumn: "-1/1",
+                "@bp1": { gridColumn: "1/span 4" },
+                "@bp2": { gridColumn: "2/span 6" },
+                "@bp3": { gridColumn: "2/span 5" },
+              }}
+            >
+              <Text
+                as="h2"
+                css={{
+                  mb: "1rem",
+                  font: "$headingSmall",
+                  color: "$fg_inverseSecondary",
+                }}
+              >
+                Connect
+              </Text>
+              <List as="ul">
+                <SocialItem
+                  icon={<Send size={20} />}
+                  label="Email"
+                  social="hello@arturowibawa.com"
+                  href="mailto:hello@arturowibawa.com"
+                />
+                <SocialItem
+                  icon={<TwitterFill size={20} />}
+                  label="Twitter"
+                  social="@agwibawa"
+                  href="https://twitter.com/agwibawa"
+                />
+                <SocialItem
+                  icon={<LinkedinFill size={20} />}
+                  label="LinkedIn"
+                  social="@arturowibawa"
+                  href="https://www.linkedin.com/in/arturowibawa/"
+                />
+                <SocialItem
+                  icon={<GithubFill size={20} />}
+                  label="Github"
+                  social="@artcoholic"
+                  href="https://github.com/artcoholic/"
+                />
+                <SocialItem
+                  icon={<CodepenFill size={20} />}
+                  label="CodePen"
+                  social="@artcoholic"
+                  href="https://codepen.io/artcoholic"
+                />
+                <SocialItem
+                  icon={<DribbbleFill size={20} />}
+                  label="Dribbble"
+                  social="@artcoholic"
+                  href="https://dribbble.com/artcoholic"
+                />
+              </List>
+            </Box>
+          </Grid>
+        </div>
+      </div>
       <GradientBox />
       <AnimatePresence>
         {success ? (

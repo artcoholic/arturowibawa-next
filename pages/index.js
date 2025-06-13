@@ -56,7 +56,7 @@ const HomePage = ({ allProjects }) => {
       </InfiniteScrollLoop>
       <Footer>
         <FooterContent>
-          <StyledSVG
+          {/* <StyledSVG
             width="36"
             height="36"
             viewBox="0 0 36 36"
@@ -85,7 +85,7 @@ const HomePage = ({ allProjects }) => {
                 stroke: "var(--colors-fg_primary)",
               }}
             />
-          </StyledSVG>
+          </StyledSVG> */}
           <FooterCopy>
             <ArrowLeft size={20} style={{ marginRight: "1rem" }} />
             Scroll or Drag Sideways
