@@ -11,7 +11,7 @@ export default async function preview(req, res) {
   const project = await getPreviewProjectBySlug(slug);
 
   // If the slug doesn't exist prevent preview mode from being enabled
-  if (!project && !article) {
+  if (!project) {
     return res.status(401).json({ message: "Invalid slug" });
   }
 

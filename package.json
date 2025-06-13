@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "npm run open-browser && next dev --turbopack",
+    "dev": "npm run open-browser && next dev",
     "open-browser": "open http://localhost:3000",
     "build": "next build",
     "start": "next start",
@@ -37,5 +37,6 @@
     "eslint": "^8.21.0",
     "eslint-config-next": "^13.0.2",
     "next-transpile-modules": "^10.0.0"
-  }
+  },
+  "type": "module"
 }
