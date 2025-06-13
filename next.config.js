@@ -1,6 +1,6 @@
 const withTM = require("next-transpile-modules")(["three"]);
 
-module.exports = withTM({
+const nextConfig = {
   async redirects() {
     return [
       {
@@ -18,4 +18,6 @@ module.exports = withTM({
     locales: ["en-US"],
     defaultLocale: "en-US",
   },
-});
+};
+
+module.exports = withTM(nextConfig);
