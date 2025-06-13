@@ -18,7 +18,7 @@ export default async function preview(req, res) {
   // Enable Preview Mode by setting the cookies
   res.setPreviewData({});
 
-  const url = project ? `/work/${project.slug}` : null;
+  const url = `/work/${project.slug}`;
   res.write(
     `<!DOCTYPE html><html><head><meta http-equiv="Refresh" content="0; url=${url}" />
     <script>window.location.href = '${url}'</script>
