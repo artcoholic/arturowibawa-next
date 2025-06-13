@@ -1,6 +1,6 @@
 const withTM = require("next-transpile-modules")(["three"]);
 
-module.exports = withTM({
+export default withTM({
   async redirects() {
     return [
       {
