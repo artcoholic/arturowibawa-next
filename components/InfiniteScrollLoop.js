@@ -29,7 +29,7 @@ const InfiniteScrollLoop = ({ scrollRef, onPan, children }) => {
       setWidth(contentRef.current.offsetWidth);
       scrollRef.current.scrollLeft = viewportWidth > 1280 ? width : 0;
     }
-  }, [contentRef.current, scrollRef]);
+  }, [viewportWidth, width, scrollRef]);
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
