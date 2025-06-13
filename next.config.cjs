@@ -13,7 +13,7 @@ module.exports = withTM({
   images: {
     domains: ["images.ctfassets.net"],
   },
-  // reactStrictMode: true,
+  reactStrictMode: true,
   i18n: {
     locales: ["en-US"],
     defaultLocale: "en-US",
