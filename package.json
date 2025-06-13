@@ -7,7 +7,6 @@
     "open-browser": "open http://localhost:3000",
     "build": "next build",
     "start": "next start",
-    "server": "yarn build && NODE_ENV=production node server.js",
     "lint": "next lint"
   },
   "dependencies": {
