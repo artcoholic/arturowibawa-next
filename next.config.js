@@ -1,4 +1,8 @@
-const withTM = require("next-transpile-modules")(["three", "framer-motion-3d"]);
+const withTM = require("next-transpile-modules")([
+  "three",
+  "framer-motion-3d",
+  "@react-three/fiber",
+]);
 
 const nextConfig = {
   async redirects() {
