@@ -20,4 +20,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withTM(nextConfig);
+export default withTM(nextConfig);
