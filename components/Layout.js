@@ -143,12 +143,12 @@ const Layout = ({ children, setTheme, theme, toggler }) => {
         <meta property="og:image:alt" content="Arturo Wibawa" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <Script
-          async
-          src="https://analytics.eu.umami.is/script.js"
-          data-website-id="cac89657-8172-4522-b6e6-edbbd4b56774"
-        ></Script>
       </Head>
+      <Script
+        async
+        src="https://analytics.eu.umami.is/script.js"
+        data-website-id="cac89657-8172-4522-b6e6-edbbd4b56774"
+      ></Script>
       <Header setTheme={setTheme} theme={theme} toggler={toggler} />
       <Main>{children}</Main>
     </>
