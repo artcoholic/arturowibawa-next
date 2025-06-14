@@ -312,12 +312,6 @@ const ContactPage = () => {
                   href="mailto:hello@arturowibawa.com"
                 />
                 <SocialItem
-                  icon={<TwitterFill size={20} />}
-                  label="Twitter"
-                  social="@agwibawa"
-                  href="https://twitter.com/agwibawa"
-                />
-                <SocialItem
                   icon={<LinkedinFill size={20} />}
                   label="LinkedIn"
                   social="@arturowibawa"
@@ -334,12 +328,6 @@ const ContactPage = () => {
                   label="CodePen"
                   social="@artcoholic"
                   href="https://codepen.io/artcoholic"
-                />
-                <SocialItem
-                  icon={<DribbbleFill size={20} />}
-                  label="Dribbble"
-                  social="@artcoholic"
-                  href="https://dribbble.com/artcoholic"
                 />
               </List>
             </Box>
