@@ -98,7 +98,7 @@ const GalleryBlock = ({ item }) => {
               paginate(-1);
             }
           }}
-          alt={item.title || "Gallery Image"}
+          alt={item.assetsCollection.items[imageIndex].title || "Gallery Image"}
         />
       </AnimatePresence>
       <PaginationButton

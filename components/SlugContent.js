@@ -6,8 +6,9 @@ import GalleryBlock from "./GalleryBlock";
 import Image from "next/image";
 import { variants } from "./AnimationVariants";
 import { motion } from "framer-motion";
-import ReactPlayer from "react-player/lazy";
 import Markdown from "react-markdown";
+import dynamic from "next/dynamic";
+const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
 const MarkdownWrapper = styled("div", {
   my: "$1",
