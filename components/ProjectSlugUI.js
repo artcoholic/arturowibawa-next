@@ -105,7 +105,6 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
           href={`/work/${prevUrl}`}
           className="previous"
           css={{ mr: ".5rem" }}
-          data-umami-event="previous-project"
         >
           <ArrowLeft />
         </ButtonWrapper>
@@ -113,7 +112,6 @@ const DynamicUI = ({ entry, prevUrl, nextUrl }) => {
           href={`/work/${nextUrl}`}
           className="next"
           css={{ mr: "1.5rem" }}
-          data-umami-event="next-project"
         >
           <ArrowRight />
         </ButtonWrapper>

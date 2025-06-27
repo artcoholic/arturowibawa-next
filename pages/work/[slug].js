@@ -174,7 +174,6 @@ export default function WorkSlug({ project, preview, moreProjects }) {
                 onClick={() =>
                   window.scroll({ top: 0, left: 0, behavior: "smooth" })
                 }
-                data-umami-event="backToTop-button"
               >
                 <Box
                   css={{

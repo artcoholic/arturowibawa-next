@@ -23,14 +23,7 @@ const Wrapper = styled(Box, {
 const SocialLink = ({ href, children, color, title }) => {
   // console.log('SocialLink');
   return (
-    <Wrapper
-      as="a"
-      href={href}
-      target="_blank"
-      rel="noopener"
-      title={title}
-      data-umami-event={`${title}-button`}
-    >
+    <Wrapper as="a" href={href} target="_blank" rel="noopener" title={title}>
       {children}
     </Wrapper>
   );
