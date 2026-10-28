@@ -192,7 +192,8 @@ export const sendContactForm = async (data) =>
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json", Accept: "application/json" },
-  }).then((res) => {
-    if (!res.ok) throw new Error("Failed to send message");
-    return res.json();
+  }).then(async (res) => {
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.message || "Failed to send message");
+    return result;
   });

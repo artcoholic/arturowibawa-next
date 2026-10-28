@@ -210,6 +210,7 @@ const ContactPage = () => {
             <Box
               as={motion.form}
               autoComplete="off"
+              onSubmit={onSubmit}
               variants={variants.trigger}
               initial="offscreen"
               whileInView="onscreen"
@@ -221,11 +222,27 @@ const ContactPage = () => {
                 mb: "$2",
               }}
             >
+              <input
+                type="text"
+                name="website"
+                tabIndex="-1"
+                autoComplete="off"
+                aria-hidden="true"
+                value={values.website || ""}
+                onChange={handleChange}
+                style={{
+                  position: "absolute",
+                  left: "-10000px",
+                  width: 1,
+                  height: 1,
+                }}
+              />
               <FormControl isInvalid={touched.name && !values.name}>
                 <input
                   type="text"
                   name="name"
                   placeholder="Your name"
+                  maxLength={100}
                   value={values.name}
                   onChange={handleChange}
                   onBlur={onBlur}
@@ -242,6 +259,7 @@ const ContactPage = () => {
                   type="email"
                   name="email"
                   placeholder="Your email"
+                  maxLength={254}
                   value={values.email}
                   onChange={handleChange}
                   onBlur={onBlur}
@@ -260,6 +278,7 @@ const ContactPage = () => {
                   name="message"
                   placeholder="Leave a message"
                   rows={1}
+                  maxLength={5000}
                   value={values.message}
                   onChange={handleChange}
                   onBlur={onBlur}
@@ -274,8 +293,10 @@ const ContactPage = () => {
               </FormControl>
               <FormSubmitButton
                 as="button"
-                disabled={!values.name || !values.email || !values.message}
-                onClick={onSubmit}
+                type="submit"
+                disabled={
+                  !values.name || !values.email || !values.message || isLoading
+                }
               >
                 {isLoading ? "Loading..." : "Submit"}
               </FormSubmitButton>
